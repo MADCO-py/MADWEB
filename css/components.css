@@ -1,0 +1,248 @@
+/* ============================================================
+   COMPONENTES COMPARTIDOS — Nav, cursor, botones, reveal, cards
+   ============================================================ */
+
+/* ---------- Cursor personalizado ---------- */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: #fff;
+  transition: opacity 0.2s ease;
+}
+.cursor-ring {
+  width: 32px; height: 32px;
+  border: 1.5px solid #fff;
+  transition: width 0.25s var(--ease), height 0.25s var(--ease), border-color 0.25s ease, opacity 0.2s ease;
+}
+.cursor-ring.is-hover {
+  width: 56px; height: 56px;
+}
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* ---------- Nav fija ---------- */
+.nav {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(10, 10, 10, 0.78);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  max-width: calc(100vw - 2rem);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+
+.nav__brand {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+  padding-right: 0.5rem;
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+
+.nav__link {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.nav__link:hover,
+.nav__link.is-active { color: #fff; }
+
+/* ---------- Botones estándar de proyecto ---------- */
+.btn-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), background 0.25s ease, color 0.25s ease;
+  background: transparent;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-demo { background: var(--base-text); color: var(--base-bg); border-color: var(--base-text); }
+.btn-demo:hover { opacity: 0.85; }
+.btn-repo { color: var(--base-text); }
+.btn-repo:hover { background: var(--base-text); color: var(--base-bg); }
+.btn-download {
+  color: inherit;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: transparent;
+}
+.btn-download:hover {
+  background: color-mix(in srgb, currentColor 18%, transparent);
+}
+
+/* Trofeo: visualmente como botón pero no clickeable */
+.btn-trophy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px dashed currentColor;
+  opacity: 0.85;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ---------- Cards con elevación ---------- */
+.card {
+  border-radius: var(--radius-md);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  will-change: transform;
+}
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.reveal-stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+
+/* ---------- Sección genérica ---------- */
+.section {
+  padding: var(--space-xl) var(--space-md);
+  position: relative;
+}
+.section__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-bottom: 0.6rem;
+}
+.section__title {
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+}
+.section__lead {
+  font-size: var(--fs-body);
+  max-width: 640px;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 860px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .nav { gap: 1rem; }
+}
+
+/* ---------- Gradient bridge entre secciones ---------- */
+.gradient-bridge {
+  display: block;
+  width: 100%;
+  height: 120px;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+.footer {
+  background: var(--base-invert-bg);
+  color: var(--base-invert-text);
+  padding: var(--space-lg) var(--space-md) var(--space-md);
+  text-align: center;
+}
+.footer__socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+.footer__socials a {
+  color: #fff;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.footer__socials a:hover { opacity: 1; transform: translateY(-3px); }
+.footer__note {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  opacity: 0.4;
+}
+
+/* ---------- Utilidades ---------- */
+.ph { display: inline-flex; vertical-align: -2px; }
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+:focus-visible {
+  outline: 2px solid var(--esp32-turquoise);
+  outline-offset: 3px;
+}

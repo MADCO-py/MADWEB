@@ -1,0 +1,124 @@
+/* ============================================================
+   MADCO.py — Design Tokens
+   Edita aquí para cambiar colores o fuentes de TODO el sitio.
+   ============================================================ */
+
+:root {
+  /* ---- Base (Hero / Freelance / Nav) ---- */
+  --base-bg: #ffffff;
+  --base-bg-soft: #f7f7f5;
+  --base-text: #0a0a0a;
+  --base-text-muted: #6b6b6b;
+  --base-border: #e3e3e0;
+  --base-invert-bg: #0a0a0a;
+  --base-invert-text: #ffffff;
+
+  /* ---- Tipografía ---- */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+  --fs-hero: clamp(3rem, 10vw, 7.5rem);
+  --fs-h1: clamp(2.2rem, 5vw, 3.6rem);
+  --fs-h2: clamp(1.6rem, 3.2vw, 2.4rem);
+  --fs-body: 1.05rem;
+  --fs-small: 0.85rem;
+
+  /* ---- Espaciado ---- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 0.5s;
+
+  /* ============================================================
+     CIBERSEGURIDAD — sendero único Kali (morado) → Flipper (naranja)
+     Interpolado vía scroll en js/ciber-path.js
+     ============================================================ */
+  --ciber-bg: #0a1626;
+  --ciber-bg-end: #1a0d00;
+  --kali-primary: #2f6fad;
+  --kali-accent: #8fd6ff;
+  --kali-glow: #14304d;
+  --flipper-primary: #ff7a1a;
+  --flipper-accent: #ffb066;
+  --flipper-white: #f4ede2;
+  --ciber-text: #eaf4fb;
+
+  /* ---- ESP32 ---- */
+  --esp32-bg: #0c0d0d;
+  --esp32-panel: #15171a;
+  --esp32-silver: #b8c2c9;
+  --esp32-turquoise: #19e6c4;
+  --esp32-text: #e7ecee;
+
+  /* ---- Lectura (cafetería) ---- */
+  --lectura-bg: #1c130c;
+  --lectura-panel: #2a1c11;
+  --lectura-brown: #8a5a2b;
+  --lectura-brown-light: #c79a5e;
+  --lectura-green: #16332a;
+  --lectura-green-light: #2f5c46;
+  --lectura-cream: #ecdcc0;
+
+  /* ---- Estudiantes (MentorHub) ---- */
+  --edu-bg: #ffffff;
+  --edu-green: #0e7a52;
+  --edu-green-dark: #07432d;
+  --edu-green-soft: #e6f5ee;
+  --edu-text: #0a0a0a;
+
+  /* ---- Mi Setup (Apple-style, dark premium) ---- */
+  --setup-bg: #050505;
+  --setup-panel: #101012;
+  --setup-silver: #d8d8da;
+  --setup-glow: #6fb8ff;
+  --setup-text: #f2f2f2;
+
+  /* ---- Cosas Graciosas (caos) ---- */
+  --funny-bg: #0a0a0f;
+  --funny-pink: #ff2d78;
+  --funny-yellow: #ffe600;
+  --funny-cyan: #00e5ff;
+  --funny-lime: #c6ff00;
+  --funny-orange: #ff6b00;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--base-text);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  background: transparent;
+}
+
+/* El fondo global morfeable */
+#page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: rgb(255,255,255);
+  transition: background-color 0.18s ease;
+  will-change: background-color;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

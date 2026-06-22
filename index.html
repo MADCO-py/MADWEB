@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MADCO.py</title>
+<meta name="description" content="MADCO.py — builder, hacker, curioso. Hub de proyectos personales, ciberseguridad, hardware hacking y cosas divertidas.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/hero-freelance.css">
+<link rel="stylesheet" href="css/funny-clean.css">
+<link rel="stylesheet" href="css/ciberseguridad.css">
+<link rel="stylesheet" href="css/esp32.css">
+<link rel="stylesheet" href="css/lectura.css">
+<link rel="stylesheet" href="css/estudiantes.css">
+<link rel="stylesheet" href="css/setup.css">
+<link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+
+<!-- Fondo global controlado por JS -->
+<div id="page-bg"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <span class="nav__brand">MADCO.py</span>
+  <a class="nav__link" href="#freelance"><i class="ph ph-briefcase"></i> Freelance</a>
+  <a class="nav__link" href="#estudiantes"><i class="ph ph-graduation-cap"></i> Estudiantes</a>
+  <a class="nav__link" href="#funny"><i class="ph ph-confetti"></i> Graciosas</a>
+  <a class="nav__link" href="#esp32"><i class="ph ph-cpu"></i> ESP32</a>
+  <a class="nav__link" href="#setup"><i class="ph ph-desktop"></i> Mi Setup</a>
+  <a class="nav__link" href="#ciberseguridad"><i class="ph ph-shield-check"></i> Ciberseguridad</a>
+  <a class="nav__link" href="#lectura"><i class="ph ph-book-open"></i> Lectura</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="hero">
+  <h1 class="hero__filename" data-typing-target="MADCO.py">MADCO.py</h1>
+  <p class="hero__tagline">Builder · Hacker · Curioso</p>
+  <div class="hero__socials" data-mount="hero-socials"></div>
+  <div class="hero__scroll-hint">
+    <span>scroll</span>
+    <i class="ph ph-arrow-down"></i>
+  </div>
+</header>
+
+<!-- ============ FREELANCE ============ -->
+<section class="section freelance page-section" id="freelance" data-bg-color="245,245,243">
+  <div class="section__inner">
+    <div class="section__eyebrow reveal">Proyectos freelance</div>
+    <h2 class="section__title reveal">Lo que he construido para clientes</h2>
+    <p class="section__lead reveal">Sistemas reales, en producción, resolviendo problemas reales.</p>
+    <div style="margin-top:2.5rem;" data-mount="freelance"></div>
+  </div>
+</section>
+
+<!-- ============ ESTUDIANTES ============ -->
+<section class="section estudiantes page-section" id="estudiantes" data-bg-color="240,240,236">
+  <div class="section__inner">
+    <div class="section__eyebrow estudiantes__eyebrow reveal">Recursos para estudiantes</div>
+    <h2 class="section__title reveal">Apoyo entre estudiantes</h2>
+    <p class="section__lead reveal">Más recursos vienen en camino — por ahora, esto:</p>
+    <div style="margin-top:2.5rem;" data-mount="student"></div>
+  </div>
+</section>
+
+<!-- ============ COSAS GRACIOSAS (versión limpia) ============ -->
+<section class="section funny-clean page-section" id="funny" data-bg-color="232,232,226">
+  <div class="section__inner">
+    <div class="section__eyebrow funny-clean__eyebrow reveal">Sección sin filtro</div>
+    <h2 class="section__title funny-clean__title reveal">Cosas Graciosas</h2>
+    <p class="section__lead funny-clean__lead reveal">Proyectos random, bugs, y un botón que definitivamente no deberías tocar.</p>
+
+    <div class="grid grid-2" style="margin-top:2.5rem;" data-mount="funny-projects"></div>
+
+    <h3 class="funny-clean__subhead reveal">Snippets de Python curiosos</h3>
+    <div class="grid grid-2" style="margin-top:1.2rem;" data-mount="funny-snippets"></div>
+
+    <div class="chaos-zone reveal" data-chaos-zone>
+      <div class="chaos-zone__label">// no hagas click aquí</div>
+      <button class="chaos-btn" data-chaos-initial>No toques</button>
+      <div class="chaos-zone__done" data-chaos-done>Bueno, ya paraste el caos. Sabía que ibas a tocarlo.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARDUINO & ESP32 ============ -->
+<section class="section esp32 page-section" id="esp32" data-bg-color="12,13,13">
+  <div class="section__inner">
+    <div class="esp32__intro">
+      <div>
+        <div class="section__eyebrow esp32__eyebrow reveal">Hardware propio</div>
+        <h2 class="section__title esp32__title reveal">Arduino & ESP32</h2>
+        <p class="section__lead reveal" style="color:var(--esp32-silver)">Proyectos de hardware programable, de cero a funcionando.</p>
+      </div>
+      <img class="esp32-board-badge reveal" src="assets/img/esp32/esp32-board.gif" alt="Placa ESP32">
+    </div>
+    <div class="grid grid-2" style="margin-top:2.5rem;" data-mount="esp32"></div>
+  </div>
+</section>
+
+<!-- ============ MI SETUP ============ -->
+<section class="section setup page-section" id="setup" data-bg-color="28,26,24">
+  <div class="section__inner">
+    <div class="section__eyebrow setup__eyebrow reveal">Lo que uso</div>
+    <h2 class="section__title setup__title reveal">Mi Setup</h2>
+    <p class="section__lead setup__lead reveal">Hardware y software que sostienen todo lo de este sitio.</p>
+    <div class="product-grid" style="margin-top:2.8rem;" data-mount="setup"></div>
+
+    <div class="desktop-showcase reveal">
+      <img class="desktop-showcase__bg" src="assets/img/setup/ubuntu-desktop.png" alt="Escritorio de Ubuntu de MADCO.py">
+      <div class="terminal-overlay">
+        <div class="terminal-overlay__bar">
+          <span class="terminal-overlay__dot" style="background:#ff5f56"></span>
+          <span class="terminal-overlay__dot" style="background:#ffbd2e"></span>
+          <span class="terminal-overlay__dot" style="background:#27c93f"></span>
+          <span class="terminal-overlay__title">madco@ubuntu:~</span>
+        </div>
+        <pre class="terminal-overlay__body" id="ubuntu-terminal-body"></pre>
+      </div>
+    </div>
+
+    <div class="terminal-panel reveal">
+      <div class="terminal-panel__bar">
+        <span class="terminal-overlay__dot" style="background:#ff5f56"></span>
+        <span class="terminal-overlay__dot" style="background:#ffbd2e"></span>
+        <span class="terminal-overlay__dot" style="background:#27c93f"></span>
+        <span class="terminal-overlay__title">madco@ubuntu:~/notas</span>
+      </div>
+      <div class="terminal-panel__body">
+        <p class="terminal-panel__prompt">$ cat dato-curioso.md</p>
+        <p class="terminal-panel__h"># Todo corre sobre Ubuntu</p>
+        <p>Desde la laptop hasta la Nintendo Switch — todo en Linux. Algunas extensiones GNOME que uso para volver locas las pantallas (y a veces literalmente quemarlas un poco):</p>
+        <ul>
+          <li><strong>Burn My Windows</strong> — transiciones de ventana exageradas al cerrar/abrir apps.</li>
+          <li><strong>Blur My Shell</strong> — desenfoque dinámico en toda la interfaz.</li>
+          <li><strong>Compiz-style Wobbly Windows</strong> — ventanas que se mueven como gelatina.</li>
+        </ul>
+        <p>¿Por qué Linux y no Windows para esto? Porque el kernel es abierto: puedes cambiarlo. Mainline, Liquorix, Xanmod, Zen — cada uno prioriza algo distinto (latencia, throughput, eficiencia), y tú eliges. En Windows el kernel es una caja cerrada; en Linux es una pieza más que puedes intercambiar según lo que necesites.</p>
+        <p class="terminal-panel__prompt">$ _</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIBERSEGURIDAD ============ -->
+<section class="ciber-path page-section" id="ciberseguridad" data-bg-color="10,22,38">
+
+  <div class="ciber-path__intro reveal">
+    <div class="section__eyebrow" style="color:var(--ciber-live-accent)">Un mismo sendero, varios mundos</div>
+    <h2>Ciberseguridad</h2>
+    <p>De Kali Linux en la PC, pasando por hardware con ESP32, hasta el Flipper Zero en tu mano. Mismo camino, distinto terreno — sigue bajando.</p>
+  </div>
+
+  <div class="ciber-block" id="ciber-bloque-kali">
+    <div class="ciber-block__inner">
+      <span class="ciber-block__tag"><i class="ph ph-terminal-window"></i> Hecho en la PC</span>
+      <h3 class="ciber-block__title reveal">Kali Linux</h3>
+      <p class="ciber-block__lead reveal">Herramientas hechas en Python para entender ingeniería social y automatización — el botón de cada una te lleva a entender el peligro real antes que la herramienta.</p>
+      <div class="kali-window reveal">
+        <div class="kali-window__bar">
+          <span class="kali-window__dot"></span><span class="kali-window__dot"></span><span class="kali-window__dot"></span>
+          <span class="kali-window__title">root@kali: ~</span>
+          <span class="kali-window__menu">Actions · Edit · View · Help</span>
+        </div>
+        <div class="kali-window__screen">
+          <img src="assets/img/ciberseguridad/kali-undercover.gif" alt="Kali Linux" class="kali-window__gif">
+        </div>
+      </div>
+      <div class="grid grid-2" data-mount="ciber-kali"></div>
+    </div>
+  </div>
+
+  <div class="ciber-block" id="ciber-bloque-esp32">
+    <div class="ciber-block__inner">
+      <span class="ciber-block__tag"><i class="ph ph-cpu"></i> Hardware / Firmware</span>
+      <h3 class="ciber-block__title reveal">ESP32</h3>
+      <p class="ciber-block__lead reveal">El puente entre la PC y el Flipper: hardware programable que también puede usarse mal.</p>
+      <div class="grid grid-2" data-mount="ciber-esp32"></div>
+    </div>
+  </div>
+
+  <div class="ciber-block" id="ciber-bloque-flipper">
+    <div class="ciber-block__inner">
+      <span class="ciber-block__tag"><i class="ph ph-game-controller"></i> En tu mano</span>
+      <h3 class="ciber-block__title reveal">Flipper Zero</h3>
+      <p class="ciber-block__lead reveal">BadUSB, Sub-GHz, NFC, Infrared y GPIO — proyectos reales, sin repos, solo archivos para que los explores tú mismo.</p>
+
+      <div class="flipper-window reveal">
+        <div class="flipper-window__bar">
+          <div class="flipper-window__tabs">
+            <span class="flipper-window__tab"><i class="ph ph-info"></i></span>
+            <span class="flipper-window__tab"><i class="ph ph-wrench"></i></span>
+            <span class="flipper-window__tab is-active"><i class="ph ph-folder"></i></span>
+          </div>
+          <span class="flipper-window__brand">MAD · FLIPPER</span>
+          <span class="flipper-window__status"><i class="ph ph-usb"></i> <span data-flipper-status>GHOST_PROTOCOL</span></span>
+        </div>
+        <div class="flipper-window__body">
+          <div class="flipper-screen">
+            <canvas id="flipper-mascot-canvas" class="flipper-screen__canvas"></canvas>
+            <div class="flipper-screen__scanline"></div>
+          </div>
+          <div class="flipper-fs">
+            <div class="flipper-fs__path">SD Card/</div>
+            <div class="flipper-fs__list">
+              <button class="flipper-fs__row is-active" data-folder-target="badusb"><i class="ph ph-folder"></i> badusb</button>
+              <button class="flipper-fs__row" data-folder-target="subghz"><i class="ph ph-folder"></i> subghz</button>
+              <button class="flipper-fs__row" data-folder-target="nfc"><i class="ph ph-folder"></i> nfc</button>
+              <button class="flipper-fs__row" data-folder-target="infrared"><i class="ph ph-folder"></i> infrared</button>
+              <button class="flipper-fs__row" data-folder-target="gpio"><i class="ph ph-folder"></i> gpio</button>
+              <button class="flipper-fs__row" data-folder-target="keyclone"><i class="ph ph-folder"></i> keyclone</button>
+              <button class="flipper-fs__row" data-folder-target="apps"><i class="ph ph-folder"></i> apps</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-2" data-mount="flipper-projects"></div>
+
+      <div class="flipper-twin">
+        <div class="flipper-warn reveal">
+          <div class="flipper-warn__title"><i class="ph ph-shield-warning"></i> Cuídate</div>
+          <p style="font-size:.88rem; opacity:.85; line-height:1.6;">El NFC del Flipper puede leer y, en algunos casos, clonar tarjetas mal protegidas. No es magia ni es exclusivo de hackers — es una razón real para cuidar dónde y cómo usas tu tarjeta.</p>
+          <a class="btn btn-aware" style="margin-top:1rem;" href="pages/seguridad-educativa.html#flipper-nfc"><i class="ph ph-shield-warning"></i> Aprende sobre clonación NFC</a>
+        </div>
+        <div class="flipper-explore reveal">
+          <div class="flipper-explore__title"><i class="ph ph-smiley"></i> Explora sano</div>
+          <div data-mount="flipper-explore"></div>
+        </div>
+      </div>
+
+      <h4 class="ciber-block__title" id="flipper-recommended-anchor" style="font-size:1.15rem; margin-top:2.5rem;">Recomendados</h4>
+      <div class="reco-list" data-mount="flipper-recommended"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LECTURA (al fondo) ============ -->
+<section class="section lectura page-section" id="lectura" data-bg-color="28,19,12">
+  <div class="lectura__steam"></div>
+  <div class="section__inner">
+    <div class="section__eyebrow lectura__eyebrow reveal">Desconéctate de la pantalla</div>
+    <h2 class="section__title lectura__title reveal">Lectura</h2>
+    <p class="section__lead lectura__lead reveal">Las pantallas queman las retinas — estos son libros que vale la pena dejar el celular para leer.</p>
+    <div class="book-shelf" style="margin-top:2.5rem;" data-mount="books"></div>
+    <div class="lectura__why reveal">
+      <i class="ph ph-eye" style="font-size:1.8rem;"></i>
+      <p>Leer en papel (o al menos lejos de una pantalla con notificaciones) le da un descanso real a tu vista y a tu cabeza. No reemplaza nada de lo digital — solo lo balancea.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="nav__brand" style="border:none; font-size:1.2rem;">MADCO.py</div>
+  <div class="footer__socials" data-mount="footer-socials"></div>
+  <p class="footer__note">Sitio construido a mano. Sin backend, sin tracking, sin nombre real.</p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/cursor.js"></script>
+<script src="js/observer.js"></script>
+<script src="js/hero-typing.js"></script>
+<script src="js/ciber-path.js"></script>
+<script src="js/flipper-mascot.js"></script>
+<script src="js/flipper-folders.js"></script>
+<script src="js/funny.js"></script>
+<script src="js/ubuntu-terminal.js"></script>
+<script src="js/esp32-spin.js"></script>
+<script src="js/page-morph.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
