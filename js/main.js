@@ -182,7 +182,7 @@
     const mount = document.querySelector('[data-mount="flipper-recommended"]');
     if (!mount) return;
     mount.innerHTML = FLIPPER_RECOMMENDED.map(r => `
-      <a class="reco-item" href="${r.url}" target="_blank" rel="noopener">
+      <a class="reco-item ${r.featured ? 'reco-item--featured' : ''}" href="${r.url}" target="_blank" rel="noopener">
         <div>
           <div class="reco-item__name"><i class="ph ${r.icon}"></i> ${r.name}</div>
           <div class="reco-item__desc">${r.desc}</div>

@@ -135,3 +135,35 @@
   .card:hover { transform: none; }
   .esp32-board-badge { transform: none !important; }
 }
+
+/* ---- Herramientas Ciberseguridad ---- */
+@media (max-width: 768px) {
+  .ciber-tools { padding: var(--space-md) var(--space-md) 0; gap: 1.5rem; }
+
+  /* Kali terminal */
+  .kali-term__body { padding: 1rem 1rem 1.4rem; }
+  .kali-prompt { font-size: 0.72rem; }
+  .kali-output { font-size: 0.82rem; }
+  .kali-opts { grid-template-columns: 1fr 1fr; gap: 0.35rem 0.7rem; }
+  .kali-opt { font-size: 0.75rem; }
+  .kali-btns { gap: 0.5rem; }
+  .kali-btn { font-size: 0.75rem; padding: 0.6rem 0.7rem; }
+
+  /* Google card */
+  .goog-card { padding: 1.4rem 1.2rem 1rem; }
+  .goog-logo { font-size: 1.9rem; }
+  .goog-subtitle { font-size: 0.72rem; }
+  .goog-searchbar { height: 42px; padding: 0 5px 0 12px; }
+  .goog-searchbar__input { font-size: 0.82rem; }
+  .goog-searchbar__btn { padding: 0.4rem 0.85rem; font-size: 0.78rem; }
+
+  /* URL result */
+  .url-result__header { padding: 0.8rem 1rem; gap: 0.75rem; }
+  .url-result__icon { font-size: 1.6rem; }
+  .url-result__verdict { font-size: 0.9rem; }
+  .url-findings { padding: 0.7rem 1rem; }
+  .url-finding { font-size: 0.78rem; }
+
+  /* Encabezados de herramientas */
+  .ciber-tool-heading__title { font-size: 0.95rem; }
+}

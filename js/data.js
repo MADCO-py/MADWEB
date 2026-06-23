@@ -134,6 +134,13 @@ const FLIPPER_EXPLORE = [
 /* ---------- FLIPPER ZERO — Recomendados ---------- */
 const FLIPPER_RECOMMENDED = [
   {
+    name: 'Flipper Zero — Web Oficial',
+    desc: 'La web oficial del dispositivo: documentación, firmware, tienda y comunidad.',
+    url: 'https://flipper.net/',
+    icon: 'ph-game-controller',
+    featured: true,
+  },
+  {
     name: 'Momentum Firmware',
     desc: 'El firmware que corre en mi Flipper — más funciones, más control.',
     url: 'https://momentum-fw.dev/',
@@ -151,7 +158,6 @@ const FLIPPER_RECOMMENDED = [
     url: 'https://lopaka.app/gallery',
     icon: 'ph-paint-brush',
   },
-  // Agrega más recomendados aquí cuando quieras:
 ];
 
 /* ---------- LECTURA ---------- */
@@ -189,7 +195,7 @@ const STUDENT_RESOURCES = [
   },
   {
     name: 'MAD-Sistema de Evaluaciones',
-    desc: 'Sistema de exámenes en línea con detección de cambio de pestaña — replica la experiencia de Canvas LMS con monitoreo activo de la pantalla.',
+    desc: 'Simulador de examen estilo Canvas Student con detección de cambio de pestaña y monitoreo de actividad en pantalla.',
     demo: 'https://madco-py.github.io/Detector_De_Pantalla_Canvas/',
     repo: '',
     shotVideo: 'assets/img/estudiantes/mad-sistema-preview.mp4',
