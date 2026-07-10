@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riesgos y protección — MADCO.py</title>
+<meta name="description" content="Entiende los riesgos reales detrás de phishing, spam automatizado, jamming RF y clonación NFC — sin instrucciones de cómo hacerlo.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/components.css">
+
+<style>
+  .edu-hero {
+    padding: var(--space-xl) var(--space-md) var(--space-lg);
+    text-align: center;
+    background: var(--base-invert-bg);
+    color: var(--base-invert-text);
+  }
+  .edu-hero a.back {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: var(--font-mono); font-size: 0.8rem;
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    margin-bottom: 2rem;
+  }
+  .edu-hero a.back:hover { color: #fff; }
+  .edu-hero h1 { font-size: var(--fs-h1); margin: 0 0 1rem; }
+  .edu-hero p { opacity: 0.7; max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+  .edu-block {
+    padding: var(--space-lg) var(--space-md);
+    border-bottom: 1px solid var(--base-border);
+    scroll-margin-top: 2rem;
+  }
+  .edu-block__inner { max-width: 760px; margin: 0 auto; }
+  .edu-block__icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.2rem;
+    color: #fff;
+  }
+  .edu-block--kali .edu-block__icon { background: #2f6fad; }
+  .edu-block--esp32 .edu-block__icon { background: #19c3a8; }
+  .edu-block--flipper .edu-block__icon { background: #ff7a1a; }
+  .edu-block h2 { font-size: var(--fs-h2); margin: 0 0 1rem; }
+  .edu-block p { line-height: 1.7; opacity: 0.82; margin-bottom: 1.1rem; }
+  .edu-block h3 { font-size: 1.05rem; margin: 1.8rem 0 0.6rem; }
+  .edu-block ul { line-height: 1.8; opacity: 0.82; padding-left: 1.2rem; }
+</style>
+</head>
+<body>
+
+<div class="edu-hero">
+  <a class="back" href="../index.html#ciberseguridad"><i class="ph ph-arrow-left"></i> Volver a MADCO.py</a>
+  <h1>Riesgos y protección</h1>
+  <p>Aquí no vas a encontrar cómo replicar nada de esto. Vas a encontrar por qué importa entenderlo, y cómo protegerte.</p>
+</div>
+
+<section class="edu-block edu-block--kali" id="kali">
+  <div class="edu-block__inner">
+    <div class="edu-block__icon"><i class="ph-bold ph-terminal-window" style="font-size:1.5rem;"></i></div>
+    <h2>Kali Linux — ingeniería social y automatización</h2>
+    <p>Herramientas como las de phishing de cámara o spam automatizado en WhatsApp no necesitan "hackear" nada técnico — explotan confianza. Un link disfrazado, un mensaje que parece venir de alguien conocido, una sesión de WhatsApp Web abierta sin supervisión: ahí está la puerta.</p>
+
+    <h3>Phishing por link (cámara, sesión, datos)</h3>
+    <ul>
+      <li>Cualquier link acortado o desconocido puede redirigir a una página que imita un servicio real para robar credenciales o acceso a cámara/micrófono.</li>
+      <li>Los túneles tipo ngrok/Cloudflare permiten exponer una página local con apariencia legítima — por eso un link "raro" con un dominio que no reconoces es razón suficiente para no abrirlo.</li>
+      <li>Verifica siempre la URL completa antes de dar cualquier permiso del navegador (cámara, micrófono, ubicación).</li>
+    </ul>
+
+    <h3>Automatización de mensajes (spam tipo WhatsApp)</h3>
+    <ul>
+      <li>WhatsApp Web puede automatizarse con scripts que controlan el navegador — eso permite enviar cientos de mensajes sin intervención manual.</li>
+      <li>Si recibes el mismo mensaje "personal" de muchas personas distintas en poco tiempo, probablemente no lo escribieron ellas.</li>
+      <li>Cierra sesión de WhatsApp Web en dispositivos que no reconozcas (Configuración → Dispositivos vinculados).</li>
+    </ul>
+  </div>
+</section>
+
+<section class="edu-block edu-block--esp32" id="esp32">
+  <div class="edu-block__inner">
+    <div class="edu-block__icon"><i class="ph-bold ph-cpu" style="font-size:1.5rem;"></i></div>
+    <h2>ESP32 — interferencia de señal (jamming)</h2>
+    <p>Un microcontrolador barato como el ESP32 puede programarse para saturar ciertas bandas de radiofrecuencia, interrumpiendo comunicaciones cercanas. No es un truco de película: es una violación real de regulaciones de telecomunicaciones en prácticamente cualquier país, y puede interferir con sistemas que dependen de esa señal para funcionar de forma segura.</p>
+    <h3>Por qué es grave</h3>
+    <ul>
+      <li>El jamming de RF es ilegal de operar sin autorización en la inmensa mayoría de jurisdicciones, sin excepciones para "solo estaba probando".</li>
+      <li>Puede afectar dispositivos que no tienen nada que ver con tu objetivo: alarmas, sensores, comunicación entre vehículos, etc.</li>
+      <li>Si notas pérdida repentina e inexplicable de señal WiFi/Bluetooth en un área específica y puntual, vale la pena reportarlo.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="edu-block edu-block--flipper" id="flipper-nfc">
+  <div class="edu-block__inner">
+    <div class="edu-block__icon"><i class="ph-bold ph-credit-card" style="font-size:1.5rem;"></i></div>
+    <h2>Flipper Zero — clonación de tarjetas NFC</h2>
+    <p>El Flipper Zero puede leer tags NFC desprotegidos a corta distancia. Algunas tarjetas de acceso, transporte o membresías antiguas no cifran su contenido — eso las hace clonables con herramientas de bajo costo, no solo con un Flipper.</p>
+    <h3>Cómo protegerte</h3>
+    <ul>
+      <li>Usa fundas o billeteras con bloqueo RFID para tarjetas de acceso o transporte que no uses constantemente.</li>
+      <li>Pregunta a tu administrador de edificio/empresa si las tarjetas usan cifrado (Mifare DESFire, por ejemplo) en lugar de protocolos antiguos sin cifrar (Mifare Classic).</li>
+      <li>Las tarjetas bancarias modernas con chip EMV no son clonables de esta forma — el riesgo real está en tarjetas de acceso simples, no en tarjetas de crédito/débito.</li>
+    </ul>
+  </div>
+</section>
+
+<div style="text-align:center; padding: var(--space-lg) var(--space-md);">
+  <a class="btn btn-demo" href="../index.html#ciberseguridad"><i class="ph ph-arrow-left"></i> Volver al sitio</a>
+</div>
+
+</body>
+</html>

@@ -64,28 +64,47 @@
     ).join('');
   }
 
-  /* ---------- FREELANCE ---------- */
-  function renderFreelance() {
-    const mount = document.querySelector('[data-mount="freelance"]');
+
+
+  /* ---------- PROYECTOS PERSONALES ---------- */
+  function renderPersonalProjects() {
+    const mount = document.querySelector('[data-mount="personal"]');
     if (!mount) return;
-    const p = FREELANCE_PROJECT;
-    mount.innerHTML = `
-      <div class="trophy-card reveal">
-        <div>
-          <span class="trophy-card__badge"><i class="ph ph-lock-simple"></i> ${p.client}</span>
-          <h3 class="trophy-card__name">${p.name}</h3>
-          <p class="trophy-card__desc">${p.desc}</p>
-          <div class="tech-pill-row">${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
-          ${btnRow({ trophy: 'Vendido a cliente' })}
-        </div>
-        <div class="trophy-card__shot" id="freelance-shot"></div>
-      </div>`;
-    const shotMount = document.getElementById('freelance-shot');
-    const img = imgWithFallback(p.shot, p.name, '', '');
-    img.addEventListener('error', () => {
-      shotMount.innerHTML = `<div class="trophy-card__shot-placeholder"><i class="ph ph-image" style="font-size:1.8rem;"></i><br>Captura pendiente de subir</div>`;
+    mount.innerHTML = '';
+    PERSONAL_PROJECTS.forEach(p => {
+      const card = el('div', 'personal-card card reveal');
+
+      // Media: video si tiene, imagen si no
+      if (p.video) {
+        const video = document.createElement('video');
+        video.className = 'personal-card__media';
+        video.src = p.video;
+        video.muted = true; video.playsInline = true; video.autoplay = true; video.loop = true;
+        video.addEventListener('error', () => {
+          video.replaceWith(el('div', 'personal-card__media', ''));
+        });
+        card.addEventListener('mouseenter', () => video.play());
+        card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+        card.appendChild(video);
+      } else if (p.preview) {
+        const img = document.createElement('img');
+        img.className = 'personal-card__media';
+        img.src = p.preview; img.alt = p.name;
+        card.appendChild(img);
+      }
+
+            const body = el('div', 'personal-card__body');
+      const nfcHtml = p.nfcNote ? '<span class="personal-card__nfc"><i class="ph ph-wifi-high"></i> ' + p.nfcNote + '</span>' : '';
+      const techHtml = (p.tech || []).map(t => '<span class="tech-pill">' + t + '</span>').join('');
+      body.innerHTML = '<span class="personal-card__badge"><i class="ph ph-code"></i> Proyecto personal</span>' +
+        '<h3 class="personal-card__name">' + p.name + '</h3>' +
+        '<p class="personal-card__desc">' + p.desc + '</p>' +
+        nfcHtml +
+        '<div class="tech-pill-row">' + techHtml + '</div>' +
+        btnRow({ demo: p.demo, repo: p.repo });
+      card.appendChild(body);
+      mount.appendChild(card);
     });
-    shotMount.appendChild(img);
   }
 
   /* ---------- CIBERSEGURIDAD ---------- */
@@ -192,31 +211,20 @@
     `).join('');
   }
 
-  /* ---------- ESP32 ---------- */
+  /* ---------- MAKER LAB — formato lista ---------- */
   function renderEsp32() {
     const mount = document.querySelector('[data-mount="esp32"]');
     if (!mount) return;
     mount.innerHTML = '';
     ESP32_PROJECTS.forEach(p => {
-      const card = el('div', 'circuit-card card reveal');
-      const video = document.createElement('video');
-      video.className = 'circuit-card__video';
-      video.src = p.video;
-      video.muted = true; video.playsInline = true; video.preload = 'metadata'; video.loop = true;
-      video.addEventListener('error', () => {
-        const ph = el('div', 'circuit-card__video-placeholder', `<i class="ph ph-video-camera" style="font-size:1.6rem;"></i> Sube tu video corto a<br><code style="opacity:.7">assets/videos/esp32/snake/</code>`);
-        video.replaceWith(ph);
-      });
-      card.addEventListener('mouseenter', () => video.play());
-      card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
-      card.appendChild(video);
-      card.appendChild(el('div', 'circuit-card__body', `
-        <h4 class="circuit-card__title">${p.name}</h4>
-        <p class="circuit-card__desc">${p.desc}</p>
-        <div class="tech-pill-row">${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
-        ${btnRow({ demo: p.demo, repo: p.repo })}
-      `));
-      mount.appendChild(card);
+      const item = el('div', 'maker-item reveal');
+      const mats = (p.materials || []).join(' · ');
+      const matsRow2 = mats ? '<div class="maker-item__row"><span class="maker-item__key">Materiales</span><span class="maker-item__val">' + mats + '</span></div>' : '';
+      item.innerHTML = '<h4 class="maker-item__name">' + p.name + '</h4>' +
+        '<div class="maker-item__row"><span class="maker-item__key">Descripción</span><span class="maker-item__val">' + p.desc + '</span></div>' +
+        '<div class="maker-item__row"><span class="maker-item__key">Lenguaje</span><span class="maker-item__val">' + p.lang + '</span></div>' +
+        matsRow2 + btnRow({ repo: p.repo, demo: p.demo });
+      mount.appendChild(item);
     });
   }
 
@@ -257,8 +265,7 @@
 
     // Hover play/pause en cada video de estudiantes
     mount.querySelectorAll('.mentorhub-card__shot').forEach(v => {
-      v.addEventListener('mouseenter', () => v.play());
-      v.addEventListener('mouseleave', () => { v.pause(); v.currentTime = 0; });
+      v.autoplay = true;
     });
   }
 
@@ -293,6 +300,15 @@
     });
   }
 
+
+  /* ---------- HOBBIES ---------- */
+  function renderHobbies() {
+    const mount = document.querySelector('[data-mount="hobbies"]');
+    if (!mount) return;
+    mount.innerHTML = HOBBIES.map(h =>
+        '<div class="hobby-item"><i class="ph ' + h.icon + '"></i><span>' + h.label + '</span></div>'
+      ).join('');
+  }
   /* ---------- FUNNY ---------- */
   function renderFunnyProjects() {
     const mount = document.querySelector('[data-mount="funny-projects"]');
@@ -303,18 +319,17 @@
       const video = document.createElement('video');
       video.className = 'funny-project-card__video';
       video.src = p.video;
-      video.muted = true; video.playsInline = true; video.preload = 'metadata'; video.loop = true;
+      video.muted = true; video.playsInline = true; video.autoplay = true; video.loop = true;
       video.addEventListener('error', () => {
         const ph = el('div', 'funny-project-card__video-placeholder', `<i class="ph ph-video-camera" style="font-size:1.6rem;"></i> Sube tu video corto a<br><code style="opacity:.7">assets/videos/funny/</code>`);
         video.replaceWith(ph);
       });
-      card.addEventListener('mouseenter', () => video.play());
-      card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+      video.autoplay = true;
       card.appendChild(video);
       card.appendChild(el('div', 'funny-project-card__body', `
         <h4 class="funny-project-card__title">${p.name}</h4>
         <p class="funny-project-card__desc">${p.desc}</p>
-        ${btnRow({ repo: p.repo })}
+        ${btnRow({ demo: p.demo || '', repo: p.repo })}
       `));
       mount.appendChild(card);
     });
@@ -351,14 +366,14 @@
   document.addEventListener('DOMContentLoaded', () => {
     renderSocials(document.querySelector('[data-mount="hero-socials"]'));
     renderSocials(document.querySelector('[data-mount="footer-socials"]'));
-    renderFreelance();
     renderCiberKali();
     renderCiberEsp32();
     renderFlipperProjects();
     renderFlipperExplore();
     renderFlipperRecommended();
     renderEsp32();
-    renderBooks();
+    renderHobbies();
+    renderPersonalProjects();
     renderStudent();
     renderSetup();
     renderFunnyProjects();

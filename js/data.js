@@ -1,25 +1,37 @@
 /* ============================================================
    DATA.JS — Toda la información editable del sitio vive aquí.
-   Para agregar un proyecto nuevo, copia un objeto del arreglo
-   correspondiente y cambia sus valores. El HTML se genera solo.
    ============================================================ */
 
 const SOCIALS = [
   { name: 'GitHub', icon: 'ph-github-logo', url: 'https://github.com/MADCO-py' },
   { name: 'Instagram', icon: 'ph-instagram-logo', url: 'https://www.instagram.com/madco.jsx/' },
-  // Discord pendiente — descomenta cuando lo tengas:
-  // { name: 'Discord', icon: 'ph-discord-logo', url: 'https://discord.gg/TU-INVITE' },
 ];
 
-/* ---------- FREELANCE (trofeo, no clickeable) ---------- */
-const FREELANCE_PROJECT = {
-  name: 'FleetControl',
-  client: 'Proyecto entregado a cliente',
-  desc: 'Sistema completo de gestión de flota vehicular: control de conductores, evidencia fotográfica, historial de mantenimiento e infraestructura desplegada en producción. Vendido y entregado, con hosting anual activo.',
-  tech: ['React', 'Node.js / Express', 'PostgreSQL', 'Docker', 'Railway', 'Cloudflare R2'],
-  // Coloca tu captura en assets/img/freelance/fleetcontrol-dashboard.png
-  shot: 'assets/img/freelance/fleetcontrol-dashboard.png',
-};
+/* ---------- PROYECTOS PERSONALES ---------- */
+const PERSONAL_PROJECTS = [
+  {
+    id: 'awa',
+    name: 'AwA',
+    emoji: 'Hidratación',
+    desc: 'App de hidratación para botella Owala. Registra cada sorbo con un tag NFC — acerca la botella al tag y la app suma automáticamente el agua consumida del día. Necesitas un tag NFC programable para que funcione.',
+    nfcNote: 'Requiere tag NFC programable',
+    tech: ['HTML/CSS/JS', 'NFC API', 'Web App'],
+    video: 'assets/videos/personal/awa/awa-demo.mp4',
+    demo: 'https://madco-py.github.io/AwA/',
+    repo: 'https://github.com/MADCO-py/AwA',
+  },
+  {
+    id: 'madgains',
+    name: 'MAD-GAINS',
+    emoji: 'Fitness',
+    desc: 'Rutina de 5 días con mancuernas en casa. Enfoque en brazos, antebrazo, pecho y espalda. 25 ejercicios, 155g de proteína diaria objetivo. Resultados máximos sin salir de casa.',
+    nfcNote: null,
+    tech: ['HTML/CSS/JS', 'Web App'],
+    preview: 'assets/img/personal/madgains-preview.png',
+    demo: 'https://madco-py.github.io/mad-gains/',
+    repo: 'https://github.com/MADCO-py/mad-gains',
+  },
+];
 
 /* ---------- CIBERSEGURIDAD — bloque Kali Linux (PC) ---------- */
 const CIBER_KALI_PROJECTS = [
@@ -29,7 +41,7 @@ const CIBER_KALI_PROJECTS = [
     lang: 'Python',
     desc: 'Herramienta de phishing de cámara vía link falso. No se muestra demo ni repo aquí: entiende el riesgo real antes de toparte con algo así.',
     awareLink: 'pages/seguridad-educativa.html#kali',
-    repo: '', // intencionalmente vacío
+    repo: '',
   },
   {
     name: 'Whatsapp_spammer',
@@ -49,20 +61,19 @@ const CIBER_ESP32_RISK = {
   awareLink: 'pages/seguridad-educativa.html#esp32',
 };
 
-/* ---------- ARDUINO & ESP32 (sección propia, SNAKE) ---------- */
+/* ---------- MAKER LAB (Snake sin video, formato lista) ---------- */
 const ESP32_PROJECTS = [
   {
     name: 'SNAKE-ESP32-32U',
-    desc: 'El clásico Snake corriendo en un ESP32-32U, con pantalla y control físico armados desde cero. Proyecto personal de hardware + firmware.',
-    tech: ['ESP32', 'C++', 'Arduino IDE'],
-    // Sube tu video corto en loop a esta carpeta:
-    video: 'assets/videos/esp32/snake/snake-esp32-demo-01.mp4',
+    desc: 'El clásico Snake corriendo en un ESP32-32U, con pantalla OLED y control físico armados desde cero.',
+    lang: 'C++ / Arduino IDE',
+    materials: ['ESP32-32U', 'Pantalla OLED 128×64', 'Botones físicos', 'Protoboard', 'Cables dupont'],
     repo: 'https://github.com/MADCO-py/SNAKE-ESP32-32U',
     demo: '',
   },
 ];
 
-/* ---------- FLIPPER ZERO — proyectos (solo .txt, sin repos) ---------- */
+/* ---------- FLIPPER ZERO — proyectos ---------- */
 const FLIPPER_PROJECTS = [
   {
     id: 'badusb',
@@ -98,7 +109,7 @@ const FLIPPER_PROJECTS = [
     id: 'infrared',
     folder: 'infrared',
     name: 'Infrared',
-    desc: 'Señales IR reverseadas de televisores Samsung — control remoto universal hecho a mano. Descarga el archivo .ir listo para copiar a tu Flipper.',
+    desc: 'Señales IR reverseadas de televisores Samsung — control remoto universal hecho a mano.',
     video: 'assets/videos/flipper/infrared/infrared-demo-01.mp4',
     txt: 'assets/flipper-files/infrared/Samsung.ir',
     txtLabel: 'Samsung.ir',
@@ -111,27 +122,29 @@ const FLIPPER_PROJECTS = [
     desc: 'Antena externa para más alcance, y experimentos con NRF24L01+ para sniffing tipo MouseJack.',
     video: 'assets/videos/flipper/gpio/gpio-demo-01.mp4',
     txt: 'assets/flipper-files/gpio/gpio-info.txt',
+    txtLabel: 'gpio-info.txt',
+    repo: '',
   },
   {
     id: 'keyclone',
     folder: 'keyclone',
     name: 'Key Clone',
-    desc: 'Lectura de llaves físicas por numeración — al acercar una llave al Flipper se puede identificar el corte exacto a partir de los dígitos grabados. No clona la llave, identifica qué llave es cuál.',
+    desc: 'Lectura de llaves físicas por numeración — al acercar una llave al Flipper se puede identificar el corte exacto a partir de los dígitos grabados.',
     video: 'assets/videos/flipper/keyclone/keyclone-demo-01.mp4',
     txt: 'assets/flipper-files/keyclone/keyclone-info.txt',
+    txtLabel: 'keyclone-info.txt',
+    repo: '',
   },
 ];
 
-/* ---------- FLIPPER ZERO — Explora sano (sin riesgo) ---------- */
 const FLIPPER_EXPLORE = [
   {
     name: 'BadUSB — Claude Code + Spotify',
-    desc: 'Al conectarlo abre Claude Code en Windows y pone música en Spotify. Cero riesgo, solo para divertirte explorando BadUSB.',
+    desc: 'Al conectarlo abre Claude Code en Windows y pone música en Spotify.',
     txt: 'assets/flipper-files/explora-sano/claude-spotify.txt',
   },
 ];
 
-/* ---------- FLIPPER ZERO — Recomendados ---------- */
 const FLIPPER_RECOMMENDED = [
   {
     name: 'Flipper Zero — Web Oficial',
@@ -148,7 +161,7 @@ const FLIPPER_RECOMMENDED = [
   },
   {
     name: 'Flipper Lab — Hex Editor',
-    desc: 'Editor hexadecimal directo desde el navegador para tocar archivos del Flipper.',
+    desc: 'Editor hexadecimal directo desde el navegador.',
     url: 'https://lab.flipper.net/apps/hex_editor',
     icon: 'ph-code',
   },
@@ -158,29 +171,6 @@ const FLIPPER_RECOMMENDED = [
     url: 'https://lopaka.app/gallery',
     icon: 'ph-paint-brush',
   },
-];
-
-/* ---------- LECTURA ---------- */
-const BOOKS = [
-  {
-    title: 'Maestría',
-    author: 'Robert Greene',
-    cover: 'assets/img/lectura/maestria.png',
-    desc: 'Cómo se forja la verdadera excelencia: estudiando a maestros de la historia, Greene muestra que el dominio de cualquier disciplina nace de miles de horas de observación, práctica deliberada y paciencia — no de talento. Clave si quieres dejar de buscar atajos.',
-  },
-  {
-    title: 'La Psicología del Dinero',
-    author: 'Morgan Housel',
-    cover: 'assets/img/lectura/psicologia-del-dinero.png',
-    desc: 'El dinero no es solo matemáticas, es comportamiento. Housel explica por qué decisiones financieras "irracionales" muchas veces tienen más sentido que las racionales, y por qué entender tu psicología vale más que entender los mercados.',
-  },
-  {
-    title: 'El Sutil Arte de Que (Casi Todo) Te Importe Una Mierda',
-    author: 'Mark Manson',
-    cover: 'assets/img/lectura/sutil-arte.jpg',
-    desc: 'Un golpe directo a la cultura de "piensa positivo siempre": la felicidad real viene de elegir bien tus batallas, no de fingir que todo te emociona. Aprender a no darle importancia a lo que no la merece es, paradójicamente, libertad.',
-  },
-  // Agrega más libros aquí: { title, author, cover, desc }
 ];
 
 /* ---------- RECURSOS PARA ESTUDIANTES ---------- */
@@ -203,7 +193,7 @@ const STUDENT_RESOURCES = [
   },
 ];
 
-/* ---------- MI SETUP ---------- */
+/* ---------- MI SETUP (radio reemplazada por mochila North Face) ---------- */
 const SETUP_ITEMS = [
   { name: 'Dell Latitude 5421', spec: 'i7 11th gen · 24GB RAM · Iris Xe', desc: 'Mi laptop principal de trabajo y desarrollo, corriendo Ubuntu 26.04.', img: 'assets/img/setup/laptop-dell-latitude.avif', icon: 'ph-laptop' },
   { name: 'iPad Air + teclado', spec: 'Lectura y notas', desc: 'Para leer, tomar notas rápidas y trabajar fuera del escritorio.', img: 'assets/img/setup/ipad-air.png', icon: 'ph-device-tablet' },
@@ -215,20 +205,29 @@ const SETUP_ITEMS = [
   { name: 'Claude Code', spec: 'Asistente en terminal', desc: 'Mi copiloto de desarrollo en Ubuntu.', img: 'assets/img/setup/claude-code.gif', icon: 'ph-terminal-window' },
   { name: 'Firefox', spec: 'Navegador principal', desc: 'Privacidad y control sobre todo lo demás.', img: 'assets/img/setup/firefox-logo.png', icon: 'ph-firefox-logo' },
   { name: 'USB con Tails', spec: 'Sistema amnésico', desc: 'Para cuando necesito navegar sin dejar rastro en el equipo.', img: 'assets/img/setup/usb-tails.png', icon: 'ph-usb' },
-  { name: 'Radio 2.4GHz', spec: 'Estilo profesional', desc: 'Radio de comunicación tipo walkie-talkie, banda 2.4GHz.', img: 'assets/img/setup/radio-2-4ghz.png', icon: 'ph-radio' },
+  { name: 'The North Face Router', spec: 'Mochila de trabajo', desc: 'Va a todos lados conmigo — laptop, cables, flipper, todo cabe.', img: 'assets/img/setup/backpack-northface.png', icon: 'ph-backpack' },
   { name: 'Lentes Xiaomi luz azul', spec: 'Protección visual', desc: 'Para frenar el daño de tantas horas frente a pantallas.', img: 'assets/img/setup/lentes-xiaomi.png', icon: 'ph-eyeglasses' },
 ];
 
-/* ---------- COSAS GRACIOSAS ---------- */
+/* ---------- HOBBIES ---------- */
+const HOBBIES = [
+  { icon: 'ph-sneaker-move', label: 'Correr' },
+  { icon: 'ph-chess', label: 'Ajedrez' },
+  { icon: 'ph-game-controller', label: 'Nintendo Switch' },
+  { icon: 'ph-book-open', label: 'Leer' },
+  { icon: 'ph-music-note', label: 'Música' },
+  { icon: 'ph-wrench', label: 'Hardware hacking' },
+];
+
+/* ---------- FUNNY ---------- */
 const FUNNY_PROJECTS = [
   {
     name: 'SANSAN',
     desc: 'Propuesta de San Valentín hecha código — porque pedir las cosas normales es aburrido.',
     video: 'assets/videos/funny/sansan/sansan-demo-01.mp4',
+    demo: 'https://madco-py.github.io/SANSAN/',
     repo: 'https://github.com/MADCO-py/SANSAN',
   },
-  // Agrega tus proyectos de cámara con Python aquí cuando estén listos:
-  // { name: '...', desc: '...', video: 'assets/videos/funny/camara/...', repo: '...' },
 ];
 
 const FUNNY_SNIPPETS = [

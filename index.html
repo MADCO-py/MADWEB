@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="css/lectura.css">
 <link rel="stylesheet" href="css/estudiantes.css">
 <link rel="stylesheet" href="css/setup.css">
+<link rel="stylesheet" href="css/sections-new.css">
 <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body>
@@ -31,13 +32,13 @@
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <span class="nav__brand">MADCO.py</span>
-  <a class="nav__link" href="#freelance"><i class="ph ph-briefcase"></i> Freelancer</a>
+  <a class="nav__link" href="#personal"><i class="ph ph-code-block"></i> Proyectos</a>
   <a class="nav__link" href="#estudiantes"><i class="ph ph-graduation-cap"></i> Éxito Académico</a>
   <a class="nav__link" href="#funny"><i class="ph ph-confetti"></i> Recreo Mental</a>
   <a class="nav__link" href="#esp32"><i class="ph ph-cpu"></i> Maker Lab</a>
-  <a class="nav__link" href="#setup"><i class="ph ph-desktop"></i> My Setup</a>
   <a class="nav__link" href="#ciberseguridad"><i class="ph ph-shield-check"></i> Ciberseguridad</a>
-  <a class="nav__link" href="#lectura"><i class="ph ph-book-open"></i> Lectura</a>
+
+  <a class="nav__link" href="#setup"><i class="ph ph-desktop"></i> My Setup</a>
 </nav>
 
 <!-- ============ HERO ============ -->
@@ -51,13 +52,13 @@
   </div>
 </header>
 
-<!-- ============ FREELANCE ============ -->
-<section class="section freelance page-section" id="freelance" data-bg-color="245,245,243">
+<!-- ============ PROYECTOS PERSONALES ============ -->
+<section class="section personal page-section" id="personal" data-bg-color="245,245,243">
   <div class="section__inner">
-    <div class="section__eyebrow reveal">Soluciones de problemática</div>
-    <h2 class="section__title reveal">Trabajos Freelancer</h2>
-    <p class="section__lead reveal">Cada proyecto nace de una necesidad real — sistemas entregados, funcionando y sostenibles.</p>
-    <div style="margin-top:2.5rem;" data-mount="freelance"></div>
+    <div class="section__eyebrow reveal">Proyectos personales</div>
+    <h2 class="section__title reveal">Lo que construyo para mí</h2>
+    <p class="section__lead reveal">Apps propias que uso en el día a día — hidratación, fitness, y lo que se me ocurra.</p>
+    <div class="personal-grid" data-mount="personal"></div>
   </div>
 </section>
 
@@ -102,51 +103,7 @@
       </div>
       <img class="esp32-board-badge reveal" src="assets/img/esp32/esp32-board.gif" alt="Placa ESP32">
     </div>
-    <div class="grid grid-2" style="margin-top:2.5rem;" data-mount="esp32"></div>
-  </div>
-</section>
-
-<!-- ============ MI SETUP ============ -->
-<section class="section setup page-section" id="setup" data-bg-color="28,26,24">
-  <div class="section__inner">
-    <div class="section__eyebrow setup__eyebrow reveal">Lo que uso</div>
-    <h2 class="section__title setup__title reveal">Mi Setup</h2>
-    <p class="section__lead setup__lead reveal">Mis esenciales de día a día para proyectos.</p>
-    <div class="product-grid" style="margin-top:2.8rem;" data-mount="setup"></div>
-
-    <div class="desktop-showcase reveal">
-      <img class="desktop-showcase__bg" src="assets/img/setup/ubuntu-desktop.png" alt="Escritorio de Ubuntu de MADCO.py">
-      <div class="terminal-overlay">
-        <div class="terminal-overlay__bar">
-          <span class="terminal-overlay__dot" style="background:#ff5f56"></span>
-          <span class="terminal-overlay__dot" style="background:#ffbd2e"></span>
-          <span class="terminal-overlay__dot" style="background:#27c93f"></span>
-          <span class="terminal-overlay__title">madco@ubuntu:~</span>
-        </div>
-        <pre class="terminal-overlay__body" id="ubuntu-terminal-body"></pre>
-      </div>
-    </div>
-
-    <div class="terminal-panel reveal">
-      <div class="terminal-panel__bar">
-        <span class="terminal-overlay__dot" style="background:#ff5f56"></span>
-        <span class="terminal-overlay__dot" style="background:#ffbd2e"></span>
-        <span class="terminal-overlay__dot" style="background:#27c93f"></span>
-        <span class="terminal-overlay__title">madco@ubuntu:~/notas</span>
-      </div>
-      <div class="terminal-panel__body">
-        <p class="terminal-panel__prompt">$ cat dato-curioso.md</p>
-        <p class="terminal-panel__h"># Todo corre sobre Ubuntu</p>
-        <p>Desde la laptop hasta la Nintendo Switch — todo en Linux. Algunas extensiones GNOME que uso para volver locas las pantallas (y a veces literalmente quemarlas un poco):</p>
-        <ul>
-          <li><strong>Burn My Windows</strong> — transiciones de ventana exageradas al cerrar/abrir apps.</li>
-          <li><strong>Blur My Shell</strong> — desenfoque dinámico en toda la interfaz.</li>
-          <li><strong>Compiz-style Wobbly Windows</strong> — ventanas que se mueven como gelatina.</li>
-        </ul>
-        <p>¿Por qué Linux y no Windows para esto? Porque el kernel es abierto: puedes cambiarlo. Mainline, Liquorix, Xanmod, Zen — cada uno prioriza algo distinto (latencia, throughput, eficiencia), y tú eliges. En Windows el kernel es una caja cerrada; en Linux es una pieza más que puedes intercambiar según lo que necesites.</p>
-        <p class="terminal-panel__prompt">$ _</p>
-      </div>
-    </div>
+    <div class="maker-list" data-mount="esp32"></div>
   </div>
 </section>
 
@@ -314,17 +271,77 @@
   </div>
 </section>
 
-<!-- ============ LECTURA (al fondo) ============ -->
-<section class="section lectura page-section" id="lectura" data-bg-color="28,19,12">
-  <div class="lectura__steam"></div>
+<!-- GRADIENT BRIDGE: Ciber → Hobbies -->
+<div class="gradient-bridge" style="background:linear-gradient(to bottom, #1a0d00, #10101a)"></div>
+
+<!-- ============ HOBBIES ============ -->
+<section class="section hobbies page-section" id="hobbies" data-bg-color="16,16,26">
   <div class="section__inner">
-    <div class="section__eyebrow lectura__eyebrow reveal">Desconéctate de la pantalla</div>
-    <h2 class="section__title lectura__title reveal">Lectura</h2>
-    <p class="section__lead lectura__lead reveal">Las pantallas queman las retinas — estos son libros que vale la pena dejar el celular para leer.</p>
-    <div class="book-shelf" style="margin-top:2.5rem;" data-mount="books"></div>
-    <div class="lectura__why reveal">
-      <i class="ph ph-eye" style="font-size:1.8rem;"></i>
-      <p>Leer en papel (o al menos lejos de una pantalla con notificaciones) le da un descanso real a tu vista y a tu cabeza. No reemplaza nada de lo digital — solo lo balancea.</p>
+    <div class="section__eyebrow hobbies__eyebrow reveal">Cuando no codifico</div>
+    <h2 class="section__title reveal" style="color:#e8e8e4;">Hobbies</h2>
+    <div class="hobbies__layout reveal">
+      <div class="chess-wrap">
+        <div class="chess-top-bar">
+          <span class="chess-turn-indicator chess-turn--black">♟ Negras (IA Expert)</span>
+        </div>
+        <div id="chess-board"></div>
+        <div class="chess-bottom-bar">
+          <span class="chess-turn-indicator chess-turn--white">♙ Blancas (Tú)</span>
+          <span id="chess-status" class="chess-status">Tu turno — Blancas</span>
+        </div>
+        <div class="hobbies__chess-hint"><i class="ph ph-cursor-click"></i> Click en una pieza para moverla — la IA responde</div>
+      </div>
+      <div class="hobbies__side">
+        <div class="hobbies__list" data-mount="hobbies"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- GRADIENT BRIDGE: Hobbies → Setup -->
+<div class="gradient-bridge" style="background:linear-gradient(to bottom,#10101a,#1c1a18)"></div>
+
+<!-- ============ MI SETUP ============ -->
+<section class="section setup page-section" id="setup" data-bg-color="28,26,24">
+  <div class="section__inner">
+    <div class="section__eyebrow setup__eyebrow reveal">Lo que uso</div>
+    <h2 class="section__title setup__title reveal">Mi Setup</h2>
+    <p class="section__lead setup__lead reveal">Mis esenciales de día a día para proyectos.</p>
+    <div class="product-grid" style="margin-top:2.8rem;" data-mount="setup"></div>
+
+    <div class="desktop-showcase reveal">
+      <img class="desktop-showcase__bg" src="assets/img/setup/ubuntu-desktop.png" alt="Escritorio de Ubuntu de MADCO.py">
+      <div class="terminal-overlay">
+        <div class="terminal-overlay__bar">
+          <span class="terminal-overlay__dot" style="background:#ff5f56"></span>
+          <span class="terminal-overlay__dot" style="background:#ffbd2e"></span>
+          <span class="terminal-overlay__dot" style="background:#27c93f"></span>
+          <span class="terminal-overlay__title">madco@ubuntu:~</span>
+        </div>
+        <pre class="terminal-overlay__body" id="ubuntu-terminal-body"></pre>
+      </div>
+    </div>
+
+    <div class="terminal-panel reveal">
+      <div class="terminal-panel__bar">
+        <span class="terminal-overlay__dot" style="background:#ff5f56"></span>
+        <span class="terminal-overlay__dot" style="background:#ffbd2e"></span>
+        <span class="terminal-overlay__dot" style="background:#27c93f"></span>
+        <span class="terminal-overlay__title">madco@ubuntu:~/notas</span>
+      </div>
+      <div class="terminal-panel__body">
+        <p class="terminal-panel__prompt">$ cat dato-curioso.md</p>
+        <p class="terminal-panel__h"># Todo corre sobre Ubuntu</p>
+        <p>Desde la laptop hasta la Nintendo Switch — todo en Linux. Algunas extensiones GNOME que uso para volver locas las pantallas (y a veces literalmente quemarlas un poco):</p>
+        <ul>
+          <li><strong>Burn My Windows</strong> — transiciones de ventana exageradas al cerrar/abrir apps.</li>
+          <li><strong>Blur My Shell</strong> — desenfoque dinámico en toda la interfaz.</li>
+          <li><strong>Compiz-style Wobbly Windows</strong> — ventanas que se mueven como gelatina.</li>
+        </ul>
+        <p>¿Por qué Linux y no Windows para esto? Porque el kernel es abierto: puedes cambiarlo. Mainline, Liquorix, Xanmod, Zen — cada uno prioriza algo distinto (latencia, throughput, eficiencia), y tú eliges. En Windows el kernel es una caja cerrada; en Linux es una pieza más que puedes intercambiar según lo que necesites.</p>
+        <p class="terminal-panel__prompt">$ _</p>
+      </div>
     </div>
   </div>
 </section>
@@ -348,6 +365,7 @@
 <script src="js/esp32-spin.js"></script>
 <script src="js/page-morph.js"></script>
 <script src="js/ciber-tools.js"></script>
+<script src="js/chess.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
