@@ -96,7 +96,10 @@
             const body = el('div', 'personal-card__body');
       const nfcHtml = p.nfcNote ? '<span class="personal-card__nfc"><i class="ph ph-wifi-high"></i> ' + p.nfcNote + '</span>' : '';
       const techHtml = (p.tech || []).map(t => '<span class="tech-pill">' + t + '</span>').join('');
-      body.innerHTML = '<span class="personal-card__badge"><i class="ph ph-code"></i> Proyecto personal</span>' +
+      const badgeHtml = p.badge === 'emprendedor'
+        ? '<span class="personal-card__badge personal-card__badge--emp"><i class="ph ph-storefront"></i> Para emprendedor</span>'
+        : '<span class="personal-card__badge"><i class="ph ph-code"></i> Proyecto personal</span>';
+      body.innerHTML = badgeHtml +
         '<h3 class="personal-card__name">' + p.name + '</h3>' +
         '<p class="personal-card__desc">' + p.desc + '</p>' +
         nfcHtml +
@@ -105,6 +108,73 @@
       card.appendChild(body);
       mount.appendChild(card);
     });
+  }
+
+  /* ---------- CLIENTES — separados por tipo ---------- */
+  function renderClients() {
+    const mount = document.querySelector('[data-mount="clients"]');
+    if (!mount) return;
+    mount.innerHTML = '';
+
+    const enterprise = CLIENT_PROJECTS.filter(p => p.type === 'enterprise');
+    const emprendedores = CLIENT_PROJECTS.filter(p => p.type === 'emprendedor');
+
+    // Sección Empresas
+    if (enterprise.length) {
+      const label1 = el('div', 'clients-section-label reveal');
+      label1.innerHTML = '<span class="clients-section-label__line"></span><span class="clients-section-label__text"><i class="ph ph-buildings-fill"></i> Venta a Empresas</span><span class="clients-section-label__line"></span>';
+      mount.appendChild(label1);
+      const grid1 = el('div', 'clients-grid clients-grid--enterprise');
+      enterprise.forEach(p => grid1.appendChild(buildClientCard(p)));
+      mount.appendChild(grid1);
+    }
+
+    // Sección Emprendedores
+    if (emprendedores.length) {
+      const label2 = el('div', 'clients-section-label reveal');
+      label2.innerHTML = '<span class="clients-section-label__line"></span><span class="clients-section-label__text"><i class="ph ph-storefront"></i> Ventas a Pequeños Emprendedores</span><span class="clients-section-label__line"></span>';
+      mount.appendChild(label2);
+      const grid2 = el('div', 'clients-grid');
+      emprendedores.forEach(p => grid2.appendChild(buildClientCard(p)));
+      mount.appendChild(grid2);
+    }
+  }
+
+  function buildClientCard(p) {
+      const card = el('div', 'client-card reveal ' + (p.type === 'enterprise' ? 'client-card--enterprise' : 'client-card--emp'));
+
+      // Media
+      if (p.video) {
+        const video = document.createElement('video');
+        video.className = 'client-card__media';
+        video.src = p.video;
+        video.muted = true; video.playsInline = true; video.preload = 'metadata'; video.loop = true;
+        video.addEventListener('error', () => video.style.display='none');
+        card.addEventListener('mouseenter', () => video.play());
+        card.addEventListener('mouseleave', () => { video.pause(); video.currentTime=0; });
+        card.appendChild(video);
+      } else if (p.preview) {
+        const img = document.createElement('img');
+        img.className = 'client-card__media';
+        img.src = p.preview; img.alt = p.name;
+        card.appendChild(img);
+      }
+
+      const body = el('div', 'client-card__body');
+      const techHtml = (p.tech||[]).map(t => '<span class="tech-pill">' + t + '</span>').join('');
+      const soldBadge = p.sold
+        ? '<span class="client-badge client-badge--sold"><i class="ph ph-seal-check"></i> ' + p.label + '</span>'
+        : '<span class="client-badge client-badge--emp"><i class="ph ph-storefront"></i> ' + p.label + '</span>';
+      const demoBtn = p.demo ? '<a class="btn btn-demo" href="' + p.demo + '" target="_blank" rel="noopener"><i class="ph ph-arrow-up-right"></i> Ver sitio</a>' : '';
+
+      body.innerHTML = soldBadge +
+        '<h3 class="client-card__name">' + p.name + '</h3>' +
+        '<p class="client-card__tagline">' + p.tagline + '</p>' +
+        '<p class="client-card__desc">' + p.desc + '</p>' +
+        '<div class="tech-pill-row">' + techHtml + '</div>' +
+        '<div class="btn-row">' + demoBtn + '</div>';
+      card.appendChild(body);
+      return card;
   }
 
   /* ---------- CIBERSEGURIDAD ---------- */
@@ -217,10 +287,13 @@
     if (!mount) return;
     mount.innerHTML = '';
     ESP32_PROJECTS.forEach(p => {
-      const item = el('div', 'maker-item reveal');
+      const itemClass = 'maker-item reveal' + (p.nfcProject ? ' maker-item--nfc' : '');
+      const item = el('div', itemClass);
       const mats = (p.materials || []).join(' · ');
-      const matsRow2 = mats ? '<div class="maker-item__row"><span class="maker-item__key">Materiales</span><span class="maker-item__val">' + mats + '</span></div>' : '';
-      item.innerHTML = '<h4 class="maker-item__name">' + p.name + '</h4>' +
+      const matsRow2 = mats ? '<div class="maker-item__row"><span class="maker-item__key">Tags / Hardware</span><span class="maker-item__val">' + mats + '</span></div>' : '';
+      const nfcVisual = p.nfcProject ? '<div class="nfc-visual"><div class="nfc-ring nfc-ring--1"></div><div class="nfc-ring nfc-ring--2"></div><div class="nfc-ring nfc-ring--3"></div><span class="nfc-label">NFC</span></div>' : '';
+      item.innerHTML = nfcVisual +
+        '<h4 class="maker-item__name">' + p.name + '</h4>' +
         '<div class="maker-item__row"><span class="maker-item__key">Descripción</span><span class="maker-item__val">' + p.desc + '</span></div>' +
         '<div class="maker-item__row"><span class="maker-item__key">Lenguaje</span><span class="maker-item__val">' + p.lang + '</span></div>' +
         matsRow2 + btnRow({ repo: p.repo, demo: p.demo });
@@ -374,6 +447,7 @@
     renderEsp32();
     renderHobbies();
     renderPersonalProjects();
+    renderClients();
     renderStudent();
     renderSetup();
     renderFunnyProjects();

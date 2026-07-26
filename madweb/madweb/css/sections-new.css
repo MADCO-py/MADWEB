@@ -307,3 +307,10 @@
 @media (max-width: 860px) {
   .chess-top-bar, .chess-bottom-bar { width: 90vw; }
 }
+
+/* Badge para proyectos de emprendedores */
+.personal-card__badge--emp {
+  background: #fff8e6;
+  border-color: rgba(200,120,0,0.25);
+  color: #a06000;
+}

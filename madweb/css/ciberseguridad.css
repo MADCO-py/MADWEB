@@ -1,0 +1,841 @@
+/* ============================================================
+   CIBERSEGURIDAD — un solo sendero, varios mundos
+   El color de fondo se interpola en vivo desde js/ciber-path.js
+   usando --ciber-live-bg / --ciber-live-accent / --ciber-live-glow
+   ============================================================ */
+.ciber-path {
+  --ciber-live-bg: var(--ciber-bg);
+  --ciber-live-accent: var(--kali-primary);
+  --ciber-live-glow: var(--kali-glow);
+  background: var(--ciber-live-bg);
+  color: var(--ciber-text);
+  position: relative;
+  transition: background 0.1s linear;
+  /* IMPORTANTE: el ciber-path lleva su propio color driver (ciber-path.js),
+     que sobreescribe lo que el page-morph quiera poner. */
+}
+
+.ciber-path::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(700px circle at 20% 0%, color-mix(in srgb, var(--ciber-live-glow) 35%, transparent), transparent 60%),
+    radial-gradient(900px circle at 90% 60%, color-mix(in srgb, var(--ciber-live-accent) 18%, transparent), transparent 65%);
+  pointer-events: none;
+  transition: background 0.1s linear;
+}
+
+.ciber-path__intro {
+  text-align: center;
+  padding: var(--space-xl) var(--space-md) var(--space-lg);
+  position: relative;
+}
+.ciber-path__intro h2 {
+  font-size: var(--fs-h1);
+  margin: 0.6rem 0;
+}
+.ciber-path__intro p {
+  max-width: 560px;
+  margin: 0 auto;
+  opacity: 0.75;
+  line-height: 1.6;
+}
+
+.ciber-block {
+  padding: var(--space-lg) var(--space-md);
+  position: relative;
+}
+.ciber-block__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.ciber-block__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid color-mix(in srgb, var(--ciber-live-accent) 60%, transparent);
+  color: var(--ciber-live-accent);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+.ciber-block__title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+.ciber-block__lead {
+  opacity: 0.75;
+  max-width: 620px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* ---------- Cards de Ciberseguridad ---------- */
+.ciber-card {
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 1.6rem;
+  backdrop-filter: blur(6px);
+}
+.ciber-card__title {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ciber-card__lang {
+  font-size: 0.68rem;
+  opacity: 0.55;
+  font-weight: 400;
+}
+.ciber-card__desc {
+  font-size: 0.92rem;
+  opacity: 0.75;
+  line-height: 1.55;
+}
+.ciber-card .btn-row { margin-top: 1.2rem; }
+.ciber-card .btn { border-color: color-mix(in srgb, var(--ciber-live-accent) 65%, transparent); color: var(--ciber-text); }
+.ciber-card .btn-demo,
+.ciber-card .btn-aware {
+  background: var(--ciber-live-accent);
+  border-color: var(--ciber-live-accent);
+  color: #0a0a0a;
+}
+.ciber-card .btn-aware:hover { opacity: 0.85; }
+
+/* ============================================================
+   TRANSICIONES SUAVES ENTRE SECCIONES — waves SVG
+   ============================================================ */
+.section-wave {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin: 0;
+}
+.section-wave svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+/* ---------- Bloque Kali: siéntete en Kali Linux ---------- */
+#ciber-bloque-kali .ciber-block__title,
+#ciber-bloque-kali .ciber-card__title {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+#ciber-bloque-kali .ciber-block__tag {
+  border-radius: 2px;
+}
+#ciber-bloque-kali .ciber-card {
+  border-radius: 3px;
+}
+#ciber-bloque-kali .btn {
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.kali-window {
+  border: 1px solid color-mix(in srgb, var(--kali-accent) 55%, transparent);
+  border-radius: 0;
+  background: #0a1626;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 30px 70px rgba(47,111,173,0.18);
+}
+.kali-window__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  background: #0d1f33;
+  border-bottom: 1px solid color-mix(in srgb, var(--kali-accent) 35%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--kali-accent);
+}
+.kali-window__dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: #3a5874;
+  display: inline-block;
+}
+.kali-window__title { margin-left: 0.4rem; font-weight: 600; }
+.kali-window__menu { margin-left: auto; opacity: 0.55; font-size: 0.68rem; }
+@media (max-width: 600px) { .kali-window__menu { display: none; } }
+.kali-window__screen {
+  aspect-ratio: 600 / 421;
+  overflow: hidden;
+  background: #000;
+}
+.kali-window__gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- CamPhish / Whatsapp_spammer como terminales Kali reales ---------- */
+.kali-terminal-card {
+  background: #0a1626;
+  border: 1px solid color-mix(in srgb, var(--kali-accent) 45%, transparent);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.kali-terminal-card__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  background: #0d1f33;
+  border-bottom: 1px solid color-mix(in srgb, var(--kali-accent) 30%, transparent);
+}
+.kali-terminal-card__bartitle {
+  margin-left: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--kali-accent);
+}
+.kali-terminal-card__body {
+  padding: 1.3rem 1.4rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+.kali-terminal-card__line {
+  margin: 0 0 0.3rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.kt-user, .kt-host { color: #4fc3f7; font-weight: 600; }
+.kt-path { color: #8fe89a; }
+.kt-cmd { color: #fff; font-weight: 600; }
+.kt-lang { color: rgba(255,255,255,0.35); font-size: 0.74rem; }
+.kali-terminal-card__desc {
+  color: rgba(234,244,251,0.72);
+  margin: 0.9rem 0 1.1rem;
+  line-height: 1.6;
+}
+
+/* ---------- Interfaz simulada del Flipper Zero ---------- */
+.flipper-window {
+  border: 2px solid var(--flipper-primary);
+  border-radius: 14px;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,122,26,0.05) 0px, rgba(255,122,26,0.05) 1px, transparent 1px, transparent 22px),
+    repeating-linear-gradient(90deg, rgba(255,122,26,0.05) 0px, rgba(255,122,26,0.05) 1px, transparent 1px, transparent 22px),
+    #170c00;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 30px 70px rgba(255,122,26,0.12);
+}
+.flipper-window__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background: #261405;
+  border-bottom: 2px solid var(--flipper-primary);
+  font-family: var(--font-mono);
+}
+.flipper-window__tabs { display: flex; gap: 0.5rem; }
+.flipper-window__tab {
+  width: 26px; height: 26px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 6px;
+  color: var(--flipper-accent);
+  opacity: 0.55;
+}
+.flipper-window__tab.is-active {
+  background: var(--flipper-primary);
+  color: #1a0e00;
+  opacity: 1;
+}
+.flipper-window__brand {
+  color: var(--flipper-primary);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+.flipper-window__status {
+  font-size: 0.65rem;
+  color: #6fd97a;
+  display: flex; align-items: center; gap: 0.3rem;
+}
+.flipper-window__body {
+  padding: 1.4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  position: relative;
+}
+@media (max-width: 700px) { .flipper-window__body { grid-template-columns: 1fr; } }
+
+.flipper-screen {
+  background: var(--flipper-primary);
+  border: 4px solid #1a0e00;
+  border-radius: 8px;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.flipper-screen__canvas {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.flipper-screen__scanline {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,0.06) 0px, rgba(0,0,0,0.06) 1px, transparent 1px, transparent 3px);
+  pointer-events: none;
+}
+
+/* ---------- Lista de carpetas estilo menú real del Flipper ---------- */
+.flipper-fs {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--flipper-white);
+  display: flex;
+  flex-direction: column;
+}
+.flipper-fs__path {
+  opacity: 0.5;
+  margin-bottom: 0.6rem;
+  font-size: 0.72rem;
+}
+.flipper-fs__list {
+  border: 1px solid rgba(255,122,26,0.35);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.flipper-fs__row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,122,26,0.18);
+  padding: 0.5rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--flipper-accent);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.flipper-fs__row:last-child { border-bottom: none; }
+.flipper-fs__row:hover { background: rgba(255,122,26,0.1); }
+.flipper-fs__row.is-active {
+  background: var(--flipper-primary);
+  color: #1a0e00;
+  font-weight: 600;
+}
+.flipper-fs__row.is-active::before { content: '>'; margin-right: 0.1rem; }
+
+@keyframes flipperPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,122,26,0); }
+  30% { box-shadow: 0 0 0 4px rgba(255,122,26,0.5); }
+}
+.flipper-card--pulse { animation: flipperPulse 1.2s ease; }
+
+/* Tarjetas de proyecto Flipper con hover-play de video */
+.flipper-card {
+  border: 1px solid rgba(255,122,26,0.3);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(255,255,255,0.03);
+  cursor: pointer;
+}
+.flipper-card__video-wrap {
+  position: relative;
+}
+.flipper-card__video {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+  background: #1a0e00;
+}
+.flipper-card__video-placeholder {
+  width: 100%;
+  aspect-ratio: 16/10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: repeating-linear-gradient(45deg, #1a0e00, #1a0e00 10px, #220f00 10px, #220f00 20px);
+  color: var(--flipper-accent);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 1rem;
+}
+.flipper-card__body { padding: 1.2rem 1.4rem 1.4rem; }
+
+/* Botones dentro de cards del Flipper (fondo oscuro) */
+.flipper-card .btn {
+  color: var(--flipper-white);
+  border-color: rgba(255,122,26,0.55);
+}
+.flipper-card .btn-repo:hover {
+  background: var(--flipper-white);
+  color: #1a0e00;
+}
+.flipper-card .btn-download { color: var(--flipper-accent); border-color: rgba(255,122,26,0.55); }
+.flipper-card .btn-download:hover { background: rgba(255,122,26,0.15); }
+.flipper-twin {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+@media (max-width: 700px) { .flipper-twin { grid-template-columns: 1fr; } }
+.flipper-warn {
+  border: 1px solid #ff9d4d;
+  background: rgba(255,122,26,0.08);
+  border-radius: var(--radius-md);
+  padding: 1.6rem;
+}
+.flipper-warn__title { font-weight: 700; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
+.flipper-explore {
+  border: 1px solid rgba(111,217,122,0.5);
+  background: rgba(111,217,122,0.06);
+  border-radius: var(--radius-md);
+  padding: 1.6rem;
+}
+.flipper-explore__title { font-weight: 700; color: #8fe89a; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
+
+/* Recomendados */
+.reco-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.reco-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgba(255,122,26,0.25);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--flipper-white);
+  transition: background 0.25s ease, transform 0.25s var(--ease);
+}
+.reco-item:hover { background: rgba(255,122,26,0.1); transform: translateX(4px); }
+.reco-item__name { font-weight: 600; font-size: 0.92rem; }
+.reco-item__desc { font-size: 0.78rem; opacity: 0.6; }
+
+/* ---------- Flipper device reveal ---------- */
+.flipper-device-reveal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+.flipper-device-gif {
+  width: min(380px, 90%);
+  filter: drop-shadow(0 30px 50px rgba(255,122,26,0.3));
+  animation: flipper-float 4s ease-in-out infinite;
+}
+@keyframes flipper-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.flipper-device-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  text-align: center;
+}
+.flipper-device-label__tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--flipper-accent);
+  opacity: 0.7;
+}
+.flipper-device-label__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--flipper-primary);
+  text-decoration: none;
+  border: 1.5px solid var(--flipper-primary);
+  padding: 0.6rem 1.2rem;
+  border-radius: 3px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.flipper-device-label__link:hover {
+  background: var(--flipper-primary);
+  color: #1a0e00;
+}
+
+/* Recommended featured (flipper.net) */
+.reco-item--featured {
+  background: rgba(255,122,26,0.12);
+  border: 1.5px solid rgba(255,122,26,0.55);
+  border-radius: var(--radius-sm);
+}
+.reco-item--featured .reco-item__name {
+  color: var(--flipper-primary);
+  font-size: 1rem;
+}
+
+/* ============================================================
+   HERRAMIENTAS INTERACTIVAS
+   ============================================================ */
+.ciber-tools {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: var(--space-md) var(--space-md) 0;
+  max-width: 820px;
+  margin: 0 auto 2rem;
+}
+
+/* -------- KALI TERMINAL — Generador de contraseñas -------- */
+.kali-term {
+  background: #0d1117;
+  border: 1px solid #21262d;
+  font-family: var(--font-mono);
+  color: #c9d1d9;
+}
+.kali-term__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: #161b22;
+  border-bottom: 1px solid #21262d;
+  padding: 0.55rem 1rem;
+}
+.kali-term__dots { display: flex; gap: 6px; }
+.kali-term__dots span {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.kali-term__dots span:nth-child(1) { background: #ff5f56; }
+.kali-term__dots span:nth-child(2) { background: #ffbd2e; }
+.kali-term__dots span:nth-child(3) { background: #27c93f; }
+.kali-term__title {
+  font-size: 0.72rem;
+  color: #8b949e;
+  letter-spacing: 0.04em;
+}
+.kali-term__body { padding: 1.2rem 1.4rem 1.6rem; }
+
+.kali-prompt { margin: 0 0 3px; font-size: 0.82rem; line-height: 1.4; }
+.kp-path { color: #8b949e; }
+.kp-user { color: #f85149; font-weight: 700; }
+.kp-host { color: #58a6ff; font-weight: 700; }
+.kp-dir  { color: #79c0ff; }
+.kp-arrow { color: #8b949e; }
+.kp-cmd  { color: #e3b341; }
+
+.kali-section { margin: 1.1rem 0 0; }
+.kali-comment { font-size: 0.78rem; color: #5a8a6a; display: block; margin-bottom: 0.5rem; }
+
+.kali-output {
+  width: 100%;
+  background: #010409;
+  border: 1px solid #21262d;
+  border-left: 3px solid #27c93f;
+  color: #39d353;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.7rem 1rem;
+  outline: none;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.7rem;
+}
+.kali-output::placeholder { color: #2d4a3e; }
+
+.kali-strength-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.72rem;
+  color: #5a8a6a;
+}
+.kali-strength-track {
+  flex: 1;
+  height: 4px;
+  background: #21262d;
+  border: 1px solid #30363d;
+}
+.kali-strength-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+.kali-strength-val { min-width: 80px; color: #8b949e; }
+
+.kali-slider {
+  width: 100%;
+  accent-color: #27c93f;
+  cursor: pointer;
+  margin-top: 0.3rem;
+}
+
+.kali-opts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 1rem;
+  margin-top: 0.2rem;
+}
+.kali-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #8b949e;
+  transition: color 0.15s;
+}
+.kali-opt:hover { color: #c9d1d9; }
+.kali-opt input { display: none; }
+.kali-opt input + .kali-flag::before { content: '[ ] '; color: #5a8a6a; }
+.kali-opt input:checked + .kali-flag::before { content: '[x] '; color: #27c93f; }
+.kali-flag { font-family: var(--font-mono); color: #e3b341; font-size: 0.78rem; }
+
+.kali-btns { display: flex; gap: 0.7rem; margin-top: 1.3rem; }
+.kali-btn {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.65rem 1rem;
+  border: 1px solid;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background 0.15s ease;
+}
+.kali-btn--exec {
+  background: #27c93f;
+  border-color: #27c93f;
+  color: #0d1117;
+}
+.kali-btn--exec:hover { background: #2ddb47; }
+.kali-btn--copy {
+  background: transparent;
+  border-color: #30363d;
+  color: #c9d1d9;
+}
+.kali-btn--copy:hover { background: #161b22; border-color: #58a6ff; color: #58a6ff; }
+
+
+/* -------- GOOGLE CARD — Analizador de URLs -------- */
+.goog-card {
+  background: #ffffff;
+  padding: 2rem 2rem 1.4rem;
+  border: 1px solid #e0e0e0;
+  color: #202124;
+  text-align: center;
+}
+.goog-logo {
+  font-size: 2.6rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+  user-select: none;
+}
+.goog-subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.78rem;
+  color: #5f6368;
+  margin: 0 0 1.5rem;
+}
+
+.goog-searchbar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  height: 46px;
+  padding: 0 6px 0 16px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  text-align: left;
+}
+.goog-searchbar:focus-within {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-color: rgba(223,225,229,0);
+}
+.goog-searchbar__icon { color: #9aa0a6; font-size: 1.1rem; flex-shrink: 0; margin-right: 0.4rem; }
+.goog-searchbar__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  color: #202124;
+  outline: none;
+  padding: 0;
+}
+.goog-searchbar__input::placeholder { color: #9aa0a6; }
+.goog-searchbar__btn {
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.45rem 1.1rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, box-shadow 0.2s;
+  flex-shrink: 0;
+}
+.goog-searchbar__btn:hover {
+  background: #1558b0;
+  box-shadow: 0 1px 4px rgba(26,115,232,0.3);
+}
+.goog-disclaimer {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.7rem;
+  color: #9aa0a6;
+  margin: 1rem 0 0;
+  text-align: center;
+}
+
+/* Resultados — Google Transparency Report style */
+#url-result { margin-top: 1.2rem; text-align: left; }
+.url-result {
+  font-family: 'Roboto', sans-serif;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid;
+}
+.url-result--safe       { border-color: #ceead6; }
+.url-result--suspicious { border-color: #feefc3; }
+.url-result--danger     { border-color: #f5c6c6; }
+.url-result--warn       { border-color: #e0e0e0; }
+
+.url-result__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.3rem;
+}
+.url-result--safe       .url-result__header { background: #e6f4ea; }
+.url-result--suspicious .url-result__header { background: #fef7e0; }
+.url-result--danger     .url-result__header { background: #fce8e6; }
+.url-result--warn       .url-result__header { background: #f8f9fa; }
+
+.url-result__icon { font-size: 2rem; flex-shrink: 0; }
+.url-result--safe .url-result__icon       { color: #137333; }
+.url-result--suspicious .url-result__icon { color: #b06000; }
+.url-result--danger .url-result__icon     { color: #c5221f; }
+.url-result--warn .url-result__icon       { color: #5f6368; }
+
+.url-result__verdict {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.url-result--safe .url-result__verdict       { color: #137333; }
+.url-result--suspicious .url-result__verdict { color: #b06000; }
+.url-result--danger .url-result__verdict     { color: #c5221f; }
+.url-result--warn .url-result__verdict       { color: #202124; }
+
+.url-result__domain {
+  font-size: 0.76rem;
+  color: #5f6368;
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  margin-top: 2px;
+  word-break: break-all;
+}
+.url-findings {
+  padding: 0.8rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+}
+.url-finding {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: #3c4043;
+}
+.url-finding .ph { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+.url-finding--ok .ph     { color: #137333; }
+.url-finding--danger .ph { color: #c5221f; }
+.url-finding--warn .ph   { color: #b06000; }
+.url-finding--info .ph   { color: #1a73e8; }
+.url-disclaimer {
+  font-size: 0.7rem;
+  color: #9aa0a6;
+  margin-top: 0.8rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ---------- Encabezados de herramientas ---------- */
+.ciber-tool-heading {
+  margin-bottom: 0.7rem;
+}
+.ciber-tool-heading__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ciber-live-accent);
+  border: 1px solid color-mix(in srgb, var(--ciber-live-accent) 50%, transparent);
+  padding: 0.25rem 0.65rem;
+  margin-bottom: 0.5rem;
+}
+.ciber-tool-heading__title {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ciber-text);
+  margin: 0 0 0.3rem;
+  text-transform: uppercase;
+}
+.ciber-tool-heading__desc {
+  font-size: 0.8rem;
+  color: rgba(234,244,251,0.55);
+  margin: 0;
+  font-family: var(--font-mono);
+}

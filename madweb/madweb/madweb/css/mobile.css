@@ -1,0 +1,169 @@
+/* ============================================================
+   MOBILE.CSS — Responsive para celulares
+   Se carga al final y sobreescribe lo necesario.
+   ============================================================ */
+
+/* ---- Base: tipografía y espaciado ---- */
+@media (max-width: 768px) {
+  :root {
+    --space-xl: 4.5rem;
+    --space-lg: 2.5rem;
+    --space-md: 1.2rem;
+  }
+
+  body { cursor: auto; }
+
+  /* ---- Nav: scroll horizontal compacto ---- */
+  .nav {
+    top: 0.6rem;
+    padding: 0.5rem 0.9rem;
+    gap: 0.85rem;
+    border-radius: 999px;
+    max-width: calc(100vw - 1.2rem);
+  }
+  .nav__brand { display: none; }
+  .nav__link {
+    font-size: 0.72rem;
+    gap: 0.25rem;
+  }
+  .nav__link i { font-size: 1rem; }
+
+  /* ---- Hero ---- */
+  .hero__filename { font-size: clamp(2.4rem, 14vw, 5rem); }
+  .hero__tagline { font-size: 0.95rem; }
+  .hero__socials { gap: 1rem; }
+  .hero__socials a { width: 40px; height: 40px; }
+
+  /* ---- Secciones: padding reducido ---- */
+  .section { padding: var(--space-xl) var(--space-md); }
+  .section__title { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+
+  /* ---- Trophy card Freelance: una columna ---- */
+  .trophy-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  .trophy-card__shot { aspect-ratio: 16/10; }
+
+  /* ---- Grids: una columna ---- */
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+
+  /* ---- Mentorhub cards ---- */
+  .mentorhub-card__body { grid-template-columns: 1fr; gap: 1rem; text-align: left; }
+  .mentorhub-card__body .btn-row { justify-content: flex-start; }
+  .mentorhub-card__shot { aspect-ratio: 16/9; }
+
+  /* ---- Lectura: libros una columna, sin efecto 3D en touch ---- */
+  .book-shelf { grid-template-columns: 1fr; gap: 1.2rem; perspective: none; }
+  .book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  }
+  .book-card__cover { aspect-ratio: 3/4; }
+
+  /* ---- ESP32 intro: vertical ---- */
+  .esp32__intro { flex-direction: column; gap: 1.5rem; }
+  .esp32-board-badge { width: 55%; margin: 0 auto; }
+
+  /* ---- Flipper: ventana en vertical ---- */
+  .flipper-window__body {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .flipper-screen { aspect-ratio: 4/2.8; }
+  .flipper-fs__list { display: grid; grid-template-columns: 1fr 1fr; }
+  .flipper-twin { grid-template-columns: 1fr; }
+
+  /* ---- Setup: 2 columnas en mobile ---- */
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .product-card { padding: 1.2rem 1rem 1rem; border-radius: 18px; }
+  .product-card__stage { aspect-ratio: 1/0.85; }
+  .product-card__name { font-size: 0.85rem; }
+  .product-card__spec { font-size: 0.68rem; }
+  .product-card__desc { font-size: 0.75rem; }
+
+  /* ---- Desktop showcase: más compacto ---- */
+  .desktop-showcase { aspect-ratio: 16/10; }
+  .terminal-overlay { width: min(300px, 88%); }
+  .terminal-overlay__body { font-size: 0.7rem; padding: 0.7rem 0.8rem 0.9rem; }
+
+  /* ---- Terminal panel ---- */
+  .terminal-panel__body { font-size: 0.8rem; padding: 1rem 1.1rem 1.2rem; }
+
+  /* ---- Funny: botón caótico ocupa toda la pantalla ---- */
+  .chaos-zone { min-height: 420px; padding: 2rem 1rem; }
+
+  /* ---- Gradient bridges: más cortos ---- */
+  .gradient-bridge { height: 70px; }
+
+  /* ---- Kali terminal cards ---- */
+  .kali-terminal-card__body { padding: 1rem 1.1rem 1.2rem; font-size: 0.78rem; }
+
+  /* ---- Buttons: más grandes para touch ---- */
+  .btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.8rem;
+    min-height: 44px;
+  }
+  .btn-row { gap: 0.5rem; }
+
+  /* ---- Reco items ---- */
+  .reco-list { gap: 0.5rem; }
+  .reco-item { padding: 0.75rem 0.9rem; }
+}
+
+/* ---- Móviles muy pequeños (<400px) ---- */
+@media (max-width: 400px) {
+  .product-grid { grid-template-columns: 1fr; }
+  .flipper-fs__list { grid-template-columns: 1fr; }
+  .nav { gap: 0.6rem; }
+  .nav__link span { display: none; }
+}
+
+/* ---- Tablets (769–1024px) ---- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .book-shelf { grid-template-columns: repeat(2, 1fr); }
+  .trophy-card { grid-template-columns: 1fr; }
+}
+
+/* ---- Touch: desactivar hover effects que no aplican ---- */
+@media (hover: none) {
+  .book-card { transform: none !important; }
+  .product-card:hover { transform: none; }
+  .card:hover { transform: none; }
+  .esp32-board-badge { transform: none !important; }
+}
+
+/* ---- Herramientas Ciberseguridad ---- */
+@media (max-width: 768px) {
+  .ciber-tools { padding: var(--space-md) var(--space-md) 0; gap: 1.5rem; }
+
+  /* Kali terminal */
+  .kali-term__body { padding: 1rem 1rem 1.4rem; }
+  .kali-prompt { font-size: 0.72rem; }
+  .kali-output { font-size: 0.82rem; }
+  .kali-opts { grid-template-columns: 1fr 1fr; gap: 0.35rem 0.7rem; }
+  .kali-opt { font-size: 0.75rem; }
+  .kali-btns { gap: 0.5rem; }
+  .kali-btn { font-size: 0.75rem; padding: 0.6rem 0.7rem; }
+
+  /* Google card */
+  .goog-card { padding: 1.4rem 1.2rem 1rem; }
+  .goog-logo { font-size: 1.9rem; }
+  .goog-subtitle { font-size: 0.72rem; }
+  .goog-searchbar { height: 42px; padding: 0 5px 0 12px; }
+  .goog-searchbar__input { font-size: 0.82rem; }
+  .goog-searchbar__btn { padding: 0.4rem 0.85rem; font-size: 0.78rem; }
+
+  /* URL result */
+  .url-result__header { padding: 0.8rem 1rem; gap: 0.75rem; }
+  .url-result__icon { font-size: 1.6rem; }
+  .url-result__verdict { font-size: 0.9rem; }
+  .url-findings { padding: 0.7rem 1rem; }
+  .url-finding { font-size: 0.78rem; }
+
+  /* Encabezados de herramientas */
+  .ciber-tool-heading__title { font-size: 0.95rem; }
+}

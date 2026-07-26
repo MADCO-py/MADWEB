@@ -307,3 +307,206 @@
 @media (max-width: 860px) {
   .chess-top-bar, .chess-bottom-bar { width: 90vw; }
 }
+
+/* Badge para proyectos de emprendedores */
+.personal-card__badge--emp {
+  background: #fff8e6;
+  border-color: rgba(200,120,0,0.25);
+  color: #a06000;
+}
+
+/* ============================================================
+   CLIENTES — Emprendedores y Empresas
+   ============================================================ */
+.clientes {
+  background: transparent;
+  color: var(--base-text);
+}
+
+/* Grid: FleetControl ocupa todo el ancho, los demás en 3 columnas */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+/* Primera card (enterprise) ocupa las 3 columnas */
+.client-card--enterprise {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+}
+@media (max-width: 980px) { .clients-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) {
+  .clients-grid { grid-template-columns: 1fr; }
+  .client-card--enterprise { grid-template-columns: 1fr; }
+}
+
+.client-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.09);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s ease;
+}
+.client-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+}
+.client-card__media {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+.client-card--enterprise .client-card__media {
+  height: 100%;
+  aspect-ratio: unset;
+}
+.client-card__body { padding: 1.4rem 1.5rem 1.6rem; }
+
+/* Badges */
+.client-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid;
+  margin-bottom: 0.75rem;
+}
+.client-badge--sold {
+  background: #f0faf0;
+  border-color: rgba(20,120,50,0.3);
+  color: #14783a;
+}
+.client-badge--emp {
+  background: #fff8e6;
+  border-color: rgba(180,100,0,0.25);
+  color: #a06000;
+}
+
+.client-card__name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.3rem;
+  color: #0a0a12;
+}
+.client-card--enterprise .client-card__name { font-size: 1.7rem; }
+.client-card__tagline {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #888;
+  margin: 0 0 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.client-card__desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.client-card .tech-pill { border-color: rgba(0,0,0,0.12); color: #666; }
+.client-card .btn-demo {
+  background: #0a0a12;
+  color: #fff;
+  border-color: #0a0a12;
+  margin-top: 0.8rem;
+}
+.client-card .btn-demo:hover { opacity: 0.85; }
+.client-card .btn-row { margin-top: 0; }
+
+/* ---- Separadores de grupo en sección Clientes ---- */
+.clients-section-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.5rem 0 1.4rem;
+}
+.clients-section-label__line {
+  flex: 1;
+  height: 1px;
+  background: rgba(0,0,0,0.12);
+}
+.clients-section-label__text {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+  white-space: nowrap;
+}
+.clients-grid--enterprise {
+  grid-template-columns: 1fr;
+}
+.clients-grid--enterprise .client-card {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+}
+.clients-grid--enterprise .client-card__media {
+  height: 100%;
+  aspect-ratio: unset;
+  min-height: 240px;
+}
+@media (max-width: 760px) {
+  .clients-grid--enterprise .client-card { grid-template-columns: 1fr; }
+}
+
+/* ---- NFC visual animado para Maker Lab ---- */
+.maker-item--nfc {
+  border-left-color: #00e5ff;
+  position: relative;
+  overflow: hidden;
+}
+.nfc-visual {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nfc-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,229,255,0.5);
+  animation: nfc-pulse 2s ease-out infinite;
+}
+.nfc-ring--1 { width: 28px; height: 28px; animation-delay: 0s; }
+.nfc-ring--2 { width: 48px; height: 48px; animation-delay: 0.4s; }
+.nfc-ring--3 { width: 68px; height: 68px; animation-delay: 0.8s; border-color: rgba(0,229,255,0.2); }
+@keyframes nfc-pulse {
+  0%   { opacity: 1; transform: scale(0.85); }
+  70%  { opacity: 0.3; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.05); }
+}
+.nfc-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #00e5ff;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 2;
+}
+.maker-item--nfc .maker-item__name { color: #00e5ff; }
+.maker-item--nfc { padding-right: 6rem; }
+@media (max-width: 600px) {
+  .nfc-visual { display: none; }
+  .maker-item--nfc { padding-right: var(--space-md); }
+}

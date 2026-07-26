@@ -1,0 +1,209 @@
+/* ============================================================
+   MI SETUP — presentación de producto estilo Apple, oscuro y premium
+   ============================================================ */
+.setup {
+  background: transparent;
+  color: var(--setup-text);
+  position: relative;
+}
+/* Las cards y paneles del Setup tienen su propio fondo oscuro, así que se ven igual */
+.product-card {
+  background: rgba(16,16,18,0.92);
+  backdrop-filter: blur(4px);
+}
+.setup__eyebrow { color: var(--setup-glow); }
+.setup__title { color: var(--setup-text); }
+.setup__lead { color: color-mix(in srgb, var(--setup-text) 65%, transparent); }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+}
+@media (max-width: 980px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .product-grid { grid-template-columns: 1fr; } }
+
+.product-card {
+  background: var(--setup-panel);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem 1.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s var(--ease), border-color 0.4s ease;
+}
+.product-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(111,184,255,0.35);
+}
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: -30%; left: 50%;
+  transform: translateX(-50%);
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(111,184,255,0.16), transparent 70%);
+  pointer-events: none;
+}
+
+.product-card__stage {
+  width: 100%;
+  aspect-ratio: 1.1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+.product-card__stage img {
+  max-width: 78%;
+  max-height: 78%;
+  object-fit: contain;
+  filter: drop-shadow(0 25px 30px rgba(0,0,0,0.55));
+  transition: transform 0.6s var(--ease);
+}
+.product-card:hover .product-card__stage img {
+  transform: translateY(-6px) scale(1.03);
+}
+.product-card__pedestal {
+  position: absolute;
+  bottom: 8%;
+  width: 55%;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.14), transparent 70%);
+}
+.product-card__icon-fallback {
+  font-size: 3.4rem;
+  color: var(--setup-silver);
+  opacity: 0.85;
+}
+
+.product-card__name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0 0 0.3rem;
+  color: var(--setup-text);
+}
+.product-card__spec {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--setup-glow);
+  margin-bottom: 0.6rem;
+}
+.product-card__desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--setup-text) 60%, transparent);
+}
+
+.product-card--upload-pending {
+  border-style: dashed;
+  border-color: rgba(255,255,255,0.18);
+}
+.product-card--upload-pending .product-card__stage {
+  opacity: 0.5;
+}
+
+/* ---------- Showcase del escritorio (foto + terminal animada) ---------- */
+.desktop-showcase {
+  margin-top: 2.5rem;
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  aspect-ratio: 16/8.2;
+}
+.desktop-showcase__bg {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.terminal-overlay {
+  position: absolute;
+  left: clamp(1rem, 4vw, 2.2rem);
+  bottom: clamp(1rem, 4vw, 2.2rem);
+  width: min(420px, 86%);
+  background: rgba(10, 10, 12, 0.82);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+.terminal-overlay__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.7rem;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.terminal-overlay__dot { width: 10px; height: 10px; border-radius: 50%; }
+.terminal-overlay__title {
+  margin-left: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+}
+.terminal-overlay__body {
+  margin: 0;
+  padding: 0.9rem 1rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: #c9f7c0;
+  min-height: 140px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Panel "dato curioso" con la misma estética de terminal que el showcase de arriba */
+.terminal-panel {
+  margin-top: 1.5rem;
+  background: rgba(10, 10, 12, 0.92);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.terminal-panel__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1rem;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.terminal-panel__body {
+  padding: 1.4rem 1.6rem 1.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  line-height: 1.7;
+  color: #c9f7c0;
+}
+.terminal-panel__body p { margin: 0 0 0.9rem; color: rgba(201,247,192,0.85); }
+.terminal-panel__prompt { color: #8fe89a; }
+.terminal-panel__h { color: #ffb066; font-weight: 700; }
+.terminal-panel__body ul {
+  list-style: none;
+  margin: 0 0 0.9rem;
+  padding: 0;
+}
+.terminal-panel__body li {
+  padding-left: 1.2rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  color: rgba(201,247,192,0.85);
+}
+.terminal-panel__body li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--setup-glow);
+}
+.terminal-panel__body strong { color: #fff; }

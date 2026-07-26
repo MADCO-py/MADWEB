@@ -1,0 +1,58 @@
+/* ============================================================
+   RECURSOS PARA ESTUDIANTES — verde / blanco, claro y ordenado
+   ============================================================ */
+.estudiantes {
+  background: transparent;
+  color: var(--edu-text);
+}
+.estudiantes__eyebrow { color: var(--edu-green); }
+
+.mentorhub-card {
+  background: var(--edu-green-soft);
+  border: 1px solid color-mix(in srgb, var(--edu-green) 25%, transparent);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.mentorhub-card:last-child { margin-bottom: 0; }
+.mentorhub-card__shot {
+  width: 100%;
+  aspect-ratio: 16/8;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid color-mix(in srgb, var(--edu-green) 25%, transparent);
+  cursor: pointer;
+}
+.mentorhub-card__body {
+  padding: clamp(1.6rem, 4vw, 2.6rem);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+}
+@media (max-width: 760px) {
+  .mentorhub-card__body { grid-template-columns: 1fr; text-align: center; }
+}
+.mentorhub-card__icon {
+  width: 64px; height: 64px;
+  border-radius: 18px;
+  background: var(--edu-green);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+}
+.mentorhub-card__title { font-size: 1.3rem; font-weight: 700; margin: 0 0 0.4rem; }
+.mentorhub-card__desc { opacity: 0.75; line-height: 1.6; margin: 0; max-width: 460px; }
+.mentorhub-card .btn-demo { background: var(--edu-green); border-color: var(--edu-green); }
+.mentorhub-card .btn-repo { color: var(--edu-green); border-color: var(--edu-green); }
+.mentorhub-card .btn-repo:hover { background: var(--edu-green); }
+
+.estudiantes__soon {
+  margin-top: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--edu-green);
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

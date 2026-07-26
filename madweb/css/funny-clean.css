@@ -1,0 +1,176 @@
+/* ============================================================
+   COSAS GRACIOSAS — gris claro, editorial, texto oscuro
+   Cool pero formal. Sin neon ni blobs.
+   ============================================================ */
+.funny-clean {
+  background: transparent;
+  color: #14141c;
+  position: relative;
+}
+.funny-clean__eyebrow {
+  color: rgba(20,20,28,0.45);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.funny-clean__title {
+  color: #0a0a12;
+}
+.funny-clean__lead {
+  color: rgba(20,20,28,0.65);
+}
+.funny-clean__subhead {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: rgba(20,20,28,0.75);
+  margin-top: 3rem;
+}
+
+/* ---------- Project cards — sobre fondo claro ---------- */
+.funny-project-card {
+  border: 1px solid rgba(20,20,28,0.12);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(6px);
+  transition: border-color 0.3s ease, transform 0.4s var(--ease), box-shadow 0.4s ease;
+}
+.funny-project-card:hover {
+  border-color: rgba(20,20,28,0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(20,20,28,0.12);
+}
+.funny-project-card__video,
+.funny-project-card__video-placeholder {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+}
+.funny-project-card__video-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 1rem;
+  color: rgba(20,20,28,0.4);
+  background: rgba(20,20,28,0.04);
+}
+.funny-project-card__body { padding: 1.2rem 1.4rem 1.5rem; }
+.funny-project-card__title {
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+  color: #0a0a12;
+}
+.funny-project-card__desc {
+  font-size: 0.86rem;
+  color: rgba(20,20,28,0.62);
+  line-height: 1.55;
+}
+.funny-project-card .btn {
+  color: #0a0a12;
+  border-color: rgba(20,20,28,0.3);
+  background: transparent;
+}
+.funny-project-card .btn-demo {
+  background: rgba(20,20,28,0.08);
+  border-color: rgba(20,20,28,0.2);
+}
+.funny-project-card .btn-repo:hover, .funny-project-card .btn-demo:hover {
+  background: rgba(20,20,28,0.12);
+}
+
+/* ---------- Snippet cards — fondo claro ---------- */
+.snippet-card {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(20,20,28,0.1);
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  position: relative;
+  color: #14141c;
+}
+.snippet-card__tag {
+  position: absolute;
+  top: -10px; left: 16px;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: #0a0a12;
+  color: #f0f0ee;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.snippet-card pre { margin: 0; white-space: pre-wrap; }
+/* Colores de sintaxis sobre fondo claro */
+.snippet-card .c1 { color: #1d4ed8; }   /* azul */
+.snippet-card .c2 { color: #15803d; }   /* verde */
+.snippet-card .c3 { color: #92400e; }   /* marrón/naranja */
+
+/* ---------- Zona del caos — sobre fondo claro ---------- */
+.chaos-zone {
+  margin-top: 3.5rem;
+  border: 1px solid rgba(20,20,28,0.14);
+  border-radius: var(--radius-lg);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  position: relative;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.4);
+}
+.chaos-zone__label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: rgba(20,20,28,0.38);
+  margin-bottom: 1.5rem;
+}
+.chaos-btn {
+  position: relative;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 1rem 1.8rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(20,20,28,0.35);
+  background: rgba(255,255,255,0.8);
+  color: #0a0a12;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.chaos-btn:hover {
+  background: #0a0a12;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(20,20,28,0.2);
+}
+.chaos-btn--clone { position: absolute; }
+.chaos-btn--final {
+  background: #0a0a12;
+  color: #fff;
+  border-color: #0a0a12;
+}
+.chaos-btn--final:hover {
+  background: #2a2a3a;
+  box-shadow: 0 8px 24px rgba(20,20,28,0.3);
+}
+.chaos-zone__done {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: rgba(20,20,28,0.6);
+  margin-top: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.chaos-zone__done.is-visible { opacity: 1; }

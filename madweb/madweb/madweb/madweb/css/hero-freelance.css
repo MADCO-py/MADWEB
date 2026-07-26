@@ -1,0 +1,181 @@
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-md);
+  background: transparent;
+  position: relative;
+}
+
+.hero__filename {
+  font-family: var(--font-mono);
+  font-size: var(--fs-hero);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--base-text);
+  margin: 0;
+  min-height: 1.1em;
+}
+.hero__type-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s steps(1) infinite;
+  color: var(--base-text);
+}
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.hero__tagline {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--base-text-muted);
+  margin-top: 1.2rem;
+  letter-spacing: 0.02em;
+}
+
+.hero__socials {
+  display: flex;
+  gap: 1.4rem;
+  margin-top: 2.6rem;
+}
+.hero__socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--base-border);
+  color: var(--base-text);
+  text-decoration: none;
+  transition: transform 0.3s var(--ease), background 0.3s ease, color 0.3s ease;
+}
+.hero__socials a:hover {
+  background: var(--base-text);
+  color: var(--base-bg);
+  transform: translateY(-4px);
+}
+
+.hero__scroll-hint {
+  position: absolute;
+  bottom: 2.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--base-text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  letter-spacing: 0.08em;
+}
+.hero__scroll-hint .ph {
+  animation: bob 1.8s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ============================================================
+   FREELANCE — neutro blanco/negro
+   ============================================================ */
+.freelance {
+  border-top: 1px solid var(--base-border);
+  border-bottom: 1px solid var(--base-border);
+  background: transparent;
+}
+
+.trophy-card {
+  background: var(--base-invert-bg);
+  color: var(--base-invert-text);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.6rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.trophy-card::before {
+  content: '';
+  position: absolute;
+  inset: -40% -10% auto auto;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+  pointer-events: none;
+}
+@media (max-width: 760px) {
+  .trophy-card { grid-template-columns: 1fr; }
+}
+
+.trophy-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1.2rem;
+}
+
+.trophy-card__name {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  font-weight: 700;
+  margin: 0 0 0.7rem;
+}
+.trophy-card__desc {
+  opacity: 0.78;
+  line-height: 1.65;
+  margin-bottom: 1.4rem;
+}
+
+.tech-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.tech-pill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px;
+  opacity: 0.85;
+}
+
+.trophy-card__shot {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.trophy-card__shot img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.trophy-card__shot-placeholder {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  opacity: 0.4;
+  text-align: center;
+  padding: 1rem;
+}

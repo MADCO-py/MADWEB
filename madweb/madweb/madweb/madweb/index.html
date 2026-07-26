@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MADCO.py</title>
+<meta name="description" content="MADCO.py — builder, hacker, curioso. Hub de proyectos personales, ciberseguridad, hardware hacking y cosas divertidas.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/hero-freelance.css">
+<link rel="stylesheet" href="css/funny-clean.css">
+<link rel="stylesheet" href="css/ciberseguridad.css">
+<link rel="stylesheet" href="css/esp32.css">
+<link rel="stylesheet" href="css/lectura.css">
+<link rel="stylesheet" href="css/estudiantes.css">
+<link rel="stylesheet" href="css/setup.css">
+<link rel="stylesheet" href="css/sections-new.css">
+<link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+
+<!-- Fondo global controlado por JS -->
+<div id="page-bg"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <span class="nav__brand">MADCO.py</span>
+  <a class="nav__link" href="#personal"><i class="ph ph-code-block"></i> Proyectos</a>
+  <a class="nav__link" href="#estudiantes"><i class="ph ph-graduation-cap"></i> Éxito Académico</a>
+  <a class="nav__link" href="#funny"><i class="ph ph-confetti"></i> Recreo Mental</a>
+  <a class="nav__link" href="#esp32"><i class="ph ph-cpu"></i> Maker Lab</a>
+  <a class="nav__link" href="#setup"><i class="ph ph-desktop"></i> My Setup</a>
+  <a class="nav__link" href="#ciberseguridad"><i class="ph ph-shield-check"></i> Ciberseguridad</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="hero">
+  <h1 class="hero__filename" data-typing-target="MADCO.py">MADCO.py</h1>
+  <p class="hero__tagline">Problema = Solución. Sin solución, no es tu problema.</p>
+  <div class="hero__socials" data-mount="hero-socials"></div>
+  <div class="hero__scroll-hint">
+    <span>scroll</span>
+    <i class="ph ph-arrow-down"></i>
+  </div>
+</header>
+
+<!-- ============ PROYECTOS PERSONALES ============ -->
+<section class="section personal page-section" id="personal" data-bg-color="245,245,243">
+  <div class="section__inner">
+    <div class="section__eyebrow reveal">Proyectos personales</div>
+    <h2 class="section__title reveal">Lo que construyo para mí</h2>
+    <p class="section__lead reveal">Apps propias que uso en el día a día — hidratación, fitness, y lo que se me ocurra.</p>
+    <div class="personal-grid" data-mount="personal"></div>
+  </div>
+</section>
+
+<!-- ============ ESTUDIANTES ============ -->
+<section class="section estudiantes page-section" id="estudiantes" data-bg-color="240,240,236">
+  <div class="section__inner">
+    <div class="section__eyebrow estudiantes__eyebrow reveal">Recursos para estudiantes</div>
+    <h2 class="section__title reveal">Herramientas para el Éxito Académico</h2>
+    <p class="section__lead reveal">El éxito es del más astuto.</p>
+    <div style="margin-top:2.5rem;" data-mount="student"></div>
+  </div>
+</section>
+
+<!-- ============ COSAS GRACIOSAS (versión limpia) ============ -->
+<section class="section funny-clean page-section" id="funny" data-bg-color="232,232,226">
+  <div class="section__inner">
+    <div class="section__eyebrow funny-clean__eyebrow reveal">Cuando me aburro construyo ideas aleatorias.</div>
+    <h2 class="section__title funny-clean__title reveal">Recreo Mental</h2>
+    <p class="section__lead funny-clean__lead reveal">Proyectos random, propuestas sin sentido, curiosidades y brainrot.</p>
+
+    <div class="grid grid-2" style="margin-top:2.5rem;" data-mount="funny-projects"></div>
+
+    <h3 class="funny-clean__subhead reveal">Snippets curiosos</h3>
+    <div class="grid grid-2" style="margin-top:1.2rem;" data-mount="funny-snippets"></div>
+
+    <div class="chaos-zone reveal" data-chaos-zone>
+      <div class="chaos-zone__label">// no hagas click aquí</div>
+      <button class="chaos-btn" data-chaos-initial>No toques</button>
+      <div class="chaos-zone__done" data-chaos-done>Bueno, ya paraste el caos. Sabía que ibas a tocarlo.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARDUINO & ESP32 ============ -->
+<section class="section esp32 page-section" id="esp32" data-bg-color="12,13,13">
+  <div class="section__inner">
+    <div class="esp32__intro">
+      <div>
+        <div class="section__eyebrow esp32__eyebrow reveal">Hardware propio</div>
+        <h2 class="section__title esp32__title reveal">Maker Lab</h2>
+        <p class="section__lead reveal" style="color:var(--esp32-silver)">De la idea al prototipo físico.</p>
+      </div>
+      <img class="esp32-board-badge reveal" src="assets/img/esp32/esp32-board.gif" alt="Placa ESP32">
+    </div>
+    <div class="maker-list" data-mount="esp32"></div>
+  </div>
+</section>
+
+<!-- ============ MI SETUP ============ -->
+<section class="section setup page-section" id="setup" data-bg-color="28,26,24">
+  <div class="section__inner">
+    <div class="section__eyebrow setup__eyebrow reveal">Lo que uso</div>
+    <h2 class="section__title setup__title reveal">Mi Setup</h2>
+    <p class="section__lead setup__lead reveal">Mis esenciales de día a día para proyectos.</p>
+    <div class="product-grid" style="margin-top:2.8rem;" data-mount="setup"></div>
+
+    <div class="desktop-showcase reveal">
+      <img class="desktop-showcase__bg" src="assets/img/setup/ubuntu-desktop.png" alt="Escritorio de Ubuntu de MADCO.py">
+      <div class="terminal-overlay">
+        <div class="terminal-overlay__bar">
+          <span class="terminal-overlay__dot" style="background:#ff5f56"></span>
+          <span class="terminal-overlay__dot" style="background:#ffbd2e"></span>
+          <span class="terminal-overlay__dot" style="background:#27c93f"></span>
+          <span class="terminal-overlay__title">madco@ubuntu:~</span>
+        </div>
+        <pre class="terminal-overlay__body" id="ubuntu-terminal-body"></pre>
+      </div>
+    </div>
+
+    <div class="terminal-panel reveal">
+      <div class="terminal-panel__bar">
+        <span class="terminal-overlay__dot" style="background:#ff5f56"></span>
+        <span class="terminal-overlay__dot" style="background:#ffbd2e"></span>
+        <span class="terminal-overlay__dot" style="background:#27c93f"></span>
+        <span class="terminal-overlay__title">madco@ubuntu:~/notas</span>
+      </div>
+      <div class="terminal-panel__body">
+        <p class="terminal-panel__prompt">$ cat dato-curioso.md</p>
+        <p class="terminal-panel__h"># Todo corre sobre Ubuntu</p>
+        <p>Desde la laptop hasta la Nintendo Switch — todo en Linux. Algunas extensiones GNOME que uso para volver locas las pantallas (y a veces literalmente quemarlas un poco):</p>
+        <ul>
+          <li><strong>Burn My Windows</strong> — transiciones de ventana exageradas al cerrar/abrir apps.</li>
+          <li><strong>Blur My Shell</strong> — desenfoque dinámico en toda la interfaz.</li>
+          <li><strong>Compiz-style Wobbly Windows</strong> — ventanas que se mueven como gelatina.</li>
+        </ul>
+        <p>¿Por qué Linux y no Windows para esto? Porque el kernel es abierto: puedes cambiarlo. Mainline, Liquorix, Xanmod, Zen — cada uno prioriza algo distinto (latencia, throughput, eficiencia), y tú eliges. En Windows el kernel es una caja cerrada; en Linux es una pieza más que puedes intercambiar según lo que necesites.</p>
+        <p class="terminal-panel__prompt">$ _</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIBERSEGURIDAD ============ -->
+<section class="ciber-path page-section" id="ciberseguridad" data-bg-color="10,22,38">
+
+  <div class="ciber-path__intro reveal">
+    <div class="section__eyebrow" style="color:var(--ciber-live-accent)">¿Realmente sabes qué información tuya está disponible en Internet?</div>
+    <h2>Ciberseguridad</h2>
+    <p>Cada señal que emite tu teléfono, cada tarjeta que acercas a un lector, cada red a la que te conectas deja rastro. Esta sección no es un manual — es un espejo.</p>
+  </div>
+
+
+  <!-- ============ HERRAMIENTAS INTERACTIVAS ============ -->
+  <div class="ciber-tools">
+
+    <div class="ciber-tool-heading">
+      <span class="ciber-tool-heading__tag"><i class="ph ph-terminal-window"></i> Herramienta</span>
+      <h4 class="ciber-tool-heading__title">Generador de Contraseñas Seguras</h4>
+      <p class="ciber-tool-heading__desc">Generado localmente — nunca sale de tu dispositivo.</p>
+    </div>
+    <!-- TERMINAL KALI: Generador de contraseñas -->
+    <div class="kali-term">
+      <div class="kali-term__bar">
+        <div class="kali-term__dots"><span></span><span></span><span></span></div>
+        <span class="kali-term__title">passwd-gen — root@kali</span>
+      </div>
+      <div class="kali-term__body">
+        <p class="kali-prompt"><span class="kp-path">┌──(<span class="kp-user">root</span>㉿<span class="kp-host">kali</span>)-[<span class="kp-dir">~/tools/passwd-gen</span>]</span></p>
+        <p class="kali-prompt"><span class="kp-arrow">└─# </span><span class="kp-cmd">generate --interactive</span></p>
+
+        <div class="kali-section">
+          <input type="text" id="ciber-pwd-output" class="kali-output" readonly placeholder="[output awaiting...]">
+          <div class="kali-strength-row">
+            <span class="kali-comment">STRENGTH:</span>
+            <div class="kali-strength-track"><div class="kali-strength-fill" id="ciber-strength-bar"></div></div>
+            <span class="kali-strength-val" id="ciber-strength-label">--</span>
+          </div>
+        </div>
+
+        <div class="kali-section">
+          <span class="kali-comment"># LENGTH: <span id="ciber-pwd-length-val">20</span> chars</span>
+          <input type="range" id="ciber-pwd-length" min="8" max="64" value="20" class="kali-slider">
+        </div>
+
+        <div class="kali-section">
+          <span class="kali-comment"># CHARSET FLAGS:</span>
+          <div class="kali-opts">
+            <label class="kali-opt"><input type="checkbox" id="ciber-opt-lower" checked><span class="kali-flag">[a-z]</span> minúsculas</label>
+            <label class="kali-opt"><input type="checkbox" id="ciber-opt-upper" checked><span class="kali-flag">[A-Z]</span> mayúsculas</label>
+            <label class="kali-opt"><input type="checkbox" id="ciber-opt-nums"  checked><span class="kali-flag">[0-9]</span> números</label>
+            <label class="kali-opt"><input type="checkbox" id="ciber-opt-syms"  checked><span class="kali-flag">[!@#]</span> símbolos</label>
+          </div>
+        </div>
+
+        <div class="kali-btns">
+          <button id="ciber-gen-btn" class="kali-btn kali-btn--exec"><i class="ph ph-arrows-clockwise"></i> --generate</button>
+          <button id="ciber-copy-btn" class="kali-btn kali-btn--copy"><i class="ph ph-copy"></i> --copy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ciber-tool-heading">
+      <span class="ciber-tool-heading__tag"><i class="ph ph-globe"></i> Herramienta</span>
+      <h4 class="ciber-tool-heading__title">Verificador de URLs Seguros</h4>
+      <p class="ciber-tool-heading__desc">Análisis de patrones — sin depender de servidores externos.</p>
+    </div>
+    <!-- GOOGLE STYLE: Analizador de URLs -->
+    <div class="goog-card">
+      <div class="goog-logo" aria-label="Google">
+        <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
+      </div>
+      <p class="goog-subtitle">URL Safety Checker — análisis de patrones locales</p>
+      <div class="goog-searchbar">
+        <i class="ph ph-magnifying-glass goog-searchbar__icon"></i>
+        <input type="text" id="url-input" class="goog-searchbar__input" placeholder="Pega aquí el enlace sospechoso...">
+        <button id="url-analyze-btn" class="goog-searchbar__btn">Analizar</button>
+      </div>
+      <div id="url-result"></div>
+      <p class="goog-disclaimer">Basado en patrones locales — no sustituye Google Safe Browsing.</p>
+    </div>
+
+  </div>
+
+  <div class="ciber-block" id="ciber-bloque-kali">
+    <div class="ciber-block__inner">
+      <span class="ciber-block__tag"><i class="ph ph-terminal-window"></i> Hecho en la PC</span>
+      <h3 class="ciber-block__title reveal">Kali Linux</h3>
+      <p class="ciber-block__lead reveal">Kali Linux es una distribución diseñada para seguridad ofensiva y pruebas de penetración. Viene con cientos de herramientas preinstaladas para analizar redes, sistemas y aplicaciones — y entender cómo se usan mal es el primer paso para defenderse de ellas.</p>
+      <div class="kali-window reveal">
+        <div class="kali-window__bar">
+          <span class="kali-window__dot"></span><span class="kali-window__dot"></span><span class="kali-window__dot"></span>
+          <span class="kali-window__title">root@kali: ~</span>
+          <span class="kali-window__menu">Actions · Edit · View · Help</span>
+        </div>
+        <div class="kali-window__screen">
+          <img src="assets/img/ciberseguridad/kali-undercover.gif" alt="Kali Linux" class="kali-window__gif">
+        </div>
+      </div>
+      <div class="grid grid-2" data-mount="ciber-kali"></div>
+    </div>
+  </div>
+
+  <div class="ciber-block" id="ciber-bloque-esp32">
+    <div class="ciber-block__inner">
+      <span class="ciber-block__tag"><i class="ph ph-cpu"></i> Hardware / Firmware</span>
+      <h3 class="ciber-block__title reveal">ESP32</h3>
+      <p class="ciber-block__lead reveal">El ESP32 tiene WiFi y Bluetooth integrados. Eso lo hace perfecto para proyectos IoT — pero también significa que puede usarse para interceptar redes, enviar señales a dispositivos cercanos o controlar cosas a distancia de forma maliciosa. La misma placa que enciende una bombilla puede apagar muchas más sin autorización.</p>
+      <div class="grid grid-2" data-mount="ciber-esp32"></div>
+    </div>
+  </div>
+
+  <div class="ciber-block" id="ciber-bloque-flipper">
+    <div class="ciber-block__inner">
+      <span class="ciber-block__tag"><i class="ph ph-game-controller"></i> En tu mano</span>
+      <h3 class="ciber-block__title reveal">Flipper Zero</h3>
+      <p class="ciber-block__lead reveal">Es una herramienta de auditoría de hardware portátil. Lee y emula señales de radio, NFC, infrarrojo y USB — el mundo inalámbrico que tienes alrededor, en tu mano.</p>
+
+      <!-- Flipper Zero device reveal -->
+      <div class="flipper-device-reveal reveal">
+        <img src="assets/img/ciberseguridad/flipper-device.gif" alt="Flipper Zero" class="flipper-device-gif">
+        <div class="flipper-device-label">
+          <span class="flipper-device-label__tag">flipper.net</span>
+          <a href="https://flipper.net/" target="_blank" rel="noopener" class="flipper-device-label__link">
+            Ver web oficial <i class="ph ph-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="flipper-window reveal">
+        <div class="flipper-window__bar">
+          <div class="flipper-window__tabs">
+            <span class="flipper-window__tab"><i class="ph ph-info"></i></span>
+            <span class="flipper-window__tab"><i class="ph ph-wrench"></i></span>
+            <span class="flipper-window__tab is-active"><i class="ph ph-folder"></i></span>
+          </div>
+          <span class="flipper-window__brand">MAD · FLIPPER</span>
+          <span class="flipper-window__status"><i class="ph ph-usb"></i> <span data-flipper-status>GHOST_PROTOCOL</span></span>
+        </div>
+        <div class="flipper-window__body">
+          <div class="flipper-screen">
+            <canvas id="flipper-mascot-canvas" class="flipper-screen__canvas"></canvas>
+            <div class="flipper-screen__scanline"></div>
+          </div>
+          <div class="flipper-fs">
+            <div class="flipper-fs__path">SD Card/</div>
+            <div class="flipper-fs__list">
+              <button class="flipper-fs__row is-active" data-folder-target="badusb"><i class="ph ph-folder"></i> badusb</button>
+              <button class="flipper-fs__row" data-folder-target="subghz"><i class="ph ph-folder"></i> subghz</button>
+              <button class="flipper-fs__row" data-folder-target="nfc"><i class="ph ph-folder"></i> nfc</button>
+              <button class="flipper-fs__row" data-folder-target="infrared"><i class="ph ph-folder"></i> infrared</button>
+              <button class="flipper-fs__row" data-folder-target="gpio"><i class="ph ph-folder"></i> gpio</button>
+              <button class="flipper-fs__row" data-folder-target="keyclone"><i class="ph ph-folder"></i> keyclone</button>
+              <button class="flipper-fs__row" data-folder-target="apps"><i class="ph ph-folder"></i> apps</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-2" data-mount="flipper-projects"></div>
+
+      <h4 class="ciber-block__title" id="flipper-recommended-anchor" style="font-size:1.15rem; margin-top:2.5rem;">Recomendados</h4>
+      <div class="reco-list" data-mount="flipper-recommended"></div>
+    </div>
+  </div>
+</section>
+
+<!-- GRADIENT BRIDGE: Ciber → Hobbies -->
+<div class="gradient-bridge" style="background:linear-gradient(to bottom, #1a0d00, #10101a)"></div>
+
+<!-- ============ HOBBIES ============ -->
+<section class="section hobbies page-section" id="hobbies" data-bg-color="16,16,26">
+  <div class="section__inner">
+    <div class="section__eyebrow hobbies__eyebrow reveal">Cuando no codifico</div>
+    <h2 class="section__title reveal" style="color:#e8e8e4;">Hobbies</h2>
+    <div class="hobbies__layout reveal">
+      <div class="chess-wrap">
+        <div class="chess-top-bar">
+          <span class="chess-turn-indicator chess-turn--black">♟ Negras (IA Expert)</span>
+        </div>
+        <div id="chess-board"></div>
+        <div class="chess-bottom-bar">
+          <span class="chess-turn-indicator chess-turn--white">♙ Blancas (Tú)</span>
+          <span id="chess-status" class="chess-status">Tu turno — Blancas</span>
+        </div>
+        <div class="hobbies__chess-hint"><i class="ph ph-cursor-click"></i> Click en una pieza para moverla — la IA responde</div>
+      </div>
+      <div class="hobbies__side">
+        <div class="hobbies__list" data-mount="hobbies"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="nav__brand" style="border:none; font-size:1.2rem;">MADCO.py</div>
+  <div class="footer__socials" data-mount="footer-socials"></div>
+  <p class="footer__note">Sitio construido a mano. Sin backend, sin tracking, sin nombre real.</p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/cursor.js"></script>
+<script src="js/observer.js"></script>
+<script src="js/hero-typing.js"></script>
+<script src="js/ciber-path.js"></script>
+<script src="js/flipper-mascot.js"></script>
+<script src="js/flipper-folders.js"></script>
+<script src="js/funny.js"></script>
+<script src="js/ubuntu-terminal.js"></script>
+<script src="js/esp32-spin.js"></script>
+<script src="js/page-morph.js"></script>
+<script src="js/ciber-tools.js"></script>
+<script src="js/chess.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

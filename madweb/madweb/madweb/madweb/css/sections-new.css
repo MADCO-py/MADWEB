@@ -1,0 +1,309 @@
+/* ============================================================
+   PERSONAL PROJECTS
+   ============================================================ */
+.personal {
+  background: transparent;
+  color: var(--base-text);
+}
+.personal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.8rem;
+  margin-top: 2.5rem;
+}
+@media (max-width: 860px) { .personal-grid { grid-template-columns: 1fr; } }
+
+.personal-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.personal-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+.personal-card__media {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  background: #f0f0ec;
+}
+.personal-card__body { padding: 1.4rem 1.5rem 1.6rem; }
+.personal-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #f0f0ec;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  margin-bottom: 0.8rem;
+  color: #555;
+}
+.personal-card__name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.6rem;
+  color: #0a0a12;
+}
+.personal-card__desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 0.9rem;
+}
+.personal-card__nfc {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #1a73e8;
+  background: #e8f0fe;
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  margin-bottom: 1rem;
+}
+.personal-card .tech-pill-row { margin-bottom: 1rem; }
+.personal-card .tech-pill {
+  border-color: rgba(0,0,0,0.15);
+  color: #555;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+.personal-card .btn-demo {
+  background: #0a0a12;
+  color: #fff;
+  border-color: #0a0a12;
+}
+.personal-card .btn-demo:hover { opacity: 0.85; }
+.personal-card .btn-repo {
+  color: #0a0a12;
+  border-color: rgba(0,0,0,0.25);
+}
+.personal-card .btn-repo:hover { background: #0a0a12; color: #fff; }
+
+/* ============================================================
+   MAKER LAB — formato lista (sin videos)
+   ============================================================ */
+.maker-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  margin-top: 2.5rem;
+}
+.maker-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(184,194,201,0.2);
+  border-left: 3px solid var(--esp32-turquoise);
+  padding: 1.4rem 1.6rem;
+}
+.maker-item__name {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--esp32-text);
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+.maker-item__row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 0.35rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  margin-bottom: 0.35rem;
+  align-items: start;
+}
+.maker-item__key { color: rgba(184,194,201,0.5); }
+.maker-item__val { color: var(--esp32-silver); }
+.maker-item__val span { opacity: 0.7; }
+.maker-item .btn-row { margin-top: 1.1rem; }
+.maker-item .btn-repo {
+  color: var(--esp32-turquoise);
+  border-color: rgba(25,230,196,0.4);
+  font-size: 0.78rem;
+}
+.maker-item .btn-repo:hover { background: var(--esp32-turquoise); color: #08090a; }
+
+/* ============================================================
+   HOBBIES — ajedrez interactivo + lista
+   ============================================================ */
+.hobbies {
+  background: transparent;
+  color: #e8e8e4;
+}
+.hobbies__eyebrow { color: rgba(232,232,228,0.5); }
+.hobbies__layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-top: 2.5rem;
+}
+/* Chess siempre a la izquierda */
+.chess-wrap {
+  flex-shrink: 0;
+  flex-grow: 0;
+  order: 0;
+}
+.hobbies__side {
+  flex: 1;
+  min-width: 0;
+  order: 1;
+  padding-top: 2rem;
+}
+
+@media (max-width: 860px) {
+  .hobbies__layout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .chess-wrap { order: 0; width: 100%; }
+  .hobbies__side { order: 1; width: 100%; padding-top: 0; }
+  #chess-board {
+    width: 100%;
+    grid-auto-rows: calc(100vw / 8);
+  }
+}
+
+/* Tablero de ajedrez — estilo chess.com, celdas perfectamente cuadradas */
+.chess-wrap {
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+.chess-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: rgba(232,232,228,0.45);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+#chess-board {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  /* El truco: definir el tamaño del tablero por las columnas, no por el contenedor */
+  width: min(400px, calc(100vw - 2rem));
+  grid-auto-rows: calc(min(400px, calc(100vw - 2rem)) / 8);
+  border: 3px solid #333;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  user-select: none;
+  image-rendering: auto;
+}
+.chess-sq {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  /* Fuerza cuadrado perfecto */
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+.chess-sq:hover { filter: brightness(1.1); }
+
+/* Piezas */
+.chess-piece {
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.1s ease;
+  display: block;
+}
+.chess-sq:hover .chess-piece { transform: scale(1.12); }
+.chess-piece--white {
+  color: #ffffff;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.8)) drop-shadow(0 0 3px rgba(0,0,0,0.6));
+}
+.chess-piece--black {
+  color: #1a1a1a;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.4));
+}
+
+/* Indicadores de movimiento válido */
+.chess-hint-dot {
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.22);
+  z-index: 1;
+}
+.chess-hint-ring {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  border: 4px solid rgba(0,0,0,0.22);
+  z-index: 1;
+}
+
+/* Lista de hobbies */
+.hobbies__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.hobby-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(232,232,228,0.08);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: rgba(232,232,228,0.85);
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+.hobby-item:first-child { border-top: 1px solid rgba(232,232,228,0.08); }
+.hobby-item:hover { color: #fff; gap: 1.3rem; }
+.hobby-item i { font-size: 1.3rem; opacity: 0.7; flex-shrink: 0; }
+.hobby-item:hover i { opacity: 1; }
+.hobbies__chess-hint {
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: rgba(232,232,228,0.4);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Barras de estado del ajedrez */
+.chess-top-bar, .chess-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(380px, 90vw);
+  padding: 0.4rem 0.2rem;
+}
+.chess-turn-indicator {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.chess-turn--black { color: rgba(232,232,228,0.5); }
+.chess-turn--white { color: rgba(232,232,228,0.85); }
+.chess-status {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #769656;
+  font-weight: 600;
+}
+
+/* Mobile chess */
+@media (max-width: 860px) {
+  .chess-top-bar, .chess-bottom-bar { width: 90vw; }
+}

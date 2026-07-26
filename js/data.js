@@ -33,6 +33,9 @@ const PERSONAL_PROJECTS = [
   },
 ];
 
+
+/* ---------- CLIENTES — emprendedores y empresas ---------- */
+
 /* ---------- CIBERSEGURIDAD — bloque Kali Linux (PC) ---------- */
 const CIBER_KALI_PROJECTS = [
   {
@@ -53,6 +56,63 @@ const CIBER_KALI_PROJECTS = [
   },
 ];
 
+
+/* ---------- CLIENTES — emprendedores y empresas ---------- */
+const CLIENT_PROJECTS = [
+  {
+    id: 'fleetcontrol',
+    name: 'FleetControl',
+    type: 'enterprise',
+    tagline: 'Sistema de gestión de flota vehicular',
+    desc: 'Sistema completo entregado a cliente: control de conductores, evidencia fotográfica, historial de mantenimiento e infraestructura desplegada en producción con hosting anual activo.',
+    tech: ['React', 'Node.js / Express', 'PostgreSQL', 'Docker', 'Railway', 'Cloudflare R2'],
+    preview: 'assets/img/freelance/fleetcontrol-dashboard.png',
+    demo: '',
+    repo: '',
+    sold: true,
+    label: 'Vendido a cliente',
+  },
+  {
+    id: 'analu-ramen',
+    name: 'Nalú Korean Food',
+    type: 'emprendedor',
+    tagline: 'Carta digital y presencia en línea',
+    desc: 'Sitio web para negocio de comida coreana: carta digital, identidad visual y presencia en línea lista para compartir en redes.',
+    tech: ['HTML/CSS/JS', 'GitHub Pages'],
+    video: 'assets/videos/personal/emprendedores/analu-ramen.mp4',
+    demo: 'https://madco-py.github.io/Nalu-s-Korean-Food/',
+    repo: '',
+    sold: false,
+    label: 'Emprendedor',
+  },
+  {
+    id: 'march-jewelry',
+    name: 'March Jewelry',
+    type: 'emprendedor',
+    tagline: 'Catálogo digital de joyería',
+    desc: 'Catálogo en línea para negocio de joyería: presentación de productos, identidad de marca y contacto directo con la clienta.',
+    tech: ['HTML/CSS/JS', 'GitHub Pages'],
+    video: 'assets/videos/personal/emprendedores/marce-joyas.mp4',
+    demo: 'https://madco-py.github.io/MARCH_JEWELRY/index.html',
+    repo: '',
+    sold: false,
+    label: 'Emprendedor',
+  },
+  {
+    id: 'marce-juarez',
+    name: 'Marce Juárez',
+    type: 'emprendedor',
+    tagline: 'Portfolio y contacto de emprendedora',
+    desc: 'Sitio de presentación personal: portfolio, servicios y punto de contacto para emprendedora.',
+    tech: ['HTML/CSS/JS', 'GitHub Pages'],
+    video: 'assets/videos/personal/emprendedores/marce.mp4',
+    demo: 'https://madco-py.github.io/MARCE_JUAREZ/',
+    repo: '',
+    sold: false,
+    label: 'Emprendedor',
+  },
+];
+
 /* ---------- CIBERSEGURIDAD — bloque ESP32 (riesgo) ---------- */
 const CIBER_ESP32_RISK = {
   name: 'ESP32-Jammer',
@@ -70,6 +130,16 @@ const ESP32_PROJECTS = [
     materials: ['ESP32-32U', 'Pantalla OLED 128×64', 'Botones físicos', 'Protoboard', 'Cables dupont'],
     repo: 'https://github.com/MADCO-py/SNAKE-ESP32-32U',
     demo: '',
+    nfcProject: false,
+  },
+  {
+    name: 'NFC-MAKER-BY-HTTPS',
+    desc: 'Genera archivos .nfc listos para copiar al Flipper Zero a partir de cualquier enlace HTTPS. Ideal para programar tags NTAG213, NTAG215 y NTAG216 sin apps externas — pega el link, descarga el .nfc, cópialo a la SD.',
+    lang: 'JavaScript / Web API',
+    materials: ['Tags NTAG213', 'Tags NTAG215', 'Tags NTAG216', 'Flipper Zero (opcional)'],
+    repo: 'https://github.com/MADCO-py/NFC-MAKER-BY-HTTPS',
+    demo: '',
+    nfcProject: true,
   },
 ];
 

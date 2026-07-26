@@ -1,0 +1,2 @@
+[Pendiente] Sube aquí tu BadUSB que abre Claude Code y pone música en Spotify.
+Reemplaza este archivo manteniendo el mismo nombre: claude-spotify.txt

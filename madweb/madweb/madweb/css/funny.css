@@ -1,0 +1,141 @@
+/* ============================================================
+   COSAS GRACIOSAS — la sección más loca del sitio
+   ============================================================ */
+.funny {
+  background: var(--funny-bg);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.funny__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+.funny__blob--1 { width: 320px; height: 320px; background: var(--funny-pink); top: -80px; left: -60px; animation: float1 11s ease-in-out infinite; }
+.funny__blob--2 { width: 280px; height: 280px; background: var(--funny-cyan); bottom: 10%; right: -60px; animation: float2 13s ease-in-out infinite; }
+.funny__blob--3 { width: 220px; height: 220px; background: var(--funny-yellow); bottom: -60px; left: 30%; animation: float1 9s ease-in-out infinite reverse; }
+@keyframes float1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(40px,30px); } }
+@keyframes float2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-30px,-40px); } }
+
+.funny__eyebrow { color: var(--funny-yellow); }
+.funny__title {
+  background: linear-gradient(90deg, var(--funny-pink), var(--funny-cyan), var(--funny-lime));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.snippet-card {
+  background: #14141c;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  position: relative;
+}
+.snippet-card__tag {
+  position: absolute;
+  top: -10px; left: 16px;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--funny-pink);
+  color: #0a0a0f;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.snippet-card pre { margin: 0; white-space: pre-wrap; }
+.snippet-card .c1 { color: var(--funny-cyan); }
+.snippet-card .c2 { color: var(--funny-lime); }
+.snippet-card .c3 { color: var(--funny-yellow); }
+
+.funny-project-card {
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #14141c;
+}
+.funny-project-card__video,
+.funny-project-card__video-placeholder {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+}
+.funny-project-card__video-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 1rem;
+  color: var(--funny-cyan);
+  background: repeating-linear-gradient(45deg, #14141c, #14141c 10px, #181822 10px, #181822 20px);
+}
+.funny-project-card__body { padding: 1.2rem 1.4rem 1.5rem; }
+.funny-project-card__title { font-weight: 700; margin: 0 0 0.4rem; }
+.funny-project-card__desc { font-size: 0.86rem; opacity: 0.7; line-height: 1.55; }
+.funny-project-card .btn { border-color: var(--funny-cyan); }
+.funny-project-card .btn-demo { background: var(--funny-cyan); color: #0a0a0f; border-color: var(--funny-cyan); }
+.funny-project-card .btn-repo { color: var(--funny-cyan); }
+.funny-project-card .btn-repo:hover { background: var(--funny-cyan); color: #0a0a0f; }
+
+/* ---------- El botón caótico ---------- */
+.chaos-zone {
+  margin-top: 3.5rem;
+  border: 2px dashed rgba(255,255,255,0.18);
+  border-radius: var(--radius-lg);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  position: relative;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.chaos-zone__label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  opacity: 0.5;
+  margin-bottom: 1.5rem;
+}
+.chaos-btn {
+  position: relative;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 1rem 1.8rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--funny-pink);
+  color: #0a0a0f;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.chaos-btn--clone {
+  position: absolute;
+}
+.chaos-btn--final {
+  background: var(--funny-lime);
+  z-index: 5;
+}
+.chaos-zone__done {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--funny-lime);
+  margin-top: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.chaos-zone__done.is-visible { opacity: 1; }

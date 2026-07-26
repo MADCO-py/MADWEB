@@ -79,7 +79,7 @@
         const video = document.createElement('video');
         video.className = 'personal-card__media';
         video.src = p.video;
-        video.muted = true; video.playsInline = true; video.preload = 'metadata'; video.loop = true;
+        video.muted = true; video.playsInline = true; video.autoplay = true; video.loop = true;
         video.addEventListener('error', () => {
           video.replaceWith(el('div', 'personal-card__media', ''));
         });
@@ -96,7 +96,10 @@
             const body = el('div', 'personal-card__body');
       const nfcHtml = p.nfcNote ? '<span class="personal-card__nfc"><i class="ph ph-wifi-high"></i> ' + p.nfcNote + '</span>' : '';
       const techHtml = (p.tech || []).map(t => '<span class="tech-pill">' + t + '</span>').join('');
-      body.innerHTML = '<span class="personal-card__badge"><i class="ph ph-code"></i> Proyecto personal</span>' +
+      const badgeHtml = p.badge === 'emprendedor'
+        ? '<span class="personal-card__badge personal-card__badge--emp"><i class="ph ph-storefront"></i> Para emprendedor</span>'
+        : '<span class="personal-card__badge"><i class="ph ph-code"></i> Proyecto personal</span>';
+      body.innerHTML = badgeHtml +
         '<h3 class="personal-card__name">' + p.name + '</h3>' +
         '<p class="personal-card__desc">' + p.desc + '</p>' +
         nfcHtml +
@@ -265,8 +268,7 @@
 
     // Hover play/pause en cada video de estudiantes
     mount.querySelectorAll('.mentorhub-card__shot').forEach(v => {
-      v.addEventListener('mouseenter', () => v.play());
-      v.addEventListener('mouseleave', () => { v.pause(); v.currentTime = 0; });
+      v.autoplay = true;
     });
   }
 
@@ -320,13 +322,12 @@
       const video = document.createElement('video');
       video.className = 'funny-project-card__video';
       video.src = p.video;
-      video.muted = true; video.playsInline = true; video.preload = 'metadata'; video.loop = true;
+      video.muted = true; video.playsInline = true; video.autoplay = true; video.loop = true;
       video.addEventListener('error', () => {
         const ph = el('div', 'funny-project-card__video-placeholder', `<i class="ph ph-video-camera" style="font-size:1.6rem;"></i> Sube tu video corto a<br><code style="opacity:.7">assets/videos/funny/</code>`);
         video.replaceWith(ph);
       });
-      card.addEventListener('mouseenter', () => video.play());
-      card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+      video.autoplay = true;
       card.appendChild(video);
       card.appendChild(el('div', 'funny-project-card__body', `
         <h4 class="funny-project-card__title">${p.name}</h4>

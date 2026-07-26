@@ -1,0 +1,103 @@
+/* ============================================================
+   LECTURA — desconéctate de la pantalla, ambiente de cafetería
+   ============================================================ */
+.lectura {
+  background:
+    radial-gradient(900px circle at 15% 10%, rgba(138,90,43,0.15), transparent 60%),
+    radial-gradient(900px circle at 85% 90%, rgba(22,51,42,0.4), transparent 65%),
+    transparent;
+  color: var(--lectura-cream);
+  position: relative;
+}
+.lectura__steam {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 140px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.25), transparent);
+  pointer-events: none;
+}
+.lectura__eyebrow { color: var(--lectura-brown-light); }
+.lectura__title { color: var(--lectura-cream); }
+.lectura__lead { color: color-mix(in srgb, var(--lectura-cream) 70%, transparent); }
+
+.book-shelf {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  perspective: 1400px;
+}
+@media (max-width: 860px) { .book-shelf { grid-template-columns: 1fr; perspective: none; } }
+
+.book-card {
+  background: var(--lectura-panel);
+  border: 1px solid rgba(199,154,94,0.25);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.55s ease;
+  will-change: transform;
+}
+.book-card:hover {
+  transform: rotateY(-16deg) translateX(10px) scale(1.02);
+  box-shadow:
+    12px 30px 60px rgba(0,0,0,0.55),
+    -4px 0 0 rgba(199,154,94,0.35);
+}
+/* Lomo simulado */
+.book-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 8px;
+  background: linear-gradient(90deg, rgba(199,154,94,0.5), rgba(199,154,94,0.1));
+  transform: translateZ(-1px);
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  pointer-events: none;
+}
+.book-card__cover {
+  width: 100%;
+  aspect-ratio: 3/4.4;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid rgba(199,154,94,0.25);
+}
+.book-card__body {
+  padding: 1.3rem 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.book-card__title {
+  font-weight: 700;
+  font-size: 1.02rem;
+  margin: 0 0 0.15rem;
+  color: var(--lectura-cream);
+}
+.book-card__author {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--lectura-brown-light);
+  margin-bottom: 0.8rem;
+}
+.book-card__desc {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--lectura-cream) 78%, transparent);
+  flex: 1;
+}
+
+.lectura__why {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: var(--radius-md);
+  background: var(--lectura-green);
+  border: 1px solid rgba(47,92,70,0.6);
+}
+.lectura__why .ph { color: var(--lectura-brown-light); flex-shrink: 0; }
+.lectura__why p { margin: 0; font-size: 0.9rem; line-height: 1.6; opacity: 0.9; }
