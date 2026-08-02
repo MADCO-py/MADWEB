@@ -111,7 +111,7 @@ body {
   inset: 0;
   z-index: -1;
   background: rgb(255,255,255);
-  transition: background-color 0.18s ease;
+  transition: background-color 0.08s linear;
   will-change: background-color;
 }
 

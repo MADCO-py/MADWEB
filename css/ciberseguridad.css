@@ -4,15 +4,13 @@
    usando --ciber-live-bg / --ciber-live-accent / --ciber-live-glow
    ============================================================ */
 .ciber-path {
-  --ciber-live-bg: var(--ciber-bg);
-  --ciber-live-accent: var(--kali-primary);
-  --ciber-live-glow: var(--kali-glow);
+  --ciber-live-bg: rgb(26, 13, 0);
+  --ciber-live-accent: rgb(255, 122, 26);
+  --ciber-live-glow: rgb(255, 122, 26);
   background: var(--ciber-live-bg);
   color: var(--ciber-text);
   position: relative;
-  transition: background 0.1s linear;
-  /* IMPORTANTE: el ciber-path lleva su propio color driver (ciber-path.js),
-     que sobreescribe lo que el page-morph quiera poner. */
+  /* Naranja constante en toda la sección Flipper */
 }
 
 .ciber-path::before {
@@ -652,7 +650,6 @@
   color: #c9d1d9;
 }
 .kali-btn--copy:hover { background: #161b22; border-color: #58a6ff; color: #58a6ff; }
-
 
 /* -------- GOOGLE CARD — Analizador de URLs -------- */
 .goog-card {

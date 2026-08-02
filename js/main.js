@@ -110,38 +110,59 @@
     });
   }
 
-  /* ---------- CLIENTES — separados por tipo ---------- */
+  /* ---------- CLIENTES — enterprise full-width, featured full-width, resto agrupado ---------- */
   function renderClients() {
     const mount = document.querySelector('[data-mount="clients"]');
     if (!mount) return;
     mount.innerHTML = '';
 
-    const enterprise = CLIENT_PROJECTS.filter(p => p.type === 'enterprise');
+    const enterprise    = CLIENT_PROJECTS.filter(p => p.type === 'enterprise');
+    const featuredArt   = CLIENT_PROJECTS.filter(p => p.type === 'artista' && p.featured);
+    const restArtistas  = CLIENT_PROJECTS.filter(p => p.type === 'artista' && !p.featured);
     const emprendedores = CLIENT_PROJECTS.filter(p => p.type === 'emprendedor');
 
-    // Sección Empresas
-    if (enterprise.length) {
-      const label1 = el('div', 'clients-section-label reveal');
-      label1.innerHTML = '<span class="clients-section-label__line"></span><span class="clients-section-label__text"><i class="ph ph-buildings-fill"></i> Venta a Empresas</span><span class="clients-section-label__line"></span>';
-      mount.appendChild(label1);
-      const grid1 = el('div', 'clients-grid clients-grid--enterprise');
-      enterprise.forEach(p => grid1.appendChild(buildClientCard(p)));
-      mount.appendChild(grid1);
+    function addLabel(icon, text) {
+      const l = el('div', 'clients-section-label reveal');
+      l.innerHTML = '<span class="clients-section-label__line"></span><span class="clients-section-label__text"><i class="ph ' + icon + '"></i> ' + text + '</span><span class="clients-section-label__line"></span>';
+      mount.appendChild(l);
     }
 
-    // Sección Emprendedores
+    // 1. Sistemas empresariales (full width)
+    enterprise.forEach(p => {
+      const g = el('div', 'clients-grid clients-grid--enterprise');
+      g.appendChild(buildClientCard(p));
+      mount.appendChild(g);
+    });
+
+    // 2. Artistas destacados (full width, uno a uno)
+    if (featuredArt.length) {
+      addLabel('ph-music-note', 'Artistas & Creativos');
+      featuredArt.forEach(p => {
+        const g = el('div', 'clients-grid clients-grid--enterprise');
+        g.appendChild(buildClientCard(p));
+        mount.appendChild(g);
+      });
+    }
+
+    // 3. Más artistas (2 columnas)
+    if (restArtistas.length) {
+      const g = el('div', 'clients-grid clients-grid--artistas');
+      restArtistas.forEach(p => g.appendChild(buildClientCard(p)));
+      mount.appendChild(g);
+    }
+
+    // 4. Pequeños emprendedores (2 columnas)
     if (emprendedores.length) {
-      const label2 = el('div', 'clients-section-label reveal');
-      label2.innerHTML = '<span class="clients-section-label__line"></span><span class="clients-section-label__text"><i class="ph ph-storefront"></i> Ventas a Pequeños Emprendedores</span><span class="clients-section-label__line"></span>';
-      mount.appendChild(label2);
-      const grid2 = el('div', 'clients-grid');
-      emprendedores.forEach(p => grid2.appendChild(buildClientCard(p)));
-      mount.appendChild(grid2);
+      addLabel('ph-storefront', 'Pequeños Emprendedores');
+      const g = el('div', 'clients-grid clients-grid--emp');
+      emprendedores.forEach(p => g.appendChild(buildClientCard(p)));
+      mount.appendChild(g);
     }
   }
 
   function buildClientCard(p) {
       const card = el('div', 'client-card reveal ' + (p.type === 'enterprise' ? 'client-card--enterprise' : 'client-card--emp'));
+      card.setAttribute('data-client-id', p.id);
 
       // Media
       if (p.video) {
@@ -162,9 +183,14 @@
 
       const body = el('div', 'client-card__body');
       const techHtml = (p.tech||[]).map(t => '<span class="tech-pill">' + t + '</span>').join('');
-      const soldBadge = p.sold
-        ? '<span class="client-badge client-badge--sold"><i class="ph ph-seal-check"></i> ' + p.label + '</span>'
-        : '<span class="client-badge client-badge--emp"><i class="ph ph-storefront"></i> ' + p.label + '</span>';
+      let soldBadge;
+      if (p.sold) {
+        soldBadge = '<span class="client-badge client-badge--sold"><i class="ph ph-seal-check"></i> ' + p.label + '</span>';
+      } else if (p.type === 'artista') {
+        soldBadge = '<span class="client-badge client-badge--artista"><i class="ph ph-music-note"></i> ' + p.label + '</span>';
+      } else {
+        soldBadge = '<span class="client-badge client-badge--emp"><i class="ph ph-storefront"></i> ' + p.label + '</span>';
+      }
       const demoBtn = p.demo ? '<a class="btn btn-demo" href="' + p.demo + '" target="_blank" rel="noopener"><i class="ph ph-arrow-up-right"></i> Ver sitio</a>' : '';
 
       body.innerHTML = soldBadge +
@@ -322,24 +348,26 @@
     const mount = document.querySelector('[data-mount="student"]');
     if (!mount) return;
     const sorted = [...STUDENT_RESOURCES].sort((a, b) => a.order - b.order);
-    mount.innerHTML = sorted.map(r => `
-      <div class="mentorhub-card reveal">
-        <video class="mentorhub-card__shot" src="${r.shotVideo}" muted playsinline preload="metadata"></video>
-        <div class="mentorhub-card__body">
-          <div class="mentorhub-card__icon"><i class="ph ph-graduation-cap" style="font-size:1.7rem;"></i></div>
-          <div>
-            <h3 class="mentorhub-card__title">${r.name}</h3>
-            <p class="mentorhub-card__desc">${r.desc}</p>
-          </div>
-          ${btnRow({ demo: r.demo, repo: r.repo })}
-        </div>
-      </div>
-    `).join('');
-
-    // Hover play/pause en cada video de estudiantes
-    mount.querySelectorAll('.mentorhub-card__shot').forEach(v => {
-      v.autoplay = true;
+    mount.innerHTML = '';
+    const grid = document.createElement('div');
+    grid.style.cssText = 'display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;';
+    sorted.forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'mentorhub-card reveal';
+      const v = document.createElement('video');
+      v.className = 'mentorhub-card__shot';
+      v.src = r.shotVideo;
+      v.muted = true; v.playsInline = true; v.autoplay = true; v.loop = true;
+      card.appendChild(v);
+      const body = document.createElement('div');
+      body.className = 'mentorhub-card__body';
+      body.innerHTML = '<div class="mentorhub-card__icon"><i class="ph ph-graduation-cap" style="font-size:1.7rem;"></i></div>' +
+        '<div><h3 class="mentorhub-card__title">' + r.name + '</h3><p class="mentorhub-card__desc">' + r.desc + '</p></div>' +
+        btnRow({ demo: r.demo, repo: r.repo });
+      card.appendChild(body);
+      grid.appendChild(card);
     });
+    mount.appendChild(grid);
   }
 
   /* ---------- MI SETUP ---------- */

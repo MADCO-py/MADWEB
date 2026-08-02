@@ -167,3 +167,37 @@
   /* Encabezados de herramientas */
   .ciber-tool-heading__title { font-size: 0.95rem; }
 }
+
+/* ---- Secciones nuevas en mobile ---- */
+@media (max-width: 768px) {
+  /* Servicios */
+  .servicios-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .servicio-card { padding: 1.3rem 1rem; }
+  .servicio-card__icon { font-size: 1.6rem; }
+  .servicio-card__title { font-size: 0.9rem; }
+  .proceso-steps { flex-direction: column; margin-top: 2rem; }
+  .proceso-step { padding: 1.5rem 1.3rem; }
+  .proceso-step__line { width: auto; height: 1px; }
+
+  /* Seguridad — herramientas apiladas */
+  .seguridad .ciber-tools { padding: var(--space-md) 0 0; }
+
+  /* Quien */
+  .quien__categories { grid-template-columns: 1fr; }
+  .quien__stat-grid { grid-template-columns: 1fr 1fr; }
+  .quien__title { font-size: clamp(2rem, 8vw, 2.8rem); }
+
+  /* Webs interactivas — chess arriba, caps abajo */
+  .webs-inter__grid { grid-template-columns: 1fr; gap: 2rem; }
+  .webs-inter__caps { padding-top: 0; }
+
+  /* Clientes — asegurar que enterprise no desborde */
+  .clients-grid--enterprise .client-card { grid-template-columns: 1fr; }
+  .clients-grid--artistas,
+  .clients-grid--emp { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 420px) {
+  .servicios-grid { grid-template-columns: 1fr; }
+  .quien__stat-grid { grid-template-columns: 1fr; }
+}
