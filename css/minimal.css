@@ -1,0 +1,136 @@
+/* ============================================================
+   MINIMAL — paleta de la página principal (index.html):
+   negro, café, naranja y blanco. Solo se carga en index.html
+   (body.minimal), así la página de demos conserva sus colores.
+   Cambia aquí los tonos y se actualiza toda la página.
+   ============================================================ */
+
+/* ---------- Paleta ---------- */
+body.minimal {
+  --m-bg: #0b0806;
+  --m-surface: #160f0a;
+  --m-surface-2: #21170f;
+  --m-line: rgba(255,240,225,0.09);
+  --m-line-strong: rgba(255,240,225,0.2);
+  --m-text: #f6efe6;
+  --m-muted: #b3a291;
+  --m-faint: #7d6b5b;
+  --m-brown: #8a5a35;
+  --m-accent: #ff7a1a;
+  --m-accent-text: #ff8a33;   /* naranja para texto */
+  --m-on-accent: #0b0806;     /* texto encima del naranja */
+}
+html[data-theme="light"] body.minimal {
+  --m-bg: #faf6f0;
+  --m-surface: #ffffff;
+  --m-surface-2: #f3ece2;
+  --m-line: rgba(40,22,10,0.1);
+  --m-line-strong: rgba(40,22,10,0.22);
+  --m-text: #1a110b;
+  --m-muted: #5e4a3b;
+  --m-faint: #8c7663;
+  --m-brown: #8a5a35;
+  --m-accent: #ff7a1a;
+  --m-accent-text: #b8500a;
+  --m-on-accent: #1a110b;
+}
+
+/* Los tokens que ya usan las demás hojas apuntan a la paleta */
+body.minimal {
+  --t-surface: var(--m-surface);
+  --t-surface-2: var(--m-surface-2);
+  --t-line: var(--m-line);
+  --t-line-strong: var(--m-line-strong);
+  --t-text: var(--m-text);
+  --t-muted: var(--m-muted);
+  --t-faint: var(--m-faint);
+  --base-bg: var(--m-bg);
+  --base-bg-soft: var(--m-surface);
+  --base-text: var(--m-text);
+  --base-text-muted: var(--m-muted);
+  --base-border: var(--m-line-strong);
+  --edu-text: var(--m-text);
+  --edu-green: var(--m-accent-text);
+  --edu-green-soft: var(--m-surface);
+  --esp32-turquoise: var(--m-accent);
+  color: var(--m-text);
+}
+html body.minimal { background: var(--m-bg); }
+
+/* ---------- Menos adorno: sin sombras ni brillos ---------- */
+html body.minimal .client-card,
+html body.minimal .personal-card,
+html body.minimal .cert-card,
+html body.minimal .mentorhub-card {
+  background: var(--m-surface);
+  border-color: var(--m-line);
+  box-shadow: none;
+}
+html body.minimal .client-card:hover,
+html body.minimal .personal-card:hover,
+html body.minimal .cert-card:hover,
+html body.minimal .client-card[data-client-id]:hover {
+  transform: translateY(-4px);
+  border-color: var(--m-accent);
+  box-shadow: none;
+}
+html body.minimal .client-card__name,
+html body.minimal .personal-card__name,
+html body.minimal .cert-card__title { color: var(--m-text); }
+html body.minimal .client-card__tagline,
+html body.minimal .cert-card__meta { color: var(--m-faint); }
+html body.minimal .client-card__desc,
+html body.minimal .personal-card__desc,
+html body.minimal .cert-card__desc,
+html body.minimal .cert-card__org { color: var(--m-muted); }
+html body.minimal .client-card .tech-pill,
+html body.minimal .personal-card .tech-pill,
+html body.minimal .cert-card__tags span { border-color: var(--m-line-strong); color: var(--m-muted); }
+html body.minimal .client-card .btn-demo,
+html body.minimal .personal-card .btn-demo,
+html body.minimal .mentorhub-card .btn-demo { background: var(--m-text); color: var(--m-bg); border-color: var(--m-text); }
+html body.minimal .client-card .btn-demo:hover,
+html body.minimal .personal-card .btn-demo:hover { background: var(--m-accent); border-color: var(--m-accent); color: var(--m-on-accent); opacity: 1; }
+html body.minimal .personal-card .btn-repo,
+html body.minimal .mentorhub-card .btn-repo { color: var(--m-text); border-color: var(--m-line-strong); }
+html body.minimal .personal-card .btn-repo:hover,
+html body.minimal .mentorhub-card .btn-repo:hover { background: var(--m-text); color: var(--m-bg); }
+html body.minimal .personal-card__media { background: var(--m-surface-2); }
+
+/* Etiquetas: una sola familia de color */
+html body.minimal .client-badge,
+html body.minimal .personal-card__badge {
+  background: transparent;
+  border-color: var(--m-line-strong);
+  color: var(--m-muted);
+}
+html body.minimal .client-badge--sold { border-color: var(--m-accent); color: var(--m-accent-text); }
+html body.minimal .personal-card__nfc { background: transparent; border: 1px solid var(--m-line-strong); color: var(--m-accent-text); }
+html body.minimal .clients-section-label__line { background: var(--m-line); }
+html body.minimal .clients-section-label__text,
+html body.minimal .clientes__lead { color: var(--m-muted); }
+html body.minimal .clientes__eyebrow,
+html body.minimal .estudiantes__eyebrow,
+html body.minimal .certs__eyebrow { color: var(--m-accent-text); }
+
+/* Certificados: logos en un solo color */
+html body.minimal .cert-card__logo { background: var(--m-surface-2); }
+html body.minimal .cert-card__logo--uvg { color: var(--m-accent-text); }
+html body.minimal .cert-card__logo--intecap svg { fill: var(--m-accent-text); }
+
+/* Estudiantes */
+html body.minimal .mentorhub-card { border-color: var(--m-line); }
+html body.minimal .mentorhub-card__icon { background: var(--m-accent); color: var(--m-on-accent); }
+
+/* Hero */
+html body.minimal .hero__socials a { border-color: var(--m-line-strong); color: var(--m-text); }
+html body.minimal .hero__socials a:hover { background: var(--m-accent); border-color: var(--m-accent); color: var(--m-on-accent); }
+
+/* Terminales (Setup) y verificador de links: puntitos y logo en la paleta */
+html body.minimal .terminal-overlay__dot { background: rgba(255,240,225,0.25); }
+html body.minimal .terminal-overlay__dot:first-child { background: #ff7a1a; }
+html body.minimal .goog-logo span { color: #ff7a1a; }
+html body.minimal .goog-logo span:nth-child(even) { color: #8a5a35; }
+
+/* Foco del teclado */
+html body.minimal :focus-visible { outline-color: var(--m-accent); }

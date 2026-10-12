@@ -10,7 +10,12 @@
   // Color del hero y de cada sección según el tema (data-bg-color en claro,
   // data-bg-dark en oscuro; si no hay data-bg-dark se usa el mismo).
   const isDark = () => document.documentElement.getAttribute('data-theme') !== 'light';
-  const heroColor = () => (isDark() ? [8, 8, 10] : [255, 255, 255]);
+  // El color del hero se puede fijar en <body data-hero-light="…" data-hero-dark="…">
+  const heroColor = () => {
+    const d = document.body.dataset;
+    const attr = isDark() ? d.heroDark : d.heroLight;
+    return attr ? parseColor(attr) : (isDark() ? [8, 8, 10] : [255, 255, 255]);
+  };
 
   function parseColor(str) { return str.split(',').map(Number); }
   function smoothstep(t) { t = Math.min(1, Math.max(0, t)); return t * t * (3 - 2 * t); }

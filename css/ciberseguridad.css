@@ -149,17 +149,17 @@
 .kali-window {
   border: 1px solid color-mix(in srgb, var(--kali-accent) 55%, transparent);
   border-radius: 0;
-  background: #0a1626;
+  background: #140d08;
   overflow: hidden;
   margin-bottom: 2.5rem;
-  box-shadow: 0 30px 70px rgba(47,111,173,0.18);
+  box-shadow: 0 30px 70px rgba(255,122,26,0.12);
 }
 .kali-window__bar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.55rem 0.8rem;
-  background: #0d1f33;
+  background: #1d130b;
   border-bottom: 1px solid color-mix(in srgb, var(--kali-accent) 35%, transparent);
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -168,7 +168,7 @@
 .kali-window__dot {
   width: 9px; height: 9px;
   border-radius: 50%;
-  background: #3a5874;
+  background: #5a3d27;
   display: inline-block;
 }
 .kali-window__title { margin-left: 0.4rem; font-weight: 600; }
@@ -188,7 +188,7 @@
 
 /* ---------- CamPhish / Whatsapp_spammer como terminales Kali reales ---------- */
 .kali-terminal-card {
-  background: #0a1626;
+  background: #140d08;
   border: 1px solid color-mix(in srgb, var(--kali-accent) 45%, transparent);
   border-radius: 0;
   overflow: hidden;
@@ -198,7 +198,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.8rem;
-  background: #0d1f33;
+  background: #1d130b;
   border-bottom: 1px solid color-mix(in srgb, var(--kali-accent) 30%, transparent);
 }
 .kali-terminal-card__bartitle {
@@ -217,12 +217,12 @@
   white-space: pre-wrap;
   word-break: break-word;
 }
-.kt-user, .kt-host { color: #4fc3f7; font-weight: 600; }
-.kt-path { color: #8fe89a; }
+.kt-user, .kt-host { color: #ffb066; font-weight: 600; }
+.kt-path { color: #ffb066; }
 .kt-cmd { color: #fff; font-weight: 600; }
 .kt-lang { color: rgba(255,255,255,0.35); font-size: 0.74rem; }
 .kali-terminal-card__desc {
-  color: rgba(234,244,251,0.72);
+  color: rgba(246,239,230,0.72);
   margin: 0.9rem 0 1.1rem;
   line-height: 1.6;
 }
@@ -269,7 +269,7 @@
 }
 .flipper-window__status {
   font-size: 0.65rem;
-  color: #6fd97a;
+  color: #ff7a1a;
   display: flex; align-items: center; gap: 0.3rem;
 }
 .flipper-window__body {
@@ -414,12 +414,12 @@
 }
 .flipper-warn__title { font-weight: 700; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
 .flipper-explore {
-  border: 1px solid rgba(111,217,122,0.5);
-  background: rgba(111,217,122,0.06);
+  border: 1px solid rgba(255,122,26,0.5);
+  background: rgba(255,122,26,0.06);
   border-radius: var(--radius-md);
   padding: 1.6rem;
 }
-.flipper-explore__title { font-weight: 700; color: #8fe89a; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
+.flipper-explore__title { font-weight: 700; color: #ffb066; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
 
 /* Recomendados */
 .reco-list {
@@ -519,17 +519,17 @@
 
 /* -------- KALI TERMINAL — Generador de contraseñas -------- */
 .kali-term {
-  background: #0d1117;
-  border: 1px solid #21262d;
+  background: #0e0906;
+  border: 1px solid #2a1d13;
   font-family: var(--font-mono);
-  color: #c9d1d9;
+  color: #e9dccd;
 }
 .kali-term__bar {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  background: #161b22;
-  border-bottom: 1px solid #21262d;
+  background: #17100b;
+  border-bottom: 1px solid #2a1d13;
   padding: 0.55rem 1rem;
 }
 .kali-term__dots { display: flex; gap: 6px; }
@@ -538,9 +538,9 @@
   border-radius: 50%;
   display: inline-block;
 }
-.kali-term__dots span:nth-child(1) { background: #ff5f56; }
+.kali-term__dots span:nth-child(1) { background: #ff7a1a; }
 .kali-term__dots span:nth-child(2) { background: #ffbd2e; }
-.kali-term__dots span:nth-child(3) { background: #27c93f; }
+.kali-term__dots span:nth-child(3) { background: #ff9a4a; }
 .kali-term__title {
   font-size: 0.72rem;
   color: #8b949e;
@@ -550,21 +550,21 @@
 
 .kali-prompt { margin: 0 0 3px; font-size: 0.82rem; line-height: 1.4; }
 .kp-path { color: #8b949e; }
-.kp-user { color: #f85149; font-weight: 700; }
-.kp-host { color: #58a6ff; font-weight: 700; }
-.kp-dir  { color: #79c0ff; }
+.kp-user { color: #ff7a1a; font-weight: 700; }
+.kp-host { color: #ffb066; font-weight: 700; }
+.kp-dir  { color: #e9c9a8; }
 .kp-arrow { color: #8b949e; }
 .kp-cmd  { color: #e3b341; }
 
 .kali-section { margin: 1.1rem 0 0; }
-.kali-comment { font-size: 0.78rem; color: #5a8a6a; display: block; margin-bottom: 0.5rem; }
+.kali-comment { font-size: 0.78rem; color: #8a6a52; display: block; margin-bottom: 0.5rem; }
 
 .kali-output {
   width: 100%;
   background: #010409;
-  border: 1px solid #21262d;
-  border-left: 3px solid #27c93f;
-  color: #39d353;
+  border: 1px solid #2a1d13;
+  border-left: 3px solid #ff9a4a;
+  color: #ffb066;
   font-family: var(--font-mono);
   font-size: 0.9rem;
   font-weight: 600;
@@ -573,19 +573,19 @@
   letter-spacing: 0.06em;
   margin-bottom: 0.7rem;
 }
-.kali-output::placeholder { color: #2d4a3e; }
+.kali-output::placeholder { color: #5a4030; }
 
 .kali-strength-row {
   display: flex;
   align-items: center;
   gap: 0.7rem;
   font-size: 0.72rem;
-  color: #5a8a6a;
+  color: #8a6a52;
 }
 .kali-strength-track {
   flex: 1;
   height: 4px;
-  background: #21262d;
+  background: #2a1d13;
   border: 1px solid #30363d;
 }
 .kali-strength-fill {
@@ -597,7 +597,7 @@
 
 .kali-slider {
   width: 100%;
-  accent-color: #27c93f;
+  accent-color: #ff9a4a;
   cursor: pointer;
   margin-top: 0.3rem;
 }
@@ -617,10 +617,10 @@
   color: #8b949e;
   transition: color 0.15s;
 }
-.kali-opt:hover { color: #c9d1d9; }
+.kali-opt:hover { color: #e9dccd; }
 .kali-opt input { display: none; }
-.kali-opt input + .kali-flag::before { content: '[ ] '; color: #5a8a6a; }
-.kali-opt input:checked + .kali-flag::before { content: '[x] '; color: #27c93f; }
+.kali-opt input + .kali-flag::before { content: '[ ] '; color: #8a6a52; }
+.kali-opt input:checked + .kali-flag::before { content: '[x] '; color: #ff9a4a; }
 .kali-flag { font-family: var(--font-mono); color: #e3b341; font-size: 0.78rem; }
 
 .kali-btns { display: flex; gap: 0.7rem; margin-top: 1.3rem; }
@@ -639,17 +639,17 @@
   transition: background 0.15s ease;
 }
 .kali-btn--exec {
-  background: #27c93f;
-  border-color: #27c93f;
-  color: #0d1117;
+  background: #ff9a4a;
+  border-color: #ff9a4a;
+  color: #0e0906;
 }
-.kali-btn--exec:hover { background: #2ddb47; }
+.kali-btn--exec:hover { background: #ffa45c; }
 .kali-btn--copy {
   background: transparent;
   border-color: #30363d;
-  color: #c9d1d9;
+  color: #e9dccd;
 }
-.kali-btn--copy:hover { background: #161b22; border-color: #58a6ff; color: #58a6ff; }
+.kali-btn--copy:hover { background: #17100b; border-color: #ffb066; color: #ffb066; }
 
 /* -------- GOOGLE CARD — Analizador de URLs -------- */
 .goog-card {
@@ -704,7 +704,7 @@
 }
 .goog-searchbar__input::placeholder { color: #9aa0a6; }
 .goog-searchbar__btn {
-  background: #1a73e8;
+  background: #c2560a;
   color: #fff;
   border: none;
   border-radius: 0;
@@ -718,8 +718,8 @@
   flex-shrink: 0;
 }
 .goog-searchbar__btn:hover {
-  background: #1558b0;
-  box-shadow: 0 1px 4px rgba(26,115,232,0.3);
+  background: #8a3d08;
+  box-shadow: 0 1px 4px rgba(194,86,10,0.3);
 }
 .goog-disclaimer {
   font-family: 'Roboto', sans-serif;
@@ -737,9 +737,9 @@
   overflow: hidden;
   border: 1px solid;
 }
-.url-result--safe       { border-color: #ceead6; }
-.url-result--suspicious { border-color: #feefc3; }
-.url-result--danger     { border-color: #f5c6c6; }
+.url-result--safe       { border-color: #e6d8c8; }
+.url-result--suspicious { border-color: #ffd7b0; }
+.url-result--danger     { border-color: #f0b48a; }
 .url-result--warn       { border-color: #e0e0e0; }
 
 .url-result__header {
@@ -748,15 +748,15 @@
   gap: 1rem;
   padding: 1rem 1.3rem;
 }
-.url-result--safe       .url-result__header { background: #e6f4ea; }
-.url-result--suspicious .url-result__header { background: #fef7e0; }
-.url-result--danger     .url-result__header { background: #fce8e6; }
+.url-result--safe       .url-result__header { background: #f6f0e9; }
+.url-result--suspicious .url-result__header { background: #fff1e3; }
+.url-result--danger     .url-result__header { background: #fde3cf; }
 .url-result--warn       .url-result__header { background: #f8f9fa; }
 
 .url-result__icon { font-size: 2rem; flex-shrink: 0; }
-.url-result--safe .url-result__icon       { color: #137333; }
+.url-result--safe .url-result__icon       { color: #3d2a1c; }
 .url-result--suspicious .url-result__icon { color: #b06000; }
-.url-result--danger .url-result__icon     { color: #c5221f; }
+.url-result--danger .url-result__icon     { color: #b8400a; }
 .url-result--warn .url-result__icon       { color: #5f6368; }
 
 .url-result__verdict {
@@ -764,9 +764,9 @@
   font-weight: 700;
   line-height: 1.2;
 }
-.url-result--safe .url-result__verdict       { color: #137333; }
+.url-result--safe .url-result__verdict       { color: #3d2a1c; }
 .url-result--suspicious .url-result__verdict { color: #b06000; }
-.url-result--danger .url-result__verdict     { color: #c5221f; }
+.url-result--danger .url-result__verdict     { color: #b8400a; }
 .url-result--warn .url-result__verdict       { color: #202124; }
 
 .url-result__domain {
@@ -793,10 +793,10 @@
   color: #3c4043;
 }
 .url-finding .ph { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
-.url-finding--ok .ph     { color: #137333; }
-.url-finding--danger .ph { color: #c5221f; }
+.url-finding--ok .ph     { color: #3d2a1c; }
+.url-finding--danger .ph { color: #b8400a; }
 .url-finding--warn .ph   { color: #b06000; }
-.url-finding--info .ph   { color: #1a73e8; }
+.url-finding--info .ph   { color: #c2560a; }
 .url-disclaimer {
   font-size: 0.7rem;
   color: #9aa0a6;
@@ -832,7 +832,7 @@
 }
 .ciber-tool-heading__desc {
   font-size: 0.8rem;
-  color: rgba(234,244,251,0.55);
+  color: rgba(246,239,230,0.55);
   margin: 0;
   font-family: var(--font-mono);
 }

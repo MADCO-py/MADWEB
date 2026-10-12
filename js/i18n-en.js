@@ -88,6 +88,18 @@ window.I18N_EN = {
   'Mira todo lo que puede hacer tu futura página web': 'See everything your future website can do',
   'Animaciones, juegos, formularios, cámara, clima en vivo y más. Todo funciona de verdad.': 'Animations, games, forms, camera, live weather and more. It all really works.',
 
+  'Todo lo que te imagines puede llegar a ser programado.': 'Anything you can imagine can be programmed.',
+  'Todo lo que te imagines puede llegar a ser': 'Anything you can imagine can be',
+  'programado': 'programmed',
+  'Me cuentas tus ideas': 'Tell me your ideas',
+  'Qué necesitas resolver y qué quieres mostrar. No necesitas saber nada de tecnología.': "What you need to solve and what you want to show. You don't need to know anything about tech.",
+  'Te muestro un boceto en vivo': "I'll show you a live draft",
+  'Real, no una imagen: lo abres en tu celular y lo ajustamos juntos.': "Real, not a picture: you open it on your phone and we fine-tune it together.",
+  'Tu página está LISTA': 'Your website is READY',
+  'Webs interactivas': 'Interactive websites',
+  'Animaciones, juegos, formularios, cámara y clima en vivo. Todo funciona de verdad: entra y pruébalo.': 'Animations, games, forms, camera and live weather. It all really works: go in and try it.',
+  'Ver las demos': 'See the demos',
+
   /* ---------- Página de demos (demo.html) ---------- */
   'MADCO · Tu futura página web': 'MADCO · Your future website',
   'Mira todo lo que puede hacer tu futura página web: animaciones, juegos, formularios, información en vivo y sensores del teléfono.':
