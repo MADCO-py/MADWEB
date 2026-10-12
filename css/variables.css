@@ -41,15 +41,15 @@
      CIBERSEGURIDAD — sendero único Kali (morado) → Flipper (naranja)
      Interpolado vía scroll en js/ciber-path.js
      ============================================================ */
-  --ciber-bg: #0e0e0e;
-  --ciber-bg-end: #0f0f0f;
-  --kali-primary: #626262;
-  --kali-accent: #bbbbbb;
-  --kali-glow: #1d1d1d;
-  --flipper-primary: #8f8f8f;
-  --flipper-accent: #bbbbbb;
-  --flipper-white: #eeeeee;
-  --ciber-text: #f0f0f0;
+  --ciber-bg: #0a1626;
+  --ciber-bg-end: #1a0d00;
+  --kali-primary: #2f6fad;
+  --kali-accent: #8fd6ff;
+  --kali-glow: #14304d;
+  --flipper-primary: #ff7a1a;
+  --flipper-accent: #ffb066;
+  --flipper-white: #f4ede2;
+  --ciber-text: #eaf4fb;
 
   /* ---- ESP32 ---- */
   --esp32-bg: #0c0d0d;

@@ -163,7 +163,7 @@
       const ox = keyboard ? r.width / 2 : e.clientX - r.left;
       const oy = keyboard ? r.height / 2 : e.clientY - r.top;
       const accent = getComputedStyle(root).getPropertyValue('--pg').trim();
-      const palette = [accent, '#ffffff', '#ff3d7f', '#ffd400', '#7cff4f'];
+      const palette = [accent, '#ffffff', '#ff7a1a', '#ff3d7f', '#7cff4f'];
       for (let i = 0; i < (reduced ? 12 : 40); i++) {
         const bit = document.createElement('span');
         const a = Math.random() * Math.PI * 2;

@@ -430,7 +430,7 @@
   const COLOR_WORDS = {
     rojo: '#ff3d7f', red: '#ff3d7f', rosa: '#ff3d7f', pink: '#ff3d7f',
     azul: '#00e5ff', blue: '#00e5ff', cian: '#00e5ff', cyan: '#00e5ff',
-    verde: '#7cff4f', green: '#7cff4f', amarillo: '#ffd400', yellow: '#ffd400',
+    verde: '#7cff4f', green: '#7cff4f', amarillo: '#ff7a1a', yellow: '#ff7a1a',
     morado: '#a26bff', purple: '#a26bff', naranja: '#ff7a1a', orange: '#ff7a1a',
   };
   if (sayBtn) {

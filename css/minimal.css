@@ -10,24 +10,27 @@
 body.minimal {
   --serif: 'Bodoni Moda', 'Didot', 'Bodoni 72', 'Times New Roman', serif;
   --sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --display: 'Inter Tight', 'Inter', 'Helvetica Neue', Arial, sans-serif;   /* títulos largos: fácil de leer */
+  --m-orange: #ff7a1a;
   --m-bg: #0a0a0a;
   --m-surface: #171717;      /* fondo de fotos y cuadros */
   --m-surface-2: #202020;
   --m-line: rgba(255,255,255,0.12);
   --m-line-strong: rgba(255,255,255,0.3);
-  --m-text: #f4f4f1;
-  --m-muted: #a6a6a2;
-  --m-faint: #6f6f6c;
+  --m-text: #ffffff;
+  --m-muted: #a3a3a3;
+  --m-faint: #6e6e6e;
 }
 html[data-theme="light"] body.minimal {
   --m-bg: #ffffff;
-  --m-surface: #ebe9e4;      /* el gris cálido de las fotos de Zara */
-  --m-surface-2: #f4f3f0;
+  --m-surface: #eeeeee;      /* gris neutro detrás de las fotos */
+  --m-surface-2: #f5f5f5;
   --m-line: rgba(0,0,0,0.12);
   --m-line-strong: rgba(0,0,0,0.32);
   --m-text: #000000;
   --m-muted: #555555;
   --m-faint: #8a8a8a;
+  --m-orange: #d65f0c;       /* un poco más oscuro para leerse sobre blanco */
 }
 body.minimal {
   /* Sin color de acento: el "acento" es el mismo negro/blanco del texto */
@@ -60,22 +63,23 @@ html body.minimal { background: var(--m-bg); }
 /* Fondo fijo: el cambio entre secciones blancas y negras es nítido,
    sin la mezcla gris que hace el fondo animado */
 html body.minimal #page-bg { background: var(--m-bg) !important; }
-html body.minimal :is(.seguridad, .ciber-path, .setup) { background-color: #0a0a0a; }
+html body.minimal :is(.seguridad, .setup) { background-color: #0a0a0a; }
 
-/* ---------- Títulos con serifa ---------- */
+/* ---------- Títulos: sans legible (Inter Tight) ---------- */
 html body.minimal :is(.section__title, .qw-title, .qw-subtitle, .qw-slogan, .qw-demo__text, .certs__title,
   .demo-sec__title, .demo-hero__title, .pg__title, .pg__subtitle, .demo-end__title, .ciber-path__intro h2, .setup__title) {
-  font-family: var(--serif);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.02;
-  text-transform: uppercase;
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+  text-transform: none;
 }
-html body.minimal :is(.section__title, .certs__title, .qw-title, .demo-sec__title, .setup__title) { font-size: clamp(2.1rem, 4.6vw, 3.7rem); }
+html body.minimal :is(.section__title, .certs__title, .qw-title, .demo-sec__title, .setup__title) { font-size: clamp(2.1rem, 4.6vw, 3.6rem); }
 html body.minimal :is(.qw-subtitle, .pg__title) { font-size: clamp(1.5rem, 2.8vw, 2.2rem); }
+/* Palabras destacadas en naranja */
 html body.minimal :is(.qw-title mark, .qw-slogan span, .demo-hero__title span) {
   font-style: italic;
-  color: inherit;
+  color: var(--m-orange);
   background: none;
   -webkit-text-fill-color: currentColor;
   animation: none;
@@ -192,20 +196,20 @@ html body.minimal .clients-section-label__line { background: var(--m-line); }
 
 /* Certificados y estudiantes */
 html body.minimal .cert-card { padding: 1.6rem 0; border-top: 1px solid var(--m-line); }
-html body.minimal .cert-card__logo { background: var(--m-surface); color: var(--m-text); }
-html body.minimal .cert-card__logo--intecap svg { fill: var(--m-text); }
+html body.minimal .cert-card__logo { background: var(--m-surface); }
 html body.minimal .cert-card__tags span { padding: 0; border: 0; color: var(--m-muted); }
 html body.minimal .cert-card__tags span + span::before { content: '/'; margin: 0 0.5rem; opacity: 0.5; }
 html body.minimal .mentorhub-card__icon { background: transparent; color: var(--m-text); border: 1px solid var(--m-line-strong); }
 
-/* ---------- Portada ---------- */
-html body.minimal .hero { align-items: flex-start; text-align: left; padding-left: clamp(1.2rem, 6vw, 7rem); padding-right: clamp(1.2rem, 6vw, 7rem); }
+/* ---------- Portada: MADCO centrado ---------- */
+html body.minimal .hero { align-items: center; text-align: center; }
 html body.minimal .hero__filename {
-  font: 400 clamp(5rem, 21vw, 19rem)/0.85 var(--serif);
+  font: 400 clamp(5rem, 19vw, 17rem)/0.85 var(--serif);
   letter-spacing: -0.03em;
   color: var(--m-text);
+  white-space: nowrap;
 }
-html body.minimal .hero__type-cursor { font-weight: 300; font-size: 0.8em; margin-left: 0.02em; color: var(--m-text); }
+html body.minimal .hero__type-cursor { font-weight: 300; font-size: 0.8em; margin-left: 0.02em; }
 html body.minimal .hero__tagline {
   margin-top: 2rem;
   font: 400 0.8rem var(--sans);
@@ -213,7 +217,7 @@ html body.minimal .hero__tagline {
   text-transform: uppercase;
   color: var(--m-text);
 }
-html body.minimal .hero__socials { gap: 1.6rem; margin-top: 1.6rem; }
+html body.minimal .hero__socials { justify-content: center; gap: 1.6rem; margin-top: 1.6rem; }
 html body.minimal .hero__socials a {
   width: auto;
   height: auto;
@@ -227,8 +231,8 @@ html body.minimal .hero__socials a {
   text-transform: uppercase;
 }
 html body.minimal .hero__socials a .ph { display: none; }
-html body.minimal .hero__socials a:hover { background: none; color: var(--m-text); opacity: 0.6; transform: none; }
-html body.minimal .hero__scroll-hint { left: clamp(1.2rem, 6vw, 7rem); font: 400 0.68rem var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--m-text); }
+html body.minimal .hero__socials a:hover { background: none; color: var(--m-orange); transform: none; }
+html body.minimal .hero__scroll-hint { left: 50%; transform: translateX(-50%); font: 400 0.68rem var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--m-text); }
 
 /* ---------- Página de demos ---------- */
 html body.minimal .demo-hero { text-align: left; place-items: center start; padding-left: clamp(1.2rem, 6vw, 7rem); }
@@ -283,6 +287,12 @@ html body.minimal .pg-drag__item { box-shadow: none; }
 html body.minimal .hero__socials .social-name { margin: 0; }
 .footer__socials .social-name { display: none; }
 
+/* ---------- Acento naranja: solo en detalles ---------- */
+html body.minimal :is(.pg__label span, .demo-sec__num, .qw-steps span, .hero__type-cursor) { color: var(--m-orange) !important; }
+html body.minimal .zm__num { color: var(--m-orange); }
+html body.minimal .zm__link.is-active::before { background: var(--m-orange); }
+html body.minimal :is(.client-badge--sold) { color: var(--m-orange); }
+
 /* ---------- Pie de página ---------- */
 html body.minimal .footer { background: var(--m-bg); color: var(--m-text); border-top: 1px solid var(--m-line); }
 html body.minimal .footer .nav__brand { font: 400 1.6rem var(--serif); color: var(--m-text); }
@@ -293,7 +303,7 @@ html body.minimal .footer__note { font: 400 0.68rem var(--sans); letter-spacing:
 html body.minimal :focus-visible { outline: 1px solid var(--m-text); outline-offset: 3px; }
 
 @media (max-width: 640px) {
-  html body.minimal .hero__filename { font-size: 20vw; white-space: nowrap; }
+  html body.minimal .hero__filename { font-size: 19vw; }
 }
 
 /* "¿Qué puede hacer una página por ti?": sin marco, solo espacio */
@@ -301,3 +311,7 @@ html body.minimal .qw-cards { border: 0; gap: 2.4rem 2rem; }
 html body.minimal .qw-card { padding: 0; }
 html body.minimal :is(.qw-card h4, .qw-steps b) { font-weight: 500; }
 html body.minimal .qw-card--accent { background: none; box-shadow: none; }
+
+/* Seguridad y Flipper Zero conservan sus colores originales (naranja Flipper) */
+html body.minimal .seguridad .section__eyebrow { color: var(--flipper-accent) !important; }
+html body.minimal .ciber-path .section__eyebrow { color: var(--ciber-live-accent, #ff7a1a) !important; }

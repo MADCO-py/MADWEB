@@ -75,7 +75,7 @@
     if (pwd.length >= 24) score++;
 
     const levels = ['', 'Muy débil', 'Débil', 'Media', 'Fuerte', 'Muy fuerte', 'Extrema'];
-    const colors = ['', '#424242', '#626262', '#676767', '#8f8f8f', '#aaaaaa', '#bbbbbb'];
+    const colors = ['', '#ef4444', '#f97316', '#eab308', '#22c55e', '#10b981', '#6366f1'];
     const pct = Math.min(100, Math.round((score / 6) * 100));
 
     strengthBar.style.width = pct + '%';
@@ -95,8 +95,8 @@
     navigator.clipboard.writeText(output.value).then(() => {
       const orig = copyBtn.textContent;
       copyBtn.textContent = 'Copiada';
-      copyBtn.style.background = '#8f8f8f';
-      copyBtn.style.borderColor = '#8f8f8f';
+      copyBtn.style.background = '#22c55e';
+      copyBtn.style.borderColor = '#22c55e';
       setTimeout(() => {
         copyBtn.textContent = orig;
         copyBtn.style.background = '';

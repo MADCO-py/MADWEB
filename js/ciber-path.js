@@ -8,7 +8,7 @@
   if (!path) return;
 
   // Naranja Flipper fijo en toda la sección
-  path.style.setProperty('--ciber-live-bg', 'rgb(15, 15, 15)');
-  path.style.setProperty('--ciber-live-accent', 'rgb(143, 143, 143)');
-  path.style.setProperty('--ciber-live-glow', 'rgb(143, 143, 143)');
+  path.style.setProperty('--ciber-live-bg', 'rgb(26, 13, 0)');
+  path.style.setProperty('--ciber-live-accent', 'rgb(255, 122, 26)');
+  path.style.setProperty('--ciber-live-glow', 'rgb(255, 122, 26)');
 })();

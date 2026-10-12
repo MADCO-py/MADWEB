@@ -113,7 +113,7 @@ html[data-theme="light"] .pg {
 .pg-drag__item.is-grab { cursor: grabbing; scale: 1.12; box-shadow: 14px 14px 0 rgba(0,0,0,0.35); z-index: 2; }
 
 /* 02 Colores */
-.pg-colors { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem; }
+.pg-colors { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem; }
 .pg-swatch--mono { background: linear-gradient(135deg, #fff 50%, #000 50%); border-color: var(--pg-line); }
 .pg-swatch {
   aspect-ratio: 1; border: 2px solid transparent; background: var(--c); cursor: pointer;
