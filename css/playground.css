@@ -3,10 +3,10 @@
    El color de acento vive en --pg (lo cambia js/playground.js).
    Los colores de texto/fondo cambian con el tema (css/theme.css).
    ============================================================ */
-@property --pg { syntax: '<color>'; inherits: true; initial-value: #00e5ff; }
+@property --pg { syntax: '<color>'; inherits: true; initial-value: #b6b6b6; }
 
 .pg {
-  --pg: #00e5ff;
+  --pg: #b6b6b6;
   --pg-ink: #0c0c12;                 /* texto sobre el acento */
   --pg-text: #ffffff;
   --pg-muted: rgba(240,240,238,0.6);
@@ -113,7 +113,8 @@ html[data-theme="light"] .pg {
 .pg-drag__item.is-grab { cursor: grabbing; scale: 1.12; box-shadow: 14px 14px 0 rgba(0,0,0,0.35); z-index: 2; }
 
 /* 02 Colores */
-.pg-colors { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem; }
+.pg-colors { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem; }
+.pg-swatch--mono { background: linear-gradient(135deg, #fff 50%, #000 50%); border-color: var(--pg-line); }
 .pg-swatch {
   aspect-ratio: 1; border: 2px solid transparent; background: var(--c); cursor: pointer;
   transition: transform 0.3s cubic-bezier(.3,1.8,.5,1), border-color 0.2s ease;
@@ -357,7 +358,7 @@ body.pg-melting { animation: pg-melt 2.6s ease-in-out both; transform-origin: 50
   resize: vertical; transition: border-color 0.2s ease;
 }
 .pg-field input:focus, .pg-field textarea:focus { outline: none; border-color: var(--pg); }
-.pg-field.is-bad input { border-color: #ff4d6d; }
+.pg-field.is-bad input { border-color: #757575; }
 .pg-reg__photo { cursor: pointer; }
 .pg-reg__photo input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .pg-reg__photo input:focus-visible + .pg-reg__photo-box { outline: 2px solid var(--pg); outline-offset: 2px; }
@@ -403,7 +404,7 @@ body.pg-melting { animation: pg-melt 2.6s ease-in-out both; transform-origin: 50
 
 .pg-spotify iframe { display: block; width: 100%; height: 232px; border: 0; }
 .pg-spotify__empty { display: grid; gap: 0.8rem; justify-items: start; }
-.pg-spotify__logo { width: 52px; height: 52px; display: grid; place-items: center; font-size: 2rem; color: #000; background: #1ed760; }
+.pg-spotify__logo { width: 52px; height: 52px; display: grid; place-items: center; font-size: 2rem; color: #000; background: #a7a7a7; }
 .pg-spotify__empty p { margin: 0; font-size: 0.82rem; color: var(--pg-muted); line-height: 1.5; }
 .pg-spotify__empty a { text-decoration: none; }
 

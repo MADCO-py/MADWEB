@@ -60,7 +60,7 @@
   function renderSocials(container) {
     if (!container) return;
     container.innerHTML = SOCIALS.map(s =>
-      `<a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.name}"><i class="ph ${s.icon}" style="font-size:1.3rem;"></i></a>`
+      `<a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.name}"><i class="ph ${s.icon}" style="font-size:1.3rem;"></i><span class="social-name">${s.name}</span></a>`
     ).join('');
   }
 
@@ -110,52 +110,29 @@
     });
   }
 
-  /* ---------- CLIENTES — enterprise full-width, featured full-width, resto agrupado ---------- */
+  /* ---------- CLIENTES — dos destacados arriba, el resto de 3 en 3 ---------- */
   function renderClients() {
     const mount = document.querySelector('[data-mount="clients"]');
     if (!mount) return;
     mount.innerHTML = '';
 
-    const enterprise    = CLIENT_PROJECTS.filter(p => p.type === 'enterprise');
-    const featuredArt   = CLIENT_PROJECTS.filter(p => p.type === 'artista' && p.featured);
-    const restArtistas  = CLIENT_PROJECTS.filter(p => p.type === 'artista' && !p.featured);
-    const emprendedores = CLIENT_PROJECTS.filter(p => p.type === 'emprendedor');
+    // Arriba, lado a lado: el sistema empresarial y los artistas destacados.
+    // Abajo, todos los demás de 3 en 3.
+    const top  = CLIENT_PROJECTS.filter(p => p.type === 'enterprise' || p.featured);
+    const rest = CLIENT_PROJECTS.filter(p => !(p.type === 'enterprise' || p.featured));
 
-    function addLabel(icon, text) {
+    if (top.length) {
+      const g = el('div', 'clients-grid clients-grid--top');
+      top.forEach(p => g.appendChild(buildClientCard(p)));
+      mount.appendChild(g);
+    }
+
+    if (rest.length) {
       const l = el('div', 'clients-section-label reveal');
-      l.innerHTML = '<span class="clients-section-label__line"></span><span class="clients-section-label__text"><i class="ph ' + icon + '"></i> ' + text + '</span><span class="clients-section-label__line"></span>';
+      l.innerHTML = '<span class="clients-section-label__line"></span><span class="clients-section-label__text"><i class="ph ph-squares-four"></i> Más proyectos</span><span class="clients-section-label__line"></span>';
       mount.appendChild(l);
-    }
-
-    // 1. Sistemas empresariales (full width)
-    enterprise.forEach(p => {
-      const g = el('div', 'clients-grid clients-grid--enterprise');
-      g.appendChild(buildClientCard(p));
-      mount.appendChild(g);
-    });
-
-    // 2. Artistas destacados (full width, uno a uno)
-    if (featuredArt.length) {
-      addLabel('ph-music-note', 'Artistas & Creativos');
-      featuredArt.forEach(p => {
-        const g = el('div', 'clients-grid clients-grid--enterprise');
-        g.appendChild(buildClientCard(p));
-        mount.appendChild(g);
-      });
-    }
-
-    // 3. Más artistas (2 columnas)
-    if (restArtistas.length) {
-      const g = el('div', 'clients-grid clients-grid--artistas');
-      restArtistas.forEach(p => g.appendChild(buildClientCard(p)));
-      mount.appendChild(g);
-    }
-
-    // 4. Pequeños emprendedores (2 columnas)
-    if (emprendedores.length) {
-      addLabel('ph-storefront', 'Pequeños Emprendedores');
-      const g = el('div', 'clients-grid clients-grid--emp');
-      emprendedores.forEach(p => g.appendChild(buildClientCard(p)));
+      const g = el('div', 'clients-grid clients-grid--three');
+      rest.forEach(p => g.appendChild(buildClientCard(p)));
       mount.appendChild(g);
     }
   }

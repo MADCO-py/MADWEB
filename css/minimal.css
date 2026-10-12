@@ -1,44 +1,42 @@
 /* ============================================================
-   MINIMAL — paleta de la página principal (index.html):
-   negro, café, naranja y blanco. Solo se carga en index.html
-   (body.minimal), así la página de demos conserva sus colores.
-   Cambia aquí los tonos y se actualiza toda la página.
+   MINIMAL — estilo Zara para index.html y demo.html (body.minimal)
+   Blanco y negro, títulos con serifa, textos chicos en mayúsculas,
+   mucho espacio y sin colores de acento. Las fotos de los proyectos
+   son lo único con color, como la ropa en Zara.
+   Cambia aquí los tonos y se actualizan las dos páginas.
    ============================================================ */
 
-/* ---------- Paleta ---------- */
+/* ---------- Paleta y letras ---------- */
 body.minimal {
-  --m-bg: #0b0806;
-  --m-surface: #160f0a;
-  --m-surface-2: #21170f;
-  --m-line: rgba(255,240,225,0.09);
-  --m-line-strong: rgba(255,240,225,0.2);
-  --m-text: #f6efe6;
-  --m-muted: #b3a291;
-  --m-faint: #7d6b5b;
-  --m-brown: #8a5a35;
-  --m-accent: #ff7a1a;
-  --m-accent-text: #ff8a33;   /* naranja para texto */
-  --m-on-accent: #0b0806;     /* texto encima del naranja */
+  --serif: 'Bodoni Moda', 'Didot', 'Bodoni 72', 'Times New Roman', serif;
+  --sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --m-bg: #0a0a0a;
+  --m-surface: #171717;      /* fondo de fotos y cuadros */
+  --m-surface-2: #202020;
+  --m-line: rgba(255,255,255,0.12);
+  --m-line-strong: rgba(255,255,255,0.3);
+  --m-text: #f4f4f1;
+  --m-muted: #a6a6a2;
+  --m-faint: #6f6f6c;
 }
 html[data-theme="light"] body.minimal {
-  --m-bg: #faf6f0;
-  --m-surface: #ffffff;
-  --m-surface-2: #f3ece2;
-  --m-line: rgba(40,22,10,0.1);
-  --m-line-strong: rgba(40,22,10,0.22);
-  --m-text: #1a110b;
-  --m-muted: #5e4a3b;
-  --m-faint: #8c7663;
-  --m-brown: #8a5a35;
-  --m-accent: #ff7a1a;
-  --m-accent-text: #b8500a;
-  --m-on-accent: #1a110b;
+  --m-bg: #ffffff;
+  --m-surface: #ebe9e4;      /* el gris cálido de las fotos de Zara */
+  --m-surface-2: #f4f3f0;
+  --m-line: rgba(0,0,0,0.12);
+  --m-line-strong: rgba(0,0,0,0.32);
+  --m-text: #000000;
+  --m-muted: #555555;
+  --m-faint: #8a8a8a;
 }
-
-/* Los tokens que ya usan las demás hojas apuntan a la paleta */
 body.minimal {
-  --t-surface: var(--m-surface);
-  --t-surface-2: var(--m-surface-2);
+  /* Sin color de acento: el "acento" es el mismo negro/blanco del texto */
+  --m-accent: var(--m-text);
+  --m-accent-text: var(--m-text);
+  --m-on-accent: var(--m-bg);
+  /* Los tokens de las demás hojas apuntan a esta paleta */
+  --t-surface: var(--m-surface-2);
+  --t-surface-2: var(--m-surface);
   --t-line: var(--m-line);
   --t-line-strong: var(--m-line-strong);
   --t-text: var(--m-text);
@@ -50,87 +48,256 @@ body.minimal {
   --base-text-muted: var(--m-muted);
   --base-border: var(--m-line-strong);
   --edu-text: var(--m-text);
-  --edu-green: var(--m-accent-text);
-  --edu-green-soft: var(--m-surface);
-  --esp32-turquoise: var(--m-accent);
+  --edu-green: var(--m-text);
+  --edu-green-soft: transparent;
+  --font-display: var(--sans);
+  font-family: var(--sans);
+  font-weight: 400;
   color: var(--m-text);
 }
 html body.minimal { background: var(--m-bg); }
 
-/* ---------- Menos adorno: sin sombras ni brillos ---------- */
-html body.minimal .client-card,
-html body.minimal .personal-card,
-html body.minimal .cert-card,
-html body.minimal .mentorhub-card {
-  background: var(--m-surface);
-  border-color: var(--m-line);
-  box-shadow: none;
-}
-html body.minimal .client-card:hover,
-html body.minimal .personal-card:hover,
-html body.minimal .cert-card:hover,
-html body.minimal .client-card[data-client-id]:hover {
-  transform: translateY(-4px);
-  border-color: var(--m-accent);
-  box-shadow: none;
-}
-html body.minimal .client-card__name,
-html body.minimal .personal-card__name,
-html body.minimal .cert-card__title { color: var(--m-text); }
-html body.minimal .client-card__tagline,
-html body.minimal .cert-card__meta { color: var(--m-faint); }
-html body.minimal .client-card__desc,
-html body.minimal .personal-card__desc,
-html body.minimal .cert-card__desc,
-html body.minimal .cert-card__org { color: var(--m-muted); }
-html body.minimal .client-card .tech-pill,
-html body.minimal .personal-card .tech-pill,
-html body.minimal .cert-card__tags span { border-color: var(--m-line-strong); color: var(--m-muted); }
-html body.minimal .client-card .btn-demo,
-html body.minimal .personal-card .btn-demo,
-html body.minimal .mentorhub-card .btn-demo { background: var(--m-text); color: var(--m-bg); border-color: var(--m-text); }
-html body.minimal .client-card .btn-demo:hover,
-html body.minimal .personal-card .btn-demo:hover { background: var(--m-accent); border-color: var(--m-accent); color: var(--m-on-accent); opacity: 1; }
-html body.minimal .personal-card .btn-repo,
-html body.minimal .mentorhub-card .btn-repo { color: var(--m-text); border-color: var(--m-line-strong); }
-html body.minimal .personal-card .btn-repo:hover,
-html body.minimal .mentorhub-card .btn-repo:hover { background: var(--m-text); color: var(--m-bg); }
-html body.minimal .personal-card__media { background: var(--m-surface-2); }
+/* Fondo fijo: el cambio entre secciones blancas y negras es nítido,
+   sin la mezcla gris que hace el fondo animado */
+html body.minimal #page-bg { background: var(--m-bg) !important; }
+html body.minimal :is(.seguridad, .ciber-path, .setup) { background-color: #0a0a0a; }
 
-/* Etiquetas: una sola familia de color */
-html body.minimal .client-badge,
-html body.minimal .personal-card__badge {
-  background: transparent;
-  border-color: var(--m-line-strong);
+/* ---------- Títulos con serifa ---------- */
+html body.minimal :is(.section__title, .qw-title, .qw-subtitle, .qw-slogan, .qw-demo__text, .certs__title,
+  .demo-sec__title, .demo-hero__title, .pg__title, .pg__subtitle, .demo-end__title, .ciber-path__intro h2, .setup__title) {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+  text-transform: uppercase;
+}
+html body.minimal :is(.section__title, .certs__title, .qw-title, .demo-sec__title, .setup__title) { font-size: clamp(2.1rem, 4.6vw, 3.7rem); }
+html body.minimal :is(.qw-subtitle, .pg__title) { font-size: clamp(1.5rem, 2.8vw, 2.2rem); }
+html body.minimal :is(.qw-title mark, .qw-slogan span, .demo-hero__title span) {
+  font-style: italic;
+  color: inherit;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  animation: none;
+}
+html body.minimal .pg__title::after { display: none; }
+
+/* ---------- Textos chicos en mayúsculas ---------- */
+html body.minimal :is(.section__eyebrow, .qw-eyebrow, .certs__eyebrow, .demo-hero__eyebrow, .qw-demo__eyebrow,
+  .pg__label, .webs-inter__feature-label, .clients-section-label__text, .client-badge, .personal-card__badge,
+  .client-card__tagline, .cert-card__meta, .qw-stats span, .tech-pill, .cert-card__tags span, .demo-sec__ideal) {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+html body.minimal :is(.section__eyebrow, .qw-eyebrow, .certs__eyebrow, .demo-hero__eyebrow, .qw-demo__eyebrow,
+  .clientes__eyebrow, .estudiantes__eyebrow, .setup__eyebrow) { color: var(--m-text) !important; opacity: 1; }
+html body.minimal .certs__eyebrow::before { display: none; }
+html body.minimal .pg__label span { color: var(--m-text); }
+
+/* Párrafos: livianos y en gris */
+html body.minimal :is(.section__lead, .qw-lead, .demo-sec__desc, .demo-hero__lead, .demo-end__lead, .pg__lead,
+  .qw-card p, .qw-steps p, .client-card__desc, .personal-card__desc, .cert-card__desc, .mentorhub-card__desc) {
+  font-weight: 300;
   color: var(--m-muted);
 }
-html body.minimal .client-badge--sold { border-color: var(--m-accent); color: var(--m-accent-text); }
-html body.minimal .personal-card__nfc { background: transparent; border: 1px solid var(--m-line-strong); color: var(--m-accent-text); }
+
+/* ---------- Botones: rectángulos negros (o blancos en modo oscuro) ---------- */
+html body.minimal :is(.qw-btn, .qw-demo__btn, .demo-end__btn, .pg-btn--solid, .demo-hero__down),
+html body.minimal .mentorhub-card .btn-demo,
+html body.minimal .personal-card .btn-demo {
+  font: 400 0.72rem var(--sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--m-bg);
+  background: var(--m-text);
+  border: 1px solid var(--m-text);
+  box-shadow: none;
+  transform: none;
+}
+html body.minimal :is(.qw-btn, .qw-demo__btn, .demo-end__btn, .pg-btn--solid):hover,
+html body.minimal .mentorhub-card .btn-demo:hover,
+html body.minimal .personal-card .btn-demo:hover {
+  opacity: 0.8;
+  color: var(--m-bg);
+  background: var(--m-text);
+  box-shadow: none;
+  transform: none;
+}
+html body.minimal :is(.qw-btn.qw-btn--ghost, .demo-end__btn.demo-end__btn--ghost, .pg-btn:not(.pg-btn--solid), .btn.btn-repo) {
+  font-family: var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--m-text);
+  background: transparent;
+  border: 1px solid var(--m-line-strong);
+  box-shadow: none;
+}
+html body.minimal :is(.qw-btn.qw-btn--ghost, .demo-end__btn.demo-end__btn--ghost, .pg-btn:not(.pg-btn--solid), .btn.btn-repo):hover { border-color: var(--m-text); background: transparent; color: var(--m-text); }
+html body.minimal .pg-btn { font-size: 0.72rem; font-weight: 400; }
+html body.minimal .pg-btn:hover { background: var(--m-text); color: var(--m-bg); }
+
+/* ---------- Tarjetas tipo "producto": foto sobre gris, texto abajo ---------- */
+html body.minimal :is(.client-card, .personal-card, .cert-card, .mentorhub-card, .qw-card) {
+  background: transparent;
+  border: 0;
+  box-shadow: none !important;
+  transform: none !important;
+}
+html body.minimal :is(.client-card__media, .personal-card__media, .mentorhub-card__shot) { background: var(--m-surface); border: 0; }
+html body.minimal :is(.client-card__body, .personal-card__body) { padding: 0.9rem 0 1.6rem; }
+html body.minimal .client-card__name,
+html body.minimal .personal-card__name,
+html body.minimal .cert-card__title,
+html body.minimal .mentorhub-card__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--m-text);
+}
+html body.minimal .client-card__name { font-size: 1.35rem; }
+html body.minimal .clients-grid--top .client-card__name { font-size: 1.8rem; }
+html body.minimal :is(.client-badge, .personal-card__badge) {
+  padding: 0;
+  margin-bottom: 0.6rem;
+  border: 0;
+  background: none;
+  color: var(--m-faint);
+}
+html body.minimal :is(.client-badge, .personal-card__badge) .ph { display: none; }
+html body.minimal .client-card__tagline { color: var(--m-faint); }
+
+/* Tecnologías como texto: REACT / NODE.JS / POSTGRESQL */
+html body.minimal :is(.client-card, .personal-card) .tech-pill-row { gap: 0.2rem 0; }
+html body.minimal .tech-pill { padding: 0; border: 0; color: var(--m-muted); opacity: 1; }
+html body.minimal .tech-pill + .tech-pill::before { content: '/'; margin: 0 0.5rem; opacity: 0.5; }
+
+/* "Ver sitio": link subrayado en vez de botón */
+html body.minimal .client-card .btn-demo {
+  padding: 0 0 0.25rem;
+  margin-top: 1rem;
+  font: 400 0.72rem var(--sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--m-text);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+}
+html body.minimal .client-card .btn-demo .ph { display: none; }
+html body.minimal .client-card .btn-demo:hover { opacity: 0.6; transform: none; }
 html body.minimal .clients-section-label__line { background: var(--m-line); }
-html body.minimal .clients-section-label__text,
-html body.minimal .clientes__lead { color: var(--m-muted); }
-html body.minimal .clientes__eyebrow,
-html body.minimal .estudiantes__eyebrow,
-html body.minimal .certs__eyebrow { color: var(--m-accent-text); }
 
-/* Certificados: logos en un solo color */
-html body.minimal .cert-card__logo { background: var(--m-surface-2); }
-html body.minimal .cert-card__logo--uvg { color: var(--m-accent-text); }
-html body.minimal .cert-card__logo--intecap svg { fill: var(--m-accent-text); }
+/* Certificados y estudiantes */
+html body.minimal .cert-card { padding: 1.6rem 0; border-top: 1px solid var(--m-line); }
+html body.minimal .cert-card__logo { background: var(--m-surface); color: var(--m-text); }
+html body.minimal .cert-card__logo--intecap svg { fill: var(--m-text); }
+html body.minimal .cert-card__tags span { padding: 0; border: 0; color: var(--m-muted); }
+html body.minimal .cert-card__tags span + span::before { content: '/'; margin: 0 0.5rem; opacity: 0.5; }
+html body.minimal .mentorhub-card__icon { background: transparent; color: var(--m-text); border: 1px solid var(--m-line-strong); }
 
-/* Estudiantes */
-html body.minimal .mentorhub-card { border-color: var(--m-line); }
-html body.minimal .mentorhub-card__icon { background: var(--m-accent); color: var(--m-on-accent); }
+/* ---------- Portada ---------- */
+html body.minimal .hero { align-items: flex-start; text-align: left; padding-left: clamp(1.2rem, 6vw, 7rem); padding-right: clamp(1.2rem, 6vw, 7rem); }
+html body.minimal .hero__filename {
+  font: 400 clamp(5rem, 21vw, 19rem)/0.85 var(--serif);
+  letter-spacing: -0.03em;
+  color: var(--m-text);
+}
+html body.minimal .hero__type-cursor { font-weight: 300; font-size: 0.8em; margin-left: 0.02em; color: var(--m-text); }
+html body.minimal .hero__tagline {
+  margin-top: 2rem;
+  font: 400 0.8rem var(--sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--m-text);
+}
+html body.minimal .hero__socials { gap: 1.6rem; margin-top: 1.6rem; }
+html body.minimal .hero__socials a {
+  width: auto;
+  height: auto;
+  padding: 0 0 0.25rem;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  border-radius: 0;
+  color: var(--m-text);
+  font: 400 0.72rem var(--sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+html body.minimal .hero__socials a .ph { display: none; }
+html body.minimal .hero__socials a:hover { background: none; color: var(--m-text); opacity: 0.6; transform: none; }
+html body.minimal .hero__scroll-hint { left: clamp(1.2rem, 6vw, 7rem); font: 400 0.68rem var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--m-text); }
 
-/* Hero */
-html body.minimal .hero__socials a { border-color: var(--m-line-strong); color: var(--m-text); }
-html body.minimal .hero__socials a:hover { background: var(--m-accent); border-color: var(--m-accent); color: var(--m-on-accent); }
+/* ---------- Página de demos ---------- */
+html body.minimal .demo-hero { text-align: left; place-items: center start; padding-left: clamp(1.2rem, 6vw, 7rem); }
+html body.minimal .demo-hero::before,
+html body.minimal .demo-hero::after { display: none; }
+html body.minimal .demo-hero__inner { text-align: left; max-width: 1100px; }
+html body.minimal .demo-hero__title { font-size: clamp(2.6rem, 7vw, 6rem); }
+html body.minimal .demo-hero__lead { margin-left: 0; }
+html body.minimal .demo-hero__chips { justify-content: flex-start; margin: 0; }
+html body.minimal .demo-hero__chips a {
+  font: 400 0.72rem var(--sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--m-text);
+  background: transparent;
+  border: 1px solid var(--m-line-strong);
+  transform: none;
+}
+html body.minimal .demo-hero__chips a:hover { background: var(--m-text); color: var(--m-bg); border-color: var(--m-text); transform: none; }
+html body.minimal .demo-hero__chips .ph-bold { display: none; }
+html body.minimal .demo-hero__down { animation: none; }
+html body.minimal .demo-sec__num { padding: 0; background: none; color: var(--m-text); font: 400 0.72rem var(--sans); letter-spacing: 0.1em; }
+html body.minimal .demo-sec__num .ph-bold { display: none; }
+html body.minimal .demo-sec__num::before { content: '|'; }
+html body.minimal .demo-sec__num::after { content: '|'; }
+html body.minimal .demo-sec__ideal { border: 0; padding: 0; background: none; color: var(--m-muted); }
+html body.minimal .demo-sec__ideal .ph { display: none; }
+html body.minimal .demo-fact { background: transparent; border: 0; border-top: 1px solid var(--m-line); padding: 1.2rem 0; }
+html body.minimal .demo-fact b { font-family: var(--serif); font-weight: 400; color: var(--m-text); }
 
-/* Terminales (Setup) y verificador de links: puntitos y logo en la paleta */
-html body.minimal .terminal-overlay__dot { background: rgba(255,240,225,0.25); }
-html body.minimal .terminal-overlay__dot:first-child { background: #ff7a1a; }
-html body.minimal .goog-logo span { color: #ff7a1a; }
-html body.minimal .goog-logo span:nth-child(even) { color: #8a5a35; }
+/* Cuadros de las demos: blanco y negro. Los colores solo aparecen si
+   alguien los elige en "Cambiar colores" o lanza confeti. */
+html body.minimal .pg {
+  --pg: var(--m-text);
+  --pg-ink: var(--m-bg);
+  --pg-text: var(--m-text);
+  --pg-muted: var(--m-muted);
+  --pg-faint: var(--m-faint);
+  --pg-line: var(--m-line);
+  --pg-panel: transparent;
+  --pg-panel-hover: transparent;
+  --pg-well: var(--m-surface);
+  --pg-shadow: transparent;
+  --pg-strong: var(--m-text);
+  --pg-on-text: var(--m-bg);
+}
+html body.minimal .pg__tile:hover { border-color: var(--m-line-strong); }
+html body.minimal .pg-drag__item { box-shadow: none; }
+
+/* Redes: nombre junto al ícono; en el pie solo el ícono */
+.social-name { margin-left: 0.4rem; }
+html body.minimal .hero__socials .social-name { margin: 0; }
+.footer__socials .social-name { display: none; }
+
+/* ---------- Pie de página ---------- */
+html body.minimal .footer { background: var(--m-bg); color: var(--m-text); border-top: 1px solid var(--m-line); }
+html body.minimal .footer .nav__brand { font: 400 1.6rem var(--serif); color: var(--m-text); }
+html body.minimal .footer__socials a { color: var(--m-text); }
+html body.minimal .footer__note { font: 400 0.68rem var(--sans); letter-spacing: 0.1em; text-transform: uppercase; }
 
 /* Foco del teclado */
-html body.minimal :focus-visible { outline-color: var(--m-accent); }
+html body.minimal :focus-visible { outline: 1px solid var(--m-text); outline-offset: 3px; }
+
+@media (max-width: 640px) {
+  html body.minimal .hero__filename { font-size: 20vw; white-space: nowrap; }
+}
+
+/* "¿Qué puede hacer una página por ti?": sin marco, solo espacio */
+html body.minimal .qw-cards { border: 0; gap: 2.4rem 2rem; }
+html body.minimal .qw-card { padding: 0; }
+html body.minimal :is(.qw-card h4, .qw-steps b) { font-weight: 500; }
+html body.minimal .qw-card--accent { background: none; box-shadow: none; }

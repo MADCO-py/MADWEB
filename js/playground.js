@@ -66,9 +66,15 @@
     colors.addEventListener('click', (e) => {
       const sw = e.target.closest('.pg-swatch');
       if (!sw) return;
+      colors.querySelectorAll('.pg-swatch').forEach((s) => s.classList.toggle('is-on', s === sw));
+      // "Blanco y negro" vuelve al color de la página
+      if (sw.hasAttribute('data-mono')) {
+        root.style.removeProperty('--pg');
+        if (hex) hex.textContent = 'B/N';
+        return;
+      }
       const c = sw.style.getPropertyValue('--c').trim();
       root.style.setProperty('--pg', c);
-      colors.querySelectorAll('.pg-swatch').forEach((s) => s.classList.toggle('is-on', s === sw));
       if (hex) hex.textContent = c.toUpperCase();
     });
   }

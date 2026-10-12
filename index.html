@@ -17,7 +17,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
 
@@ -33,32 +33,72 @@
 <link rel="stylesheet" href="css/quien.css">
 <link rel="stylesheet" href="css/mobile.css">
 <link rel="stylesheet" href="css/minimal.css">
+<link rel="stylesheet" href="css/menu.css">
 </head>
-<body class="minimal" data-hero-light="250,246,240" data-hero-dark="11,8,6">
+<body class="minimal" data-hero-light="255,255,255" data-hero-dark="10,10,10">
 
 <!-- Fondo global controlado por JS -->
 <div id="page-bg"></div>
 
-<!-- ============ NAV ============ -->
-<nav class="nav">
-  <span class="nav__brand">MADCO</span>
-  <div class="nav__controls">
+<!-- ============ ENCABEZADO + MENÚ (estilo Zara) ============ -->
+<header class="zh">
+  <button type="button" class="zh__burger" aria-expanded="false" aria-controls="zm" aria-label="Abrir menú"><span></span><span></span></button>
+  <a class="zh__logo" href="#hero">MADCO</a>
+  <div class="zh__right">
     <div class="lang-switch" role="group" aria-label="Idioma">
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
       <button type="button" data-lang="es" aria-pressed="true">ES</button>
     </div>
     <button type="button" class="theme-btn" data-theme-toggle aria-label="Cambiar a modo claro"><i class="ph ph-sun"></i></button>
+    <a class="zh__cta" href="demo.html" target="_blank" rel="noopener">Ver demos</a>
   </div>
-  <a class="nav__link" href="#clientes"><i class="ph ph-briefcase"></i> Clientes</a>
-  <a class="nav__link" href="#personal"><i class="ph ph-code-block"></i> Proyectos</a>
-  <a class="nav__link" href="#estudiantes"><i class="ph ph-graduation-cap"></i> Estudiantes</a>
-  <a class="nav__link" href="#certificados"><i class="ph ph-certificate"></i> Certificados</a>
-  <a class="nav__link" href="#ciberseguridad"><i class="ph ph-game-controller"></i> Flipper Zero</a>
-  <a class="nav__link" href="#seguridad"><i class="ph ph-shield-check"></i> Seguridad</a>
-  <a class="nav__link" href="demo.html" target="_blank" rel="noopener"><i class="ph ph-globe"></i> Webs</a>
-  <a class="nav__link" href="#quien"><i class="ph ph-chat-circle"></i> Contacto</a>
-  <a class="nav__link" href="#setup"><i class="ph ph-desktop"></i> My Setup</a>
-</nav>
+</header>
+
+<div class="zm" id="zm" aria-hidden="true">
+  <div class="zm__inner">
+    <nav class="zm__mainwrap" aria-label="Secciones">
+      <div class="zm__brand">MADCO</div>
+      <ol class="zm__main">
+        <li><a class="zm__link" href="#clientes">Clientes</a></li>
+        <li><a class="zm__link" href="#quien">Tu página web</a></li>
+        <li><a class="zm__link" href="#seguridad">Seguridad</a></li>
+        <li><a class="zm__link" href="#personal">Proyectos</a></li>
+        <li><a class="zm__link" href="#estudiantes">Estudiantes</a></li>
+        <li><a class="zm__link" href="#certificados">Certificados</a></li>
+        <li><a class="zm__link" href="#ciberseguridad">Flipper Zero</a></li>
+        <li><a class="zm__link" href="#setup">Mi Setup</a></li>
+      </ol>
+    </nav>
+    <div class="zm__subs">
+      <div class="zm__group">
+        <span class="zm__num">|01|</span><span class="zm__gtitle">Demos</span>
+        <div class="zm__glinks">
+          <a href="demo.html" target="_blank" rel="noopener">Mira todo lo que puede hacer tu futura página web</a>
+        </div>
+      </div>
+      <div class="zm__group">
+        <span class="zm__num">|02|</span><span class="zm__gtitle">Contacto</span>
+        <div class="zm__glinks">
+          <a href="https://www.instagram.com/madco.py/" target="_blank" rel="noopener">Instagram · @madco.py</a>
+          <a href="mailto:madcarranzaosorio@gmail.com">Correo</a>
+        </div>
+      </div>
+      <div class="zm__group">
+        <span class="zm__num">|03|</span><span class="zm__gtitle">Redes</span>
+        <div class="zm__glinks">
+          <a href="https://github.com/MADCO-py" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.instagram.com/madco.py/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="zm__thumbs">
+        <a class="zm__thumb" href="#clientes"><img src="assets/img/freelance/fleetcontrol-dashboard.png" alt="" loading="lazy"><span>FleetControl</span></a>
+        <a class="zm__thumb" href="#clientes"><img src="assets/img/freelance/sunset-sessions.png" alt="" loading="lazy"><span>The Sunset Sessions</span></a>
+        <a class="zm__thumb" href="#personal"><img src="assets/img/personal/madgains-preview.png" alt="" loading="lazy"><span>MAD-GAINS</span></a>
+        <a class="zm__thumb" href="demo.html" target="_blank" rel="noopener"><img src="assets/img/demo/demo-preview.jpg" alt="" loading="lazy"><span>Demos</span></a>
+    </div>
+  </div>
+</div>
 
 <!-- ============ HERO ============ -->
 <header class="hero" id="hero">
@@ -71,7 +111,7 @@
   </div>
 </header>
 <!-- ============ CLIENTES ============ -->
-<section class="section clientes page-section" id="clientes" data-bg-color="250,246,240" data-bg-dark="11,8,6">
+<section class="section clientes page-section" id="clientes" data-bg-color="255,255,255" data-bg-dark="10,10,10">
   <div class="section__inner">
     <div class="section__eyebrow clientes__eyebrow reveal">Proyectos entregados</div>
     <h2 class="section__title reveal">Soluciones para Emprendedores y Empresas</h2>
@@ -81,7 +121,7 @@
 </section>
 
 <!-- ============ ¿NECESITAS UNA PÁGINA WEB? ============ -->
-<section class="section quien page-section" id="quien" data-bg-color="243,236,226" data-bg-dark="20,13,8">
+<section class="section quien page-section" id="quien" data-bg-color="255,255,255" data-bg-dark="10,10,10">
   <div class="section__inner">
 
     <div class="qw-hero">
@@ -172,7 +212,7 @@
 </section>
 
 <!-- ============ SEGURIDAD / HERRAMIENTAS ============ -->
-<section class="section seguridad page-section" id="seguridad" data-bg-color="22,13,7">
+<section class="section seguridad page-section" id="seguridad" data-bg-color="10,10,10">
   <div class="section__inner">
     <div class="section__eyebrow reveal" style="color:var(--flipper-accent)">Confianza y seguridad</div>
     <h2 class="section__title reveal" style="color:#fff">Tus datos, seguros</h2>
@@ -243,7 +283,7 @@
 </section>
 
 <!-- ============ PROYECTOS PERSONALES ============ -->
-<section class="section personal page-section" id="personal" data-bg-color="250,246,240" data-bg-dark="11,8,6">
+<section class="section personal page-section" id="personal" data-bg-color="255,255,255" data-bg-dark="10,10,10">
   <div class="section__inner">
     <div class="section__eyebrow reveal">Proyectos personales</div>
     <h2 class="section__title reveal">Lo que construyo para mí</h2>
@@ -253,7 +293,7 @@
 </section>
 
 <!-- ============ ÉXITO ACADÉMICO ============ -->
-<section class="section estudiantes page-section" id="estudiantes" data-bg-color="243,236,226" data-bg-dark="20,13,8">
+<section class="section estudiantes page-section" id="estudiantes" data-bg-color="255,255,255" data-bg-dark="10,10,10">
   <div class="section__inner">
     <div class="section__eyebrow estudiantes__eyebrow reveal">Recursos para estudiantes</div>
     <h2 class="section__title reveal">Herramientas para el Éxito Académico</h2>
@@ -263,7 +303,7 @@
 </section>
 
 <!-- ============ CURSOS & CERTIFICADOS ============ -->
-<section class="section certs page-section" id="certificados" data-bg-color="250,246,240" data-bg-dark="11,8,6">
+<section class="section certs page-section" id="certificados" data-bg-color="255,255,255" data-bg-dark="10,10,10">
   <div class="section__inner">
     <div class="certs__eyebrow reveal">Certificaciones</div>
     <h2 class="section__title certs__title reveal">Cursos &amp; Certificados</h2>
@@ -299,7 +339,7 @@
 </section>
 
 <!-- ============ CIBERSEGURIDAD ============ -->
-<section class="ciber-path page-section" id="ciberseguridad" data-bg-color="26,13,0">
+<section class="ciber-path page-section" id="ciberseguridad" data-bg-color="10,10,10">
 
   <div class="ciber-path__intro reveal">
     <div class="section__eyebrow" style="color:var(--ciber-live-accent)">Hardware hacking</div>
@@ -360,7 +400,7 @@
 </section>
 
 <!-- ============ MI SETUP ============ -->
-<section class="section setup page-section" id="setup" data-bg-color="17,11,7">
+<section class="section setup page-section" id="setup" data-bg-color="10,10,10">
   <div class="section__inner">
     <div class="section__eyebrow setup__eyebrow reveal">Lo que uso</div>
     <h2 class="section__title setup__title reveal">Mi Setup</h2>
@@ -423,5 +463,6 @@
 <script src="js/prefs.js"></script>
 <script src="js/main.js"></script>
 <script src="js/quien.js"></script>
+<script src="js/menu.js"></script>
 </body>
 </html>

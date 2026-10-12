@@ -11,7 +11,7 @@
   text-decoration: none;
   transition: color 0.2s ease;
 }
-.demo-back:hover { color: #00e5ff; }
+.demo-back:hover { color: #b6b6b6; }
 
 /* ---------- Portada ---------- */
 .demo-hero {
@@ -35,8 +35,8 @@
   pointer-events: none;
   animation: demo-float 14s ease-in-out infinite alternate;
 }
-.demo-hero::before { background: #00e5ff; top: -18vmax; left: -12vmax; }
-.demo-hero::after { background: #ff3d7f; bottom: -22vmax; right: -14vmax; animation-delay: -7s; }
+.demo-hero::before { background: #b6b6b6; top: -18vmax; left: -12vmax; }
+.demo-hero::after { background: #6b6b6b; bottom: -22vmax; right: -14vmax; animation-delay: -7s; }
 @keyframes demo-float {
   to { transform: translate(8vmax, 6vmax) scale(1.15); }
 }
@@ -58,7 +58,7 @@
 }
 .demo-hero__title span {
   display: block;
-  background: linear-gradient(90deg, #00e5ff, #a26bff, #ff3d7f, #ffd400, #00e5ff);
+  background: linear-gradient(90deg, #b6b6b6, #818181, #6b6b6b, #cecece, #b6b6b6);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -94,7 +94,7 @@
   border: 1px solid var(--t-line-strong);
   transition: transform 0.3s cubic-bezier(.3,1.6,.5,1), background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
-.demo-hero__chips a:hover { transform: translateY(-4px) scale(1.04); background: #00e5ff; color: #0c0c12; border-color: #00e5ff; }
+.demo-hero__chips a:hover { transform: translateY(-4px) scale(1.04); background: #b6b6b6; color: #0c0c12; border-color: #b6b6b6; }
 .demo-hero__chips .ph-bold { font-size: 1.05rem; }
 .demo-hero__down {
   display: inline-grid;
@@ -103,7 +103,7 @@
   height: 54px;
   margin-top: 3rem;
   color: #0c0c12;
-  background: #00e5ff;
+  background: #b6b6b6;
   text-decoration: none;
   font-size: 1.3rem;
   animation: bob 1.8s ease-in-out infinite;

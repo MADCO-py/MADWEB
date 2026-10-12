@@ -17,7 +17,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
 
@@ -28,29 +28,70 @@
 <link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/demo.css">
 <link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/minimal.css">
+<link rel="stylesheet" href="css/menu.css">
 </head>
-<body class="demo-page">
+<body class="minimal demo-page" data-hero-light="255,255,255" data-hero-dark="10,10,10">
 
 <div id="page-bg"></div>
 
-<!-- ============ NAV ============ -->
-<nav class="nav">
-  <a class="nav__brand demo-back" href="index.html"><i class="ph-bold ph-arrow-left"></i> MADCO</a>
-  <div class="nav__controls">
+<!-- ============ ENCABEZADO + MENÚ (estilo Zara) ============ -->
+<header class="zh">
+  <button type="button" class="zh__burger" aria-expanded="false" aria-controls="zm" aria-label="Abrir menú"><span></span><span></span></button>
+  <a class="zh__logo" href="index.html">MADCO</a>
+  <div class="zh__right">
     <div class="lang-switch" role="group" aria-label="Idioma">
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
       <button type="button" data-lang="es" aria-pressed="true">ES</button>
     </div>
     <button type="button" class="theme-btn" data-theme-toggle aria-label="Cambiar a modo claro"><i class="ph ph-sun"></i></button>
+    <a class="zh__cta" href="index.html">Inicio</a>
   </div>
-  <a class="nav__link" href="#movimiento"><i class="ph ph-hand-grabbing"></i> Movimiento</a>
-  <a class="nav__link" href="#botones"><i class="ph ph-cursor-click"></i> Botones</a>
-  <a class="nav__link" href="#sorpresas"><i class="ph ph-sparkle"></i> Sorpresas</a>
-  <a class="nav__link" href="#juegos"><i class="ph ph-game-controller"></i> Juegos</a>
-  <a class="nav__link" href="#registro"><i class="ph ph-clipboard-text"></i> Registro</a>
-  <a class="nav__link" href="#internet"><i class="ph ph-globe-hemisphere-west"></i> En vivo</a>
-  <a class="nav__link" href="#telefono"><i class="ph ph-device-mobile"></i> Teléfono</a>
-</nav>
+</header>
+
+<div class="zm" id="zm" aria-hidden="true">
+  <div class="zm__inner">
+    <nav class="zm__mainwrap" aria-label="Secciones">
+      <div class="zm__brand">MADCO</div>
+      <ol class="zm__main">
+        <li><a class="zm__link" href="#movimiento">Movimiento</a></li>
+        <li><a class="zm__link" href="#botones">Botones</a></li>
+        <li><a class="zm__link" href="#sorpresas">Sorpresas</a></li>
+        <li><a class="zm__link" href="#juegos">Juegos</a></li>
+        <li><a class="zm__link" href="#registro">Registro</a></li>
+        <li><a class="zm__link" href="#internet">En vivo</a></li>
+        <li><a class="zm__link" href="#telefono">Teléfono</a></li>
+      </ol>
+    </nav>
+    <div class="zm__subs">
+      <div class="zm__group">
+        <span class="zm__num">|01|</span><span class="zm__gtitle">Inicio</span>
+        <div class="zm__glinks">
+          <a href="index.html">Volver al inicio</a>
+        </div>
+      </div>
+      <div class="zm__group">
+        <span class="zm__num">|02|</span><span class="zm__gtitle">Contacto</span>
+        <div class="zm__glinks">
+          <a href="https://www.instagram.com/madco.py/" target="_blank" rel="noopener">Instagram · @madco.py</a>
+          <a href="mailto:madcarranzaosorio@gmail.com">Correo</a>
+        </div>
+      </div>
+      <div class="zm__group">
+        <span class="zm__num">|03|</span><span class="zm__gtitle">Redes</span>
+        <div class="zm__glinks">
+          <a href="https://github.com/MADCO-py" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.instagram.com/madco.py/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="zm__thumbs">
+        <a class="zm__thumb" href="index.html#clientes"><img src="assets/img/freelance/fleetcontrol-dashboard.png" alt="" loading="lazy"><span>FleetControl</span></a>
+        <a class="zm__thumb" href="index.html#clientes"><img src="assets/img/freelance/sunset-sessions.png" alt="" loading="lazy"><span>The Sunset Sessions</span></a>
+        <a class="zm__thumb" href="index.html#personal"><img src="assets/img/personal/madgains-preview.png" alt="" loading="lazy"><span>MAD-GAINS</span></a>
+    </div>
+  </div>
+</div>
 
 <!-- ============ PORTADA ============ -->
 <header class="demo-hero">
@@ -72,7 +113,7 @@
 </header>
 
 <main class="pg demo-main" id="playground">
-<section class="demo-sec page-section" id="movimiento" data-bg-color="236,237,241" data-bg-dark="16,16,22">
+<section class="demo-sec page-section" id="movimiento" data-bg-color="255,255,255" data-bg-dark="10,10,10">
   <div class="section__inner">
     <div class="demo-sec__head reveal">
       <div class="demo-sec__num"><i class="ph-bold ph-hand-grabbing"></i> 01</div>
@@ -141,7 +182,7 @@
   </div>
 </section>
 
-<section class="demo-sec page-section" id="botones" data-bg-color="246,246,243" data-bg-dark="10,10,14">
+<section class="demo-sec page-section" id="botones" data-bg-color="255,255,255" data-bg-dark="10,10,10">
   <div class="section__inner">
     <div class="demo-sec__head reveal">
       <div class="demo-sec__num"><i class="ph-bold ph-cursor-click"></i> 02</div>
@@ -164,14 +205,15 @@
         <div class="pg__tile reveal">
           <div class="pg__label"><span>08</span> Cambiar colores</div>
           <div class="pg-colors" data-pg="colors">
-            <button class="pg-swatch is-on" style="--c:#00e5ff" aria-label="Cian"></button>
+            <button class="pg-swatch pg-swatch--mono is-on" data-mono aria-label="Blanco y negro"></button>
+            <button class="pg-swatch" style="--c:#00e5ff" aria-label="Cian"></button>
             <button class="pg-swatch" style="--c:#ff3d7f" aria-label="Rosa"></button>
             <button class="pg-swatch" style="--c:#ffd400" aria-label="Amarillo"></button>
             <button class="pg-swatch" style="--c:#7cff4f" aria-label="Verde"></button>
             <button class="pg-swatch" style="--c:#a26bff" aria-label="Morado"></button>
             <button class="pg-swatch" style="--c:#ff7a1a" aria-label="Naranja"></button>
           </div>
-          <div class="pg-colors__preview"><span>Color actual</span><b data-pg="hex">#00E5FF</b></div>
+          <div class="pg-colors__preview"><span>Color actual</span><b data-pg="hex">B/N</b></div>
           <p class="pg__hint">Elige uno y todo el playground cambia de color suavemente.</p>
         </div>
 
@@ -221,7 +263,7 @@
   </div>
 </section>
 
-<section class="demo-sec page-section" id="sorpresas" data-bg-color="236,237,241" data-bg-dark="16,16,22">
+<section class="demo-sec page-section" id="sorpresas" data-bg-color="255,255,255" data-bg-dark="10,10,10">
   <div class="section__inner">
     <div class="demo-sec__head reveal">
       <div class="demo-sec__num"><i class="ph-bold ph-sparkle"></i> 03</div>
@@ -265,7 +307,7 @@
   </div>
 </section>
 
-<section class="demo-sec page-section" id="juegos" data-bg-color="246,246,243" data-bg-dark="10,10,14">
+<section class="demo-sec page-section" id="juegos" data-bg-color="255,255,255" data-bg-dark="10,10,10">
   <div class="section__inner">
     <div class="demo-sec__head reveal">
       <div class="demo-sec__num"><i class="ph-bold ph-game-controller"></i> 04</div>
@@ -296,7 +338,7 @@
   </div>
 </section>
 
-<section class="demo-sec page-section" id="registro" data-bg-color="236,237,241" data-bg-dark="16,16,22">
+<section class="demo-sec page-section" id="registro" data-bg-color="255,255,255" data-bg-dark="10,10,10">
   <div class="section__inner">
     <div class="demo-sec__head reveal">
       <div class="demo-sec__num"><i class="ph-bold ph-clipboard-text"></i> 05</div>
@@ -333,7 +375,7 @@
   </div>
 </section>
 
-<section class="demo-sec page-section" id="internet" data-bg-color="246,246,243" data-bg-dark="10,10,14">
+<section class="demo-sec page-section" id="internet" data-bg-color="255,255,255" data-bg-dark="10,10,10">
   <div class="section__inner">
     <div class="demo-sec__head reveal">
       <div class="demo-sec__num"><i class="ph-bold ph-globe-hemisphere-west"></i> 06</div>
@@ -386,7 +428,7 @@
   </div>
 </section>
 
-<section class="demo-sec page-section" id="telefono" data-bg-color="236,237,241" data-bg-dark="16,16,22">
+<section class="demo-sec page-section" id="telefono" data-bg-color="255,255,255" data-bg-dark="10,10,10">
   <div class="section__inner">
     <div class="demo-sec__head reveal">
       <div class="demo-sec__num"><i class="ph-bold ph-device-mobile"></i> 07</div>
@@ -461,7 +503,7 @@
 </section>
 
 <!-- ============ CIERRE ============ -->
-<section class="demo-end page-section" data-bg-color="255,255,255" data-bg-dark="8,8,10">
+<section class="demo-end page-section" data-bg-color="255,255,255" data-bg-dark="10,10,10">
   <div class="section__inner demo-end__inner reveal">
     <h2 class="demo-end__title">¿Te imaginas tu página con esto?</h2>
     <p class="demo-end__lead">Cuéntame tu idea y la hacemos realidad. Todo lo que viste se puede adaptar a tu negocio, tu evento o tu marca.</p>
@@ -488,5 +530,6 @@
 <script src="js/playground-live.js"></script>
 <script src="js/i18n-en.js"></script>
 <script src="js/prefs.js"></script>
+<script src="js/menu.js"></script>
 </body>
 </html>

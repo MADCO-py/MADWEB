@@ -100,6 +100,20 @@ window.I18N_EN = {
   'Animaciones, juegos, formularios, cámara y clima en vivo. Todo funciona de verdad: entra y pruébalo.': 'Animations, games, forms, camera and live weather. It all really works: go in and try it.',
   'Ver las demos': 'See the demos',
 
+  'Inicio': 'Home',
+  'Tu página web': 'Your website',
+  'Demos': 'Demos',
+  'Más proyectos': 'More projects',
+  'Abrir menú': 'Open menu',
+  'Cerrar menú': 'Close menu',
+  'Secciones': 'Sections',
+
+  'Blanco y negro': 'Black and white',
+  'Ver demos': 'See demos',
+  'Volver al inicio': 'Back to home',
+  'Correo': 'Email',
+  'Redes': 'Socials',
+
   /* ---------- Página de demos (demo.html) ---------- */
   'MADCO · Tu futura página web': 'MADCO · Your future website',
   'Mira todo lo que puede hacer tu futura página web: animaciones, juegos, formularios, información en vivo y sensores del teléfono.':
@@ -147,7 +161,6 @@ window.I18N_EN = {
   'Cuéntame tu idea y la hacemos realidad. Todo lo que viste se puede adaptar a tu negocio, tu evento o tu marca.':
     "Tell me your idea and we'll make it real. Everything you saw can be adapted to your business, your event or your brand.",
   'Escríbeme en Instagram': 'Message me on Instagram',
-  'Volver al inicio': 'Back to home',
 
   /* ---------- Webs interactivas ---------- */
   'Lo que se puede hacer': 'What can be done',

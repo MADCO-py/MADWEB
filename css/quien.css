@@ -192,9 +192,9 @@
 .qw-demo:hover .qw-demo__btn .ph-bold { transform: translate(3px, -3px); }
 
 .qw-demo__shot { display: block; border: 1px solid var(--m-line-strong); background: #0b0806; overflow: hidden; }
-.qw-demo__bar { display: flex; gap: 0.35rem; padding: 0.55rem 0.7rem; border-bottom: 1px solid rgba(255,240,225,0.12); }
-.qw-demo__bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,240,225,0.25); }
-.qw-demo__bar i:first-child { background: #ff7a1a; }
+.qw-demo__bar { display: flex; gap: 0.35rem; padding: 0.55rem 0.7rem; border-bottom: 1px solid rgba(242, 242, 242, 0.12); }
+.qw-demo__bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(242, 242, 242, 0.25); }
+.qw-demo__bar i:first-child { background: #8f8f8f; }
 .qw-demo__shot img {
   display: block;
   width: 100%;

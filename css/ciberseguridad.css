@@ -4,9 +4,9 @@
    usando --ciber-live-bg / --ciber-live-accent / --ciber-live-glow
    ============================================================ */
 .ciber-path {
-  --ciber-live-bg: rgb(26, 13, 0);
-  --ciber-live-accent: rgb(255, 122, 26);
-  --ciber-live-glow: rgb(255, 122, 26);
+  --ciber-live-bg: rgb(15, 15, 15);
+  --ciber-live-accent: rgb(143, 143, 143);
+  --ciber-live-glow: rgb(143, 143, 143);
   background: var(--ciber-live-bg);
   color: var(--ciber-text);
   position: relative;
@@ -149,17 +149,17 @@
 .kali-window {
   border: 1px solid color-mix(in srgb, var(--kali-accent) 55%, transparent);
   border-radius: 0;
-  background: #140d08;
+  background: #0e0e0e;
   overflow: hidden;
   margin-bottom: 2.5rem;
-  box-shadow: 0 30px 70px rgba(255,122,26,0.12);
+  box-shadow: 0 30px 70px rgba(143, 143, 143, 0.12);
 }
 .kali-window__bar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.55rem 0.8rem;
-  background: #1d130b;
+  background: #151515;
   border-bottom: 1px solid color-mix(in srgb, var(--kali-accent) 35%, transparent);
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -168,7 +168,7 @@
 .kali-window__dot {
   width: 9px; height: 9px;
   border-radius: 50%;
-  background: #5a3d27;
+  background: #424242;
   display: inline-block;
 }
 .kali-window__title { margin-left: 0.4rem; font-weight: 600; }
@@ -188,7 +188,7 @@
 
 /* ---------- CamPhish / Whatsapp_spammer como terminales Kali reales ---------- */
 .kali-terminal-card {
-  background: #140d08;
+  background: #0e0e0e;
   border: 1px solid color-mix(in srgb, var(--kali-accent) 45%, transparent);
   border-radius: 0;
   overflow: hidden;
@@ -198,7 +198,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.8rem;
-  background: #1d130b;
+  background: #151515;
   border-bottom: 1px solid color-mix(in srgb, var(--kali-accent) 30%, transparent);
 }
 .kali-terminal-card__bartitle {
@@ -217,12 +217,12 @@
   white-space: pre-wrap;
   word-break: break-word;
 }
-.kt-user, .kt-host { color: #ffb066; font-weight: 600; }
-.kt-path { color: #ffb066; }
+.kt-user, .kt-host { color: #bbbbbb; font-weight: 600; }
+.kt-path { color: #bbbbbb; }
 .kt-cmd { color: #fff; font-weight: 600; }
 .kt-lang { color: rgba(255,255,255,0.35); font-size: 0.74rem; }
 .kali-terminal-card__desc {
-  color: rgba(246,239,230,0.72);
+  color: rgba(240, 240, 240, 0.72);
   margin: 0.9rem 0 1.1rem;
   line-height: 1.6;
 }
@@ -232,19 +232,19 @@
   border: 2px solid var(--flipper-primary);
   border-radius: 0;
   background:
-    repeating-linear-gradient(0deg, rgba(255,122,26,0.05) 0px, rgba(255,122,26,0.05) 1px, transparent 1px, transparent 22px),
-    repeating-linear-gradient(90deg, rgba(255,122,26,0.05) 0px, rgba(255,122,26,0.05) 1px, transparent 1px, transparent 22px),
-    #170c00;
+    repeating-linear-gradient(0deg, rgba(143, 143, 143, 0.05) 0px, rgba(143, 143, 143, 0.05) 1px, transparent 1px, transparent 22px),
+    repeating-linear-gradient(90deg, rgba(143, 143, 143, 0.05) 0px, rgba(143, 143, 143, 0.05) 1px, transparent 1px, transparent 22px),
+    #0d0d0d;
   overflow: hidden;
   margin-bottom: 2.5rem;
-  box-shadow: 0 30px 70px rgba(255,122,26,0.12);
+  box-shadow: 0 30px 70px rgba(143, 143, 143, 0.12);
 }
 .flipper-window__bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.6rem 1rem;
-  background: #261405;
+  background: #171717;
   border-bottom: 2px solid var(--flipper-primary);
   font-family: var(--font-mono);
 }
@@ -258,7 +258,7 @@
 }
 .flipper-window__tab.is-active {
   background: var(--flipper-primary);
-  color: #1a0e00;
+  color: #101010;
   opacity: 1;
 }
 .flipper-window__brand {
@@ -269,7 +269,7 @@
 }
 .flipper-window__status {
   font-size: 0.65rem;
-  color: #ff7a1a;
+  color: #8f8f8f;
   display: flex; align-items: center; gap: 0.3rem;
 }
 .flipper-window__body {
@@ -283,7 +283,7 @@
 
 .flipper-screen {
   background: var(--flipper-primary);
-  border: 4px solid #1a0e00;
+  border: 4px solid #101010;
   border-radius: 0;
   aspect-ratio: 4/3;
   display: flex;
@@ -318,7 +318,7 @@
   font-size: 0.72rem;
 }
 .flipper-fs__list {
-  border: 1px solid rgba(255,122,26,0.35);
+  border: 1px solid rgba(143, 143, 143, 0.35);
   border-radius: 0;
   overflow: hidden;
 }
@@ -330,7 +330,7 @@
   text-align: left;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255,122,26,0.18);
+  border-bottom: 1px solid rgba(143, 143, 143, 0.18);
   padding: 0.5rem 0.7rem;
   font-family: var(--font-mono);
   font-size: 0.78rem;
@@ -339,23 +339,23 @@
   transition: background 0.15s ease, color 0.15s ease;
 }
 .flipper-fs__row:last-child { border-bottom: none; }
-.flipper-fs__row:hover { background: rgba(255,122,26,0.1); }
+.flipper-fs__row:hover { background: rgba(143, 143, 143, 0.1); }
 .flipper-fs__row.is-active {
   background: var(--flipper-primary);
-  color: #1a0e00;
+  color: #101010;
   font-weight: 600;
 }
 .flipper-fs__row.is-active::before { content: '>'; margin-right: 0.1rem; }
 
 @keyframes flipperPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255,122,26,0); }
-  30% { box-shadow: 0 0 0 4px rgba(255,122,26,0.5); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(143, 143, 143, 0); }
+  30% { box-shadow: 0 0 0 4px rgba(143, 143, 143, 0.5); }
 }
 .flipper-card--pulse { animation: flipperPulse 1.2s ease; }
 
 /* Tarjetas de proyecto Flipper con hover-play de video */
 .flipper-card {
-  border: 1px solid rgba(255,122,26,0.3);
+  border: 1px solid rgba(143, 143, 143, 0.3);
   border-radius: var(--radius-md);
   overflow: hidden;
   background: rgba(255,255,255,0.03);
@@ -369,7 +369,7 @@
   aspect-ratio: 16/10;
   object-fit: cover;
   display: block;
-  background: #1a0e00;
+  background: #101010;
 }
 .flipper-card__video-placeholder {
   width: 100%;
@@ -379,7 +379,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: repeating-linear-gradient(45deg, #1a0e00, #1a0e00 10px, #220f00 10px, #220f00 20px);
+  background: repeating-linear-gradient(45deg, #101010, #101010 10px, #121212 10px, #121212 20px);
   color: var(--flipper-accent);
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -391,14 +391,14 @@
 /* Botones dentro de cards del Flipper (fondo oscuro) */
 .flipper-card .btn {
   color: var(--flipper-white);
-  border-color: rgba(255,122,26,0.55);
+  border-color: rgba(143, 143, 143, 0.55);
 }
 .flipper-card .btn-repo:hover {
   background: var(--flipper-white);
-  color: #1a0e00;
+  color: #101010;
 }
-.flipper-card .btn-download { color: var(--flipper-accent); border-color: rgba(255,122,26,0.55); }
-.flipper-card .btn-download:hover { background: rgba(255,122,26,0.15); }
+.flipper-card .btn-download { color: var(--flipper-accent); border-color: rgba(143, 143, 143, 0.55); }
+.flipper-card .btn-download:hover { background: rgba(143, 143, 143, 0.15); }
 .flipper-twin {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -407,19 +407,19 @@
 }
 @media (max-width: 700px) { .flipper-twin { grid-template-columns: 1fr; } }
 .flipper-warn {
-  border: 1px solid #ff9d4d;
-  background: rgba(255,122,26,0.08);
+  border: 1px solid #acacac;
+  background: rgba(143, 143, 143, 0.08);
   border-radius: var(--radius-md);
   padding: 1.6rem;
 }
 .flipper-warn__title { font-weight: 700; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
 .flipper-explore {
-  border: 1px solid rgba(255,122,26,0.5);
-  background: rgba(255,122,26,0.06);
+  border: 1px solid rgba(143, 143, 143, 0.5);
+  background: rgba(143, 143, 143, 0.06);
   border-radius: var(--radius-md);
   padding: 1.6rem;
 }
-.flipper-explore__title { font-weight: 700; color: #ffb066; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
+.flipper-explore__title { font-weight: 700; color: #bbbbbb; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
 
 /* Recomendados */
 .reco-list {
@@ -433,13 +433,13 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 0.9rem 1.1rem;
-  border: 1px solid rgba(255,122,26,0.25);
+  border: 1px solid rgba(143, 143, 143, 0.25);
   border-radius: var(--radius-sm);
   text-decoration: none;
   color: var(--flipper-white);
   transition: background 0.25s ease, transform 0.25s var(--ease);
 }
-.reco-item:hover { background: rgba(255,122,26,0.1); transform: translateX(4px); }
+.reco-item:hover { background: rgba(143, 143, 143, 0.1); transform: translateX(4px); }
 .reco-item__name { font-weight: 600; font-size: 0.92rem; }
 .reco-item__desc { font-size: 0.78rem; opacity: 0.6; }
 
@@ -454,7 +454,7 @@
 }
 .flipper-device-gif {
   width: min(380px, 90%);
-  filter: drop-shadow(0 30px 50px rgba(255,122,26,0.3));
+  filter: drop-shadow(0 30px 50px rgba(143, 143, 143, 0.3));
   animation: flipper-float 4s ease-in-out infinite;
 }
 @keyframes flipper-float {
@@ -491,13 +491,13 @@
 }
 .flipper-device-label__link:hover {
   background: var(--flipper-primary);
-  color: #1a0e00;
+  color: #101010;
 }
 
 /* Recommended featured (flipper.net) */
 .reco-item--featured {
-  background: rgba(255,122,26,0.12);
-  border: 1.5px solid rgba(255,122,26,0.55);
+  background: rgba(143, 143, 143, 0.12);
+  border: 1.5px solid rgba(143, 143, 143, 0.55);
   border-radius: var(--radius-sm);
 }
 .reco-item--featured .reco-item__name {
@@ -520,16 +520,16 @@
 /* -------- KALI TERMINAL — Generador de contraseñas -------- */
 .kali-term {
   background: #0e0906;
-  border: 1px solid #2a1d13;
+  border: 1px solid #1f1f1f;
   font-family: var(--font-mono);
-  color: #e9dccd;
+  color: #dedede;
 }
 .kali-term__bar {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  background: #17100b;
-  border-bottom: 1px solid #2a1d13;
+  background: #111111;
+  border-bottom: 1px solid #1f1f1f;
   padding: 0.55rem 1rem;
 }
 .kali-term__dots { display: flex; gap: 6px; }
@@ -538,33 +538,33 @@
   border-radius: 50%;
   display: inline-block;
 }
-.kali-term__dots span:nth-child(1) { background: #ff7a1a; }
-.kali-term__dots span:nth-child(2) { background: #ffbd2e; }
-.kali-term__dots span:nth-child(3) { background: #ff9a4a; }
+.kali-term__dots span:nth-child(1) { background: #8f8f8f; }
+.kali-term__dots span:nth-child(2) { background: #c1c1c1; }
+.kali-term__dots span:nth-child(3) { background: #aaaaaa; }
 .kali-term__title {
   font-size: 0.72rem;
-  color: #8b949e;
+  color: #939393;
   letter-spacing: 0.04em;
 }
 .kali-term__body { padding: 1.2rem 1.4rem 1.6rem; }
 
 .kali-prompt { margin: 0 0 3px; font-size: 0.82rem; line-height: 1.4; }
-.kp-path { color: #8b949e; }
-.kp-user { color: #ff7a1a; font-weight: 700; }
-.kp-host { color: #ffb066; font-weight: 700; }
-.kp-dir  { color: #e9c9a8; }
-.kp-arrow { color: #8b949e; }
-.kp-cmd  { color: #e3b341; }
+.kp-path { color: #939393; }
+.kp-user { color: #8f8f8f; font-weight: 700; }
+.kp-host { color: #bbbbbb; font-weight: 700; }
+.kp-dir  { color: #cdcdcd; }
+.kp-arrow { color: #939393; }
+.kp-cmd  { color: #b5b5b5; }
 
 .kali-section { margin: 1.1rem 0 0; }
-.kali-comment { font-size: 0.78rem; color: #8a6a52; display: block; margin-bottom: 0.5rem; }
+.kali-comment { font-size: 0.78rem; color: #6f6f6f; display: block; margin-bottom: 0.5rem; }
 
 .kali-output {
   width: 100%;
   background: #010409;
-  border: 1px solid #2a1d13;
-  border-left: 3px solid #ff9a4a;
-  color: #ffb066;
+  border: 1px solid #1f1f1f;
+  border-left: 3px solid #aaaaaa;
+  color: #bbbbbb;
   font-family: var(--font-mono);
   font-size: 0.9rem;
   font-weight: 600;
@@ -573,31 +573,31 @@
   letter-spacing: 0.06em;
   margin-bottom: 0.7rem;
 }
-.kali-output::placeholder { color: #5a4030; }
+.kali-output::placeholder { color: #444444; }
 
 .kali-strength-row {
   display: flex;
   align-items: center;
   gap: 0.7rem;
   font-size: 0.72rem;
-  color: #8a6a52;
+  color: #6f6f6f;
 }
 .kali-strength-track {
   flex: 1;
   height: 4px;
-  background: #2a1d13;
-  border: 1px solid #30363d;
+  background: #1f1f1f;
+  border: 1px solid #353535;
 }
 .kali-strength-fill {
   height: 100%;
   width: 0%;
   transition: width 0.3s ease, background 0.3s ease;
 }
-.kali-strength-val { min-width: 80px; color: #8b949e; }
+.kali-strength-val { min-width: 80px; color: #939393; }
 
 .kali-slider {
   width: 100%;
-  accent-color: #ff9a4a;
+  accent-color: #aaaaaa;
   cursor: pointer;
   margin-top: 0.3rem;
 }
@@ -614,14 +614,14 @@
   gap: 0.5rem;
   font-size: 0.8rem;
   cursor: pointer;
-  color: #8b949e;
+  color: #939393;
   transition: color 0.15s;
 }
-.kali-opt:hover { color: #e9dccd; }
+.kali-opt:hover { color: #dedede; }
 .kali-opt input { display: none; }
-.kali-opt input + .kali-flag::before { content: '[ ] '; color: #8a6a52; }
-.kali-opt input:checked + .kali-flag::before { content: '[x] '; color: #ff9a4a; }
-.kali-flag { font-family: var(--font-mono); color: #e3b341; font-size: 0.78rem; }
+.kali-opt input + .kali-flag::before { content: '[ ] '; color: #6f6f6f; }
+.kali-opt input:checked + .kali-flag::before { content: '[x] '; color: #aaaaaa; }
+.kali-flag { font-family: var(--font-mono); color: #b5b5b5; font-size: 0.78rem; }
 
 .kali-btns { display: flex; gap: 0.7rem; margin-top: 1.3rem; }
 .kali-btn {
@@ -639,17 +639,17 @@
   transition: background 0.15s ease;
 }
 .kali-btn--exec {
-  background: #ff9a4a;
-  border-color: #ff9a4a;
+  background: #aaaaaa;
+  border-color: #aaaaaa;
   color: #0e0906;
 }
-.kali-btn--exec:hover { background: #ffa45c; }
+.kali-btn--exec:hover { background: #b2b2b2; }
 .kali-btn--copy {
   background: transparent;
-  border-color: #30363d;
-  color: #e9dccd;
+  border-color: #353535;
+  color: #dedede;
 }
-.kali-btn--copy:hover { background: #17100b; border-color: #ffb066; color: #ffb066; }
+.kali-btn--copy:hover { background: #111111; border-color: #bbbbbb; color: #bbbbbb; }
 
 /* -------- GOOGLE CARD — Analizador de URLs -------- */
 .goog-card {
@@ -691,7 +691,7 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   border-color: rgba(223,225,229,0);
 }
-.goog-searchbar__icon { color: #9aa0a6; font-size: 1.1rem; flex-shrink: 0; margin-right: 0.4rem; }
+.goog-searchbar__icon { color: #9f9f9f; font-size: 1.1rem; flex-shrink: 0; margin-right: 0.4rem; }
 .goog-searchbar__input {
   flex: 1;
   border: none;
@@ -702,9 +702,9 @@
   outline: none;
   padding: 0;
 }
-.goog-searchbar__input::placeholder { color: #9aa0a6; }
+.goog-searchbar__input::placeholder { color: #9f9f9f; }
 .goog-searchbar__btn {
-  background: #c2560a;
+  background: #676767;
   color: #fff;
   border: none;
   border-radius: 0;
@@ -718,13 +718,13 @@
   flex-shrink: 0;
 }
 .goog-searchbar__btn:hover {
-  background: #8a3d08;
-  box-shadow: 0 1px 4px rgba(194,86,10,0.3);
+  background: #4a4a4a;
+  box-shadow: 0 1px 4px rgba(103, 103, 103, 0.3);
 }
 .goog-disclaimer {
   font-family: 'Roboto', sans-serif;
   font-size: 0.7rem;
-  color: #9aa0a6;
+  color: #9f9f9f;
   margin: 1rem 0 0;
   text-align: center;
 }
@@ -737,9 +737,9 @@
   overflow: hidden;
   border: 1px solid;
 }
-.url-result--safe       { border-color: #e6d8c8; }
-.url-result--suspicious { border-color: #ffd7b0; }
-.url-result--danger     { border-color: #f0b48a; }
+.url-result--safe       { border-color: #dadada; }
+.url-result--suspicious { border-color: #dddddd; }
+.url-result--danger     { border-color: #bebebe; }
 .url-result--warn       { border-color: #e0e0e0; }
 
 .url-result__header {
@@ -748,15 +748,15 @@
   gap: 1rem;
   padding: 1rem 1.3rem;
 }
-.url-result--safe       .url-result__header { background: #f6f0e9; }
-.url-result--suspicious .url-result__header { background: #fff1e3; }
-.url-result--danger     .url-result__header { background: #fde3cf; }
+.url-result--safe       .url-result__header { background: #f1f1f1; }
+.url-result--suspicious .url-result__header { background: #f3f3f3; }
+.url-result--danger     .url-result__header { background: #e7e7e7; }
 .url-result--warn       .url-result__header { background: #f8f9fa; }
 
 .url-result__icon { font-size: 2rem; flex-shrink: 0; }
-.url-result--safe .url-result__icon       { color: #3d2a1c; }
-.url-result--suspicious .url-result__icon { color: #b06000; }
-.url-result--danger .url-result__icon     { color: #b8400a; }
+.url-result--safe .url-result__icon       { color: #2d2d2d; }
+.url-result--suspicious .url-result__icon { color: #6a6a6a; }
+.url-result--danger .url-result__icon     { color: #565656; }
 .url-result--warn .url-result__icon       { color: #5f6368; }
 
 .url-result__verdict {
@@ -764,9 +764,9 @@
   font-weight: 700;
   line-height: 1.2;
 }
-.url-result--safe .url-result__verdict       { color: #3d2a1c; }
-.url-result--suspicious .url-result__verdict { color: #b06000; }
-.url-result--danger .url-result__verdict     { color: #b8400a; }
+.url-result--safe .url-result__verdict       { color: #2d2d2d; }
+.url-result--suspicious .url-result__verdict { color: #6a6a6a; }
+.url-result--danger .url-result__verdict     { color: #565656; }
 .url-result--warn .url-result__verdict       { color: #202124; }
 
 .url-result__domain {
@@ -793,13 +793,13 @@
   color: #3c4043;
 }
 .url-finding .ph { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
-.url-finding--ok .ph     { color: #3d2a1c; }
-.url-finding--danger .ph { color: #b8400a; }
-.url-finding--warn .ph   { color: #b06000; }
-.url-finding--info .ph   { color: #c2560a; }
+.url-finding--ok .ph     { color: #2d2d2d; }
+.url-finding--danger .ph { color: #565656; }
+.url-finding--warn .ph   { color: #6a6a6a; }
+.url-finding--info .ph   { color: #676767; }
 .url-disclaimer {
   font-size: 0.7rem;
-  color: #9aa0a6;
+  color: #9f9f9f;
   margin-top: 0.8rem;
   font-family: 'Roboto', sans-serif;
 }
@@ -832,7 +832,7 @@
 }
 .ciber-tool-heading__desc {
   font-size: 0.8rem;
-  color: rgba(246,239,230,0.55);
+  color: rgba(240, 240, 240, 0.55);
   margin: 0;
   font-family: var(--font-mono);
 }

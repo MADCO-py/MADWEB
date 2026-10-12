@@ -101,7 +101,7 @@
     const wrap = boardEl.parentNode;
     const overlay = document.createElement('div');
     overlay.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:20;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);';
-    overlay.style.background = won ? 'rgba(0,80,0,0.88)' : 'rgba(90,0,0,0.92)';
+    overlay.style.background = won ? 'rgba(57, 57, 57, 0.88)' : 'rgba(19, 19, 19, 0.92)';
 
     const bigText = document.createElement('div');
     bigText.style.cssText = 'font-size:clamp(2.8rem,9vw,5rem);font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1;text-align:center;';
@@ -150,9 +150,9 @@
       const isLastTo=lastMove&&lastMove[2]===r&&lastMove[3]===c;
       const isHint=hints.has(r*8+c);
 
-      let bg=isLight?'#eeeed2':'#769656';
-      if(isSel) bg='#f6f669';
-      else if(isLastTo||isLastFrom) bg=isLight?'#cdd26a':'#aaa23a';
+      let bg=isLight?'#ececec':'#8b8b8b';
+      if(isSel) bg='#ececec';
+      else if(isLastTo||isLastFrom) bg=isLight?'#c9c9c9':'#9c9c9c';
 
       cell.style.background=bg;
       cell.innerHTML='';

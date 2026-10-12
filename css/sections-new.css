@@ -67,8 +67,8 @@
   gap: 0.4rem;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: #1a73e8;
-  background: #e8f0fe;
+  color: #696969;
+  background: #efefef;
   border-radius: 0;
   padding: 0.25rem 0.65rem;
   margin-bottom: 1rem;
@@ -103,7 +103,7 @@
 }
 .maker-item {
   background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(184,194,201,0.2);
+  border: 1px solid rgba(192, 192, 192, 0.2);
   border-left: 3px solid var(--esp32-turquoise);
   padding: 1.4rem 1.6rem;
 }
@@ -125,13 +125,13 @@
   margin-bottom: 0.35rem;
   align-items: start;
 }
-.maker-item__key { color: rgba(184,194,201,0.5); }
+.maker-item__key { color: rgba(192, 192, 192, 0.5); }
 .maker-item__val { color: var(--esp32-silver); }
 .maker-item__val span { opacity: 0.7; }
 .maker-item .btn-row { margin-top: 1.1rem; }
 .maker-item .btn-repo {
   color: var(--esp32-turquoise);
-  border-color: rgba(25,230,196,0.4);
+  border-color: rgba(184, 184, 184, 0.4);
   font-size: 0.78rem;
 }
 .maker-item .btn-repo:hover { background: var(--esp32-turquoise); color: #08090a; }
@@ -299,7 +299,7 @@
 .chess-status {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: #769656;
+  color: #8b8b8b;
   font-weight: 600;
 }
 
@@ -310,9 +310,9 @@
 
 /* Badge para proyectos de emprendedores */
 .personal-card__badge--emp {
-  background: #fff8e6;
-  border-color: rgba(200,120,0,0.25);
-  color: #a06000;
+  background: #f8f8f8;
+  border-color: rgba(128, 128, 128, 0.25);
+  color: #676767;
 }
 
 /* ============================================================
@@ -383,13 +383,13 @@
 }
 .client-badge--sold {
   background: #f0faf0;
-  border-color: rgba(20,120,50,0.3);
-  color: #14783a;
+  border-color: rgba(94, 94, 94, 0.3);
+  color: #5e5e5e;
 }
 .client-badge--emp {
-  background: #fff8e6;
-  border-color: rgba(180,100,0,0.25);
-  color: #a06000;
+  background: #f8f8f8;
+  border-color: rgba(110, 110, 110, 0.25);
+  color: #676767;
 }
 
 .client-card__name {
@@ -466,7 +466,7 @@
 
 /* ---- NFC visual animado para Maker Lab ---- */
 .maker-item--nfc {
-  border-left-color: #00e5ff;
+  border-left-color: #b6b6b6;
   position: relative;
   overflow: hidden;
 }
@@ -484,12 +484,12 @@
 .nfc-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1.5px solid rgba(0,229,255,0.5);
+  border: 1.5px solid rgba(182, 182, 182, 0.5);
   animation: nfc-pulse 2s ease-out infinite;
 }
 .nfc-ring--1 { width: 28px; height: 28px; animation-delay: 0s; }
 .nfc-ring--2 { width: 48px; height: 48px; animation-delay: 0.4s; }
-.nfc-ring--3 { width: 68px; height: 68px; animation-delay: 0.8s; border-color: rgba(0,229,255,0.2); }
+.nfc-ring--3 { width: 68px; height: 68px; animation-delay: 0.8s; border-color: rgba(182, 182, 182, 0.2); }
 @keyframes nfc-pulse {
   0%   { opacity: 1; transform: scale(0.85); }
   70%  { opacity: 0.3; transform: scale(1); }
@@ -499,12 +499,12 @@
   font-family: var(--font-mono);
   font-size: 0.65rem;
   font-weight: 700;
-  color: #00e5ff;
+  color: #b6b6b6;
   letter-spacing: 0.1em;
   position: relative;
   z-index: 2;
 }
-.maker-item--nfc .maker-item__name { color: #00e5ff; }
+.maker-item--nfc .maker-item__name { color: #b6b6b6; }
 .maker-item--nfc { padding-right: 6rem; }
 @media (max-width: 600px) {
   .nfc-visual { display: none; }
@@ -561,9 +561,9 @@
 
 /* Badge artista */
 .client-badge--artista {
-  background: #f5f0ff;
-  border-color: rgba(100,60,180,0.25);
-  color: #6428c8;
+  background: #f2f2f2;
+  border-color: rgba(77, 77, 77, 0.25);
+  color: #404040;
 }
 
 /* ---- Sección Contáctame ---- */
@@ -715,9 +715,9 @@
   grid-template-columns: 200px 1fr;
   gap: 2.5rem;
   align-items: center;
-  background: rgba(0,229,255,0.04);
-  border: 1px solid rgba(0,229,255,0.2);
-  border-left: 4px solid #00e5ff;
+  background: rgba(182, 182, 182, 0.04);
+  border: 1px solid rgba(182, 182, 182, 0.2);
+  border-left: 4px solid #b6b6b6;
   padding: 2rem;
   margin-bottom: 2.5rem;
 }
@@ -726,7 +726,7 @@
   width: 100%;
   max-width: 180px;
   margin: 0 auto;
-  filter: drop-shadow(0 0 20px rgba(0,229,255,0.3));
+  filter: drop-shadow(0 0 20px rgba(182, 182, 182, 0.3));
   animation: nfc-rotate 20s linear infinite;
 }
 @keyframes nfc-rotate {
@@ -736,7 +736,7 @@
 .nfc-showcase__tag {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: #00e5ff;
+  color: #b6b6b6;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 0.6rem;
@@ -766,14 +766,14 @@
   align-items: center;
   gap: 0.45rem;
   font-size: 0.8rem;
-  color: rgba(184,194,201,0.8);
+  color: rgba(192, 192, 192, 0.8);
 }
-.nfc-use .ph { color: #00e5ff; font-size: 0.9rem; flex-shrink: 0; }
+.nfc-use .ph { color: #b6b6b6; font-size: 0.9rem; flex-shrink: 0; }
 .nfc-showcase__note {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: rgba(0,229,255,0.6);
-  border-top: 1px solid rgba(0,229,255,0.15);
+  color: rgba(182, 182, 182, 0.6);
+  border-top: 1px solid rgba(182, 182, 182, 0.15);
   padding-top: 0.8rem;
   margin: 0;
   line-height: 1.5;
@@ -787,10 +787,10 @@
 }
 .client-card[data-client-id="fleetcontrol"]:hover {
   transform: translateY(-6px);
-  border-color: rgba(220,30,30,0.6);
+  border-color: rgba(70, 70, 70, 0.6);
   box-shadow:
-    0 0 0 1px rgba(220,30,30,0.3),
-    0 20px 50px rgba(220,30,30,0.25),
+    0 0 0 1px rgba(70, 70, 70, 0.3),
+    0 20px 50px rgba(70, 70, 70, 0.25),
     0 6px 20px rgba(0,0,0,0.15);
 }
 
@@ -800,10 +800,10 @@
 }
 .client-card[data-client-id="los-skeepers"]:hover {
   transform: translateY(-6px);
-  border-color: rgba(255,210,0,0.7);
+  border-color: rgba(204, 204, 204, 0.7);
   box-shadow:
-    0 0 0 1px rgba(255,210,0,0.35),
-    0 20px 50px rgba(255,190,0,0.3),
+    0 0 0 1px rgba(204, 204, 204, 0.35),
+    0 20px 50px rgba(190, 190, 190, 0.3),
     0 6px 20px rgba(0,0,0,0.15);
 }
 
@@ -918,4 +918,27 @@
 }
 .seguridad .ciber-tools {
   padding: var(--space-md) 0 0;
+}
+
+/* ---- Clientes: dos destacados arriba, el resto de 3 en 3 ---- */
+.clients-grid--top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.clients-grid--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.clients-grid--top .client-card,
+.clients-grid--three .client-card {
+  display: flex;
+  flex-direction: column;
+  grid-column: auto;
+}
+.clients-grid--top .client-card__media,
+.clients-grid--three .client-card__media { aspect-ratio: 16 / 10; height: auto; min-height: 0; }
+.clients-grid--top .client-card__body,
+.clients-grid--three .client-card__body { flex: 1; display: flex; flex-direction: column; align-items: flex-start; }
+.clients-grid--top .client-card .btn-row,
+.clients-grid--three .client-card .btn-row { margin-top: auto; }
+.clients-grid--top .client-card__name { font-size: 1.6rem; }
+.clients-grid--three .client-card__name { font-size: 1.2rem; }
+@media (max-width: 980px) { .clients-grid--three { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) {
+  .clients-grid--top,
+  .clients-grid--three { grid-template-columns: 1fr; }
 }

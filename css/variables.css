@@ -41,44 +41,44 @@
      CIBERSEGURIDAD — sendero único Kali (morado) → Flipper (naranja)
      Interpolado vía scroll en js/ciber-path.js
      ============================================================ */
-  --ciber-bg: #140d08;
-  --ciber-bg-end: #1a0d00;
-  --kali-primary: #8a5a35;
-  --kali-accent: #ffb066;
-  --kali-glow: #2a1a0e;
-  --flipper-primary: #ff7a1a;
-  --flipper-accent: #ffb066;
-  --flipper-white: #f4ede2;
-  --ciber-text: #f6efe6;
+  --ciber-bg: #0e0e0e;
+  --ciber-bg-end: #0f0f0f;
+  --kali-primary: #626262;
+  --kali-accent: #bbbbbb;
+  --kali-glow: #1d1d1d;
+  --flipper-primary: #8f8f8f;
+  --flipper-accent: #bbbbbb;
+  --flipper-white: #eeeeee;
+  --ciber-text: #f0f0f0;
 
   /* ---- ESP32 ---- */
   --esp32-bg: #0c0d0d;
-  --esp32-panel: #17100b;
-  --esp32-silver: #d6c4b2;
-  --esp32-turquoise: #ff7a1a;
-  --esp32-text: #f6efe6;
+  --esp32-panel: #111111;
+  --esp32-silver: #c7c7c7;
+  --esp32-turquoise: #8f8f8f;
+  --esp32-text: #f0f0f0;
 
   /* ---- Lectura (cafetería) ---- */
-  --lectura-bg: #1c130c;
-  --lectura-panel: #2a1c11;
-  --lectura-brown: #8a5a2b;
-  --lectura-brown-light: #c79a5e;
-  --lectura-green: #2a1a0e;
-  --lectura-green-light: #5a3d27;
-  --lectura-cream: #ecdcc0;
+  --lectura-bg: #141414;
+  --lectura-panel: #1e1e1e;
+  --lectura-brown: #616161;
+  --lectura-brown-light: #9f9f9f;
+  --lectura-green: #1d1d1d;
+  --lectura-green-light: #424242;
+  --lectura-cream: #dddddd;
 
   /* ---- Estudiantes (MentorHub) ---- */
   --edu-bg: #ffffff;
-  --edu-green: #c2560a;
-  --edu-green-dark: #5a2e0e;
-  --edu-green-soft: #fbefe4;
+  --edu-green: #676767;
+  --edu-green-dark: #353535;
+  --edu-green-soft: #f1f1f1;
   --edu-text: #0a0a0a;
 
   /* ---- Mi Setup (Apple-style, dark premium) ---- */
   --setup-bg: #050505;
   --setup-panel: #101012;
   --setup-silver: #d8d8da;
-  --setup-glow: #ff7a1a;
+  --setup-glow: #8f8f8f;
   --setup-text: #f2f2f2;
 }
 
