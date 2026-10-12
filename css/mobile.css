@@ -92,7 +92,6 @@
   .terminal-panel__body { font-size: 0.8rem; padding: 1rem 1.1rem 1.2rem; }
 
   /* ---- Funny: botón caótico ocupa toda la pantalla ---- */
-  .chaos-zone { min-height: 420px; padding: 2rem 1rem; }
 
   /* ---- Gradient bridges: más cortos ---- */
   .gradient-bridge { height: 70px; }
@@ -182,15 +181,6 @@
   /* Seguridad — herramientas apiladas */
   .seguridad .ciber-tools { padding: var(--space-md) 0 0; }
 
-  /* Quien */
-  .quien__categories { grid-template-columns: 1fr; }
-  .quien__stat-grid { grid-template-columns: 1fr 1fr; }
-  .quien__title { font-size: clamp(2rem, 8vw, 2.8rem); }
-
-  /* Webs interactivas — chess arriba, caps abajo */
-  .webs-inter__grid { grid-template-columns: 1fr; gap: 2rem; }
-  .webs-inter__caps { padding-top: 0; }
-
   /* Clientes — asegurar que enterprise no desborde */
   .clients-grid--enterprise .client-card { grid-template-columns: 1fr; }
   .clients-grid--artistas,
@@ -199,5 +189,4 @@
 
 @media (max-width: 420px) {
   .servicios-grid { grid-template-columns: 1fr; }
-  .quien__stat-grid { grid-template-columns: 1fr; }
 }

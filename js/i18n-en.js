@@ -57,21 +57,85 @@ window.I18N_EN = {
   /* ---------- ¿Necesitas una página web? ---------- */
   '¿Necesitas una': 'Need a',
   'página web?': 'website?',
-  'Creo software funcional con bases de datos, que además se ve bien: sistemas que de verdad se usan para registrar, tomar datos y ordenar información, con un diseño propio y código hecho a la medida de tu proyecto.':
-    'I build working software with databases that also looks good: systems people actually use to register, collect data and organize information, with a unique design and code made to fit your project.',
-  'Software con bases de datos': 'Software with databases',
-  'Sistemas de registro y control': 'Registration and tracking systems',
-  'Toma de datos y reportes': 'Data collection and reports',
-  'Portafolios web': 'Web portfolios',
-  'Sitios para negocios, artistas y eventos': 'Sites for businesses, artists and events',
-  'Hojas de vida y CV': 'Résumés and CVs',
-  'Cotizaciones de dominio y bases de datos': 'Domain and database quotes',
-  'Te cotizo tu dominio (.com, .gt y más) y una base de datos económica y segura, con respaldos, para que tu proyecto crezca sin pagar de más.':
-    'I can quote your domain (.com, .gt and more) and an affordable, secure database with backups, so your project can grow without overpaying.',
+  'Creo páginas y sistemas que funcionan de verdad: se ven increíbles, guardan tu información en una base de datos y te ayudan a registrar clientes, pedidos o asistencia. Todo hecho a la medida, sin plantillas.':
+    'I build websites and systems that really work: they look amazing, store your information in a database and help you register customers, orders or attendance. All custom-made, no templates.',
+  'Escríbeme: @madco.py': 'Message me: @madco.py',
+  'Hecho por MADCO': 'Made by MADCO',
   'Industrias atendidas': 'Industries served',
   'A medida, sin plantillas': 'Custom-made, no templates',
   'Mayor alcance por medio de NFC': 'Wider reach through NFC',
-  '"De la idea a la pantalla — con identidad propia y código a la medida."': '"From idea to screen — with its own identity and custom code."',
+  '¿Qué puede hacer una página por ti?': 'What can a website do for you?',
+  'Que te encuentren': 'Get found',
+  'Tu negocio con su propio link para compartir en redes, WhatsApp o en un código QR.': 'Your business with its own link to share on social media, WhatsApp or a QR code.',
+  'Registrar y contar': 'Register and count',
+  'Clientes, pedidos, asistencia o inventario guardados en una base de datos, sin cuadernos ni Excel perdidos.': 'Customers, orders, attendance or inventory saved in a database, no more notebooks or lost spreadsheets.',
+  'Tomar datos y ver reportes': 'Collect data and see reports',
+  'Formularios y encuestas que se convierten solos en números y gráficas que entiendes.': 'Forms and surveys that turn into numbers and charts you can understand.',
+  'Mostrar tu trabajo': 'Show your work',
+  'Portafolios para artistas, músicos, fotógrafos, eventos y emprendedores.': 'Portfolios for artists, musicians, photographers, events and entrepreneurs.',
+  'Tu hoja de vida (CV)': 'Your résumé (CV)',
+  'Un CV que destaca: en línea para compartir con un link o listo para imprimir.': 'A résumé that stands out: online to share with a link, or ready to print.',
+  'Dominio y base de datos': 'Domain and database',
+  'Te cotizo tu dominio (.com, .gt y más) y una base de datos económica y segura, con respaldos, para que tu proyecto crezca sin pagar de más.':
+    'I can quote your domain (.com, .gt and more) and an affordable, secure database with backups, so your project can grow without overpaying.',
+  'Así de fácil': "It's that easy",
+  'Me cuentas tu idea': 'Tell me your idea',
+  'Por Instagram o correo. No necesitas saber nada de tecnología.': "Through Instagram or email. You don't need to know anything about tech.",
+  'Te muestro el diseño': "I'll show you the design",
+  'Lo vemos juntos y lo ajustamos hasta que te encante.': "We go over it together and adjust it until you love it.",
+  'Tu página sale en vivo': 'Your website goes live',
+  'La publicamos y ya la puedes compartir con todo el mundo.': 'We publish it and you can share it with everyone.',
+  'Mira todo lo que puede hacer tu futura página web': 'See everything your future website can do',
+  'Animaciones, juegos, formularios, cámara, clima en vivo y más. Todo funciona de verdad.': 'Animations, games, forms, camera, live weather and more. It all really works.',
+
+  /* ---------- Página de demos (demo.html) ---------- */
+  'MADCO · Tu futura página web': 'MADCO · Your future website',
+  'Mira todo lo que puede hacer tu futura página web: animaciones, juegos, formularios, información en vivo y sensores del teléfono.':
+    'See everything your future website can do: animations, games, forms, live information and phone sensors.',
+  'Movimiento': 'Motion', 'Botones': 'Buttons', 'Sorpresas': 'Surprises', 'Juegos': 'Games', 'Registro': 'Sign-up', 'En vivo': 'Live',
+  'Webs interactivas · MADCO': 'Interactive websites · MADCO',
+  'Mira todo lo que puede hacer': 'See everything',
+  'tu futura página web': 'your future website can do',
+  'Nada de esto es un video: todo funciona de verdad. Tócalo, arrástralo, presiónalo y pruébalo también en tu celular.':
+    'None of this is a video: it all really works. Tap it, drag it, press it, and try it on your phone too.',
+  'Cosas que se mueven': 'Things that move',
+  'Botones y colores': 'Buttons and colors',
+  'Formularios': 'Forms',
+  'Información en vivo': 'Live information',
+  'Teléfono y sensores': 'Phone and sensors',
+  'Empezar': 'Start',
+  'Elementos que se pueden agarrar, girar y lanzar. Hacen que la gente se quede más tiempo en tu página y la recuerde.':
+    'Elements you can grab, spin and throw. They make people stay longer on your site and remember it.',
+  'Ideal para: portafolios, marcas y lanzamientos': 'Great for: portfolios, brands and launches',
+  'Botones, colores y números': 'Buttons, colors and numbers',
+  'Botones que reaccionan al tocarlos, colores que cambian y números que suben solos. Así tu página se siente viva.':
+    'Buttons that react when you touch them, colors that change and numbers that count up on their own. That is how your site feels alive.',
+  'Ideal para: tiendas, menús y páginas de resultados': 'Great for: shops, menus and results pages',
+  'Efectos que nadie espera. Perfectos para promociones, concursos o simplemente para que te recuerden.':
+    'Effects nobody expects. Perfect for promotions, contests or simply to be remembered.',
+  'Ideal para: promociones, concursos y eventos': 'Great for: promotions, contests and events',
+  'Sí, tu página puede tener un juego. Este ajedrez piensa sus jugadas solo, directo en el navegador y sin servidor. Juega con las blancas.':
+    'Yes, your website can have a game. This chess engine thinks its own moves, right in the browser with no server. You play white.',
+  'Ideal para: dinámicas, concursos y marcas que quieren divertir': 'Great for: activities, contests and brands that want to entertain',
+  'tarda la computadora en decidir su jugada': 'for the computer to decide its move',
+  'jugadas hacia adelante que analiza antes de mover': 'moves ahead it analyzes before playing',
+  'servidores: todo pasa en tu propio teléfono o compu': 'servers: everything happens on your own phone or computer',
+  'Formularios y registro': 'Forms and sign-ups',
+  'Lo que la gente llena se guarda y se ordena solo. Pruébalo: escribe tus datos, sube una foto y mira cómo aparece tu tarjeta.':
+    'What people fill in gets saved and organized automatically. Try it: type your details, upload a photo and watch your card appear.',
+  'Ideal para: inscripciones, pedidos, reservas y asistencia': 'Great for: registrations, orders, bookings and attendance',
+  'Tu página puede traer datos de internet al momento: el clima, el tipo de cambio, mapas, tus proyectos o tu música.':
+    'Your website can pull data from the internet instantly: the weather, exchange rates, maps, your projects or your music.',
+  'Ideal para: turismo, ventas en dólares, eventos y artistas': 'Great for: tourism, sales in dollars, events and artists',
+  'Tu teléfono y sus sensores': 'Your phone and its sensors',
+  'Una página web también puede usar la cámara, el micrófono, la vibración, un control de videojuegos y hasta el NFC del teléfono.':
+    "A website can also use the camera, the microphone, vibration, a game controller and even the phone's NFC.",
+  'Ideal para: experiencias, activaciones de marca y registro con NFC': 'Great for: experiences, brand activations and NFC check-ins',
+  '¿Te imaginas tu página con esto?': 'Can you picture your website with this?',
+  'Cuéntame tu idea y la hacemos realidad. Todo lo que viste se puede adaptar a tu negocio, tu evento o tu marca.':
+    "Tell me your idea and we'll make it real. Everything you saw can be adapted to your business, your event or your brand.",
+  'Escríbeme en Instagram': 'Message me on Instagram',
+  'Volver al inicio': 'Back to home',
 
   /* ---------- Webs interactivas ---------- */
   'Lo que se puede hacer': 'What can be done',
@@ -273,22 +337,6 @@ window.I18N_EN = {
   'Certificación oficial': 'Official certification',
   'Certificación tras completar satisfactoriamente el programa de formación en desarrollo web. Aplicada en este portafolio.':
     'Certification earned after successfully completing the web development training program. Applied in this portfolio.',
-
-  /* ---------- Recreo mental ---------- */
-  'Cuando me aburro construyo ideas aleatorias.': 'When I get bored I build random ideas.',
-  'Recreo Mental': 'Brain Break',
-  'Proyectos random, propuestas sin sentido, curiosidades y brainrot.': 'Random projects, pointless proposals, curiosities and brainrot.',
-  'Sube tu video corto a': 'Upload your short video to',
-  'Propuesta de San Valentín hecha código — porque pedir las cosas normales es aburrido.': 'A Valentine\'s proposal written in code — because asking the normal way is boring.',
-  'Snippets curiosos': 'Curious snippets',
-  'Python curioso': 'Curious Python',
-  '// no hagas click aquí': "// don't click here",
-  'No toques': "Don't touch",
-  'Bueno, ya, tócalo': 'Fine, go ahead, touch it',
-  'No mires': "Don't look", 'Quieto ahí': 'Freeze', 'Para': 'Stop', 'Ya basta': 'Enough', 'Última vez': 'Last time',
-  'En serio, no': 'Seriously, no', 'Mala idea': 'Bad idea', 'Detente': 'Stop it', 'No otra vez': 'Not again', '¿Por qué?': 'Why?',
-  'No me presiones': "Don't press me",
-  'Bueno, ya paraste el caos. Sabía que ibas a tocarlo.': 'Well, you stopped the chaos. I knew you would touch it.',
 
   /* ---------- Maker Lab ---------- */
   'Hardware propio': 'My own hardware',

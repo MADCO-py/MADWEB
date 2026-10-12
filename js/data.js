@@ -335,25 +335,3 @@ const HOBBIES = [
   { icon: 'ph-wrench', label: 'Hardware hacking' },
 ];
 
-/* ---------- FUNNY ---------- */
-const FUNNY_PROJECTS = [
-  {
-    name: 'SANSAN',
-    desc: 'Propuesta de San Valentín hecha código — porque pedir las cosas normales es aburrido.',
-    video: 'assets/videos/funny/sansan/sansan-demo-01.mp4',
-    demo: 'https://madco-py.github.io/SANSAN/',
-    repo: 'https://github.com/MADCO-py/SANSAN',
-  },
-];
-
-const FUNNY_SNIPPETS = [
-  {
-    tag: 'Python curioso',
-    code:
-`<span class="c1">try</span>:
-    vida = <span class="c2">"funcionando"</span>
-<span class="c1">except</span> Exception <span class="c1">as</span> e:
-    <span class="c3">print</span>(<span class="c2">"todo bien, no pasó nada"</span>)
-    <span class="c1">pass</span>  <span class="c3"># la solución universal</span>`,
-  },
-];

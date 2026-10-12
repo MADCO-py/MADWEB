@@ -80,14 +80,6 @@
   --setup-silver: #d8d8da;
   --setup-glow: #6fb8ff;
   --setup-text: #f2f2f2;
-
-  /* ---- Cosas Graciosas (caos) ---- */
-  --funny-bg: #0a0a0f;
-  --funny-pink: #ff2d78;
-  --funny-yellow: #ffe600;
-  --funny-cyan: #00e5ff;
-  --funny-lime: #c6ff00;
-  --funny-orange: #ff6b00;
 }
 
 * { box-sizing: border-box; }

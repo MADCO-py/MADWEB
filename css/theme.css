@@ -156,21 +156,6 @@ html.theme-switching *::after {
   color: var(--t-muted);
 }
 
-/* ---------- Cotizaciones en "¿Necesitas una página web?" ---------- */
-.quien__quote-box {
-  display: flex;
-  gap: 0.9rem;
-  align-items: flex-start;
-  padding: 1rem 1.1rem;
-  margin-bottom: 2rem;
-  max-width: 560px;
-  border: 1px solid rgba(0,229,255,0.35);
-  background: rgba(0,229,255,0.06);
-}
-.quien__quote-box > .ph { font-size: 1.4rem; color: #00e5ff; flex-shrink: 0; margin-top: 2px; }
-.quien__quote-box strong { display: block; font-size: 0.95rem; color: var(--q-text, #fff); margin-bottom: 0.25rem; }
-.quien__quote-box span { font-size: 0.85rem; line-height: 1.55; color: var(--q-muted, rgba(240,240,238,0.7)); }
-
 /* Clases que sustituyen los colores que antes iban en línea */
 .clientes__eyebrow { color: #8a6a3a; }
 .clientes__lead { color: #555; }
@@ -213,30 +198,6 @@ html[data-theme="dark"] .personal-card__badge--emp { background: rgba(251,191,36
 html[data-theme="dark"] .client-badge--artista { background: rgba(167,139,250,0.12); border-color: rgba(167,139,250,0.35); color: #b9a3ff; }
 html[data-theme="dark"] .clients-section-label__line { background: var(--t-line); }
 
-/* Recreo mental */
-html[data-theme="dark"] .funny-clean { color: var(--t-text); }
-html[data-theme="dark"] .funny-clean__eyebrow { color: var(--t-faint); }
-html[data-theme="dark"] .funny-clean__title,
-html[data-theme="dark"] .funny-project-card__title { color: var(--t-text); }
-html[data-theme="dark"] .funny-clean__lead,
-html[data-theme="dark"] .funny-clean__subhead,
-html[data-theme="dark"] .funny-project-card__desc { color: var(--t-muted); }
-html[data-theme="dark"] .funny-project-card,
-html[data-theme="dark"] .snippet-card,
-html[data-theme="dark"] .chaos-zone { background: var(--t-surface); border-color: var(--t-line); color: var(--t-text); }
-html[data-theme="dark"] .funny-project-card__video-placeholder { background: var(--t-surface-2); color: var(--t-faint); }
-html[data-theme="dark"] .funny-project-card .btn { color: var(--t-text); border-color: var(--t-line-strong); }
-html[data-theme="dark"] .funny-project-card .btn-demo { background: var(--t-surface-2); }
-html[data-theme="dark"] .snippet-card__tag { background: #f2f2f0; color: #0a0a12; }
-html[data-theme="dark"] .snippet-card .c1 { color: #7fb2ff; }
-html[data-theme="dark"] .snippet-card .c2 { color: #4ade80; }
-html[data-theme="dark"] .snippet-card .c3 { color: #fbbf24; }
-html[data-theme="dark"] .chaos-zone__label,
-html[data-theme="dark"] .chaos-zone__done { color: var(--t-faint); }
-html[data-theme="dark"] .chaos-btn { background: var(--t-surface-2); color: var(--t-text); border-color: var(--t-line-strong); }
-html[data-theme="dark"] .chaos-btn:hover,
-html[data-theme="dark"] .chaos-btn--final { background: #f2f2f0; color: #0a0a12; border-color: #f2f2f0; }
-
 /* Estudiantes */
 html[data-theme="dark"] .mentorhub-card { border-color: rgba(47,191,134,0.3); }
 
@@ -246,24 +207,6 @@ html[data-theme="dark"] .footer { background: #000; color: #f2f2f0; }
 /* ============================================================
    MODO CLARO — secciones que originalmente eran oscuras
    ============================================================ */
-html[data-theme="light"] .quien { color: var(--t-text); --q-text: #0a0a12; --q-muted: #555; }
-html[data-theme="light"] .quien__eyebrow,
-html[data-theme="light"] .quien__stat-label { color: var(--t-faint); }
-html[data-theme="light"] .quien__title,
-html[data-theme="light"] .quien__stat-num { color: var(--t-text); }
-html[data-theme="light"] .quien__lead,
-html[data-theme="light"] .quien__cat,
-html[data-theme="light"] .quien__quote { color: var(--t-muted); }
-html[data-theme="light"] .quien__cat .ph { color: var(--t-faint); }
-html[data-theme="light"] .quien__btn-main { background: #0a0a12; color: #fff; }
-html[data-theme="light"] .quien__btn-secondary { color: var(--t-text); border-color: var(--t-line-strong); }
-html[data-theme="light"] .quien__btn-secondary:hover { background: rgba(0,0,0,0.05); }
-html[data-theme="light"] .quien__stat-grid { background: var(--t-line); border-color: var(--t-line); }
-html[data-theme="light"] .quien__stat { background: var(--t-surface); }
-html[data-theme="light"] .quien__quote { border-left-color: var(--t-line-strong); }
-html[data-theme="light"] .quien__quote-box { border-color: rgba(0,150,170,0.4); background: rgba(0,180,200,0.07); }
-html[data-theme="light"] .quien__quote-box > .ph { color: #0094a8; }
-
 html[data-theme="light"] .webs-inter { color: var(--t-text); }
 html[data-theme="light"] .webs-inter__eyebrow,
 html[data-theme="light"] .webs-inter__feature-label,

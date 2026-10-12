@@ -410,43 +410,6 @@
         '<div class="hobby-item"><i class="ph ' + h.icon + '"></i><span>' + h.label + '</span></div>'
       ).join('');
   }
-  /* ---------- FUNNY ---------- */
-  function renderFunnyProjects() {
-    const mount = document.querySelector('[data-mount="funny-projects"]');
-    if (!mount) return;
-    mount.innerHTML = '';
-    FUNNY_PROJECTS.forEach(p => {
-      const card = el('div', 'funny-project-card card reveal');
-      const video = document.createElement('video');
-      video.className = 'funny-project-card__video';
-      video.src = p.video;
-      video.muted = true; video.playsInline = true; video.autoplay = true; video.loop = true;
-      video.addEventListener('error', () => {
-        const ph = el('div', 'funny-project-card__video-placeholder', `<i class="ph ph-video-camera" style="font-size:1.6rem;"></i> Sube tu video corto a<br><code style="opacity:.7">assets/videos/funny/</code>`);
-        video.replaceWith(ph);
-      });
-      video.autoplay = true;
-      card.appendChild(video);
-      card.appendChild(el('div', 'funny-project-card__body', `
-        <h4 class="funny-project-card__title">${p.name}</h4>
-        <p class="funny-project-card__desc">${p.desc}</p>
-        ${btnRow({ demo: p.demo || '', repo: p.repo })}
-      `));
-      mount.appendChild(card);
-    });
-  }
-
-  function renderFunnySnippets() {
-    const mount = document.querySelector('[data-mount="funny-snippets"]');
-    if (!mount) return;
-    mount.innerHTML = FUNNY_SNIPPETS.map(s => `
-      <div class="snippet-card reveal">
-        <span class="snippet-card__tag">${s.tag}</span>
-        <pre>${s.code}</pre>
-      </div>
-    `).join('');
-  }
-
   /* ---------- Nav: link activo según sección visible ---------- */
   function initNavActive() {
     const links = document.querySelectorAll('.nav__link');
@@ -478,8 +441,6 @@
     renderClients();
     renderStudent();
     renderSetup();
-    renderFunnyProjects();
-    renderFunnySnippets();
     initNavActive();
 
     // Vuelve a observar los nuevos elementos .reveal que se acaban de inyectar
