@@ -7,7 +7,10 @@
   const pageBg = document.getElementById('page-bg');
   if (!pageBg) return;
 
-  const HERO_COLOR = [255, 255, 255];
+  // Color del hero y de cada sección según el tema (data-bg-color en claro,
+  // data-bg-dark en oscuro; si no hay data-bg-dark se usa el mismo).
+  const isDark = () => document.documentElement.getAttribute('data-theme') !== 'light';
+  const heroColor = () => (isDark() ? [8, 8, 10] : [255, 255, 255]);
 
   function parseColor(str) { return str.split(',').map(Number); }
   function smoothstep(t) { t = Math.min(1, Math.max(0, t)); return t * t * (3 - 2 * t); }
@@ -21,9 +24,11 @@
   let sections = [];
 
   function build() {
-    sections = [{ color: HERO_COLOR, center: 0 }];
+    const dark = isDark();
+    sections = [{ color: heroColor(), center: 0 }];
     document.querySelectorAll('.page-section[data-bg-color]').forEach(el => {
-      sections.push({ el, color: parseColor(el.getAttribute('data-bg-color')), center: 0 });
+      const attr = (dark && el.getAttribute('data-bg-dark')) || el.getAttribute('data-bg-color');
+      sections.push({ el, color: parseColor(attr), center: 0 });
     });
   }
 
@@ -79,6 +84,7 @@
   window.addEventListener('resize', () => { recalc(); update(); });
 
   document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('themechange', init);
   window.addEventListener('load', () => { recalc(); update(); });
   // Recalcular varias veces por si cargan imágenes/videos que cambian la altura
   setTimeout(() => { recalc(); update(); }, 300);

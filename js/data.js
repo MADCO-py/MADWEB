@@ -7,6 +7,16 @@ const SOCIALS = [
   { name: 'Instagram', icon: 'ph-instagram-logo', url: 'https://www.instagram.com/madco.jsx/' },
 ];
 
+/* ---------- PLAYGROUND (Webs Interactivas) — conexiones en vivo ----------
+   Para mostrar una playlist, abre Spotify > Compartir > Copiar enlace de la
+   playlist (o artista/canción) y pégalo en spotifyEmbed. Un enlace de PERFIL
+   no se puede incrustar: ese solo se usa para el botón. */
+const PLAYGROUND = {
+  githubUser: 'MADCO-py',
+  spotifyProfile: 'https://open.spotify.com/user/31i74ivuxrtrle2apupspfkwqg7i',
+  spotifyEmbed: '',
+};
+
 /* ---------- PROYECTOS PERSONALES ---------- */
 const PERSONAL_PROJECTS = [
   {

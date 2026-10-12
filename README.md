@@ -21,6 +21,12 @@ Casi todo el contenido del sitio vive en **`js/data.js`**. No necesitas tocar HT
 | Un item de Mi Setup | `SETUP_ITEMS` |
 | Un proyecto gracioso | `FUNNY_PROJECTS` |
 | Una red social | `SOCIALS` |
+| La playlist de Spotify, usuario de GitHub del playground | `PLAYGROUND` |
+
+## Idioma (ES/EN) y tema (oscuro/claro)
+- La página está escrita en español. El botón **EN** reemplaza cada texto usando el diccionario de **`js/i18n-en.js`**.
+- Si agregas o cambias un texto en español (en `index.html` o `data.js`), agrega también su versión en inglés en ese archivo. Si falta, ese texto simplemente se queda en español.
+- El tema oscuro es el de entrada. Los colores de cada modo están en **`css/theme.css`**.
 
 ## Dónde van los archivos (imágenes, videos, .txt)
 

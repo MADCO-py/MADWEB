@@ -2,6 +2,15 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<script>
+  // Tema e idioma guardados: se aplican antes de pintar para que no parpadee.
+  (function () {
+    var t = 'dark', l = 'es';
+    try { t = localStorage.getItem('madco-theme') || t; l = localStorage.getItem('madco-lang') || l; } catch (e) {}
+    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.setAttribute('data-lang', l);
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>MADCO</title>
 <meta name="description" content="MADCO.py — builder, hacker, curioso. Hub de proyectos personales, ciberseguridad, hardware hacking y cosas divertidas.">
@@ -23,6 +32,7 @@
 <link rel="stylesheet" href="css/setup.css">
 <link rel="stylesheet" href="css/sections-new.css">
 <link rel="stylesheet" href="css/playground.css">
+<link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body>
@@ -33,10 +43,17 @@
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <span class="nav__brand">MADCO</span>
+  <div class="nav__controls">
+    <div class="lang-switch" role="group" aria-label="Idioma">
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+    </div>
+    <button type="button" class="theme-btn" data-theme-toggle aria-label="Cambiar a modo claro"><i class="ph ph-sun"></i></button>
+  </div>
   <a class="nav__link" href="#clientes"><i class="ph ph-briefcase"></i> Clientes</a>
-  <a class="nav__link" href="#servicios"><i class="ph ph-list-bullets"></i> Servicios</a>
   <a class="nav__link" href="#personal"><i class="ph ph-code-block"></i> Proyectos</a>
   <a class="nav__link" href="#estudiantes"><i class="ph ph-graduation-cap"></i> Estudiantes</a>
+  <a class="nav__link" href="#certificados"><i class="ph ph-certificate"></i> Certificados</a>
   <a class="nav__link" href="#esp32"><i class="ph ph-cpu"></i> Maker Lab</a>
   <a class="nav__link" href="#ciberseguridad"><i class="ph ph-game-controller"></i> Flipper Zero</a>
   <a class="nav__link" href="#seguridad"><i class="ph ph-shield-check"></i> Seguridad</a>
@@ -56,17 +73,17 @@
   </div>
 </header>
 <!-- ============ CLIENTES ============ -->
-<section class="section clientes page-section" id="clientes" data-bg-color="242,240,236">
+<section class="section clientes page-section" id="clientes" data-bg-color="242,240,236" data-bg-dark="12,12,14">
   <div class="section__inner">
-    <div class="section__eyebrow reveal" style="color:#8a6a3a">Proyectos entregados</div>
+    <div class="section__eyebrow clientes__eyebrow reveal">Proyectos entregados</div>
     <h2 class="section__title reveal">Soluciones para Emprendedores y Empresas</h2>
-    <p class="section__lead reveal" style="color:#555">Sitios web, sistemas y herramientas digitales construidas para clientes reales — desde emprendimientos hasta sistemas en producción.</p>
+    <p class="section__lead clientes__lead reveal">Sitios web, sistemas y herramientas digitales construidas para clientes reales — desde emprendimientos hasta sistemas en producción.</p>
     <div data-mount="clients"></div>
   </div>
 </section>
 
 <!-- ============ ¿QUIÉN HACE TU PÁGINA WEB? ============ -->
-<section class="section quien page-section" id="quien" data-bg-color="18,18,24">
+<section class="section quien page-section" id="quien" data-bg-color="250,250,247" data-bg-dark="18,18,24">
   <div class="section__inner">
     <div class="quien__layout">
       <div class="quien__left reveal">
@@ -80,6 +97,13 @@
           <div class="quien__cat"><i class="ph ph-browser"></i> Portafolios web</div>
           <div class="quien__cat"><i class="ph ph-storefront"></i> Sitios para negocios, artistas y eventos</div>
           <div class="quien__cat"><i class="ph ph-identification-card"></i> Hojas de vida y CV</div>
+        </div>
+        <div class="quien__quote-box">
+          <i class="ph ph-receipt"></i>
+          <div>
+            <strong>Cotizaciones de dominio y bases de datos</strong>
+            <span>Te cotizo tu dominio (.com, .gt y más) y una base de datos económica y segura, con respaldos, para que tu proyecto crezca sin pagar de más.</span>
+          </div>
         </div>
         <div class="quien__ctas">
           <a href="https://www.instagram.com/madco.py/" target="_blank" rel="noopener" class="quien__btn-main">
@@ -105,8 +129,406 @@
   </div>
 </section>
 
+<!-- ============ WEBS INTERACTIVAS ============ -->
+<section class="section webs-inter page-section" id="webs-inter" data-bg-color="236,237,241" data-bg-dark="12,12,18">
+  <div class="section__inner">
+    <div class="section__eyebrow webs-inter__eyebrow reveal">Lo que se puede hacer</div>
+    <h2 class="section__title webs-inter__title reveal">Webs Interactivas</h2>
+    <p class="section__lead webs-inter__lead reveal">No solo páginas estáticas — esto es lo que se puede lograr con código hecho a la medida.</p>
+
+    <div class="webs-inter__grid">
+      <!-- AJEDREZ CON IA -->
+      <div class="webs-inter__feature reveal">
+        <div class="webs-inter__feature-label">Ejemplo · Chess AI</div>
+        <h3 class="webs-inter__feature-title">IA que juega ajedrez</h3>
+        <p class="webs-inter__feature-desc">Motor minimax nivel 4 con poda alfa-beta, tablas posicionales y respuesta en &lt;200ms. Completamente en el navegador, sin servidor.</p>
+        <div class="chess-wrap">
+          <div class="chess-top-bar">
+            <span class="chess-turn-indicator chess-turn--black">♟ Negras (IA Expert)</span>
+          </div>
+          <div id="chess-board"></div>
+          <div class="chess-bottom-bar">
+            <span class="chess-turn-indicator chess-turn--white">♙ Blancas (Tú)</span>
+            <span id="chess-status" class="chess-status">Tu turno — Blancas</span>
+          </div>
+          <div class="hobbies__chess-hint"><i class="ph ph-cursor-click"></i> Click en una pieza para moverla</div>
+        </div>
+      </div>
+
+      <!-- CAPACIDADES -->
+      <div class="webs-inter__caps reveal">
+        <div class="webs-inter__cap">
+          <i class="ph ph-cpu"></i>
+          <div>
+            <strong>Herramientas interactivas</strong>
+            <span>Generadores, analizadores, validadores — sin backend ni suscripciones.</span>
+          </div>
+        </div>
+        <div class="webs-inter__cap">
+          <i class="ph ph-paint-brush"></i>
+          <div>
+            <strong>Animaciones y efectos visuales</strong>
+            <span>Scroll morphing, partículas, transiciones de color — todo en CSS/JS.</span>
+          </div>
+        </div>
+        <div class="webs-inter__cap">
+          <i class="ph ph-device-mobile"></i>
+          <div>
+            <strong>100% responsive</strong>
+            <span>Se ve bien en celular, tablet y desktop desde el primer día.</span>
+          </div>
+        </div>
+        <div class="webs-inter__cap">
+          <i class="ph ph-github-logo"></i>
+          <div>
+            <strong>GitHub Pages</strong>
+            <span>Sin costo de hosting — desplegado directamente desde el repo.</span>
+          </div>
+        </div>
+        <div class="webs-inter__cap">
+          <i class="ph ph-wifi-high"></i>
+          <div>
+            <strong>Integración NFC</strong>
+            <span>Tags físicos que llevan directo a tu web al acercar el teléfono.</span>
+          </div>
+        </div>
+        <div class="webs-inter__cap">
+          <i class="ph ph-chart-line"></i>
+          <div>
+            <strong>Sin plantillas</strong>
+            <span>Cada proyecto tiene su identidad propia — diseñado desde cero para ti.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLAYGROUND: todo lo que se puede hacer -->
+    <div class="pg" id="playground">
+      <div class="pg__head reveal">
+        <div class="webs-inter__feature-label">Pruébalo tú</div>
+        <h3 class="pg__title">Toca, arrastra, presiona</h3>
+        <p class="pg__lead">Cada cuadro es algo que puedo poner en tu página. Todo hecho con HTML, CSS y JavaScript, sin librerías.</p>
+      </div>
+
+      <div class="pg__grid">
+        <!-- 1. Arrastrar -->
+        <div class="pg__tile pg__tile--wide reveal">
+          <div class="pg__label"><span>01</span> Mover cosas</div>
+          <div class="pg-drag" data-pg="drag">
+            <div class="pg-drag__item" style="left:12%;top:22%">Arrástrame</div>
+            <div class="pg-drag__item pg-drag__item--sq" style="left:52%;top:46%"></div>
+            <div class="pg-drag__item pg-drag__item--dot" style="left:78%;top:16%"></div>
+          </div>
+          <p class="pg__hint">Arrastra las piezas: se sueltan con inercia y rebotan en las orillas.</p>
+        </div>
+
+        <!-- 2. Colores -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>02</span> Cambiar colores</div>
+          <div class="pg-colors" data-pg="colors">
+            <button class="pg-swatch is-on" style="--c:#00e5ff" aria-label="Cian"></button>
+            <button class="pg-swatch" style="--c:#ff3d7f" aria-label="Rosa"></button>
+            <button class="pg-swatch" style="--c:#ffd400" aria-label="Amarillo"></button>
+            <button class="pg-swatch" style="--c:#7cff4f" aria-label="Verde"></button>
+            <button class="pg-swatch" style="--c:#a26bff" aria-label="Morado"></button>
+            <button class="pg-swatch" style="--c:#ff7a1a" aria-label="Naranja"></button>
+          </div>
+          <div class="pg-colors__preview"><span>Color actual</span><b data-pg="hex">#00E5FF</b></div>
+          <p class="pg__hint">Elige uno y todo el playground cambia de color suavemente.</p>
+        </div>
+
+        <!-- 3. Botones -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>03</span> Botones con vida</div>
+          <div class="pg-btns">
+            <button class="pg-btn pg-btn--grow">Crezco</button>
+            <button class="pg-btn pg-btn--magnet" data-pg="magnet">Imán</button>
+            <button class="pg-btn pg-btn--ripple" data-pg="ripple">Onda</button>
+            <button class="pg-btn pg-btn--jelly" data-pg="jelly">Gelatina</button>
+          </div>
+          <p class="pg__hint">Pasa el mouse y haz clic en cada uno.</p>
+        </div>
+
+        <!-- 4. Terremoto -->
+        <div class="pg__tile pg__tile--quake reveal">
+          <div class="pg__label"><span>04</span> Toda la pantalla</div>
+          <button class="pg-quake" data-pg="quake"><i class="ph-bold ph-lightning"></i> Hacer temblar</button>
+          <div class="pg-fx">
+            <button class="pg-btn" data-pg="flip"><i class="ph-bold ph-arrows-clockwise"></i> Voltear</button>
+            <button class="pg-btn" data-pg="party"><i class="ph-bold ph-disco-ball"></i> Fiesta</button>
+            <button class="pg-btn" data-pg="melt"><i class="ph-bold ph-drop"></i> Derretir</button>
+          </div>
+          <label class="pg-range">
+            <span>Fuerza <b data-pg="quake-val">5</b></span>
+            <input type="range" min="1" max="10" value="5" data-pg="quake-power">
+          </label>
+          <p class="pg__hint">Sacude la página completa. Sube la fuerza bajo tu propio riesgo.</p>
+        </div>
+
+        <!-- 5. Tarjeta 3D -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>05</span> Profundidad 3D</div>
+          <div class="pg-tilt" data-pg="tilt">
+            <div class="pg-tilt__card">
+              <div class="pg-tilt__glare"></div>
+              <small>MADCO.py</small>
+              <strong>Tarjeta 3D</strong>
+              <span>Sigue tu mouse</span>
+            </div>
+          </div>
+          <p class="pg__hint">Mueve el mouse encima: la tarjeta se inclina y refleja la luz.</p>
+        </div>
+
+        <!-- 6. Partículas -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>06</span> Celebraciones</div>
+          <div class="pg-burst" data-pg="burst">
+            <button class="pg-btn pg-btn--solid"><i class="ph-bold ph-confetti"></i> Lanzar confeti</button>
+          </div>
+          <p class="pg__hint">O haz clic en cualquier parte del cuadro.</p>
+        </div>
+
+        <!-- 7. Texto -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>07</span> Texto animado</div>
+          <div class="pg-text">
+            <p class="pg-wave" data-pg="wave" data-text="Hola mundo">Hola mundo</p>
+            <p class="pg-scramble" data-pg="scramble" data-text="PASA EL MOUSE">PASA EL MOUSE</p>
+          </div>
+          <p class="pg__hint">Letras que ondulan y texto que se descifra.</p>
+        </div>
+
+        <!-- 8. Controles -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>08</span> Controles suaves</div>
+          <div class="pg-ctrl">
+            <div class="pg-ctrl__stage"><div class="pg-ctrl__shape" data-pg="shape"></div></div>
+            <label class="pg-range">
+              <span>Tamaño</span>
+              <input type="range" min="20" max="100" value="50" data-pg="size">
+            </label>
+            <label class="pg-range">
+              <span>Giro</span>
+              <input type="range" min="0" max="360" value="0" data-pg="spin">
+            </label>
+            <button class="pg-toggle" data-pg="toggle" role="switch" aria-checked="false"><span></span> Círculo</button>
+          </div>
+        </div>
+
+        <!-- 9. Contador -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>09</span> Números en movimiento</div>
+          <div class="pg-count">
+            <b data-pg="count">0</b>
+            <span>visitas registradas (ejemplo)</span>
+            <button class="pg-btn" data-pg="count-btn">+ 1 000</button>
+          </div>
+          <p class="pg__hint">Contadores que suben suavemente, ideales para mostrar resultados.</p>
+        </div>
+
+        <!-- 10. Partículas -->
+        <div class="pg__tile pg__tile--wide reveal">
+          <div class="pg__label"><span>10</span> Partículas vivas</div>
+          <canvas class="pg-particles" data-pg="particles"></canvas>
+          <p class="pg__hint">Mueve el mouse: los puntos huyen y se conectan. Mantén presionado para atraerlos.</p>
+        </div>
+
+        <!-- 11. Linterna -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>11</span> Linterna</div>
+          <div class="pg-torch" data-pg="torch">
+            <p>Hay un mensaje escondido aquí. <b>Encuéntralo.</b> Las webs pueden guardar secretos.</p>
+          </div>
+          <p class="pg__hint">Pasa el mouse o el dedo por la oscuridad.</p>
+        </div>
+
+        <!-- 12. Cubo 3D -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>12</span> Cubo 3D</div>
+          <div class="pg-cube-stage" data-pg="cube">
+            <div class="pg-cube">
+              <span class="f1">HTML</span><span class="f2">CSS</span><span class="f3">JS</span>
+              <span class="f4">3D</span><span class="f5">MAD</span><span class="f6">CO</span>
+            </div>
+          </div>
+          <p class="pg__hint">Arrástralo para girarlo. Al soltarlo sigue girando solo.</p>
+        </div>
+
+        <!-- 13. Rasca y gana -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>13</span> Rasca y gana</div>
+          <div class="pg-scratch" data-pg="scratch">
+            <div class="pg-scratch__prize"><b>¡Ganaste!</b><span>Una web hecha a tu medida</span></div>
+            <canvas data-label="RASCA AQUÍ"></canvas>
+          </div>
+          <p class="pg__hint">Raspa con el mouse o el dedo.</p>
+        </div>
+
+        <!-- 14. Gravedad -->
+        <div class="pg__tile pg__tile--wide reveal">
+          <div class="pg__label"><span>14</span> Gravedad</div>
+          <div class="pg-gravity" data-pg="gravity">
+            <button class="pg-btn pg-btn--solid pg-gravity__drop" data-again="Otra vez">Soltar letras</button>
+          </div>
+          <p class="pg__hint">Las letras caen, chocan y se apilan. Agárralas y lánzalas.</p>
+        </div>
+
+        <!-- 15. Ojos -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>15</span> Te estoy viendo</div>
+          <div class="pg-eyes" data-pg="eyes">
+            <div class="pg-eye"><i></i></div>
+            <div class="pg-eye"><i></i></div>
+          </div>
+          <p class="pg__hint">Los ojos siguen tu mouse por toda la página. Haz clic y parpadean.</p>
+        </div>
+      </div>
+
+      <!-- REGISTRO EN VIVO -->
+      <div class="pg-reg reveal" data-pg="registro">
+        <div class="pg-reg__head">
+          <div class="pg__label"><span>16</span> Registro en vivo</div>
+          <h3 class="pg__subtitle">Llena el formulario y tu tarjeta aparece al instante</h3>
+          <p class="pg__lead">Así funciona un sistema de registro: escribes, subes una foto y se guarda. Aquí se guarda solo en tu navegador; en un proyecto real va a una base de datos.</p>
+        </div>
+        <div class="pg-reg__layout">
+          <div class="pg-reg__cards" data-pg="reg-cards" aria-live="polite">
+            <p class="pg-reg__empty">Todavía no hay tarjetas. ¡Sé la primera persona en registrarse!</p>
+          </div>
+          <form class="pg-reg__form" data-pg="reg-form" novalidate>
+            <label class="pg-reg__photo">
+              <input type="file" accept="image/*" data-pg="reg-photo">
+              <span class="pg-reg__photo-box" data-pg="reg-preview"><i class="ph ph-camera-plus"></i><small>Subir foto</small></span>
+            </label>
+            <label class="pg-field"><span>Nombre</span><input type="text" name="nombre" maxlength="40" required placeholder="Tu nombre"></label>
+            <label class="pg-field"><span>¿A qué te dedicas?</span><input type="text" name="rol" maxlength="50" placeholder="Ej. Diseñadora, estudiante, chef"></label>
+            <label class="pg-field"><span>Ciudad</span><input type="text" name="ciudad" maxlength="40" placeholder="Ej. Guatemala"></label>
+            <label class="pg-field"><span>Un dato curioso</span><textarea name="dato" maxlength="120" rows="2" placeholder="Algo que poca gente sabe de ti"></textarea></label>
+            <div class="pg-reg__actions">
+              <button class="pg-btn pg-btn--solid" type="submit"><i class="ph-bold ph-plus"></i> Agregar tarjeta</button>
+              <button class="pg-btn" type="button" data-pg="reg-clear">Borrar todo</button>
+            </div>
+            <p class="pg-reg__msg" data-pg="reg-msg" role="status"></p>
+          </form>
+        </div>
+      </div>
+
+      <!-- CONEXIONES EN VIVO (APIs) -->
+      <div class="pg__head pg__head--apis reveal">
+        <div class="webs-inter__feature-label">Hasta esto se puede conectar</div>
+        <h3 class="pg__title">Conexiones en vivo</h3>
+        <p class="pg__lead">Una web puede hablar con internet, con tu cámara, tu micrófono, tu control de videojuegos y hasta con tags NFC. Todo esto funciona en vivo, desde tu navegador.</p>
+      </div>
+      <div class="pg__grid pg__grid--apis">
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>API</span> Clima en vivo</div>
+          <div class="pg-api pg-weather" data-pg="weather">
+            <b class="pg-api__big" data-pg="w-temp">--°</b>
+            <span data-pg="w-desc">Cargando clima de Guatemala…</span>
+          </div>
+          <button class="pg-btn" data-pg="w-locate"><i class="ph-bold ph-map-pin"></i> Usar mi ubicación</button>
+          <p class="pg__hint">Datos de Open-Meteo, actualizados cada hora.</p>
+        </div>
+
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>API</span> Tipo de cambio</div>
+          <div class="pg-api pg-fx-rate">
+            <label class="pg-field"><span>Dólares (USD)</span><input type="number" min="0" step="any" value="100" data-pg="fx-usd"></label>
+            <b class="pg-api__big" data-pg="fx-gtq">Q --</b>
+            <span data-pg="fx-note">Consultando tipo de cambio…</span>
+          </div>
+          <p class="pg__hint">Cambia el monto y se convierte al momento.</p>
+        </div>
+
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>API</span> Estación Espacial</div>
+          <div class="pg-iss" data-pg="iss">
+            <div class="pg-iss__map"><i class="pg-iss__dot" data-pg="iss-dot"></i></div>
+            <span data-pg="iss-pos">Buscando la Estación Espacial…</span>
+          </div>
+          <p class="pg__hint">Su posición real, actualizada cada 5 segundos.</p>
+        </div>
+
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>API</span> Mis repos de GitHub</div>
+          <ul class="pg-gh" data-pg="github"><li>Cargando repositorios…</li></ul>
+          <p class="pg__hint">Leídos en vivo desde GitHub.</p>
+        </div>
+
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>API</span> Spotify</div>
+          <div class="pg-spotify" data-pg="spotify"></div>
+          <p class="pg__hint">Música incrustada directo en la página.</p>
+        </div>
+
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>Sensor</span> Tu micrófono</div>
+          <canvas class="pg-mic" data-pg="mic-canvas"></canvas>
+          <button class="pg-btn" data-pg="mic"><i class="ph-bold ph-microphone"></i> Activar micrófono</button>
+          <p class="pg__hint">Habla o aplaude y mira tu voz. El audio nunca sale de tu navegador.</p>
+        </div>
+
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>Sensor</span> Tu cámara</div>
+          <div class="pg-cam"><video data-pg="cam-video" playsinline muted></video><span data-pg="cam-off"><i class="ph ph-video-camera"></i></span></div>
+          <div class="pg-cam__filters" data-pg="cam-filters">
+            <button class="pg-chip is-on" data-f="none">Normal</button>
+            <button class="pg-chip" data-f="grayscale(1) contrast(1.3)">Cine</button>
+            <button class="pg-chip" data-f="invert(1) hue-rotate(180deg)">Rayos X</button>
+            <button class="pg-chip" data-f="sepia(1) saturate(2) hue-rotate(-20deg)">Retro</button>
+            <button class="pg-chip" data-f="saturate(3) hue-rotate(90deg)">Alien</button>
+          </div>
+          <button class="pg-btn" data-pg="cam"><i class="ph-bold ph-video-camera"></i> Encender cámara</button>
+          <p class="pg__hint">Filtros en tiempo real. Nada se graba ni se envía.</p>
+        </div>
+
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>Voz</span> La página habla y escucha</div>
+          <label class="pg-field"><span>Escribe algo</span><input type="text" data-pg="say-text" value="Hola, soy la página de MADCO"></label>
+          <div class="pg-fx">
+            <button class="pg-btn" data-pg="say"><i class="ph-bold ph-speaker-high"></i> Hablar</button>
+            <button class="pg-btn" data-pg="listen"><i class="ph-bold ph-ear"></i> Escuchar</button>
+          </div>
+          <p class="pg-api__out" data-pg="listen-out">Pulsa "Escuchar" y di un color: rojo, azul, verde, rosa, amarillo o morado.</p>
+        </div>
+
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>Sensor</span> Inclina tu celular</div>
+          <div class="pg-tilt-ball" data-pg="orient"><i></i></div>
+          <button class="pg-btn" data-pg="orient-btn"><i class="ph-bold ph-device-mobile"></i> Activar sensor</button>
+          <p class="pg__hint">En celular la bolita rueda al inclinarlo. En compu, sigue tu mouse.</p>
+        </div>
+
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>Control</span> Control de videojuegos</div>
+          <div class="pg-pad" data-pg="pad"><i class="pg-pad__ship"></i></div>
+          <span class="pg-api__out" data-pg="pad-status">Conecta un control (Xbox, PlayStation, Switch) y presiona un botón.</span>
+        </div>
+
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>NFC</span> Leer un tag desde la web</div>
+          <div class="pg-nfc"><span class="pg-nfc__ring"></span><span class="pg-nfc__ring"></span><i class="ph ph-wifi-high"></i></div>
+          <button class="pg-btn" data-pg="nfc"><i class="ph-bold ph-scan"></i> Escanear tag NFC</button>
+          <p class="pg-api__out" data-pg="nfc-out">Funciona en Chrome para Android. Acerca un tag al teléfono.</p>
+        </div>
+
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>Teléfono</span> Funciones del dispositivo</div>
+          <div class="pg-btns">
+            <button class="pg-btn" data-pg="share"><i class="ph-bold ph-share-network"></i> Compartir</button>
+            <button class="pg-btn" data-pg="vibrate"><i class="ph-bold ph-vibrate"></i> Vibrar</button>
+            <button class="pg-btn" data-pg="notify"><i class="ph-bold ph-bell"></i> Notificación</button>
+            <button class="pg-btn" data-pg="copy"><i class="ph-bold ph-copy"></i> Copiar link</button>
+          </div>
+          <p class="pg-api__out" data-pg="device-out">La web puede usar funciones de tu teléfono.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PROYECTOS PERSONALES ============ -->
-<section class="section personal page-section" id="personal" data-bg-color="244,243,240">
+<section class="section personal page-section" id="personal" data-bg-color="244,243,240" data-bg-dark="16,16,18">
   <div class="section__inner">
     <div class="section__eyebrow reveal">Proyectos personales</div>
     <h2 class="section__title reveal">Lo que construyo para mí</h2>
@@ -116,7 +538,7 @@
 </section>
 
 <!-- ============ ÉXITO ACADÉMICO ============ -->
-<section class="section estudiantes page-section" id="estudiantes" data-bg-color="238,238,233">
+<section class="section estudiantes page-section" id="estudiantes" data-bg-color="238,238,233" data-bg-dark="10,18,15">
   <div class="section__inner">
     <div class="section__eyebrow estudiantes__eyebrow reveal">Recursos para estudiantes</div>
     <h2 class="section__title reveal">Herramientas para el Éxito Académico</h2>
@@ -125,8 +547,44 @@
   </div>
 </section>
 
+<!-- ============ CURSOS & CERTIFICADOS ============ -->
+<section class="section certs page-section" id="certificados" data-bg-color="246,246,244" data-bg-dark="24,24,26">
+  <div class="section__inner">
+    <div class="certs__eyebrow reveal">Certificaciones</div>
+    <h2 class="section__title certs__title reveal">Cursos &amp; Certificados</h2>
+    <div class="certs__grid">
+      <article class="cert-card reveal">
+        <div class="cert-card__logo cert-card__logo--uvg" aria-hidden="true"><b>UVG</b><small>Universidad del Valle de Guatemala</small></div>
+        <h3 class="cert-card__title">Ética en Investigación con Sujetos Humanos</h3>
+        <p class="cert-card__org">Universidad del Valle de Guatemala — CCSS</p>
+        <p class="cert-card__meta"><i class="ph ph-calendar-blank"></i> 7 de mayo de 2026 · Cód. CECCSSS 0343</p>
+        <p class="cert-card__desc">Curso en línea de 8 horas organizado por el Comité de Ética de Investigación de la Facultad de Ciencias Sociales.</p>
+        <div class="cert-card__tags"><span>8h</span><span>UVG</span><span>Ethics</span></div>
+      </article>
+      <article class="cert-card reveal">
+        <div class="cert-card__logo cert-card__logo--uvg" aria-hidden="true"><b>UVG</b><small>Universidad del Valle de Guatemala</small></div>
+        <h3 class="cert-card__title">HCI — Interacción Humano-Computadora</h3>
+        <p class="cert-card__org">Universidad del Valle de Guatemala</p>
+        <p class="cert-card__meta"><i class="ph ph-bank"></i> UVG · Curso universitario</p>
+        <p class="cert-card__desc">Principios de usabilidad, diseño centrado en el usuario, evaluación de interfaces y prototipado de experiencias digitales.</p>
+        <div class="cert-card__tags"><span>UX/UI</span><span>Usability</span><span>Design</span></div>
+      </article>
+      <article class="cert-card reveal">
+        <div class="cert-card__logo cert-card__logo--intecap" aria-hidden="true">
+          <svg viewBox="0 0 24 32"><circle cx="12" cy="6" r="4.5"/><path d="M12 12c-3 0-4.5 6-6 18h12c-1.5-12-3-18-6-18z"/></svg>
+        </div>
+        <h3 class="cert-card__title">Creación de Páginas Web — HTML, CSS, JavaScript</h3>
+        <p class="cert-card__org">INTECAP — Nivel Intermedio</p>
+        <p class="cert-card__meta"><i class="ph ph-seal-check"></i> Certificación oficial</p>
+        <p class="cert-card__desc">Certificación tras completar satisfactoriamente el programa de formación en desarrollo web. Aplicada en este portafolio.</p>
+        <div class="cert-card__tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ============ RECREO MENTAL ============ -->
-<section class="section funny-clean page-section" id="funny" data-bg-color="228,228,222">
+<section class="section funny-clean page-section" id="funny" data-bg-color="228,228,222" data-bg-dark="20,20,24">
   <div class="section__inner">
     <div class="section__eyebrow funny-clean__eyebrow reveal">Cuando me aburro construyo ideas aleatorias.</div>
     <h2 class="section__title funny-clean__title reveal">Recreo Mental</h2>
@@ -307,202 +765,6 @@
   </div>
 </section>
 
-<!-- ============ WEBS INTERACTIVAS ============ -->
-<section class="section webs-inter page-section" id="webs-inter" data-bg-color="12,12,18">
-  <div class="section__inner">
-    <div class="section__eyebrow reveal" style="color:rgba(255,255,255,0.4)">Lo que se puede hacer</div>
-    <h2 class="section__title reveal" style="color:#fff">Webs Interactivas</h2>
-    <p class="section__lead reveal" style="color:rgba(255,255,255,0.65)">No solo páginas estáticas — esto es lo que se puede lograr con código hecho a la medida.</p>
-
-    <div class="webs-inter__grid">
-      <!-- AJEDREZ CON IA -->
-      <div class="webs-inter__feature reveal">
-        <div class="webs-inter__feature-label">Ejemplo · Chess AI</div>
-        <h3 class="webs-inter__feature-title">IA que juega ajedrez</h3>
-        <p class="webs-inter__feature-desc">Motor minimax nivel 4 con poda alfa-beta, tablas posicionales y respuesta en &lt;200ms. Completamente en el navegador, sin servidor.</p>
-        <div class="chess-wrap">
-          <div class="chess-top-bar">
-            <span class="chess-turn-indicator chess-turn--black">♟ Negras (IA Expert)</span>
-          </div>
-          <div id="chess-board"></div>
-          <div class="chess-bottom-bar">
-            <span class="chess-turn-indicator chess-turn--white">♙ Blancas (Tú)</span>
-            <span id="chess-status" class="chess-status">Tu turno — Blancas</span>
-          </div>
-          <div class="hobbies__chess-hint"><i class="ph ph-cursor-click"></i> Click en una pieza para moverla</div>
-        </div>
-      </div>
-
-      <!-- CAPACIDADES -->
-      <div class="webs-inter__caps reveal">
-        <div class="webs-inter__cap">
-          <i class="ph ph-cpu"></i>
-          <div>
-            <strong>Herramientas interactivas</strong>
-            <span>Generadores, analizadores, validadores — sin backend ni suscripciones.</span>
-          </div>
-        </div>
-        <div class="webs-inter__cap">
-          <i class="ph ph-paint-brush"></i>
-          <div>
-            <strong>Animaciones y efectos visuales</strong>
-            <span>Scroll morphing, partículas, transiciones de color — todo en CSS/JS.</span>
-          </div>
-        </div>
-        <div class="webs-inter__cap">
-          <i class="ph ph-device-mobile"></i>
-          <div>
-            <strong>100% responsive</strong>
-            <span>Se ve bien en celular, tablet y desktop desde el primer día.</span>
-          </div>
-        </div>
-        <div class="webs-inter__cap">
-          <i class="ph ph-github-logo"></i>
-          <div>
-            <strong>GitHub Pages</strong>
-            <span>Sin costo de hosting — desplegado directamente desde el repo.</span>
-          </div>
-        </div>
-        <div class="webs-inter__cap">
-          <i class="ph ph-wifi-high"></i>
-          <div>
-            <strong>Integración NFC</strong>
-            <span>Tags físicos que llevan directo a tu web al acercar el teléfono.</span>
-          </div>
-        </div>
-        <div class="webs-inter__cap">
-          <i class="ph ph-chart-line"></i>
-          <div>
-            <strong>Sin plantillas</strong>
-            <span>Cada proyecto tiene su identidad propia — diseñado desde cero para ti.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PLAYGROUND: todo lo que se puede hacer -->
-    <div class="pg" id="playground">
-      <div class="pg__head reveal">
-        <div class="webs-inter__feature-label">Pruébalo tú</div>
-        <h3 class="pg__title">Toca, arrastra, presiona</h3>
-        <p class="pg__lead">Cada cuadro es algo que puedo poner en tu página. Todo hecho con HTML, CSS y JavaScript, sin librerías.</p>
-      </div>
-
-      <div class="pg__grid">
-        <!-- 1. Arrastrar -->
-        <div class="pg__tile pg__tile--wide reveal">
-          <div class="pg__label"><span>01</span> Mover cosas</div>
-          <div class="pg-drag" data-pg="drag">
-            <div class="pg-drag__item" style="left:12%;top:22%">Arrástrame</div>
-            <div class="pg-drag__item pg-drag__item--sq" style="left:52%;top:46%"></div>
-            <div class="pg-drag__item pg-drag__item--dot" style="left:78%;top:16%"></div>
-          </div>
-          <p class="pg__hint">Arrastra las piezas: se sueltan con inercia y rebotan en las orillas.</p>
-        </div>
-
-        <!-- 2. Colores -->
-        <div class="pg__tile reveal">
-          <div class="pg__label"><span>02</span> Cambiar colores</div>
-          <div class="pg-colors" data-pg="colors">
-            <button class="pg-swatch is-on" style="--c:#00e5ff" aria-label="Cian"></button>
-            <button class="pg-swatch" style="--c:#ff3d7f" aria-label="Rosa"></button>
-            <button class="pg-swatch" style="--c:#ffd400" aria-label="Amarillo"></button>
-            <button class="pg-swatch" style="--c:#7cff4f" aria-label="Verde"></button>
-            <button class="pg-swatch" style="--c:#a26bff" aria-label="Morado"></button>
-            <button class="pg-swatch" style="--c:#ff7a1a" aria-label="Naranja"></button>
-          </div>
-          <div class="pg-colors__preview"><span>Color actual</span><b data-pg="hex">#00E5FF</b></div>
-          <p class="pg__hint">Elige uno y todo el playground cambia de color suavemente.</p>
-        </div>
-
-        <!-- 3. Botones -->
-        <div class="pg__tile reveal">
-          <div class="pg__label"><span>03</span> Botones con vida</div>
-          <div class="pg-btns">
-            <button class="pg-btn pg-btn--grow">Crezco</button>
-            <button class="pg-btn pg-btn--magnet" data-pg="magnet">Imán</button>
-            <button class="pg-btn pg-btn--ripple" data-pg="ripple">Onda</button>
-            <button class="pg-btn pg-btn--jelly" data-pg="jelly">Gelatina</button>
-          </div>
-          <p class="pg__hint">Pasa el mouse y haz clic en cada uno.</p>
-        </div>
-
-        <!-- 4. Terremoto -->
-        <div class="pg__tile pg__tile--quake reveal">
-          <div class="pg__label"><span>04</span> Toda la pantalla</div>
-          <button class="pg-quake" data-pg="quake"><i class="ph-bold ph-lightning"></i> Hacer temblar</button>
-          <label class="pg-range">
-            <span>Fuerza <b data-pg="quake-val">5</b></span>
-            <input type="range" min="1" max="10" value="5" data-pg="quake-power">
-          </label>
-          <p class="pg__hint">Sacude la página completa. Sube la fuerza bajo tu propio riesgo.</p>
-        </div>
-
-        <!-- 5. Tarjeta 3D -->
-        <div class="pg__tile reveal">
-          <div class="pg__label"><span>05</span> Profundidad 3D</div>
-          <div class="pg-tilt" data-pg="tilt">
-            <div class="pg-tilt__card">
-              <div class="pg-tilt__glare"></div>
-              <small>MADCO.py</small>
-              <strong>Tarjeta 3D</strong>
-              <span>Sigue tu mouse</span>
-            </div>
-          </div>
-          <p class="pg__hint">Mueve el mouse encima: la tarjeta se inclina y refleja la luz.</p>
-        </div>
-
-        <!-- 6. Partículas -->
-        <div class="pg__tile reveal">
-          <div class="pg__label"><span>06</span> Celebraciones</div>
-          <div class="pg-burst" data-pg="burst">
-            <button class="pg-btn pg-btn--solid"><i class="ph-bold ph-confetti"></i> Lanzar confeti</button>
-          </div>
-          <p class="pg__hint">O haz clic en cualquier parte del cuadro.</p>
-        </div>
-
-        <!-- 7. Texto -->
-        <div class="pg__tile reveal">
-          <div class="pg__label"><span>07</span> Texto animado</div>
-          <div class="pg-text">
-            <p class="pg-wave" data-pg="wave">Hola mundo</p>
-            <p class="pg-scramble" data-pg="scramble" data-text="PASA EL MOUSE">PASA EL MOUSE</p>
-          </div>
-          <p class="pg__hint">Letras que ondulan y texto que se descifra.</p>
-        </div>
-
-        <!-- 8. Controles -->
-        <div class="pg__tile reveal">
-          <div class="pg__label"><span>08</span> Controles suaves</div>
-          <div class="pg-ctrl">
-            <div class="pg-ctrl__stage"><div class="pg-ctrl__shape" data-pg="shape"></div></div>
-            <label class="pg-range">
-              <span>Tamaño</span>
-              <input type="range" min="20" max="100" value="50" data-pg="size">
-            </label>
-            <label class="pg-range">
-              <span>Giro</span>
-              <input type="range" min="0" max="360" value="0" data-pg="spin">
-            </label>
-            <button class="pg-toggle" data-pg="toggle" role="switch" aria-checked="false"><span></span> Círculo</button>
-          </div>
-        </div>
-
-        <!-- 9. Contador -->
-        <div class="pg__tile reveal">
-          <div class="pg__label"><span>09</span> Números en movimiento</div>
-          <div class="pg-count">
-            <b data-pg="count">0</b>
-            <span>visitas registradas (ejemplo)</span>
-            <button class="pg-btn" data-pg="count-btn">+ 1 000</button>
-          </div>
-          <p class="pg__hint">Contadores que suben suavemente, ideales para mostrar resultados.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ MI SETUP ============ -->
 <section class="section setup page-section" id="setup" data-bg-color="20,19,18">
   <div class="section__inner">
@@ -566,6 +828,9 @@
 <script src="js/ciber-tools.js"></script>
 <script src="js/chess.js"></script>
 <script src="js/playground.js"></script>
+<script src="js/playground-live.js"></script>
+<script src="js/i18n-en.js"></script>
+<script src="js/prefs.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

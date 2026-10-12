@@ -178,17 +178,22 @@
   // 07 — Letras que ondulan y texto que se descifra
   const wave = $('wave');
   if (wave) {
-    wave.innerHTML = [...wave.textContent].map((ch, i) =>
-      '<span style="--i:' + i + '">' + (ch === ' ' ? '&nbsp;' : ch) + '</span>'
-    ).join('');
+    // Se arma desde data-text para poder rehacerlo al cambiar de idioma
+    const build = () => {
+      wave.innerHTML = [...(wave.dataset.text || wave.textContent)].map((ch, i) =>
+        '<span style="--i:' + i + '">' + (ch === ' ' ? '&nbsp;' : ch) + '</span>'
+      ).join('');
+    };
+    build();
+    document.addEventListener('langchange', build);
   }
 
   const scramble = $('scramble');
   if (scramble) {
-    const target = scramble.dataset.text;
     const glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*@$';
     let timer = 0;
     scramble.addEventListener('pointerenter', () => {
+      const target = scramble.dataset.text;
       let frame = 0;
       clearInterval(timer);
       timer = setInterval(() => {
@@ -199,6 +204,7 @@
         if (++frame > target.length * 2) clearInterval(timer);
       }, 35);
     });
+    document.addEventListener('langchange', () => { clearInterval(timer); scramble.textContent = scramble.dataset.text; });
   }
 
   // 08 — Tamaño, giro y forma con transiciones suaves
@@ -246,5 +252,252 @@
       }, { threshold: 0.5 });
       io.observe(count);
     }
+  }
+
+  // 04b — Más efectos de pantalla completa: voltear, fiesta y derretir
+  function pageFx(cls, ms, target) {
+    const el = target || document.body;
+    if (el.classList.contains(cls)) return;
+    el.classList.add(cls);
+    setTimeout(() => el.classList.remove(cls), ms);
+  }
+  const flip = $('flip');
+  if (flip) flip.addEventListener('click', () => pageFx('pg-flipping', 2400));
+  const party = $('party');
+  if (party) party.addEventListener('click', () => pageFx('pg-party', 3000, document.documentElement));
+  const melt = $('melt');
+  if (melt) melt.addEventListener('click', () => pageFx('pg-melting', 2600));
+
+  // Canvas nítido en pantallas retina; devuelve el contexto ya escalado
+  function fitCanvas(canvas) {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { ctx, w, h };
+  }
+  const accent = () => getComputedStyle(root).getPropertyValue('--pg').trim() || '#00e5ff';
+
+  // Ejecuta un loop de animación solo mientras el elemento está en pantalla
+  function whileVisible(el, start, stop) {
+    if (!('IntersectionObserver' in window)) { start(); return; }
+    new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop())).observe(el);
+  }
+
+  // 10 — Partículas que huyen del mouse y se conectan
+  const pc = $('particles');
+  if (pc) {
+    let dots = [], size, raf = 0, mouse = { x: -999, y: -999, down: false };
+    const setup = () => {
+      size = fitCanvas(pc);
+      const n = Math.round(size.w * size.h / 3200);
+      dots = Array.from({ length: n }, () => ({
+        x: Math.random() * size.w, y: Math.random() * size.h,
+        vx: (Math.random() - 0.5) * 0.6, vy: (Math.random() - 0.5) * 0.6,
+      }));
+    };
+    const tick = () => {
+      const { ctx, w, h } = size;
+      const color = accent();
+      ctx.clearRect(0, 0, w, h);
+      for (const d of dots) {
+        const dx = d.x - mouse.x, dy = d.y - mouse.y, dist = Math.hypot(dx, dy);
+        if (dist < 110 && dist > 0) {
+          const f = (110 - dist) / 110 * (mouse.down ? -0.9 : 0.9);
+          d.vx += dx / dist * f; d.vy += dy / dist * f;
+        }
+        d.vx *= 0.96; d.vy *= 0.96;
+        d.vx += (Math.random() - 0.5) * 0.05; d.vy += (Math.random() - 0.5) * 0.05;
+        d.x += d.vx; d.y += d.vy;
+        if (d.x < 0 || d.x > w) d.vx *= -1;
+        if (d.y < 0 || d.y > h) d.vy *= -1;
+        d.x = Math.max(0, Math.min(w, d.x)); d.y = Math.max(0, Math.min(h, d.y));
+      }
+      ctx.strokeStyle = color;
+      for (let i = 0; i < dots.length; i++) {
+        for (let j = i + 1; j < dots.length; j++) {
+          const a = dots[i], b = dots[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+          if (d < 70) {
+            ctx.globalAlpha = 1 - d / 70;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+      }
+      ctx.globalAlpha = 1; ctx.fillStyle = color;
+      for (const d of dots) ctx.fillRect(d.x - 1.5, d.y - 1.5, 3, 3);
+      raf = requestAnimationFrame(tick);
+    };
+    const pos = (e) => { const r = pc.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; };
+    pc.addEventListener('pointermove', pos);
+    pc.addEventListener('pointerdown', (e) => { pos(e); mouse.down = true; });
+    window.addEventListener('pointerup', () => { mouse.down = false; });
+    pc.addEventListener('pointerleave', () => { mouse.x = mouse.y = -999; mouse.down = false; });
+    window.addEventListener('resize', setup);
+    setup();
+    whileVisible(pc, () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(tick); }, () => cancelAnimationFrame(raf));
+  }
+
+  // 11 — Linterna: un círculo de luz sigue al puntero
+  const torch = $('torch');
+  if (torch) {
+    torch.addEventListener('pointermove', (e) => {
+      const r = torch.getBoundingClientRect();
+      torch.style.setProperty('--tx', e.clientX - r.left + 'px');
+      torch.style.setProperty('--ty', e.clientY - r.top + 'px');
+    });
+    torch.addEventListener('pointerleave', () => {
+      torch.style.setProperty('--tx', '-200px');
+      torch.style.setProperty('--ty', '-200px');
+    });
+  }
+
+  // 12 — Cubo 3D que se gira arrastrando y sigue con inercia
+  const cubeStage = $('cube');
+  if (cubeStage) {
+    const cube = cubeStage.querySelector('.pg-cube');
+    let rx = -20, ry = 35, vx = 0, vy = reduced ? 0 : 0.4, dragging = false, lx = 0, ly = 0;
+    const draw = () => { cube.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)'; };
+    let raf = 0;
+    const spinLoop = () => {
+      if (!dragging) { ry += vy; rx += vx; vx *= 0.97; vy = vy * 0.98 + (reduced ? 0 : 0.4) * 0.02; }
+      draw();
+      raf = requestAnimationFrame(spinLoop);
+    };
+    cubeStage.addEventListener('pointerdown', (e) => {
+      dragging = true; lx = e.clientX; ly = e.clientY; cubeStage.setPointerCapture(e.pointerId);
+    });
+    cubeStage.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      vy = (e.clientX - lx) * 0.5; vx = -(e.clientY - ly) * 0.5;
+      ry += vy; rx += vx; lx = e.clientX; ly = e.clientY;
+    });
+    const up = () => { dragging = false; };
+    cubeStage.addEventListener('pointerup', up);
+    cubeStage.addEventListener('pointercancel', up);
+    draw();
+    whileVisible(cubeStage, () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(spinLoop); }, () => cancelAnimationFrame(raf));
+  }
+
+  // 13 — Rasca y gana
+  const scratch = $('scratch');
+  if (scratch) {
+    const cv = scratch.querySelector('canvas');
+    let ctx, w, h, drawing = false, checks = 0;
+    const cover = () => {
+      ({ ctx, w, h } = fitCanvas(cv));
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = '#9a9aa2';
+      ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#c4c4cc';
+      for (let i = 0; i < 400; i++) ctx.fillRect(Math.random() * w, Math.random() * h, 2, 2);
+      ctx.fillStyle = '#2a2a30';
+      ctx.font = '700 15px "JetBrains Mono", monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(cv.dataset.label || 'RASCA AQUÍ', w / 2, h / 2 + 5);
+      ctx.globalCompositeOperation = 'destination-out';
+    };
+    const scrape = (e) => {
+      const r = cv.getBoundingClientRect();
+      ctx.beginPath(); ctx.arc(e.clientX - r.left, e.clientY - r.top, 18, 0, Math.PI * 2); ctx.fill();
+      if (++checks % 12 === 0) {
+        const data = ctx.getImageData(0, 0, cv.width, cv.height).data;
+        let clear = 0;
+        for (let i = 3; i < data.length; i += 64) if (data[i] === 0) clear++;
+        if (clear / (data.length / 64) > 0.55) scratch.classList.add('is-done');
+      }
+    };
+    cv.addEventListener('pointerdown', (e) => { drawing = true; cv.setPointerCapture(e.pointerId); scrape(e); });
+    cv.addEventListener('pointermove', (e) => { if (drawing) scrape(e); });
+    cv.addEventListener('pointerup', () => { drawing = false; });
+    // Doble clic sobre el premio vuelve a tapar la tarjeta
+    scratch.addEventListener('dblclick', () => { if (scratch.classList.contains('is-done')) { scratch.classList.remove('is-done'); cover(); } });
+    cover();
+    document.addEventListener('langchange', () => { if (!scratch.classList.contains('is-done')) cover(); });
+  }
+
+  // 14 — Gravedad: letras que caen, chocan, se apilan y se pueden lanzar
+  const grav = $('gravity');
+  if (grav) {
+    const dropBtn = grav.querySelector('.pg-gravity__drop');
+    const S = 44, G = 0.6, WORD = 'MADCO.PY';
+    let bodies = [], raf = 0, held = null;
+    const step = () => {
+      const W = grav.clientWidth, H = grav.clientHeight;
+      for (const b of bodies) {
+        if (b === held) continue;
+        b.vy += G; b.vx *= 0.995;
+        b.x += b.vx; b.y += b.vy;
+        if (b.y > H - S) { b.y = H - S; b.vy *= -0.35; b.vx *= 0.85; }
+        if (b.x < 0) { b.x = 0; b.vx *= -0.6; }
+        if (b.x > W - S) { b.x = W - S; b.vx *= -0.6; }
+      }
+      // Choques entre cuadros (separación sencilla por el eje de menor solape)
+      for (let i = 0; i < bodies.length; i++) {
+        for (let j = i + 1; j < bodies.length; j++) {
+          const a = bodies[i], b = bodies[j];
+          const ox = S - Math.abs(a.x - b.x), oy = S - Math.abs(a.y - b.y);
+          if (ox <= 0 || oy <= 0) continue;
+          if (ox < oy) {
+            const s = a.x < b.x ? -1 : 1, push = ox / 2;
+            if (a !== held) a.x += s * push; if (b !== held) b.x -= s * push;
+            const t = a.vx; a.vx = b.vx * 0.8; b.vx = t * 0.8;
+          } else {
+            const s = a.y < b.y ? -1 : 1, push = oy / 2;
+            if (a !== held) a.y += s * push; if (b !== held) b.y -= s * push;
+            const t = a.vy; a.vy = b.vy * 0.3; b.vy = t * 0.3;
+          }
+        }
+      }
+      for (const b of bodies) b.el.style.transform = 'translate(' + b.x + 'px,' + b.y + 'px) rotate(' + b.vx * 2 + 'deg)';
+      raf = requestAnimationFrame(step);
+    };
+    const drop = () => {
+      grav.querySelectorAll('.pg-gravity__l').forEach((n) => n.remove());
+      const W = grav.clientWidth;
+      bodies = [...WORD].map((ch, i) => {
+        const el = document.createElement('span');
+        el.className = 'pg-gravity__l';
+        el.textContent = ch;
+        grav.appendChild(el);
+        const b = { el, x: W / 2 - (WORD.length * S) / 2 + i * S + (Math.random() - 0.5) * 20, y: -S - i * 30, vx: (Math.random() - 0.5) * 3, vy: 0 };
+        let lx = 0, ly = 0;
+        el.addEventListener('pointerdown', (e) => { held = b; lx = e.clientX; ly = e.clientY; el.setPointerCapture(e.pointerId); });
+        el.addEventListener('pointermove', (e) => {
+          if (held !== b) return;
+          b.vx = e.clientX - lx; b.vy = e.clientY - ly;
+          b.x += b.vx; b.y += b.vy; lx = e.clientX; ly = e.clientY;
+        });
+        const release = () => { if (held === b) held = null; };
+        el.addEventListener('pointerup', release);
+        el.addEventListener('pointercancel', release);
+        return b;
+      });
+      dropBtn.textContent = dropBtn.dataset.again || 'Otra vez';
+      dropBtn.style.alignSelf = 'start'; dropBtn.style.marginTop = '0.8rem';
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(step);
+    };
+    dropBtn.addEventListener('click', drop);
+    whileVisible(grav, () => { if (bodies.length) { cancelAnimationFrame(raf); raf = requestAnimationFrame(step); } }, () => cancelAnimationFrame(raf));
+  }
+
+  // 15 — Ojos que siguen al mouse por toda la página
+  const eyes = $('eyes');
+  if (eyes) {
+    const pupils = [...eyes.querySelectorAll('.pg-eye i')];
+    window.addEventListener('pointermove', (e) => {
+      pupils.forEach((p) => {
+        const r = p.parentElement.getBoundingClientRect();
+        const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        const a = Math.atan2(e.clientY - cy, e.clientX - cx);
+        const d = Math.min(18, Math.hypot(e.clientX - cx, e.clientY - cy) / 12);
+        p.style.transform = 'translate(' + Math.cos(a) * d + 'px,' + Math.sin(a) * d + 'px)';
+      });
+    }, { passive: true });
+    eyes.addEventListener('click', () => {
+      eyes.classList.add('is-blink');
+      setTimeout(() => eyes.classList.remove('is-blink'), 160);
+    });
   }
 })();

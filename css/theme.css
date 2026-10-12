@@ -1,0 +1,281 @@
+/* ============================================================
+   TEMA — oscuro por defecto, claro opcional (botón del nav).
+   html[data-theme="dark" | "light"] lo pone js/prefs.js.
+   Las secciones "de pantalla" (Maker Lab, Flipper, Seguridad,
+   Setup) son oscuras en los dos temas a propósito.
+   ============================================================ */
+
+/* ---------- Tokens compartidos por las secciones que cambian ---------- */
+:root,
+html[data-theme="light"] {
+  --t-surface: #ffffff;
+  --t-surface-2: #f3f3f0;
+  --t-line: rgba(0,0,0,0.1);
+  --t-line-strong: rgba(0,0,0,0.22);
+  --t-text: #0a0a12;
+  --t-muted: #555;
+  --t-faint: #8a8a8a;
+  --t-invert: #ffffff;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --t-surface: #121214;
+  --t-surface-2: #1b1b1e;
+  --t-line: rgba(255,255,255,0.09);
+  --t-line-strong: rgba(255,255,255,0.22);
+  --t-text: #f2f2f0;
+  --t-muted: #a3a3a3;
+  --t-faint: #757575;
+  --t-invert: #0a0a12;
+
+  --base-bg: #08080a;
+  --base-bg-soft: #141416;
+  --base-text: #f2f2f0;
+  --base-text-muted: #9a9a9a;
+  --base-border: #2c2c2e;
+
+  --edu-text: #f0f0ee;
+  --edu-green: #2fbf86;
+  --edu-green-soft: rgba(47,191,134,0.08);
+}
+html[data-theme="dark"] body { background: #08080a; }
+html[data-theme="dark"] #page-bg { background: rgb(8,8,10); }
+html { transition: color 0.4s ease; }
+
+/* ---------- Controles del nav: idioma y tema ---------- */
+.nav__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding-right: 0.8rem;
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+.lang-switch {
+  display: flex;
+  padding: 2px;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.lang-switch button,
+.theme-btn {
+  font: 700 0.68rem var(--font-mono);
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.6);
+  background: transparent;
+  border: 0;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.lang-switch button[aria-pressed="true"] { background: #fff; color: #0a0a0a; }
+.lang-switch button:hover:not([aria-pressed="true"]) { color: #fff; }
+.theme-btn {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  font-size: 1rem;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.theme-btn:hover { background: #fff; color: #0a0a0a; }
+.theme-btn .ph { transition: transform 0.5s cubic-bezier(.3,1.6,.5,1); }
+.theme-btn:active .ph { transform: rotate(180deg) scale(0.8); }
+
+/* Transición suave al cambiar de tema (se activa solo durante el cambio) */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease !important;
+}
+
+/* ============================================================
+   CURSOS & CERTIFICADOS
+   ============================================================ */
+.certs { color: var(--t-text); }
+.certs__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font: 600 0.75rem var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--t-faint);
+  margin-bottom: 1rem;
+}
+.certs__eyebrow::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+.certs__title { color: var(--t-text); margin-bottom: 2.6rem; }
+.certs__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+@media (max-width: 960px) { .certs__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .certs__grid { grid-template-columns: 1fr; } }
+
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem;
+  background: var(--t-surface);
+  border: 1px solid var(--t-line);
+  transition: transform 0.35s var(--ease), border-color 0.3s ease, box-shadow 0.35s ease;
+}
+.cert-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--t-line-strong);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+}
+.cert-card__logo {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.4rem;
+  background: var(--t-surface-2);
+}
+.cert-card__logo--uvg { align-content: center; gap: 1px; color: #1f9a4b; text-align: center; }
+.cert-card__logo--uvg b { font: 900 1.05rem/1 var(--font-display); letter-spacing: -0.02em; }
+.cert-card__logo--uvg small { font: 700 0.27rem/1.1 var(--font-display); text-transform: uppercase; max-width: 40px; }
+.cert-card__logo--intecap svg { width: 22px; height: 30px; fill: #1673c7; }
+.cert-card__title { font-size: 1.02rem; font-weight: 700; line-height: 1.3; color: var(--t-text); margin: 0; }
+.cert-card__org { font-size: 0.9rem; color: var(--t-muted); margin: 0.15rem 0 0.2rem; }
+.cert-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font: 0.72rem var(--font-mono);
+  color: var(--t-faint);
+  margin: 0 0 0.5rem;
+}
+.cert-card__desc { font-size: 0.86rem; line-height: 1.65; color: var(--t-muted); margin: 0 0 1.2rem; }
+.cert-card__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
+.cert-card__tags span {
+  font-size: 0.72rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--t-line-strong);
+  color: var(--t-muted);
+}
+
+/* ---------- Cotizaciones en "¿Necesitas una página web?" ---------- */
+.quien__quote-box {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  padding: 1rem 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 560px;
+  border: 1px solid rgba(0,229,255,0.35);
+  background: rgba(0,229,255,0.06);
+}
+.quien__quote-box > .ph { font-size: 1.4rem; color: #00e5ff; flex-shrink: 0; margin-top: 2px; }
+.quien__quote-box strong { display: block; font-size: 0.95rem; color: var(--q-text, #fff); margin-bottom: 0.25rem; }
+.quien__quote-box span { font-size: 0.85rem; line-height: 1.55; color: var(--q-muted, rgba(240,240,238,0.7)); }
+
+/* Clases que sustituyen los colores que antes iban en línea */
+.clientes__eyebrow { color: #8a6a3a; }
+.clientes__lead { color: #555; }
+.webs-inter__eyebrow { color: rgba(255,255,255,0.4); }
+.webs-inter__title { color: #fff; }
+.webs-inter__lead { color: rgba(255,255,255,0.65); }
+
+/* ============================================================
+   MODO OSCURO — secciones que originalmente eran claras
+   ============================================================ */
+html[data-theme="dark"] .clientes__eyebrow { color: #c9a46a; }
+html[data-theme="dark"] .clientes__lead { color: var(--t-muted); }
+
+html[data-theme="dark"] .client-card,
+html[data-theme="dark"] .personal-card {
+  background: var(--t-surface);
+  border-color: var(--t-line);
+  box-shadow: none;
+}
+html[data-theme="dark"] .client-card:hover,
+html[data-theme="dark"] .personal-card:hover { box-shadow: 0 18px 40px rgba(0,0,0,0.5); }
+html[data-theme="dark"] .client-card__name,
+html[data-theme="dark"] .personal-card__name { color: var(--t-text); }
+html[data-theme="dark"] .client-card__tagline { color: var(--t-faint); }
+html[data-theme="dark"] .client-card__desc,
+html[data-theme="dark"] .personal-card__desc { color: var(--t-muted); }
+html[data-theme="dark"] .client-card .tech-pill,
+html[data-theme="dark"] .personal-card .tech-pill { border-color: var(--t-line-strong); color: var(--t-muted); }
+html[data-theme="dark"] .client-card .btn-demo,
+html[data-theme="dark"] .personal-card .btn-demo { background: #f2f2f0; color: #0a0a12; border-color: #f2f2f0; }
+html[data-theme="dark"] .personal-card .btn-repo { color: var(--t-text); border-color: var(--t-line-strong); }
+html[data-theme="dark"] .personal-card .btn-repo:hover { background: #f2f2f0; color: #0a0a12; }
+html[data-theme="dark"] .personal-card__media { background: var(--t-surface-2); }
+html[data-theme="dark"] .personal-card__badge { background: var(--t-surface-2); border-color: var(--t-line); color: var(--t-muted); }
+html[data-theme="dark"] .personal-card__nfc { background: rgba(26,115,232,0.15); color: #7fb2ff; }
+
+html[data-theme="dark"] .client-badge--sold { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.35); color: #4ade80; }
+html[data-theme="dark"] .client-badge--emp,
+html[data-theme="dark"] .personal-card__badge--emp { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: #fbbf24; }
+html[data-theme="dark"] .client-badge--artista { background: rgba(167,139,250,0.12); border-color: rgba(167,139,250,0.35); color: #b9a3ff; }
+html[data-theme="dark"] .clients-section-label__line { background: var(--t-line); }
+
+/* Recreo mental */
+html[data-theme="dark"] .funny-clean { color: var(--t-text); }
+html[data-theme="dark"] .funny-clean__eyebrow { color: var(--t-faint); }
+html[data-theme="dark"] .funny-clean__title,
+html[data-theme="dark"] .funny-project-card__title { color: var(--t-text); }
+html[data-theme="dark"] .funny-clean__lead,
+html[data-theme="dark"] .funny-clean__subhead,
+html[data-theme="dark"] .funny-project-card__desc { color: var(--t-muted); }
+html[data-theme="dark"] .funny-project-card,
+html[data-theme="dark"] .snippet-card,
+html[data-theme="dark"] .chaos-zone { background: var(--t-surface); border-color: var(--t-line); color: var(--t-text); }
+html[data-theme="dark"] .funny-project-card__video-placeholder { background: var(--t-surface-2); color: var(--t-faint); }
+html[data-theme="dark"] .funny-project-card .btn { color: var(--t-text); border-color: var(--t-line-strong); }
+html[data-theme="dark"] .funny-project-card .btn-demo { background: var(--t-surface-2); }
+html[data-theme="dark"] .snippet-card__tag { background: #f2f2f0; color: #0a0a12; }
+html[data-theme="dark"] .snippet-card .c1 { color: #7fb2ff; }
+html[data-theme="dark"] .snippet-card .c2 { color: #4ade80; }
+html[data-theme="dark"] .snippet-card .c3 { color: #fbbf24; }
+html[data-theme="dark"] .chaos-zone__label,
+html[data-theme="dark"] .chaos-zone__done { color: var(--t-faint); }
+html[data-theme="dark"] .chaos-btn { background: var(--t-surface-2); color: var(--t-text); border-color: var(--t-line-strong); }
+html[data-theme="dark"] .chaos-btn:hover,
+html[data-theme="dark"] .chaos-btn--final { background: #f2f2f0; color: #0a0a12; border-color: #f2f2f0; }
+
+/* Estudiantes */
+html[data-theme="dark"] .mentorhub-card { border-color: rgba(47,191,134,0.3); }
+
+/* Footer siempre negro */
+html[data-theme="dark"] .footer { background: #000; color: #f2f2f0; }
+
+/* ============================================================
+   MODO CLARO — secciones que originalmente eran oscuras
+   ============================================================ */
+html[data-theme="light"] .quien { color: var(--t-text); --q-text: #0a0a12; --q-muted: #555; }
+html[data-theme="light"] .quien__eyebrow,
+html[data-theme="light"] .quien__stat-label { color: var(--t-faint); }
+html[data-theme="light"] .quien__title,
+html[data-theme="light"] .quien__stat-num { color: var(--t-text); }
+html[data-theme="light"] .quien__lead,
+html[data-theme="light"] .quien__cat,
+html[data-theme="light"] .quien__quote { color: var(--t-muted); }
+html[data-theme="light"] .quien__cat .ph { color: var(--t-faint); }
+html[data-theme="light"] .quien__btn-main { background: #0a0a12; color: #fff; }
+html[data-theme="light"] .quien__btn-secondary { color: var(--t-text); border-color: var(--t-line-strong); }
+html[data-theme="light"] .quien__btn-secondary:hover { background: rgba(0,0,0,0.05); }
+html[data-theme="light"] .quien__stat-grid { background: var(--t-line); border-color: var(--t-line); }
+html[data-theme="light"] .quien__stat { background: var(--t-surface); }
+html[data-theme="light"] .quien__quote { border-left-color: var(--t-line-strong); }
+html[data-theme="light"] .quien__quote-box { border-color: rgba(0,150,170,0.4); background: rgba(0,180,200,0.07); }
+html[data-theme="light"] .quien__quote-box > .ph { color: #0094a8; }
+
+html[data-theme="light"] .webs-inter { color: var(--t-text); }
+html[data-theme="light"] .webs-inter__eyebrow,
+html[data-theme="light"] .webs-inter__feature-label,
+html[data-theme="light"] .hobbies__chess-hint,
+html[data-theme="light"] .chess-turn--black { color: var(--t-faint); }
+html[data-theme="light"] .webs-inter__title,
+html[data-theme="light"] .webs-inter__feature-title,
+html[data-theme="light"] .webs-inter__cap strong,
+html[data-theme="light"] .chess-turn--white { color: var(--t-text); }
+html[data-theme="light"] .webs-inter__lead,
+html[data-theme="light"] .webs-inter__feature-desc,
+html[data-theme="light"] .webs-inter__cap span { color: var(--t-muted); }
+html[data-theme="light"] .webs-inter__cap { background: var(--t-surface); border-color: var(--t-line); }
+html[data-theme="light"] .webs-inter__cap:hover { background: var(--t-surface-2); }
+html[data-theme="light"] .webs-inter__cap > .ph { color: var(--t-faint); }
