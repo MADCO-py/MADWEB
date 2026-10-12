@@ -24,7 +24,7 @@
 .esp32-board-badge {
   width: min(280px, 40%);
   filter: drop-shadow(0 25px 35px rgba(0,0,0,0.6));
-  border-radius: 10px;
+  border-radius: 0;
   flex-shrink: 0;
   transition: transform 0.05s linear;
   will-change: transform;

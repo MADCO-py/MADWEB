@@ -48,7 +48,7 @@
   background: var(--funny-pink);
   color: #0a0a0f;
   padding: 0.15rem 0.6rem;
-  border-radius: 999px;
+  border-radius: 0;
   font-weight: 700;
 }
 .snippet-card pre { margin: 0; white-space: pre-wrap; }
@@ -116,7 +116,7 @@
   font-weight: 700;
   font-size: 0.95rem;
   padding: 1rem 1.8rem;
-  border-radius: 999px;
+  border-radius: 0;
   border: none;
   background: var(--funny-pink);
   color: #0a0a0f;

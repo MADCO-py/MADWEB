@@ -30,9 +30,9 @@
   --space-lg: 4rem;
   --space-xl: 8rem;
 
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 28px;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --dur: 0.5s;

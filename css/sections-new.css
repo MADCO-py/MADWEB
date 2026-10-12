@@ -44,7 +44,7 @@
   background: #f0f0ec;
   border: 1px solid rgba(0,0,0,0.1);
   padding: 0.25rem 0.65rem;
-  border-radius: 999px;
+  border-radius: 0;
   margin-bottom: 0.8rem;
   color: #555;
 }
@@ -69,7 +69,7 @@
   font-size: 0.72rem;
   color: #1a73e8;
   background: #e8f0fe;
-  border-radius: 999px;
+  border-radius: 0;
   padding: 0.25rem 0.65rem;
   margin-bottom: 1rem;
 }
@@ -377,7 +377,7 @@
   letter-spacing: 0.07em;
   text-transform: uppercase;
   padding: 0.25rem 0.65rem;
-  border-radius: 999px;
+  border-radius: 0;
   border: 1px solid;
   margin-bottom: 0.75rem;
 }
@@ -537,7 +537,7 @@
   color: #0a0a12;
   border: 1.5px solid rgba(0,0,0,0.25);
   padding: 0.4rem 1rem;
-  border-radius: 999px;
+  border-radius: 0;
   text-decoration: none;
   transition: background 0.2s ease;
 }
@@ -718,7 +718,7 @@
   padding: 0.8rem 1.6rem;
   background: #fff;
   color: #0a0a12;
-  border-radius: 999px;
+  border-radius: 0;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
@@ -731,7 +731,7 @@
   padding: 0.8rem 1.4rem;
   border: 1px solid rgba(255,255,255,0.3);
   color: rgba(255,255,255,0.85);
-  border-radius: 999px;
+  border-radius: 0;
   text-decoration: none;
   transition: background 0.2s ease;
 }

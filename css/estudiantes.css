@@ -35,7 +35,7 @@
 }
 .mentorhub-card__icon {
   width: 64px; height: 64px;
-  border-radius: 18px;
+  border-radius: 0;
   background: var(--edu-green);
   color: #fff;
   display: flex; align-items: center; justify-content: center;

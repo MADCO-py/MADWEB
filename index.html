@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="css/estudiantes.css">
 <link rel="stylesheet" href="css/setup.css">
 <link rel="stylesheet" href="css/sections-new.css">
+<link rel="stylesheet" href="css/playground.css">
 <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body>
@@ -71,14 +72,14 @@
       <div class="quien__left reveal">
         <div class="quien__eyebrow">MADCO · Guatemala</div>
         <h2 class="quien__title">¿Necesitas una<br>página web?</h2>
-        <p class="quien__lead">Sitios 100% personalizados, fuera de lo común, llamativos y creativos — con identidad propia y código a la medida de tu proyecto.</p>
+        <p class="quien__lead">Creo software funcional con bases de datos, que además se ve bien: sistemas que de verdad se usan para registrar, tomar datos y ordenar información, con un diseño propio y código hecho a la medida de tu proyecto.</p>
         <div class="quien__categories">
-          <div class="quien__cat"><i class="ph ph-music-note"></i> Artistas musicales independientes</div>
-          <div class="quien__cat"><i class="ph ph-users-three"></i> Boy bands y grupos creativos</div>
-          <div class="quien__cat"><i class="ph ph-truck"></i> Sistemas de gestión empresarial</div>
-          <div class="quien__cat"><i class="ph ph-bowl-food"></i> Negocios de alimentos y gastronomía</div>
-          <div class="quien__cat"><i class="ph ph-diamond"></i> Joyería y accesorios</div>
-          <div class="quien__cat"><i class="ph ph-code"></i> Portfolios y proyectos personales</div>
+          <div class="quien__cat"><i class="ph ph-database"></i> Software con bases de datos</div>
+          <div class="quien__cat"><i class="ph ph-clipboard-text"></i> Sistemas de registro y control</div>
+          <div class="quien__cat"><i class="ph ph-chart-bar"></i> Toma de datos y reportes</div>
+          <div class="quien__cat"><i class="ph ph-browser"></i> Portafolios web</div>
+          <div class="quien__cat"><i class="ph ph-storefront"></i> Sitios para negocios, artistas y eventos</div>
+          <div class="quien__cat"><i class="ph ph-identification-card"></i> Hojas de vida y CV</div>
         </div>
         <div class="quien__ctas">
           <a href="https://www.instagram.com/madco.py/" target="_blank" rel="noopener" class="quien__btn-main">
@@ -102,7 +103,6 @@
       </div>
     </div>
   </div>
-</section>
 </section>
 
 <!-- ============ PROYECTOS PERSONALES ============ -->
@@ -149,9 +149,8 @@
       <div>
         <div class="section__eyebrow esp32__eyebrow reveal">Hardware propio</div>
         <h2 class="section__title esp32__title reveal">Maker Lab</h2>
-        <p class="section__lead reveal" style="color:var(--esp32-silver)">De la idea al prototipo físico.</p>
+        <p class="section__lead reveal" style="color:var(--esp32-silver)">Tags NFC: de lo físico a lo digital con un toque.</p>
       </div>
-      <img class="esp32-board-badge reveal" src="assets/img/esp32/esp32-board.gif" alt="Placa ESP32">
     </div>
     <!-- NFC SHOWCASE -->
     <div class="nfc-showcase reveal">
@@ -161,20 +160,18 @@
       <div class="nfc-showcase__right">
         <div class="nfc-showcase__tag">NFC · Del mundo digital al físico</div>
         <h3 class="nfc-showcase__title">Un tag del tamaño de una moneda que conecta lo físico con internet</h3>
-        <p class="nfc-showcase__desc">Un chip NFC no tiene batería, no necesita app, no ocupa espacio. Acercas el teléfono y pasa algo: abre tu sitio web, tu Instagram, tu menú, tu carta de vinos, tu portafolio, tu WhatsApp.</p>
+        <p class="nfc-showcase__desc">Un chip NFC no tiene batería, no necesita app y no ocupa espacio. Acercas el teléfono y pasa algo. Conectado a una web con base de datos, cada toque puede contar, registrar o llevar a la persona justo a donde tiene que ir.</p>
         <div class="nfc-showcase__uses">
-          <div class="nfc-use"><i class="ph ph-globe"></i> Link directo a tu sitio web o menú</div>
-          <div class="nfc-use"><i class="ph ph-instagram-logo"></i> Tus redes sociales con un toque</div>
-          <div class="nfc-use"><i class="ph ph-card"></i> Tarjeta de presentación sin papel</div>
-          <div class="nfc-use"><i class="ph ph-wifi-high"></i> Compartir tu red WiFi automáticamente</div>
-          <div class="nfc-use"><i class="ph ph-shopping-bag"></i> Catálogos, precios, formularios</div>
-          <div class="nfc-use"><i class="ph ph-music-note"></i> Tu música, tu Spotify, tu YouTube</div>
+          <div class="nfc-use"><i class="ph ph-hash"></i> Conteo de visitas, asistentes o escaneos</div>
+          <div class="nfc-use"><i class="ph ph-clipboard-text"></i> Registro de entradas, asistencia o inventario</div>
+          <div class="nfc-use"><i class="ph ph-globe"></i> Llevar directo a una página web o menú</div>
+          <div class="nfc-use"><i class="ph ph-note-pencil"></i> Abrir formularios para tomar datos</div>
+          <div class="nfc-use"><i class="ph ph-identification-card"></i> Tarjeta de presentación sin papel</div>
+          <div class="nfc-use"><i class="ph ph-instagram-logo"></i> Redes, WhatsApp, música y más con un toque</div>
         </div>
         <p class="nfc-showcase__note">Compatible con NTAG213, NTAG215, NTAG216 — los mismos que usamos en el Flipper Zero. Yo te genero el archivo, tú lo grabas con cualquier app NFC.</p>
       </div>
     </div>
-
-    <div class="maker-list" data-mount="esp32"></div>
   </div>
 </section>
 
@@ -382,6 +379,127 @@
         </div>
       </div>
     </div>
+
+    <!-- PLAYGROUND: todo lo que se puede hacer -->
+    <div class="pg" id="playground">
+      <div class="pg__head reveal">
+        <div class="webs-inter__feature-label">Pruébalo tú</div>
+        <h3 class="pg__title">Toca, arrastra, presiona</h3>
+        <p class="pg__lead">Cada cuadro es algo que puedo poner en tu página. Todo hecho con HTML, CSS y JavaScript, sin librerías.</p>
+      </div>
+
+      <div class="pg__grid">
+        <!-- 1. Arrastrar -->
+        <div class="pg__tile pg__tile--wide reveal">
+          <div class="pg__label"><span>01</span> Mover cosas</div>
+          <div class="pg-drag" data-pg="drag">
+            <div class="pg-drag__item" style="left:12%;top:22%">Arrástrame</div>
+            <div class="pg-drag__item pg-drag__item--sq" style="left:52%;top:46%"></div>
+            <div class="pg-drag__item pg-drag__item--dot" style="left:78%;top:16%"></div>
+          </div>
+          <p class="pg__hint">Arrastra las piezas: se sueltan con inercia y rebotan en las orillas.</p>
+        </div>
+
+        <!-- 2. Colores -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>02</span> Cambiar colores</div>
+          <div class="pg-colors" data-pg="colors">
+            <button class="pg-swatch is-on" style="--c:#00e5ff" aria-label="Cian"></button>
+            <button class="pg-swatch" style="--c:#ff3d7f" aria-label="Rosa"></button>
+            <button class="pg-swatch" style="--c:#ffd400" aria-label="Amarillo"></button>
+            <button class="pg-swatch" style="--c:#7cff4f" aria-label="Verde"></button>
+            <button class="pg-swatch" style="--c:#a26bff" aria-label="Morado"></button>
+            <button class="pg-swatch" style="--c:#ff7a1a" aria-label="Naranja"></button>
+          </div>
+          <div class="pg-colors__preview"><span>Color actual</span><b data-pg="hex">#00E5FF</b></div>
+          <p class="pg__hint">Elige uno y todo el playground cambia de color suavemente.</p>
+        </div>
+
+        <!-- 3. Botones -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>03</span> Botones con vida</div>
+          <div class="pg-btns">
+            <button class="pg-btn pg-btn--grow">Crezco</button>
+            <button class="pg-btn pg-btn--magnet" data-pg="magnet">Imán</button>
+            <button class="pg-btn pg-btn--ripple" data-pg="ripple">Onda</button>
+            <button class="pg-btn pg-btn--jelly" data-pg="jelly">Gelatina</button>
+          </div>
+          <p class="pg__hint">Pasa el mouse y haz clic en cada uno.</p>
+        </div>
+
+        <!-- 4. Terremoto -->
+        <div class="pg__tile pg__tile--quake reveal">
+          <div class="pg__label"><span>04</span> Toda la pantalla</div>
+          <button class="pg-quake" data-pg="quake"><i class="ph-bold ph-lightning"></i> Hacer temblar</button>
+          <label class="pg-range">
+            <span>Fuerza <b data-pg="quake-val">5</b></span>
+            <input type="range" min="1" max="10" value="5" data-pg="quake-power">
+          </label>
+          <p class="pg__hint">Sacude la página completa. Sube la fuerza bajo tu propio riesgo.</p>
+        </div>
+
+        <!-- 5. Tarjeta 3D -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>05</span> Profundidad 3D</div>
+          <div class="pg-tilt" data-pg="tilt">
+            <div class="pg-tilt__card">
+              <div class="pg-tilt__glare"></div>
+              <small>MADCO.py</small>
+              <strong>Tarjeta 3D</strong>
+              <span>Sigue tu mouse</span>
+            </div>
+          </div>
+          <p class="pg__hint">Mueve el mouse encima: la tarjeta se inclina y refleja la luz.</p>
+        </div>
+
+        <!-- 6. Partículas -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>06</span> Celebraciones</div>
+          <div class="pg-burst" data-pg="burst">
+            <button class="pg-btn pg-btn--solid"><i class="ph-bold ph-confetti"></i> Lanzar confeti</button>
+          </div>
+          <p class="pg__hint">O haz clic en cualquier parte del cuadro.</p>
+        </div>
+
+        <!-- 7. Texto -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>07</span> Texto animado</div>
+          <div class="pg-text">
+            <p class="pg-wave" data-pg="wave">Hola mundo</p>
+            <p class="pg-scramble" data-pg="scramble" data-text="PASA EL MOUSE">PASA EL MOUSE</p>
+          </div>
+          <p class="pg__hint">Letras que ondulan y texto que se descifra.</p>
+        </div>
+
+        <!-- 8. Controles -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>08</span> Controles suaves</div>
+          <div class="pg-ctrl">
+            <div class="pg-ctrl__stage"><div class="pg-ctrl__shape" data-pg="shape"></div></div>
+            <label class="pg-range">
+              <span>Tamaño</span>
+              <input type="range" min="20" max="100" value="50" data-pg="size">
+            </label>
+            <label class="pg-range">
+              <span>Giro</span>
+              <input type="range" min="0" max="360" value="0" data-pg="spin">
+            </label>
+            <button class="pg-toggle" data-pg="toggle" role="switch" aria-checked="false"><span></span> Círculo</button>
+          </div>
+        </div>
+
+        <!-- 9. Contador -->
+        <div class="pg__tile reveal">
+          <div class="pg__label"><span>09</span> Números en movimiento</div>
+          <div class="pg-count">
+            <b data-pg="count">0</b>
+            <span>visitas registradas (ejemplo)</span>
+            <button class="pg-btn" data-pg="count-btn">+ 1 000</button>
+          </div>
+          <p class="pg__hint">Contadores que suben suavemente, ideales para mostrar resultados.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -390,8 +508,7 @@
   <div class="section__inner">
     <div class="section__eyebrow setup__eyebrow reveal">Lo que uso</div>
     <h2 class="section__title setup__title reveal">Mi Setup</h2>
-    <p class="section__lead setup__lead reveal">Mis esenciales de día a día para proyectos.</p>
-    <div class="product-grid" style="margin-top:2.8rem;" data-mount="setup"></div>
+    <p class="section__lead setup__lead reveal">Todo lo hago sobre Ubuntu.</p>
 
     <div class="desktop-showcase reveal">
       <img class="desktop-showcase__bg" src="assets/img/setup/ubuntu-desktop.png" alt="Escritorio de Ubuntu de MADCO.py">
@@ -416,7 +533,7 @@
       <div class="terminal-panel__body">
         <p class="terminal-panel__prompt">$ cat dato-curioso.md</p>
         <p class="terminal-panel__h"># Todo corre sobre Ubuntu</p>
-        <p>Desde la laptop hasta la Nintendo Switch — todo en Linux. Algunas extensiones GNOME que uso para volver locas las pantallas (y a veces literalmente quemarlas un poco):</p>
+        <p>Todos mis proyectos los construyo en Linux. Algunas extensiones GNOME que uso para volver locas las pantallas (y a veces literalmente quemarlas un poco):</p>
         <ul>
           <li><strong>Burn My Windows</strong> — transiciones de ventana exageradas al cerrar/abrir apps.</li>
           <li><strong>Blur My Shell</strong> — desenfoque dinámico en toda la interfaz.</li>
@@ -445,10 +562,10 @@
 <script src="js/flipper-folders.js"></script>
 <script src="js/funny.js"></script>
 <script src="js/ubuntu-terminal.js"></script>
-<script src="js/esp32-spin.js"></script>
 <script src="js/page-morph.js"></script>
 <script src="js/ciber-tools.js"></script>
 <script src="js/chess.js"></script>
+<script src="js/playground.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -54,7 +54,7 @@
   width: 8px;
   background: linear-gradient(90deg, rgba(199,154,94,0.5), rgba(199,154,94,0.1));
   transform: translateZ(-1px);
-  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  border-radius: 0;
   pointer-events: none;
 }
 .book-card__cover {

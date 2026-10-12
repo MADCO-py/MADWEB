@@ -1,0 +1,219 @@
+/* ============================================================
+   PLAYGROUND — demos interactivas en "Webs Interactivas"
+   El color de acento vive en --pg (lo cambia js/playground.js).
+   ============================================================ */
+.pg {
+  --pg: #00e5ff;
+  --pg-line: rgba(255,255,255,0.09);
+  --pg-panel: rgba(255,255,255,0.035);
+  margin-top: 5rem;
+  transition: --pg 0.6s ease;
+}
+@property --pg { syntax: '<color>'; inherits: true; initial-value: #00e5ff; }
+
+.pg__head { max-width: 640px; margin-bottom: 2rem; }
+.pg__title { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; color: #fff; margin: 0 0 0.6rem; }
+.pg__title::after {
+  content: ''; display: block; width: 64px; height: 4px; margin-top: 0.8rem;
+  background: var(--pg); transition: background 0.6s ease;
+}
+.pg__lead { color: rgba(240,240,238,0.6); line-height: 1.6; margin: 0; }
+
+.pg__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.pg__tile {
+  position: relative;
+  display: flex; flex-direction: column; gap: 1rem;
+  padding: 1.3rem;
+  background: var(--pg-panel);
+  border: 1px solid var(--pg-line);
+  overflow: hidden;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.pg__tile:hover { border-color: color-mix(in srgb, var(--pg) 55%, transparent); background: rgba(255,255,255,0.05); }
+.pg__tile--wide { grid-column: span 2; }
+.pg__label {
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(240,240,238,0.55);
+}
+.pg__label span { color: var(--pg); margin-right: 0.4rem; transition: color 0.6s ease; }
+.pg__hint { margin: auto 0 0; font-size: 0.8rem; line-height: 1.5; color: rgba(240,240,238,0.45); }
+
+/* ---------- Botón base ---------- */
+.pg-btn {
+  font: 600 0.85rem var(--font-display);
+  padding: 0.75rem 1.1rem;
+  color: #fff;
+  background: transparent;
+  border: 2px solid var(--pg);
+  cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: transform 0.35s cubic-bezier(.3,1.6,.5,1), background 0.25s ease, color 0.25s ease, border-color 0.6s ease;
+}
+.pg-btn:hover { background: var(--pg); color: #0c0c12; }
+.pg-btn--solid { background: var(--pg); color: #0c0c12; }
+.pg-btn:focus-visible, .pg-swatch:focus-visible, .pg-quake:focus-visible, .pg-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* 01 Arrastrar */
+.pg-drag {
+  position: relative; height: 230px;
+  background:
+    linear-gradient(var(--pg-line) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, var(--pg-line) 1px, transparent 1px) 0 0 / 24px 24px;
+  border: 1px dashed var(--pg-line);
+  touch-action: none;
+}
+.pg-drag__item {
+  position: absolute;
+  padding: 0.8rem 1rem;
+  font: 700 0.85rem var(--font-mono);
+  color: #0c0c12; background: var(--pg);
+  cursor: grab; user-select: none;
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.45);
+  transition: box-shadow 0.2s ease, scale 0.2s ease, background 0.6s ease;
+  will-change: transform;
+}
+.pg-drag__item--sq { width: 64px; height: 64px; padding: 0; background: #fff; }
+.pg-drag__item--dot { width: 52px; height: 52px; padding: 0; border-radius: 50%; background: transparent; border: 4px solid var(--pg); box-shadow: none; }
+.pg-drag__item.is-grab { cursor: grabbing; scale: 1.12; box-shadow: 14px 14px 0 rgba(0,0,0,0.35); z-index: 2; }
+
+/* 02 Colores */
+.pg-colors { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem; }
+.pg-swatch {
+  aspect-ratio: 1; border: 2px solid transparent; background: var(--c); cursor: pointer;
+  transition: transform 0.3s cubic-bezier(.3,1.8,.5,1), border-color 0.2s ease;
+}
+.pg-swatch:hover { transform: scale(1.15) rotate(-6deg); }
+.pg-swatch.is-on { border-color: #fff; transform: scale(1.1); }
+.pg-colors__preview {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.9rem 1rem; background: var(--pg); color: #0c0c12;
+  font-size: 0.8rem; transition: background 0.6s ease;
+}
+.pg-colors__preview b { font: 700 1rem var(--font-mono); }
+
+/* 03 Botones */
+.pg-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+.pg-btn--grow:hover { transform: scale(1.18); }
+.pg-btn--magnet { transition: transform 0.25s cubic-bezier(.2,.9,.3,1.2), background 0.25s ease, color 0.25s ease; }
+.pg-ripple {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  background: rgba(255,255,255,0.55);
+  transform: translate(-50%, -50%) scale(0);
+  animation: pg-ripple 0.65s ease-out forwards;
+}
+@keyframes pg-ripple { to { transform: translate(-50%, -50%) scale(1); opacity: 0; } }
+.pg-btn--jelly.is-jelly { animation: pg-jelly 0.7s ease; }
+@keyframes pg-jelly {
+  0% { transform: scale(1, 1); }
+  25% { transform: scale(1.25, 0.75); }
+  40% { transform: scale(0.8, 1.2); }
+  55% { transform: scale(1.1, 0.9); }
+  70% { transform: scale(0.95, 1.05); }
+  100% { transform: scale(1, 1); }
+}
+
+/* 04 Terremoto */
+.pg__tile--quake { background: repeating-linear-gradient(-45deg, rgba(255,255,255,0.03) 0 12px, transparent 12px 24px); }
+.pg-quake {
+  font: 800 1.15rem var(--font-display);
+  padding: 1.3rem 1rem;
+  color: #0c0c12; background: var(--pg); border: 0; cursor: pointer;
+  box-shadow: 6px 6px 0 #fff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.6s ease;
+}
+.pg-quake:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 #fff; }
+.pg-quake:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 #fff; }
+.pg-quake .ph-bold { margin-right: 0.3rem; }
+
+body.pg-shaking { animation: pg-shake var(--pg-dur, 0.6s) cubic-bezier(.36,.07,.19,.97) both; }
+@keyframes pg-shake {
+  10%, 90% { transform: translate(calc(var(--pg-amp) * -0.2), calc(var(--pg-amp) * 0.1)) rotate(-0.2deg); }
+  20%, 80% { transform: translate(calc(var(--pg-amp) * 0.4), calc(var(--pg-amp) * -0.3)) rotate(0.3deg); }
+  30%, 50%, 70% { transform: translate(calc(var(--pg-amp) * -1), calc(var(--pg-amp) * 0.5)) rotate(-0.5deg); }
+  40%, 60% { transform: translate(var(--pg-amp), calc(var(--pg-amp) * -0.6)) rotate(0.5deg); }
+}
+
+/* Slider */
+.pg-range { display: grid; gap: 0.4rem; font-size: 0.78rem; color: rgba(240,240,238,0.6); }
+.pg-range b { color: var(--pg); font-family: var(--font-mono); transition: color 0.6s ease; }
+.pg-range input { width: 100%; accent-color: var(--pg); }
+
+/* 05 Tarjeta 3D */
+.pg-tilt { perspective: 700px; display: grid; place-items: center; padding: 0.5rem 0; }
+.pg-tilt__card {
+  position: relative; overflow: hidden;
+  width: 100%; max-width: 240px; aspect-ratio: 1.6;
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 0.15rem;
+  padding: 1.1rem;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--pg) 80%, #000), #111 75%);
+  border: 1px solid rgba(255,255,255,0.15);
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+.pg-tilt__card small { font: 600 0.7rem var(--font-mono); color: rgba(255,255,255,0.7); }
+.pg-tilt__card strong { font-size: 1.3rem; color: #fff; transform: translateZ(30px); }
+.pg-tilt__card span { font-size: 0.75rem; color: rgba(255,255,255,0.7); }
+.pg-tilt__glare {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,0.45), transparent 55%);
+  transition: opacity 0.3s ease;
+}
+.pg-tilt:hover .pg-tilt__glare { opacity: 1; }
+
+/* 06 Partículas */
+.pg-burst { position: relative; flex: 1; min-height: 150px; display: grid; place-items: center; cursor: crosshair; }
+.pg-confetti {
+  position: absolute; width: 8px; height: 12px; pointer-events: none;
+  animation: pg-confetti 1.1s cubic-bezier(.1,.8,.3,1) forwards;
+}
+@keyframes pg-confetti {
+  to { transform: translate(var(--x), var(--y)) rotate(var(--r)); opacity: 0; }
+}
+
+/* 07 Texto */
+.pg-text { flex: 1; display: grid; place-content: center; gap: 1rem; text-align: center; min-height: 150px; }
+.pg-wave { margin: 0; font-size: 1.8rem; font-weight: 800; color: #fff; }
+.pg-wave span { display: inline-block; animation: pg-wave 1.6s ease-in-out infinite; animation-delay: calc(var(--i) * 0.08s); }
+.pg-wave span:nth-child(odd) { color: var(--pg); transition: color 0.6s ease; }
+@keyframes pg-wave { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.pg-scramble { margin: 0; font: 700 1rem var(--font-mono); letter-spacing: 0.15em; color: rgba(240,240,238,0.75); cursor: default; }
+
+/* 08 Controles */
+.pg-ctrl { display: grid; gap: 0.8rem; }
+.pg-ctrl__stage { height: 120px; display: grid; place-items: center; background: rgba(0,0,0,0.25); }
+.pg-ctrl__shape {
+  width: 50px; height: 50px; background: var(--pg);
+  transition: width 0.4s cubic-bezier(.3,1.5,.5,1), height 0.4s cubic-bezier(.3,1.5,.5,1), transform 0.4s ease, border-radius 0.5s ease, background 0.6s ease;
+}
+.pg-ctrl__shape.is-round { border-radius: 50%; }
+.pg-toggle {
+  display: flex; align-items: center; gap: 0.6rem;
+  background: none; border: 0; padding: 0; color: rgba(240,240,238,0.7); font: 500 0.8rem var(--font-display); cursor: pointer;
+}
+.pg-toggle span { position: relative; width: 42px; height: 22px; background: rgba(255,255,255,0.15); transition: background 0.3s ease; }
+.pg-toggle span::after {
+  content: ''; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; background: #fff;
+  transition: transform 0.35s cubic-bezier(.3,1.6,.5,1);
+}
+.pg-toggle[aria-checked="true"] span { background: var(--pg); }
+.pg-toggle[aria-checked="true"] span::after { transform: translateX(20px); }
+
+/* 09 Contador */
+.pg-count { flex: 1; display: grid; justify-items: start; align-content: center; gap: 0.4rem; min-height: 150px; }
+.pg-count b { font: 800 clamp(2.4rem, 5vw, 3.2rem) var(--font-mono); color: var(--pg); line-height: 1; transition: color 0.6s ease; }
+.pg-count span { font-size: 0.8rem; color: rgba(240,240,238,0.55); margin-bottom: 0.6rem; }
+
+@media (max-width: 1000px) { .pg__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .pg { margin-top: 3.5rem; }
+  .pg__grid { grid-template-columns: 1fr; }
+  .pg__tile--wide { grid-column: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pg-wave span { animation: none; }
+}
