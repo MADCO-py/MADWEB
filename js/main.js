@@ -28,17 +28,34 @@
     return html;
   }
 
-  function mediaWithFallback(tagHtml, src, placeholderHtml) {
-    // Devuelve un <video> que cae a un placeholder si el archivo aún no existe
-    const wrapper = document.createElement('div');
-    wrapper.innerHTML = `<video class="${tagHtml}" src="${src}" autoplay loop muted playsinline></video>`;
-    const video = wrapper.firstElementChild;
-    video.addEventListener('error', () => {
-      const ph = document.createElement('div');
-      ph.className = tagHtml + '-placeholder';
-      ph.innerHTML = placeholderHtml;
-      video.replaceWith(ph);
+  // Video liviano: muestra su foto de portada (mismo nombre, .jpg) al instante
+  // y no descarga nada hasta que hace falta.
+  //   mode 'hover': en compu se reproduce al pasar el mouse por la tarjeta.
+  //   mode 'view' : se reproduce mientras la tarjeta está en pantalla.
+  // En celular (sin mouse) siempre usa 'view'.
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const viewIO = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      const v = e.target;
+      if (e.isIntersecting) v.play().catch(() => {});
+      else v.pause();
     });
+  }, { threshold: 0.5 }) : null;
+
+  function lazyVideo(src, className, card, mode) {
+    const video = document.createElement('video');
+    video.className = className;
+    video.poster = src.replace(/\.mp4$/i, '.jpg');
+    video.src = src;
+    video.preload = 'none';
+    video.muted = true; video.playsInline = true; video.loop = true;
+    video.setAttribute('aria-hidden', 'true');
+    if (mode === 'hover' && canHover) {
+      card.addEventListener('mouseenter', () => video.play().catch(() => {}));
+      card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+    } else if (viewIO) {
+      viewIO.observe(video);
+    }
     return video;
   }
 
@@ -76,16 +93,7 @@
 
       // Media: video si tiene, imagen si no
       if (p.video) {
-        const video = document.createElement('video');
-        video.className = 'personal-card__media';
-        video.src = p.video;
-        video.muted = true; video.playsInline = true; video.autoplay = true; video.loop = true;
-        video.addEventListener('error', () => {
-          video.replaceWith(el('div', 'personal-card__media', ''));
-        });
-        card.addEventListener('mouseenter', () => video.play());
-        card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
-        card.appendChild(video);
+        card.appendChild(lazyVideo(p.video, 'personal-card__media', card, 'view'));
       } else if (p.preview) {
         const img = document.createElement('img');
         img.className = 'personal-card__media';
@@ -143,14 +151,7 @@
 
       // Media
       if (p.video) {
-        const video = document.createElement('video');
-        video.className = 'client-card__media';
-        video.src = p.video;
-        video.muted = true; video.playsInline = true; video.preload = 'metadata'; video.loop = true;
-        video.addEventListener('error', () => video.style.display='none');
-        card.addEventListener('mouseenter', () => video.play());
-        card.addEventListener('mouseleave', () => { video.pause(); video.currentTime=0; });
-        card.appendChild(video);
+        card.appendChild(lazyVideo(p.video, 'client-card__media', card, 'hover'));
       } else if (p.preview) {
         const img = document.createElement('img');
         img.className = 'client-card__media';
@@ -331,11 +332,7 @@
     sorted.forEach(r => {
       const card = document.createElement('div');
       card.className = 'mentorhub-card reveal';
-      const v = document.createElement('video');
-      v.className = 'mentorhub-card__shot';
-      v.src = r.shotVideo;
-      v.muted = true; v.playsInline = true; v.autoplay = true; v.loop = true;
-      card.appendChild(v);
+      card.appendChild(lazyVideo(r.shotVideo, 'mentorhub-card__shot', card, 'view'));
       const body = document.createElement('div');
       body.className = 'mentorhub-card__body';
       body.innerHTML = '<div class="mentorhub-card__icon"><i class="ph ph-graduation-cap" style="font-size:1.7rem;"></i></div>' +
