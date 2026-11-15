@@ -8,7 +8,7 @@ const FAQ = {
   en: [
     ['cost', 'How much does a website cost?', 'It depends on what it needs to do. Base prices: portfolio {p.marce}, event site {p.sunset}, online store {p.march}, full platform {p.skeepers}, custom system {p.fleetcontrol}. Use “Build yours” for an instant estimate.', 'build'],
     ['time', 'How long does it take?', 'A portfolio or event page: about 1–2 weeks. An online store: 2–4 weeks. Platforms and custom systems: 4–8 weeks. You see a live draft from the first week.'],
-    ['monthly', 'Are there monthly costs?', 'Only the server: $10–20 per month, paid monthly or yearly. It keeps your site online 24/7.'],
+    ['monthly', 'Are there monthly costs?', 'Only the server: $10–50 per month, paid monthly or yearly. It keeps your site online 24/7.'],
     ['after', "What's included after delivery?", '6 months of maintenance and bug fixes, a user manual (so you can run everything yourself) and a technical manual (so any developer can continue it).'],
     ['tech', 'Do I need to know about technology?', 'No. You tell me your idea, I show you a live draft on your phone and we adjust it together until it’s right.'],
     ['edit', 'Can I update it myself?', 'Yes. With an admin panel you change products, photos and texts yourself. The user manual explains it step by step.'],
@@ -25,7 +25,7 @@ const FAQ = {
   es: [
     ['cost', '¿Cuánto cuesta una página web?', 'Depende de lo que necesite hacer. Precios base: portafolio {p.marce}, sitio de evento {p.sunset}, tienda en línea {p.march}, plataforma completa {p.skeepers}, sistema a la medida {p.fleetcontrol}. Usa “Arma la tuya” para un estimado al instante.', 'build'],
     ['time', '¿Cuánto tiempo tarda?', 'Un portafolio o página de evento: 1–2 semanas aprox. Una tienda en línea: 2–4 semanas. Plataformas y sistemas a la medida: 4–8 semanas. Ves un boceto en vivo desde la primera semana.'],
-    ['monthly', '¿Hay pagos mensuales?', 'Solo el servidor: $10–20 al mes, con pagos mensuales o anuales. Mantiene tu sitio en línea 24/7.'],
+    ['monthly', '¿Hay pagos mensuales?', 'Solo el servidor: $10–50 al mes, con pagos mensuales o anuales. Mantiene tu sitio en línea 24/7.'],
     ['after', '¿Qué incluye después de entregar?', '6 meses de mantenimiento y arreglo de bugs, un manual de usuario (para que manejes todo tú) y un manual técnico (para que cualquier programador pueda continuarlo).'],
     ['tech', '¿Necesito saber de tecnología?', 'No. Me cuentas tu idea, te enseño un boceto en vivo en tu celular y lo ajustamos juntos hasta que quede.'],
     ['edit', '¿Puedo actualizarla yo mismo?', 'Sí. Con un panel de administrador cambias productos, fotos y textos tú mismo. El manual de usuario lo explica paso a paso.'],
@@ -42,7 +42,7 @@ const FAQ = {
   ja: [
     ['cost', 'ウェブサイトの料金は？', '必要な機能によります。基本料金：ポートフォリオ {p.marce}、イベントサイト {p.sunset}、オンラインストア {p.march}、フルプラットフォーム {p.skeepers}、オーダーメイドシステム {p.fleetcontrol}。「つくってみる」ですぐに概算がわかります。', 'build'],
     ['time', '制作期間は？', 'ポートフォリオやイベントページは約1〜2週間。オンラインストアは2〜4週間。プラットフォームやシステムは4〜8週間。最初の週からライブ試作を確認できます。'],
-    ['monthly', '月額費用はありますか？', 'サーバー代のみ：月額 $10–20（月払い・年払い）。サイトを24時間公開し続けます。'],
+    ['monthly', '月額費用はありますか？', 'サーバー代のみ：月額 $10–50（月払い・年払い）。サイトを24時間公開し続けます。'],
     ['after', '納品後に含まれるものは？', '6ヶ月の保守と不具合修正、ユーザーマニュアル（ご自身で運用するため）、技術マニュアル（他の開発者が引き継げるように）。'],
     ['tech', '専門知識は必要ですか？', '不要です。アイデアを聞かせていただければ、スマホでライブ試作をお見せし、一緒に調整します。'],
     ['edit', '自分で更新できますか？', 'はい。管理画面から商品・写真・文章をご自身で変更できます。手順はユーザーマニュアルで説明します。'],

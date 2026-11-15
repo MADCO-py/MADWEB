@@ -47,7 +47,7 @@ const I18N = {
 
     /* sheet */
     'sh.inside': "What's inside", 'sh.ours': 'MADCO base price', 
-    'sh.plus': '+ server $10–20 / month · 6 months of maintenance · user & technical manual',
+    'sh.plus': '+ server $10–50 / month · 6 months of maintenance · user & technical manual',
 
     /* quiz */
     'q.of': 'Question {n} of 6', 'q.next': 'Next', 'q.back': 'Back', 'q.see': 'See my project', 'q.multi': 'Choose all that apply',
@@ -82,7 +82,7 @@ const I18N = {
 
     'r.name': 'Name your project', 'r.name.ph': 'Your brand', 'r.est': 'Estimated price', 'r.from': 'starting at',
     'r.base': 'Base', 'r.lang': 'Extra languages', 'r.size': 'Size',
-    'r.server': 'Server', 'r.server.v': '$10–20 / mo',
+    'r.server': 'Server', 'r.server.v': '$10–50 / mo',
     'r.note': 'Includes 6 months of maintenance and bug fixes, user manual and technical manual. Final quote after a short call.',
     'r.send': 'Send me this', 'r.again': 'Start over',
     'r.mail.subject': 'New project — {name}',
@@ -163,7 +163,7 @@ const I18N = {
     'ftr.contact': 'Contacto', 'sticky': 'Conoce tu precio en 1 minuto',
 
     'sh.inside': 'Qué incluye', 'sh.ours': 'Precio base MADCO', 
-    'sh.plus': '+ servidor $10–20 / mes · 6 meses de mantenimiento · manual de usuario y técnico',
+    'sh.plus': '+ servidor $10–50 / mes · 6 meses de mantenimiento · manual de usuario y técnico',
 
     'q.of': 'Pregunta {n} de 6', 'q.next': 'Siguiente', 'q.back': 'Atrás', 'q.see': 'Ver mi proyecto', 'q.multi': 'Elige todas las que apliquen',
     'q1': '¿Qué quieres construir?',
@@ -197,7 +197,7 @@ const I18N = {
 
     'r.name': 'Ponle nombre a tu proyecto', 'r.name.ph': 'Tu marca', 'r.est': 'Precio estimado', 'r.from': 'desde',
     'r.base': 'Base', 'r.lang': 'Idiomas extra', 'r.size': 'Tamaño',
-    'r.server': 'Servidor', 'r.server.v': '$10–20 / mes',
+    'r.server': 'Servidor', 'r.server.v': '$10–50 / mes',
     'r.note': 'Incluye 6 meses de mantenimiento y arreglo de bugs, manual de usuario y manual técnico. Cotización final después de una llamada corta.',
     'r.send': 'Enviarme esto', 'r.again': 'Empezar de nuevo',
     'r.mail.subject': 'Nuevo proyecto — {name}',
@@ -277,7 +277,7 @@ const I18N = {
     'ftr.contact': 'お問い合わせ', 'sticky': '1分で料金がわかる',
 
     'sh.inside': '主な機能', 'sh.ours': 'MADCO 基本料金', 
-    'sh.plus': '+ サーバー月額 $10–20 · 6ヶ月の保守 · ユーザー／技術マニュアル',
+    'sh.plus': '+ サーバー月額 $10–50 · 6ヶ月の保守 · ユーザー／技術マニュアル',
 
     'q.of': '質問 {n} / 6', 'q.next': '次へ', 'q.back': '戻る', 'q.see': 'プロジェクトを見る', 'q.multi': '当てはまるものをすべて選択',
     'q1': '何をつくりますか？',
@@ -311,7 +311,7 @@ const I18N = {
 
     'r.name': 'プロジェクト名', 'r.name.ph': 'あなたのブランド', 'r.est': '概算料金', 'r.from': '〜',
     'r.base': '基本', 'r.lang': '追加言語', 'r.size': '規模',
-    'r.server': 'サーバー', 'r.server.v': '月額 $10–20',
+    'r.server': 'サーバー', 'r.server.v': '月額 $10–50',
     'r.note': '6ヶ月の保守・不具合修正、ユーザーマニュアル、技術マニュアルを含みます。最終見積りは短い打ち合わせの後にお出しします。',
     'r.send': 'この内容を送る', 'r.again': 'やり直す',
     'r.mail.subject': '新規プロジェクト — {name}',

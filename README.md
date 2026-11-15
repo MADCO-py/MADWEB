@@ -31,5 +31,5 @@ Extra services (from): chatbot $250 · automations $200 · NFC chips $60.
 
 Internal note (not shown on the site): set ≈ Q1,000 below 2026 Guatemalan agency averages.
 
-Every project: server $10–20/month (monthly or yearly), 6 months maintenance + bug fixes,
+Every project: server $10–50/month (monthly or yearly), 6 months maintenance + bug fixes,
 user manual, technical manual.
