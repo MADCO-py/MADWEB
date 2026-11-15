@@ -16,6 +16,8 @@ const FAQ = {
     ['domain', 'Can I have my own domain (.com, .gt)?', 'Yes. I quote your domain (.com, .gt and more) and connect it for you.'],
     ['secure', 'Is my information safe?', 'Yes: encrypted connection (HTTPS), encrypted passwords, a private admin login and database backups.'],
     ['sell', 'Can it sell or take orders?', 'Yes. A catalog with a cart that sends orders straight to WhatsApp, like March Jewelry. No commissions.', 'work'],
+    ['pay', 'Can I receive payments on my site?', 'Yes. Your customers pay right on your site with Google Pay, PayPal or card (from {s.pay}). The money goes straight to your account.', 'build'],
+    ['biz', 'Can you do inventory, loyalty points or my Google profile?', 'Yes. Inventory with low-stock alerts (from {s.inv}), a loyalty points card on the phone or NFC (from {s.loyal}) and your Google Search and Maps profile set up (from {s.gbp}).', 'build'],
     ['extra', 'Do you make chatbots, automations or NFC?', 'Yes. Chatbots like this one (from {s.bot}), automations that do repetitive tasks for you (from {s.auto}) and NFC chips that open your site with one tap of the phone (from {s.nfc}).'],
     ['own', 'Is the website mine?', 'Yes. The project is yours. The technical manual lets any developer continue it — you are never tied to me.'],
     ['start', 'How do we start?', 'Write to me by email or Instagram with your idea. I reply with a quote.', 'contact'],
@@ -31,6 +33,8 @@ const FAQ = {
     ['domain', '¿Puedo tener mi propio dominio (.com, .gt)?', 'Sí. Te cotizo tu dominio (.com, .gt y más) y te lo conecto.'],
     ['secure', '¿Mi información está segura?', 'Sí: conexión cifrada (HTTPS), contraseñas cifradas, login privado para el administrador y respaldos de la base de datos.'],
     ['sell', '¿Puede vender o recibir pedidos?', 'Sí. Un catálogo con carrito que manda los pedidos directo a WhatsApp, como March Jewelry. Sin comisiones.', 'work'],
+    ['pay', '¿Puedo recibir pagos en mi página?', 'Sí. Tus clientes pagan directo en tu página con Google Pay, PayPal o tarjeta (desde {s.pay}). El dinero llega directo a tu cuenta.', 'build'],
+    ['biz', '¿Pueden hacer inventario, puntos de lealtad o mi perfil de Google?', 'Sí. Inventario con alertas de stock bajo (desde {s.inv}), tarjeta de puntos de lealtad en el celular o con NFC (desde {s.loyal}) y tu perfil de Google y Maps configurado (desde {s.gbp}).', 'build'],
     ['extra', '¿Hacen chatbots, automatizaciones o NFC?', 'Sí. Chatbots como este (desde {s.bot}), automatizaciones que hacen las tareas repetitivas por ti (desde {s.auto}) y chips NFC que abren tu sitio con solo acercar el celular (desde {s.nfc}).'],
     ['own', '¿La página es mía?', 'Sí. El proyecto es tuyo. El manual técnico permite que cualquier programador lo continúe — nunca quedas amarrado a mí.'],
     ['start', '¿Cómo empezamos?', 'Escríbeme por correo o Instagram con tu idea. Te respondo con una cotización.', 'contact'],
@@ -46,6 +50,8 @@ const FAQ = {
     ['domain', '独自ドメイン（.com, .gt）は使えますか？', 'はい。ドメイン（.com、.gt など）のお見積りと接続を行います。'],
     ['secure', '情報は安全ですか？', 'はい。暗号化通信（HTTPS）、暗号化されたパスワード、管理者専用ログイン、データベースのバックアップ。'],
     ['sell', '販売や注文の受付はできますか？', 'はい。カート付きカタログから注文をWhatsAppへ直接送信できます（March Jewelry のように）。手数料なし。', 'work'],
+    ['pay', 'サイトで支払いを受け取れますか？', 'はい。お客様はGoogle Pay、PayPal、カードでサイト上から直接お支払いできます（{s.pay}〜）。売上はそのままあなたの口座へ。', 'build'],
+    ['biz', '在庫管理、ポイントカード、Googleプロフィールもできますか？', 'はい。在庫切れアラート付きの在庫管理（{s.inv}〜）、スマホやNFCで使えるポイントカード（{s.loyal}〜）、Google検索・マップのプロフィール設定（{s.gbp}〜）。', 'build'],
     ['extra', 'チャットボット、自動化、NFCも作れますか？', 'はい。このようなチャットボット（{s.bot}〜）、繰り返し作業を自動で行う仕組み（{s.auto}〜）、スマホをかざすだけでサイトが開くNFCチップ（{s.nfc}〜）。'],
     ['own', 'サイトは自分のものになりますか？', 'はい。プロジェクトはお客様のものです。技術マニュアルがあるので、どの開発者でも引き継げます。'],
     ['start', 'どうやって始めますか？', 'メールまたはInstagramでアイデアをお送りください。お見積りをお返しします。', 'contact'],
@@ -69,8 +75,10 @@ function startOrb(canvas, cssSize, radius) {
   const c = cssSize / 2, TAU = Math.PI * 2;
   // spikes: angle, max length (× radius), speed, phase — uneven on purpose
   const spikes = [
-    [0.0, 0.62, 1.10, 0.0], [1.3, 0.34, 1.55, 2.1], [2.2, 0.50, 0.85, 4.0],
-    [3.4, 0.28, 1.35, 1.0], [4.3, 0.56, 1.00, 3.2], [5.3, 0.40, 1.25, 5.1],
+    [0.0, 0.66, 1.10, 0.0], [0.6, 0.30, 1.70, 2.6], [1.2, 0.48, 1.30, 2.1],
+    [1.8, 0.24, 1.95, 4.4], [2.3, 0.58, 0.90, 4.0], [2.9, 0.36, 1.50, 0.7],
+    [3.5, 0.28, 1.35, 1.0], [4.0, 0.52, 1.05, 5.6], [4.5, 0.62, 1.00, 3.2],
+    [5.1, 0.34, 1.80, 1.8], [5.6, 0.44, 1.25, 5.1], [6.0, 0.26, 2.10, 3.7],
   ];
   const still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   let fast = 1, t0 = performance.now(), raf;
@@ -87,7 +95,7 @@ function startOrb(canvas, cssSize, radius) {
       let r = radius * breath + radius * 0.025 * Math.sin(th * 3 + t * 2);
       for (const [a, len] of act) {
         let d = Math.abs(((th - a) % TAU + TAU + Math.PI) % TAU - Math.PI);
-        const w = 0.34;
+        const w = 0.26;
         if (d < w) r += len * Math.pow(1 - d / w, 2.2);
       }
       const x = c + r * Math.cos(th), y = c + r * Math.sin(th);

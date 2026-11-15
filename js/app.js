@@ -134,14 +134,14 @@ const TIERS = [
    project land near that project's price. */
 const QUIZ_PRICE = {
   base: { business: 460, artist: 460, event: 520, personal: 460, system: 3800 },
-  feat: { show: 0, sell: 650, data: 250, admin: 300, forms: 80, games: 180, bot: 250, auto: 200, nfc: 60 },
+  feat: { show: 0, sell: 650, data: 250, admin: 300, forms: 80, games: 180, bot: 250, auto: 200, nfc: 60, pay: 200, inv: 350, loyal: 180, gbp: 40 },
   systemIncludes: ['data', 'admin', 'forms'],
   size: { one: 0, mid: 120, big: 260 },
   langs: { 1: 0, 2: 90, 3: 180 },
 };
 
 /* Extra services (USD, starting price) */
-const SERVICES = { bot: 250, auto: 200, nfc: 60 };
+const SERVICES = { bot: 250, auto: 200, nfc: 60, pay: 200, inv: 350, loyal: 180, gbp: 40 };
 
 const PALETTES = {
   midnight: { bg: '#0b0b12', fg: '#f3f3f7', ac: '#7c5cff' },
@@ -338,7 +338,7 @@ function setLang(l) {
   if (!I18N[l]) return;
   LANG = l;
   try { localStorage.setItem('madco-lang', l); } catch (e) {}
-  applyStatic(); renderHero(); renderCards(); renderPricing(); renderQuiz(); renderChat();
+  applyStatic(); renderHero(); renderCards(); renderPricing(); renderQuiz(); renderChat(); renderLiveQR();
   $$('.card, .prow').forEach((el) => el.classList.add('rv', 'in'));
   closeSheet();
 }
@@ -348,8 +348,11 @@ applyStatic();
 renderHero();
 renderCards();
 renderPricing();
+const fromShare = restoreFromHash();
 renderQuiz();
 chatInit();
+startLiveQR();
+if (fromShare) setTimeout(() => $('#build').scrollIntoView(), 300);
 setupReveal();
 setupSticky();
 

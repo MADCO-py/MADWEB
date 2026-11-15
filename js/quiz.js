@@ -6,7 +6,7 @@
 const Q = { step: 0, type: null, feats: new Set(), vibe: null, pal: null, size: null, langs: null, name: '' };
 const STEPS = [
   { key: 'type', title: 'q1', opts: ['business', 'artist', 'event', 'personal', 'system'], desc: true },
-  { key: 'feats', title: 'q2', opts: ['show', 'sell', 'data', 'admin', 'forms', 'games', 'bot', 'auto', 'nfc'], desc: true, multi: true },
+  { key: 'feats', title: 'q2', opts: ['show', 'sell', 'pay', 'data', 'admin', 'inv', 'forms', 'loyal', 'games', 'bot', 'auto', 'nfc', 'gbp'], desc: true, multi: true },
   { key: 'vibe', title: 'q3', opts: ['minimal', 'bold', 'elegant', 'playful'], desc: true, vibe: true },
   { key: 'pal', title: 'q4', opts: ['midnight', 'sunset', 'rose', 'forest', 'ocean', 'mono'], swatch: true },
   { key: 'size', title: 'q5', opts: ['one', 'mid', 'big'], desc: true },
@@ -38,6 +38,10 @@ function mockTypes() {
   if (type === 'system' || f.has('admin')) out.push('admin');
   if (type === 'system' || f.has('data')) out.push('live');
   if (f.has('sell')) out.push('shop');
+  if (f.has('pay')) out.push('pay');
+  if (f.has('inv')) out.push('inv');
+  if (f.has('loyal')) out.push('loyal');
+  if (f.has('gbp')) out.push('gbp');
   if (f.has('bot')) out.push('bot');
   if (f.has('auto')) out.push('auto');
   if (f.has('show') || !f.size) out.push('gallery');
@@ -66,8 +70,9 @@ function renderQuiz() {
   renderMock();
   if (done) {
     const inp = $('#rName');
-    inp.addEventListener('input', () => { Q.name = inp.value; renderMock(); updateMail(); });
+    inp.addEventListener('input', () => { Q.name = inp.value; renderMock(); updateMail(); updateShareQR(); });
     updateMail();
+    updateShareQR();
     countUp($('#rTotal'), quote().total);
   }
 }
@@ -85,7 +90,7 @@ function stepHTML() {
       inner = `${v ? `<span class="vibe-sample" style="font-family:'${v.font}';font-weight:${v.w};font-style:${v.fs};text-transform:${v.tt}">${v.sample}</span>` : ''}
         <b>${esc(t(s.title + '.' + o))}</b>${s.desc ? `<span>${esc(t(s.title + '.' + o + '.d'))}</span>` : ''}`;
     }
-    return `<button class="q-opt${isOn(o) ? ' on' : ''}" data-opt="${o}"><kbd>${i + 1}</kbd>${inner}</button>`;
+    return `<button class="q-opt${isOn(o) ? ' on' : ''}" data-opt="${o}"><kbd>${(i + 1) % 10}</kbd>${inner}</button>`;
   };
   return `
     <div class="q-seg">${STEPS.map((_, i) => `<i class="${i < Q.step ? 'done' : i === Q.step ? 'now' : ''}"></i>`).join('')}</div>
@@ -117,6 +122,10 @@ function resultHTML() {
     <div class="r-dl">
       <button class="btn primary" data-dl="post">↓ ${esc(t('r.dl.post'))}</button>
       <button class="btn primary" data-dl="story">↓ ${esc(t('r.dl.story'))}</button>
+    </div>
+    <div class="r-qr" hidden>
+      <div class="r-qr-code" id="rQR"></div>
+      <p>${esc(t('r.qr'))}</p>
     </div>
     <div class="r-dl">
       <a class="btn secondary" id="rSend" href="#">${esc(t('r.send'))}</a>
@@ -167,6 +176,10 @@ function renderMock() {
     admin: () => `<h6>${esc(t('m.admin'))}</h6><div class="m-bars">${[40, 65, 52, 80, 70, 95, 88].map((h, i) => `<i style="height:${h}%;animation-delay:${i * 70}ms"></i>`).join('')}</div>`,
     live: () => `<h6>${esc(t('m.live'))}</h6><div class="m-live"><i></i>1,284 <small>${esc(t('m.records'))}</small></div>`,
     shop: () => `<h6>${esc(t('m.shop'))}</h6>${['01', '02', '03'].map((n) => `<div class="m-prod"><span>Item ${n}</span><em>${esc(t('m.add'))}</em></div>`).join('')}`,
+    inv: () => `<h6>${esc(t('m.inv'))}</h6><div class="m-inv"><div><span>Item A</span><b>124</b></div><div><span>Item B</span><b>58</b></div><div class="low"><span>Item C</span><b>3 · ${esc(t('m.low'))}</b></div></div>`,
+    loyal: () => `<h6>${esc(t('m.loyal'))}</h6><div class="m-loyal">${Array.from({ length: 10 }, (_, i) => `<i class="${i < 7 ? 'on' : ''}"></i>`).join('')}</div><small class="m-loyal-txt">7/10 · ${esc(t('m.loyal.free'))}</small>`,
+    gbp: () => `<h6>Google</h6><div class="m-gbp"><b>★ 4.9</b><span>128 ${esc(t('m.reviews'))}</span><em>${esc(t('m.open'))}</em></div>`,
+    pay: () => `<h6>${esc(t('m.pay'))}</h6><div class="m-pay"><b>$49.00</b><span class="gp">G Pay</span><span class="pp">PayPal</span></div>`,
     bot: () => `<h6>${esc(t('m.bot'))}</h6><div class="m-chat"><p>${esc(t('m.bot.q'))}</p><p class="me">${esc(t('m.bot.a'))}</p></div>`,
     auto: () => `<h6>${esc(t('m.auto'))}</h6><div class="m-auto"><span>${esc(t('m.auto.1'))}</span><i>→</i><span>${esc(t('m.auto.2'))}</span><i>→</i><span>${esc(t('m.auto.3'))} ✓</span></div>`,
     gallery: () => `<h6>${esc(t('m.work'))}</h6><div class="m-tiles"><i></i><i></i><i></i></div>`,
@@ -329,7 +342,7 @@ async function makeImage(kind) {
 
 function drawBlock(x, k, bx, by, bw, bh, pal, r) {
   x.textBaseline = 'alphabetic';
-  const label = { admin: t('m.admin'), live: t('m.live'), shop: t('m.shop'), bot: t('m.bot'), auto: t('m.auto'), gallery: t('m.work'), forms: t('m.forms'), games: t('m.games'), nfc: 'NFC' }[k];
+  const label = { inv: t('m.inv'), loyal: t('m.loyal'), gbp: 'Google', pay: t('m.pay'), admin: t('m.admin'), live: t('m.live'), shop: t('m.shop'), bot: t('m.bot'), auto: t('m.auto'), gallery: t('m.work'), forms: t('m.forms'), games: t('m.games'), nfc: 'NFC' }[k];
   x.fillStyle = pal.fg; x.globalAlpha = .6; x.font = `600 15px ${SANS}`; x.fillText(label.toUpperCase(), bx, by + 12); x.globalAlpha = 1;
   const cy = by + 30, ch = bh - 30;
   const pill = (px, py, text, size = 14) => { x.font = `600 ${size}px ${SANS}`; const w = x.measureText(text).width + 22; rr(x, px - w, py - size - 6, w, size + 14, r * .7); x.fillStyle = pal.ac; x.fill(); x.fillStyle = pal.bg; x.fillText(text, px - w + 11, py); };
@@ -365,6 +378,27 @@ function drawBlock(x, k, bx, by, bw, bh, pal, r) {
       const yy = cy + 18 + i * (ch / 3); x.fillStyle = i ? pal.fg : pal.ac; x.font = `${i ? 500 : 700} 17px ${SANS}`;
       x.fillText(n, bx, yy); x.textAlign = 'right'; x.fillText(s, bx + bw, yy); x.textAlign = 'left';
     });
+  } else if (k === 'inv') {
+    [['Item A', '124'], ['Item B', '58'], ['Item C', `3 · ${t('m.low')}`]].forEach(([n, s], i) => {
+      const yy = cy + 18 + i * (ch / 3); x.font = `${i === 2 ? 700 : 500} 16px ${SANS}`; x.fillStyle = i === 2 ? '#e5484d' : pal.fg;
+      x.fillText(n, bx, yy); x.textAlign = 'right'; x.fillText(s, bx + bw, yy); x.textAlign = 'left';
+    });
+  } else if (k === 'loyal') {
+    const d = Math.min(26, (bw - 9 * 8) / 10);
+    for (let i = 0; i < 10; i++) { x.beginPath(); x.arc(bx + d / 2 + i * (d + 8), cy + 18, d / 2, 0, 7); if (i < 7) { x.fillStyle = pal.ac; x.fill(); } else { x.strokeStyle = mix(pal.bg, pal.fg, .35); x.lineWidth = 2; x.stroke(); } }
+    x.fillStyle = pal.fg; x.globalAlpha = .7; x.font = `500 14px ${SANS}`; x.fillText(`7/10 · ${t('m.loyal.free')}`, bx, cy + 58); x.globalAlpha = 1; x.lineWidth = 1;
+  } else if (k === 'gbp') {
+    x.fillStyle = '#f4b400'; x.font = `700 30px ${SANS}`; x.fillText('★ 4.9', bx, cy + ch / 2 + 6);
+    x.fillStyle = pal.fg; x.font = `500 15px ${SANS}`; x.fillText(`128 ${t('m.reviews')}`, bx + 110, cy + ch / 2);
+    x.fillStyle = '#1e8e3e'; x.font = `600 15px ${SANS}`; x.fillText(t('m.open'), bx + 110, cy + ch / 2 + 20);
+  } else if (k === 'pay') {
+    x.fillStyle = pal.fg; x.font = `700 30px ${SANS}`; x.fillText('$49.00', bx, cy + ch / 2 + 10);
+    const bw2 = Math.min(130, (bw - 150) / 2), by2 = cy + ch / 2 - 20;
+    rr(x, bx + bw - bw2 * 2 - 10, by2, bw2, 40, r * .7); x.fillStyle = '#000'; x.fill();
+    rr(x, bx + bw - bw2, by2, bw2, 40, r * .7); x.fillStyle = '#ffc439'; x.fill();
+    x.textAlign = 'center'; x.font = `700 16px ${SANS}`;
+    x.fillStyle = '#fff'; x.fillText('G Pay', bx + bw - bw2 * 1.5 - 10, by2 + 26);
+    x.fillStyle = '#003087'; x.fillText('PayPal', bx + bw - bw2 / 2, by2 + 26); x.textAlign = 'left';
   } else if (k === 'nfc') {
     const ox = bx + 26, oy = cy + ch / 2; x.strokeStyle = pal.ac; x.lineWidth = 4;
     [10, 20, 30].forEach((rad) => { x.beginPath(); x.arc(ox, oy, rad, -Math.PI / 4, Math.PI / 4); x.stroke(); });
@@ -410,7 +444,7 @@ document.addEventListener('keydown', (e) => {
   if (e.target.matches('input, textarea') || e.metaKey || e.ctrlKey || e.altKey) return;
   const r = $('#build').getBoundingClientRect(); if (r.top > innerHeight * .6 || r.bottom < innerHeight * .4) return;
   const s = STEPS[Q.step]; if (!s) return;
-  const n = parseInt(e.key, 10);
+  let n = parseInt(e.key, 10); if (n === 0) n = 10;
   if (n >= 1 && n <= s.opts.length) { e.preventDefault(); pickOpt(s.opts[n - 1]); }
   else if (e.key === 'Enter' && answered(s)) { e.preventDefault(); quizNav('next'); }
   else if (e.key === 'Backspace' && Q.step > 0) { e.preventDefault(); quizNav('back'); }

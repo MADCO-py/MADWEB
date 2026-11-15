@@ -18,6 +18,8 @@
     (function () {
       var l = 'en';
       try { l = localStorage.getItem('madco-lang') || l; } catch (e) {}
+      var u = (location.search.match(/[?&]lang=(en|es|ja)\b/) || [])[1];
+      if (u) { l = u; try { localStorage.setItem('madco-lang', u); } catch (e) {} }
       document.documentElement.lang = l;
     })();
   </script>
@@ -81,13 +83,30 @@
       </div>
       <div class="cards" id="cards"></div>
       <div class="dots dark" id="cardDots"></div>
+
+      <!-- Live QR: changes every few seconds, each code opens a real project -->
+      <div class="liveqr" id="liveqr" hidden>
+        <div class="liveqr-code">
+          <div class="liveqr-svg" id="liveCode"></div>
+          <i class="liveqr-scan"></i>
+          <i class="liveqr-c tl"></i><i class="liveqr-c tr"></i><i class="liveqr-c bl"></i><i class="liveqr-c br"></i>
+        </div>
+        <div class="liveqr-txt">
+          <p class="eyebrow" data-i18n="qr.eyebrow">Scan it now</p>
+          <h3 data-i18n="qr.title">Point your phone. See it live.</h3>
+          <p class="liveqr-sub" data-i18n="qr.sub">This code changes every few seconds. Each one opens a real project.</p>
+          <div class="liveqr-now"><span data-i18n="qr.now">Now</span> <b id="liveName"></b> <em id="liveKind"></em></div>
+          <div class="liveqr-bar"><i id="liveBar"></i></div>
+          <div class="liveqr-dots" id="liveDots"></div>
+        </div>
+      </div>
     </section>
 
     <!-- ============ SERVICES ============ -->
     <section class="services" id="services">
       <div class="sec-head">
         <p class="eyebrow" data-i18n="svc.eyebrow">More than websites</p>
-        <h2 data-i18n="svc.title">Automate. Talk. Tap.</h2>
+        <h2 data-i18n="svc.title">Automate. Talk. Tap. Get paid.</h2>
       </div>
       <div class="svc-grid">
         <article class="svc">
@@ -108,6 +127,31 @@
           <h3 data-i18n="svc.nfc.t">NFC chips</h3>
           <p data-i18n="svc.nfc.d">Stickers and cards that open your site, menu or Instagram with one tap of the phone. Made to promote you.</p>
           <b class="svc-price" data-svc="nfc"></b>
+        </article>
+        <article class="svc">
+          <div class="svc-ico svc-ico-pay"><i></i><i></i></div>
+          <h3 data-i18n="svc.pay.t">Online payments</h3>
+          <p data-i18n="svc.pay.d">Get paid on your own site with Google Pay, PayPal and cards. The money goes straight to your account.</p>
+          <div class="svc-tags"><span>Google Pay</span><span>PayPal</span><span>Visa · Mastercard</span></div>
+          <b class="svc-price" data-svc="pay"></b>
+        </article>
+        <article class="svc">
+          <div class="svc-ico svc-ico-inv"><i></i><i></i><i></i></div>
+          <h3 data-i18n="svc.inv.t">Inventory</h3>
+          <p data-i18n="svc.inv.d">Know what you have, what sold and what is running out. Alerts before you run out of stock.</p>
+          <b class="svc-price" data-svc="inv"></b>
+        </article>
+        <article class="svc">
+          <div class="svc-ico svc-ico-loyal"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <h3 data-i18n="svc.loyal.t">Loyalty points card</h3>
+          <p data-i18n="svc.loyal.d">Digital stamps and points that bring customers back. On their phone or with an NFC card.</p>
+          <b class="svc-price" data-svc="loyal"></b>
+        </article>
+        <article class="svc">
+          <div class="svc-ico svc-ico-gbp"><b>★</b><span>4.9</span></div>
+          <h3 data-i18n="svc.gbp.t">Google profile</h3>
+          <p data-i18n="svc.gbp.d">Your business on Google Search and Maps: hours, photos, reviews and a direct link to your site.</p>
+          <b class="svc-price" data-svc="gbp"></b>
         </article>
       </div>
     </section>
@@ -201,6 +245,8 @@
   <script src="js/logo-data.js"></script>
   <script src="js/quiz.js"></script>
   <script src="js/chat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  <script src="js/qr.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
