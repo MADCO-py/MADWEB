@@ -1,63 +1,30 @@
-# MADCO.py
+# MADCO
 
-Sitio personal bajo alias — hub de proyectos de software, hardware hacking, ciberseguridad y cosas random. Sin nombre real, sin foto de cara, sin backend. HTML/CSS/JS puro, pensado para GitHub Pages.
+Client-facing site: delivered projects, prices in USD, security, and a 6-question
+quiz that builds a live preview and an instant estimate. Tesla-style minimal.
+Pure HTML/CSS/JS — open `index.html` or serve the folder (`npx serve .`).
 
-## Cómo correrlo localmente
-Solo abre `index.html` en el navegador, o sirve la carpeta con cualquier servidor estático:
-```
-npx serve .
-```
-
-## Cómo agregar contenido nuevo
-Casi todo el contenido del sitio vive en **`js/data.js`**. No necesitas tocar HTML ni CSS para agregar un proyecto, libro o item del setup — solo copia un objeto del arreglo correspondiente y cambia sus valores. El archivo está comentado por sección.
-
-| Quiero agregar... | Arreglo en `data.js` |
+## Files
+| File | What lives there |
 |---|---|
-| Un proyecto de Kali Linux | `CIBER_KALI_PROJECTS` |
-| Un proyecto de Flipper Zero | `FLIPPER_PROJECTS` |
-| Un link recomendado de Flipper | `FLIPPER_RECOMMENDED` |
-| Un proyecto de ESP32/Arduino | `ESP32_PROJECTS` |
-| Un libro en Lectura | `BOOKS` |
-| Un item de Mi Setup | `SETUP_ITEMS` |
-| Un proyecto gracioso | `FUNNY_PROJECTS` |
-| Una red social | `SOCIALS` |
-| La playlist de Spotify, usuario de GitHub del playground | `PLAYGROUND` |
+| `index.html` | Page structure |
+| `css/style.css` | All styles |
+| `js/i18n.js` | Every static text in **EN / ES / JA** (edit all 3) |
+| `js/app.js` | `PROJECTS` (projects, features, prices), `TIERS` (pricing table), `QUIZ_PRICE` (quiz pricing) |
+| `assets/work/` | Project videos and screenshots |
 
-## Idioma (ES/EN) y tema (oscuro/claro)
-- La página está escrita en español. El botón **EN** reemplaza cada texto usando el diccionario de **`js/i18n-en.js`**.
-- Si agregas o cambias un texto en español (en `index.html` o `data.js`), agrega también su versión en inglés en ese archivo. Si falta, ese texto simplemente se queda en español.
-- El tema oscuro es el de entrada. Los colores de cada modo están en **`css/theme.css`**.
+## Pricing logic
+Market average = public 2026 agency rates in Guatemala (estoria.gt, mercadeodigital.co,
+bigredes.com, atraeweb.com; Clutch $25–49/h for custom systems). MADCO price = market − Q1,000
+(≈ $130 at Q7.64/USD).
 
-## Dónde van los archivos (imágenes, videos, .txt)
+| Type | Example | Market | MADCO |
+|---|---|---|---|
+| Portfolio | Marce Juárez | $590 | $460 |
+| Event / landing | The Sunset Sessions | $650 | $520 |
+| Online store | March Jewelry | $1,370 | $1,240 |
+| Full platform | Los Skeepers | $2,290 | $2,160 |
+| Custom system | FleetControl | $3,930 | $3,800 |
 
-```
-assets/
-  img/
-    freelance/        ← captura de FleetControl
-    setup/             ← fotos de hardware (mouse, laptop, etc.)
-    lectura/           ← portadas de libros
-    ciberseguridad/    ← logo de Kali
-  videos/
-    esp32/snake/                ← video loop del proyecto Snake
-    flipper/{badusb,subghz,nfc,infrared,gpio}/  ← un video loop por carpeta
-    funny/{sansan,camara}/      ← videos de Cosas Graciosas
-  flipper-files/
-    {badusb,subghz,nfc,infrared,gpio}/  ← los .txt descargables de cada proyecto
-    explora-sano/                        ← los .txt "sin riesgo"
-```
-
-Si subes un archivo y el nombre no coincide exactamente con el que está en `data.js`, actualiza la ruta en `data.js` (campo `video`, `img`, `cover` o `txt` del objeto correspondiente).
-
-**Importante:** mientras un video o imagen no exista, el sitio muestra automáticamente un placeholder indicando la carpeta exacta donde debe ir — no hay botones ni medios rotos.
-
-## Estructura de páginas
-- `index.html` — página principal, todo en un solo scroll.
-- `pages/seguridad-educativa.html` — página de concientización sobre riesgos (Kali, ESP32, Flipper NFC). Sin instrucciones de cómo replicar nada, solo cómo protegerte.
-
-## Pendientes conocidos
-- Fotos: iPad Air + teclado, Nintendo Switch.
-- Portadas de los 3 libros de Lectura.
-- Captura de pantalla de FleetControl.
-- Videos cortos en loop: Snake (ESP32), los 5 proyectos de Flipper, SANSAN.
-- Archivos `.txt` reales de Flipper (hay placeholders en su lugar).
-- Link de Discord (déjalo comentado en `SOCIALS` hasta que lo tengas).
+Every project: server $10–20/month (monthly or yearly), 6 months maintenance + bug fixes,
+user manual, technical manual.

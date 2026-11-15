@@ -1,2 +1,0 @@
-[Pendiente] Sube aquí tu información de GPIO / antena externa / NRF24.
-Reemplaza este archivo manteniendo el mismo nombre: gpio-info.txt

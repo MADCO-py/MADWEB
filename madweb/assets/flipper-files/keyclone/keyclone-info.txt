@@ -1,3 +1,0 @@
-[Key Clone] Identificación de llaves físicas por numeración.
-Cada llave tiene un código grabado que indica la secuencia de cortes.
-Sube aquí tus notas o archivos relacionados.

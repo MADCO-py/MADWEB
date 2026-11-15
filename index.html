@@ -1,469 +1,166 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<script>
-  // Tema e idioma guardados: se aplican antes de pintar para que no parpadee.
-  (function () {
-    var t = 'dark', l = 'es';
-    try { t = localStorage.getItem('madco-theme') || t; l = localStorage.getItem('madco-lang') || l; } catch (e) {}
-    document.documentElement.setAttribute('data-theme', t);
-    document.documentElement.setAttribute('data-lang', l);
-  })();
-</script>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>MADCO</title>
-<meta name="description" content="MADCO.py — builder, hacker, curioso. Hub de proyectos personales, ciberseguridad, hardware hacking y cosas divertidas.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter+Tight:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
-
-<link rel="stylesheet" href="css/variables.css">
-<link rel="stylesheet" href="css/components.css">
-<link rel="stylesheet" href="css/hero-freelance.css">
-<link rel="stylesheet" href="css/ciberseguridad.css">
-<link rel="stylesheet" href="css/lectura.css">
-<link rel="stylesheet" href="css/estudiantes.css">
-<link rel="stylesheet" href="css/setup.css">
-<link rel="stylesheet" href="css/sections-new.css">
-<link rel="stylesheet" href="css/theme.css">
-<link rel="stylesheet" href="css/quien.css">
-<link rel="stylesheet" href="css/mobile.css">
-<link rel="stylesheet" href="css/minimal.css">
-<link rel="stylesheet" href="css/menu.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MADCO — Websites & Systems</title>
+  <meta name="description" content="Websites, online stores and custom systems built from scratch. Clear prices in USD.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Anton&family=Playfair+Display:ital,wght@1,600&family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      var l = 'en';
+      try { l = localStorage.getItem('madco-lang') || l; } catch (e) {}
+      document.documentElement.lang = l;
+    })();
+  </script>
 </head>
-<body class="minimal" data-hero-light="255,255,255" data-hero-dark="10,10,10">
+<body>
 
-<!-- Fondo global controlado por JS -->
-<div id="page-bg"></div>
-
-<!-- ============ ENCABEZADO + MENÚ (estilo Zara) ============ -->
-<header class="zh">
-  <button type="button" class="zh__burger" aria-expanded="false" aria-controls="zm" aria-label="Abrir menú"><span></span><span></span></button>
-  <a class="zh__logo" href="#hero">MADCO</a>
-  <div class="zh__right">
-    <div class="lang-switch" role="group" aria-label="Idioma">
-      <button type="button" data-lang="en" aria-pressed="false">EN</button>
-      <button type="button" data-lang="es" aria-pressed="true">ES</button>
-    </div>
-    <button type="button" class="theme-btn" data-theme-toggle aria-label="Cambiar a modo claro"><i class="ph ph-sun"></i></button>
-    <a class="zh__cta" href="demo.html" target="_blank" rel="noopener">Ver demos</a>
-  </div>
-</header>
-
-<div class="zm" id="zm" aria-hidden="true">
-  <div class="zm__inner">
-    <nav class="zm__mainwrap" aria-label="Secciones">
-      <div class="zm__brand">MADCO</div>
-      <ol class="zm__main">
-        <li><a class="zm__link" href="#clientes">Clientes</a></li>
-        <li><a class="zm__link" href="#quien">Tu página web</a></li>
-        <li><a class="zm__link" href="#seguridad">Seguridad</a></li>
-        <li><a class="zm__link" href="#personal">Proyectos</a></li>
-        <li><a class="zm__link" href="#estudiantes">Estudiantes</a></li>
-        <li><a class="zm__link" href="#certificados">Certificados</a></li>
-        <li><a class="zm__link" href="#ciberseguridad">Flipper Zero</a></li>
-        <li><a class="zm__link" href="#setup">Mi Setup</a></li>
-      </ol>
+  <!-- ============ HEADER ============ -->
+  <header class="hdr" id="hdr">
+    <a href="#top" class="logo" aria-label="MADCO">MADCO</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+      <a href="#build" data-i18n="nav.build">Build yours</a>
+      <a href="#security" data-i18n="nav.security">Security</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
-    <div class="zm__subs">
-      <div class="zm__group">
-        <span class="zm__num">|01|</span><span class="zm__gtitle">Demos</span>
-        <div class="zm__glinks">
-          <a href="demo.html" target="_blank" rel="noopener">Mira todo lo que puede hacer tu futura página web</a>
-        </div>
+    <div class="hdr-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en">EN</button>
+        <button data-lang="es">ES</button>
+        <button data-lang="ja">日本語</button>
       </div>
-      <div class="zm__group">
-        <span class="zm__num">|02|</span><span class="zm__gtitle">Contacto</span>
-        <div class="zm__glinks">
-          <a href="https://www.instagram.com/madco.py/" target="_blank" rel="noopener">Instagram · @madco.py</a>
-          <a href="mailto:madcarranzaosorio@gmail.com">Correo</a>
-        </div>
-      </div>
-      <div class="zm__group">
-        <span class="zm__num">|03|</span><span class="zm__gtitle">Redes</span>
-        <div class="zm__glinks">
-          <a href="https://github.com/MADCO-py" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.instagram.com/madco.py/" target="_blank" rel="noopener">Instagram</a>
-        </div>
-      </div>
+      <button class="menu-btn" id="menuBtn" data-i18n="nav.menu">Menu</button>
     </div>
-    <div class="zm__thumbs">
-        <a class="zm__thumb" href="#clientes"><img src="assets/img/freelance/fleetcontrol-dashboard.png" alt="" loading="lazy"><span>FleetControl</span></a>
-        <a class="zm__thumb" href="#clientes"><img src="assets/img/freelance/sunset-sessions.png" alt="" loading="lazy"><span>The Sunset Sessions</span></a>
-        <a class="zm__thumb" href="#personal"><img src="assets/img/personal/madgains-preview.png" alt="" loading="lazy"><span>MAD-GAINS</span></a>
-        <a class="zm__thumb" href="demo.html" target="_blank" rel="noopener"><img src="assets/img/demo/demo-preview.jpg" alt="" loading="lazy"><span>Demos</span></a>
-    </div>
-  </div>
-</div>
+  </header>
 
-<!-- ============ HERO ============ -->
-<header class="hero" id="hero">
-  <h1 class="hero__filename" data-typing-target="MADCO">MADCO</h1>
-  <p class="hero__tagline">Todo lo que te imagines puede llegar a ser programado.</p>
-  <div class="hero__socials" data-mount="hero-socials"></div>
-  <div class="hero__scroll-hint">
-    <span>scroll</span>
-    <i class="ph ph-arrow-down"></i>
-  </div>
-</header>
-<!-- ============ CLIENTES ============ -->
-<section class="section clientes page-section" id="clientes" data-bg-color="255,255,255" data-bg-dark="10,10,10">
-  <div class="section__inner">
-    <div class="section__eyebrow clientes__eyebrow reveal">Proyectos entregados</div>
-    <h2 class="section__title reveal">Soluciones para Emprendedores y Empresas</h2>
-    <p class="section__lead clientes__lead reveal">Sitios web, sistemas y herramientas digitales construidas para clientes reales — desde emprendimientos hasta sistemas en producción.</p>
-    <div data-mount="clients"></div>
-  </div>
-</section>
-
-<!-- ============ ¿NECESITAS UNA PÁGINA WEB? ============ -->
-<section class="section quien page-section" id="quien" data-bg-color="255,255,255" data-bg-dark="10,10,10">
-  <div class="section__inner">
-
-    <div class="qw-hero">
-      <div class="qw-hero__text reveal">
-        <div class="qw-eyebrow">MADCO · Guatemala</div>
-        <h2 class="qw-title">¿Necesitas una <mark>página web?</mark></h2>
-        <p class="qw-lead">Creo páginas y sistemas que funcionan de verdad: se ven increíbles, guardan tu información en una base de datos y te ayudan a registrar clientes, pedidos o asistencia. Todo hecho a la medida, sin plantillas.</p>
-        <div class="qw-ctas">
-          <a href="https://www.instagram.com/madco.py/" target="_blank" rel="noopener" class="qw-btn"><i class="ph-bold ph-instagram-logo"></i> Escríbeme: @madco.py</a>
-          <a href="mailto:madcarranzaosorio@gmail.com" class="qw-btn qw-btn--ghost"><i class="ph-bold ph-envelope-simple"></i> madcarranzaosorio@gmail.com</a>
-        </div>
-      </div>
-
-      <div class="qw-mock reveal" aria-hidden="true">
-        <div class="qw-mock__bar"><i></i><i></i><i></i><span data-qw-url>fleetcontrol.app</span></div>
-        <div class="qw-mock__screen">
-          <img src="assets/img/freelance/fleetcontrol-dashboard.png" alt="" class="is-on" data-qw-url-text="fleetcontrol.app">
-          <img src="assets/img/freelance/sunset-sessions.png" alt="" data-qw-url-text="thesunsetsessions.gt">
-          <img src="assets/img/personal/madgains-preview.png" alt="" data-qw-url-text="madgains.app">
-        </div>
-        <div class="qw-mock__tag"><i class="ph-bold ph-seal-check"></i> Hecho por MADCO</div>
-      </div>
-    </div>
-
-    <div class="qw-stats reveal">
-      <div><b>6+</b><span>Proyectos entregados</span></div>
-      <div><b>4</b><span>Industrias atendidas</span></div>
-      <div><b>100%</b><span>A medida, sin plantillas</span></div>
-      <div><b><i class="ph-bold ph-wifi-high"></i></b><span>Mayor alcance por medio de NFC</span></div>
-    </div>
-
-    <h3 class="qw-subtitle reveal">¿Qué puede hacer una página por ti?</h3>
-    <div class="qw-cards">
-      <article class="qw-card reveal">
-        <i class="ph-bold ph-magnifying-glass"></i>
-        <h4>Que te encuentren</h4>
-        <p>Tu negocio con su propio link para compartir en redes, WhatsApp o en un código QR.</p>
-      </article>
-      <article class="qw-card reveal">
-        <i class="ph-bold ph-database"></i>
-        <h4>Registrar y contar</h4>
-        <p>Clientes, pedidos, asistencia o inventario guardados en una base de datos, sin cuadernos ni Excel perdidos.</p>
-      </article>
-      <article class="qw-card reveal">
-        <i class="ph-bold ph-chart-bar"></i>
-        <h4>Tomar datos y ver reportes</h4>
-        <p>Formularios y encuestas que se convierten solos en números y gráficas que entiendes.</p>
-      </article>
-      <article class="qw-card reveal">
-        <i class="ph-bold ph-images"></i>
-        <h4>Mostrar tu trabajo</h4>
-        <p>Portafolios para artistas, músicos, fotógrafos, eventos y emprendedores.</p>
-      </article>
-      <article class="qw-card reveal">
-        <i class="ph-bold ph-identification-card"></i>
-        <h4>Tu hoja de vida (CV)</h4>
-        <p>Un CV que destaca: en línea para compartir con un link o listo para imprimir.</p>
-      </article>
-      <article class="qw-card qw-card--accent reveal">
-        <i class="ph-bold ph-receipt"></i>
-        <h4>Dominio y base de datos</h4>
-        <p>Te cotizo tu dominio (.com, .gt y más) y una base de datos económica y segura, con respaldos, para que tu proyecto crezca sin pagar de más.</p>
-      </article>
-    </div>
-
-    <h3 class="qw-subtitle reveal">Así de fácil</h3>
-    <ol class="qw-steps">
-      <li class="reveal"><span>1</span><div><b>Me cuentas tus ideas</b><p>Qué necesitas resolver y qué quieres mostrar. No necesitas saber nada de tecnología.</p></div></li>
-      <li class="reveal"><span>2</span><div><b>Te muestro un boceto en vivo</b><p>Real, no una imagen: lo abres en tu celular y lo ajustamos juntos.</p></div></li>
-      <li class="reveal"><span>3</span><div><b>Tu página está LISTA</b><p>La publicamos y ya la puedes compartir con todo el mundo.</p></div></li>
-    </ol>
-
-    <p class="qw-slogan reveal">Todo lo que te imagines puede llegar a ser <span>programado</span>.</p>
-
-    <a class="qw-demo reveal" href="demo.html" target="_blank" rel="noopener">
-      <span class="qw-demo__info">
-        <span class="qw-demo__eyebrow">Webs interactivas</span>
-        <span class="qw-demo__text">Mira todo lo que puede hacer tu futura página web</span>
-        <span class="qw-demo__sub">Animaciones, juegos, formularios, cámara y clima en vivo. Todo funciona de verdad: entra y pruébalo.</span>
-        <span class="qw-demo__btn">Ver las demos <i class="ph-bold ph-arrow-up-right"></i></span>
-      </span>
-      <span class="qw-demo__shot" aria-hidden="true">
-        <span class="qw-demo__bar"><i></i><i></i><i></i></span>
-        <img src="assets/img/demo/demo-preview.jpg" alt="" loading="lazy">
-      </span>
-    </a>
-  </div>
-</section>
-
-<!-- ============ SEGURIDAD / HERRAMIENTAS ============ -->
-<section class="section seguridad page-section" id="seguridad" data-bg-color="10,10,10">
-  <div class="section__inner">
-    <div class="section__eyebrow reveal" style="color:var(--flipper-accent)">Confianza y seguridad</div>
-    <h2 class="section__title reveal" style="color:#fff">Tus datos, seguros</h2>
-    <p class="section__lead reveal" style="color:rgba(255,255,255,0.7)">Todas mis apps corren 100% en tu navegador — sin servidores, sin bases de datos externas, sin rastreo. Aquí tienes dos herramientas que lo demuestran, funcionando localmente en este mismo momento.</p>
-
-    <div class="ciber-tools">
-      <div class="ciber-tool-heading reveal">
-        <span class="ciber-tool-heading__tag"><i class="ph ph-key"></i> Herramienta</span>
-        <h4 class="ciber-tool-heading__title">Generador de Contraseñas Seguras</h4>
-        <p class="ciber-tool-heading__desc">Generado localmente — nunca sale de tu dispositivo.</p>
-      </div>
-      <div class="kali-term reveal">
-        <div class="kali-term__bar">
-          <div class="kali-term__dots"><span></span><span></span><span></span></div>
-          <span class="kali-term__title">passwd-gen — root@kali</span>
-        </div>
-        <div class="kali-term__body">
-          <p class="kali-prompt"><span class="kp-path">┌──(<span class="kp-user">root</span>㉿<span class="kp-host">kali</span>)-[<span class="kp-dir">~/tools/passwd-gen</span>]</span></p>
-          <p class="kali-prompt"><span class="kp-arrow">└─# </span><span class="kp-cmd">generate --interactive</span></p>
-          <div class="kali-section">
-            <input type="text" id="ciber-pwd-output" class="kali-output" readonly placeholder="[output awaiting...]">
-            <div class="kali-strength-row">
-              <span class="kali-comment">STRENGTH:</span>
-              <div class="kali-strength-track"><div class="kali-strength-fill" id="ciber-strength-bar"></div></div>
-              <span class="kali-strength-val" id="ciber-strength-label">--</span>
-            </div>
-          </div>
-          <div class="kali-section">
-            <span class="kali-comment"># LENGTH: <span id="ciber-pwd-length-val">20</span> chars</span>
-            <input type="range" id="ciber-pwd-length" min="8" max="64" value="20" class="kali-slider">
-          </div>
-          <div class="kali-section">
-            <span class="kali-comment"># CHARSET FLAGS:</span>
-            <div class="kali-opts">
-              <label class="kali-opt"><input type="checkbox" id="ciber-opt-lower" checked><span class="kali-flag">[a-z]</span> minúsculas</label>
-              <label class="kali-opt"><input type="checkbox" id="ciber-opt-upper" checked><span class="kali-flag">[A-Z]</span> mayúsculas</label>
-              <label class="kali-opt"><input type="checkbox" id="ciber-opt-nums" checked><span class="kali-flag">[0-9]</span> números</label>
-              <label class="kali-opt"><input type="checkbox" id="ciber-opt-syms" checked><span class="kali-flag">[!@#]</span> símbolos</label>
-            </div>
-          </div>
-          <div class="kali-btns">
-            <button id="ciber-gen-btn" class="kali-btn kali-btn--exec"><i class="ph ph-arrows-clockwise"></i> --generate</button>
-            <button id="ciber-copy-btn" class="kali-btn kali-btn--copy"><i class="ph ph-copy"></i> --copy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="ciber-tool-heading reveal">
-        <span class="ciber-tool-heading__tag"><i class="ph ph-globe"></i> Herramienta</span>
-        <h4 class="ciber-tool-heading__title">Verificador de URLs Seguros</h4>
-        <p class="ciber-tool-heading__desc">Análisis de patrones — sin depender de servidores externos.</p>
-      </div>
-      <div class="goog-card reveal">
-        <div class="goog-logo" aria-label="Google">
-          <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
-        </div>
-        <p class="goog-subtitle">URL Safety Checker — análisis de patrones locales</p>
-        <div class="goog-searchbar">
-          <i class="ph ph-magnifying-glass goog-searchbar__icon"></i>
-          <input type="text" id="url-input" class="goog-searchbar__input" placeholder="Pega aquí el enlace sospechoso...">
-          <button id="url-analyze-btn" class="goog-searchbar__btn">Analizar</button>
-        </div>
-        <div id="url-result"></div>
-        <p class="goog-disclaimer">Basado en patrones locales — no sustituye Google Safe Browsing.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PROYECTOS PERSONALES ============ -->
-<section class="section personal page-section" id="personal" data-bg-color="255,255,255" data-bg-dark="10,10,10">
-  <div class="section__inner">
-    <div class="section__eyebrow reveal">Proyectos personales</div>
-    <h2 class="section__title reveal">Lo que construyo para mí</h2>
-    <p class="section__lead reveal">Apps propias que uso en el día a día — hidratación, fitness, y lo que se me ocurra.</p>
-    <div class="personal-grid" data-mount="personal"></div>
-  </div>
-</section>
-
-<!-- ============ ÉXITO ACADÉMICO ============ -->
-<section class="section estudiantes page-section" id="estudiantes" data-bg-color="255,255,255" data-bg-dark="10,10,10">
-  <div class="section__inner">
-    <div class="section__eyebrow estudiantes__eyebrow reveal">Recursos para estudiantes</div>
-    <h2 class="section__title reveal">Herramientas para el Éxito Académico</h2>
-    <p class="section__lead reveal">El éxito es del más astuto.</p>
-    <div style="margin-top:2.5rem;" data-mount="student"></div>
-  </div>
-</section>
-
-<!-- ============ CURSOS & CERTIFICADOS ============ -->
-<section class="section certs page-section" id="certificados" data-bg-color="255,255,255" data-bg-dark="10,10,10">
-  <div class="section__inner">
-    <div class="certs__eyebrow reveal">Certificaciones</div>
-    <h2 class="section__title certs__title reveal">Cursos &amp; Certificados</h2>
-    <div class="certs__grid">
-      <article class="cert-card reveal">
-        <div class="cert-card__logo cert-card__logo--uvg" aria-hidden="true"><b>UVG</b><small>Universidad del Valle de Guatemala</small></div>
-        <h3 class="cert-card__title">Ética en Investigación con Sujetos Humanos</h3>
-        <p class="cert-card__org">Universidad del Valle de Guatemala — CCSS</p>
-        <p class="cert-card__meta"><i class="ph ph-calendar-blank"></i> 7 de mayo de 2026 · Cód. CECCSSS 0343</p>
-        <p class="cert-card__desc">Curso en línea de 8 horas organizado por el Comité de Ética de Investigación de la Facultad de Ciencias Sociales.</p>
-        <div class="cert-card__tags"><span>8h</span><span>UVG</span><span>Ethics</span></div>
-      </article>
-      <article class="cert-card reveal">
-        <div class="cert-card__logo cert-card__logo--uvg" aria-hidden="true"><b>UVG</b><small>Universidad del Valle de Guatemala</small></div>
-        <h3 class="cert-card__title">HCI — Interacción Humano-Computadora</h3>
-        <p class="cert-card__org">Universidad del Valle de Guatemala</p>
-        <p class="cert-card__meta"><i class="ph ph-bank"></i> UVG · Curso universitario</p>
-        <p class="cert-card__desc">Principios de usabilidad, diseño centrado en el usuario, evaluación de interfaces y prototipado de experiencias digitales.</p>
-        <div class="cert-card__tags"><span>UX/UI</span><span>Usability</span><span>Design</span></div>
-      </article>
-      <article class="cert-card reveal">
-        <div class="cert-card__logo cert-card__logo--intecap" aria-hidden="true">
-          <svg viewBox="0 0 24 32"><circle cx="12" cy="6" r="4.5"/><path d="M12 12c-3 0-4.5 6-6 18h12c-1.5-12-3-18-6-18z"/></svg>
-        </div>
-        <h3 class="cert-card__title">Creación de Páginas Web — HTML, CSS, JavaScript</h3>
-        <p class="cert-card__org">INTECAP — Nivel Intermedio</p>
-        <p class="cert-card__meta"><i class="ph ph-seal-check"></i> Certificación oficial</p>
-        <p class="cert-card__desc">Certificación tras completar satisfactoriamente el programa de formación en desarrollo web. Aplicada en este portafolio.</p>
-        <div class="cert-card__tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CIBERSEGURIDAD ============ -->
-<section class="ciber-path page-section" id="ciberseguridad" data-bg-color="10,10,10">
-
-  <div class="ciber-path__intro reveal">
-    <div class="section__eyebrow" style="color:var(--ciber-live-accent)">Hardware hacking</div>
-    <h2>Flipper Zero</h2>
-    <p>Un dispositivo del tamaño de tu mano que habla con el mundo inalámbrico que te rodea — radio, NFC, infrarrojo y USB.</p>
+  <div class="mnav" id="mnav" hidden>
+    <button class="mnav-close" id="mnavClose" aria-label="Close">&times;</button>
+    <a href="#work" data-i18n="nav.work">Work</a>
+    <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+    <a href="#build" data-i18n="nav.build">Build yours</a>
+    <a href="#security" data-i18n="nav.security">Security</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
   </div>
 
-  <div class="ciber-block" id="ciber-bloque-flipper">
-    <div class="ciber-block__inner">
-      <span class="ciber-block__tag"><i class="ph ph-game-controller"></i> En tu mano</span>
+  <main id="top">
 
-      <!-- Flipper Zero device reveal -->
-      <div class="flipper-device-reveal reveal">
-        <img src="assets/img/ciberseguridad/flipper-device.gif" alt="Flipper Zero" class="flipper-device-gif">
-        <div class="flipper-device-label">
-          <span class="flipper-device-label__tag">flipper.net</span>
-          <a href="https://flipper.net/" target="_blank" rel="noopener" class="flipper-device-label__link">
-            Ver web oficial <i class="ph ph-arrow-up-right"></i>
-          </a>
-        </div>
+    <!-- ============ HERO CAROUSEL ============ -->
+    <section class="hero" aria-roledescription="carousel">
+      <div class="hero-track" id="heroTrack"></div>
+      <button class="hero-arrow prev" id="heroPrev" aria-label="Previous">&#8249;</button>
+      <button class="hero-arrow next" id="heroNext" aria-label="Next">&#8250;</button>
+      <div class="dots" id="heroDots"></div>
+    </section>
+
+    <!-- ============ SPEC STRIP ============ -->
+    <section class="specs">
+      <div class="spec"><b>5</b><span data-i18n="spec.live">Projects live</span></div>
+      <div class="spec"><b>−Q1,000</b><span data-i18n="spec.below">Below market average</span></div>
+      <div class="spec"><b>6 <small data-i18n="spec.mo">mo</small></b><span data-i18n="spec.maint">Maintenance included</span></div>
+      <div class="spec"><b>$10–20</b><span data-i18n="spec.server">Server per month</span></div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="work" id="work">
+      <div class="sec-head">
+        <p class="eyebrow" data-i18n="work.eyebrow">Delivered work</p>
+        <h2 data-i18n="work.title">Real projects. Real clients.</h2>
       </div>
+      <div class="cards" id="cards"></div>
+      <div class="dots dark" id="cardDots"></div>
+    </section>
 
-      <div class="flipper-window reveal">
-        <div class="flipper-window__bar">
-          <div class="flipper-window__tabs">
-            <span class="flipper-window__tab"><i class="ph ph-info"></i></span>
-            <span class="flipper-window__tab"><i class="ph ph-wrench"></i></span>
-            <span class="flipper-window__tab is-active"><i class="ph ph-folder"></i></span>
-          </div>
-          <span class="flipper-window__brand">MAD · FLIPPER</span>
-          <span class="flipper-window__status"><i class="ph ph-usb"></i> <span data-flipper-status>GHOST_PROTOCOL</span></span>
-        </div>
-        <div class="flipper-window__body">
-          <div class="flipper-screen">
-            <canvas id="flipper-mascot-canvas" class="flipper-screen__canvas"></canvas>
-            <div class="flipper-screen__scanline"></div>
-          </div>
-          <div class="flipper-fs">
-            <div class="flipper-fs__path">SD Card/</div>
-            <div class="flipper-fs__list">
-              <button class="flipper-fs__row is-active" data-folder-target="badusb"><i class="ph ph-folder"></i> badusb</button>
-              <button class="flipper-fs__row" data-folder-target="subghz"><i class="ph ph-folder"></i> subghz</button>
-              <button class="flipper-fs__row" data-folder-target="nfc"><i class="ph ph-folder"></i> nfc</button>
-              <button class="flipper-fs__row" data-folder-target="infrared"><i class="ph ph-folder"></i> infrared</button>
-              <button class="flipper-fs__row" data-folder-target="gpio"><i class="ph ph-folder"></i> gpio</button>
-              <button class="flipper-fs__row" data-folder-target="keyclone"><i class="ph ph-folder"></i> keyclone</button>
-              <button class="flipper-fs__row" data-folder-target="apps"><i class="ph ph-folder"></i> apps</button>
-            </div>
-          </div>
-        </div>
+    <!-- ============ PRICING ============ -->
+    <section class="pricing" id="pricing">
+      <div class="sec-head">
+        <p class="eyebrow" data-i18n="pricing.eyebrow">Pricing</p>
+        <h2 data-i18n="pricing.title">Clear prices. In dollars.</h2>
+        <p class="lead" data-i18n="pricing.sub">We compared what agencies in Guatemala charge. Every MADCO price sits Q1,000 (≈ $130) below the market average.</p>
       </div>
+      <div class="ptable" id="ptable"></div>
+      <p class="fine" data-i18n="pricing.fine">Base prices. Market average based on public 2026 agency rates in Guatemala (1 USD ≈ Q7.64).</p>
 
+      <h3 class="inc-title" data-i18n="inc.title">Every project includes</h3>
+      <div class="inc">
+        <div class="inc-item"><span class="inc-n">$10–20</span><h4 data-i18n="inc.server.t">Server / month</h4><p data-i18n="inc.server.d">Keeps your site online 24/7. Pay monthly or yearly.</p></div>
+        <div class="inc-item"><span class="inc-n">6</span><h4 data-i18n="inc.maint.t">Months of maintenance</h4><p data-i18n="inc.maint.d">Bug fixes and adjustments after launch, no extra cost.</p></div>
+        <div class="inc-item"><span class="inc-n">01</span><h4 data-i18n="inc.user.t">User manual</h4><p data-i18n="inc.user.d">Step by step, so you can run everything yourself.</p></div>
+        <div class="inc-item"><span class="inc-n">02</span><h4 data-i18n="inc.tech.t">Technical manual</h4><p data-i18n="inc.tech.d">Everything another developer would need. Your project is never held hostage.</p></div>
+      </div>
+    </section>
 
-      <h4 class="ciber-block__title" id="flipper-recommended-anchor" style="font-size:1.15rem; margin-top:2.5rem;">Recomendados</h4>
-      <div class="reco-list" data-mount="flipper-recommended"></div>
-    </div>
+    <!-- ============ SECURITY ============ -->
+    <section class="security" id="security">
+      <div class="sec-head light">
+        <p class="eyebrow" data-i18n="sec.eyebrow">Security</p>
+        <h2 data-i18n="sec.title">Your data, locked.</h2>
+        <p class="lead" data-i18n="sec.sub">Security isn't an add-on. It ships with every project.</p>
+      </div>
+      <div class="sec-grid">
+        <div><b>01</b><p data-i18n="sec.1">Encrypted connection (HTTPS) on every page.</p></div>
+        <div><b>02</b><p data-i18n="sec.2">Passwords stored encrypted. Nobody can read them, not even us.</p></div>
+        <div><b>03</b><p data-i18n="sec.3">Admin panel behind a private login.</p></div>
+        <div><b>04</b><p data-i18n="sec.4">Database backups, so nothing gets lost.</p></div>
+        <div><b>05</b><p data-i18n="sec.5">No hidden trackers. Your visitors' data stays yours.</p></div>
+        <div><b>06</b><p data-i18n="sec.6">Forms protected against spam and fake submissions.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ BUILD YOURS (QUIZ) ============ -->
+    <section class="build" id="build">
+      <div class="sec-head">
+        <p class="eyebrow" data-i18n="build.eyebrow">Build yours</p>
+        <h2 data-i18n="build.title">6 questions. A live preview. An instant price.</h2>
+      </div>
+      <div class="quiz" id="quiz"></div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="process">
+      <div class="step"><span>1</span><h4 data-i18n="proc.1.t">You tell me your idea</h4><p data-i18n="proc.1.d">What you need to solve. No tech knowledge needed.</p></div>
+      <div class="step"><span>2</span><h4 data-i18n="proc.2.t">You see a live draft</h4><p data-i18n="proc.2.d">Not a picture. A real site you open on your phone.</p></div>
+      <div class="step"><span>3</span><h4 data-i18n="proc.3.t">It goes live</h4><p data-i18n="proc.3.d">Published, with manuals and 6 months of support.</p></div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <h2 data-i18n="contact.title">Everything you imagine can be programmed.</h2>
+      <p class="lead" data-i18n="contact.sub">Tell me your idea. I'll reply with a quote.</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:madcarranzaosorio@gmail.com?subject=MADCO%20project" data-i18n="contact.email">Email me</a>
+        <a class="btn secondary" href="https://www.instagram.com/madco.py/" target="_blank" rel="noopener">Instagram · @madco.py</a>
+      </div>
+      <p class="mail">madcarranzaosorio@gmail.com</p>
+    </section>
+  </main>
+
+  <footer class="ftr">
+    <span>MADCO © 2026</span>
+    <span>Guatemala</span>
+    <a href="mailto:madcarranzaosorio@gmail.com" data-i18n="ftr.contact">Contact</a>
+    <a href="https://www.instagram.com/madco.py/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://github.com/MADCO-py" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+  <!-- Sticky bottom bar (Tesla-style) -->
+  <div class="sticky" id="sticky">
+    <a href="#build" class="sticky-btn"><span class="sticky-ico">✦</span><span data-i18n="sticky">Get your price in 1 minute</span></a>
   </div>
-</section>
 
-<!-- ============ MI SETUP ============ -->
-<section class="section setup page-section" id="setup" data-bg-color="10,10,10">
-  <div class="section__inner">
-    <div class="section__eyebrow setup__eyebrow reveal">Lo que uso</div>
-    <h2 class="section__title setup__title reveal">Mi Setup</h2>
-    <p class="section__lead setup__lead reveal">Todo lo hago sobre Ubuntu.</p>
+  <!-- Project detail sheet -->
+  <div class="sheet-bg" id="sheetBg" hidden></div>
+  <aside class="sheet" id="sheet" aria-modal="true" role="dialog" hidden>
+    <button class="sheet-close" id="sheetClose" aria-label="Close">&times;</button>
+    <div id="sheetBody"></div>
+  </aside>
 
-    <div class="desktop-showcase reveal">
-      <img class="desktop-showcase__bg" src="assets/img/setup/ubuntu-desktop.png" alt="Escritorio de Ubuntu de MADCO.py">
-      <div class="terminal-overlay">
-        <div class="terminal-overlay__bar">
-          <span class="terminal-overlay__dot"></span>
-          <span class="terminal-overlay__dot"></span>
-          <span class="terminal-overlay__dot"></span>
-          <span class="terminal-overlay__title">madco@ubuntu:~</span>
-        </div>
-        <pre class="terminal-overlay__body" id="ubuntu-terminal-body"></pre>
-      </div>
-    </div>
-
-    <div class="terminal-panel reveal">
-      <div class="terminal-panel__bar">
-        <span class="terminal-overlay__dot"></span>
-        <span class="terminal-overlay__dot"></span>
-        <span class="terminal-overlay__dot"></span>
-        <span class="terminal-overlay__title">madco@ubuntu:~/notas</span>
-      </div>
-      <div class="terminal-panel__body">
-        <p class="terminal-panel__prompt">$ cat dato-curioso.md</p>
-        <p class="terminal-panel__h"># Todo corre sobre Ubuntu</p>
-        <p>Todos mis proyectos los construyo en Linux. Algunas extensiones GNOME que uso para volver locas las pantallas (y a veces literalmente quemarlas un poco):</p>
-        <ul>
-          <li><strong>Burn My Windows</strong> — transiciones de ventana exageradas al cerrar/abrir apps.</li>
-          <li><strong>Blur My Shell</strong> — desenfoque dinámico en toda la interfaz.</li>
-          <li><strong>Compiz-style Wobbly Windows</strong> — ventanas que se mueven como gelatina.</li>
-        </ul>
-        <p>¿Por qué Linux y no Windows para esto? Porque el kernel es abierto: puedes cambiarlo. Mainline, Liquorix, Xanmod, Zen — cada uno prioriza algo distinto (latencia, throughput, eficiencia), y tú eliges. En Windows el kernel es una caja cerrada; en Linux es una pieza más que puedes intercambiar según lo que necesites.</p>
-        <p class="terminal-panel__prompt">$ _</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer class="footer">
-  <div class="nav__brand" style="border:none; font-size:1.2rem;">MADCO</div>
-  <div class="footer__socials" data-mount="footer-socials"></div>
-  <p class="footer__note">Sitio construido a mano. Sin backend, sin tracking, sin nombre real.</p>
-</footer>
-
-<script src="js/data.js"></script>
-<script src="js/cursor.js"></script>
-<script src="js/observer.js"></script>
-<script src="js/hero-typing.js"></script>
-<script src="js/ciber-path.js"></script>
-<script src="js/flipper-mascot.js"></script>
-<script src="js/flipper-folders.js"></script>
-<script src="js/ubuntu-terminal.js"></script>
-<script src="js/page-morph.js"></script>
-<script src="js/ciber-tools.js"></script>
-<script src="js/i18n-en.js"></script>
-<script src="js/prefs.js"></script>
-<script src="js/main.js"></script>
-<script src="js/quien.js"></script>
-<script src="js/menu.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

@@ -1,2 +1,0 @@
-[Pendiente] Sube aquí tu archivo .nfc o información del tag.
-Reemplaza este archivo manteniendo el mismo nombre: nfc-info.txt
