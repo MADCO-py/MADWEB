@@ -12,6 +12,10 @@ const STEPS = [
   { key: 'size', title: 'q5', opts: ['one', 'mid', 'big'], desc: true },
   { key: 'langs', title: 'q6', opts: ['1', '2', '3'], desc: true },
 ];
+/* Neutral preview until the client picks colors (MADCO black + #3e6ae1) */
+const DEFAULT_PAL = { bg: '#0a0a0a', fg: '#f5f5f5', ac: '#3e6ae1' };
+const curPal = () => PALETTES[Q.pal] || DEFAULT_PAL;
+const MADCO_BLUE = '#3e6ae1';
 const answered = (s) => s.multi ? Q.feats.size > 0 : Q[s.key] != null;
 const pad2 = (n) => String(n).padStart(2, '0');
 
@@ -49,10 +53,6 @@ const projSlug = () => projName().toLowerCase().normalize('NFD').replace(/[^\w]+
 function renderQuiz() {
   const box = $('#quiz');
   const done = Q.step >= STEPS.length;
-  const ac = PALETTES[Q.pal || 'midnight'].ac;
-  const acc = ac === '#111111' ? '#3e6ae1' : ac;
-  $('#build').style.setProperty('--q-ac', acc);
-  $('#build').style.setProperty('--q-glow', acc);
   box.innerHTML = `<div class="quiz-grid">
     <div class="quiz-left">${done ? resultHTML() : stepHTML()}</div>
     <div class="mock-col">
@@ -91,7 +91,7 @@ function stepHTML() {
     <div class="q-seg">${STEPS.map((_, i) => `<i class="${i < Q.step ? 'done' : i === Q.step ? 'now' : ''}"></i>`).join('')}</div>
     <div class="q-num"><b>${pad2(Q.step + 1)}</b><span>/06</span></div>
     <h3 class="q-title">${esc(t(s.title))}</h3>
-    <p class="q-hint">${s.multi ? esc(t('q.multi')) : esc(t('q.keys'))}</p>
+    <p class="q-hint${s.multi ? '' : ' keys'}">${s.multi ? esc(t('q.multi')) : esc(t('q.keys'))}</p>
     <div class="q-opts${s.swatch ? ' sw3' : ''}${s.opts.length > 6 ? ' many' : ''}">${s.opts.map(opt).join('')}</div>
     <div class="q-nav">
       <button class="btn dark" data-q="back" ${Q.step === 0 ? 'disabled' : ''}>${esc(t('q.back'))}</button>
@@ -155,7 +155,7 @@ function updateMail() {
 /* ---------- Live HTML preview ---------- */
 function renderMock() {
   const m = $('#mock'); if (!m) return;
-  const pal = PALETTES[Q.pal || 'midnight'];
+  const pal = curPal();
   const v = VIBES[Q.vibe || 'minimal'];
   const type = Q.type || 'business';
   const name = projName();
@@ -218,8 +218,8 @@ const loadImg = (src) => new Promise((res) => { const i = new Image(); i.onload 
 
 async function makeImage(kind) {
   const W = 1080, H = kind === 'story' ? 1920 : 1350, S = kind === 'story';
-  const pal = PALETTES[Q.pal || 'midnight'], v = VIBES[Q.vibe || 'minimal'];
-  const ac = pal.ac === '#111111' ? '#3e6ae1' : pal.ac;
+  const pal = curPal(), v = VIBES[Q.vibe || 'minimal'];
+  const ac = MADCO_BLUE;
   const vibeFont = (sz) => `${v.fs === 'italic' ? 'italic ' : ''}${v.w} ${sz}px "${v.font}", "Noto Sans JP", sans-serif`;
   try { await Promise.all([document.fonts.load(vibeFont(40), 'Aa'), document.fonts.load(`600 40px "Inter"`), document.fonts.load(`700 40px "Noto Sans JP"`, '日本')]); } catch (e) {}
   const logo = await loadImg(LOGO_DATA);
@@ -227,14 +227,9 @@ async function makeImage(kind) {
   const c = document.createElement('canvas'); c.width = W; c.height = H;
   const x = c.getContext('2d');
 
-  // background + glow
-  x.fillStyle = '#050507'; x.fillRect(0, 0, W, H);
-  let g = x.createRadialGradient(W / 2, S ? 520 : 380, 40, W / 2, S ? 520 : 380, 760);
-  g.addColorStop(0, rgba(ac, .45)); g.addColorStop(1, rgba(ac, 0));
-  x.fillStyle = g; x.fillRect(0, 0, W, H);
-  // grain lines
-  x.strokeStyle = 'rgba(255,255,255,.035)'; x.lineWidth = 1;
-  for (let i = 0; i < W; i += 54) { x.beginPath(); x.moveTo(i + .5, 0); x.lineTo(i + .5, H); x.stroke(); }
+  // background: raw black
+  x.fillStyle = '#000'; x.fillRect(0, 0, W, H);
+  let g;
 
   // header
   const top = S ? 90 : 56;
@@ -244,7 +239,6 @@ async function makeImage(kind) {
 
   // browser frame
   const fx = 72, fy = top + (S ? 130 : 96), fw = W - 144, fh = S ? 980 : 690;
-  x.save(); x.shadowColor = rgba(ac, .55); x.shadowBlur = 90; rr(x, fx, fy, fw, fh, 26); x.fillStyle = pal.bg; x.fill(); x.restore();
   x.save(); rr(x, fx, fy, fw, fh, 26); x.clip();
   x.fillStyle = pal.bg; x.fillRect(fx, fy, fw, fh);
   x.fillStyle = '#16161b'; x.fillRect(fx, fy, fw, 52);
@@ -260,8 +254,6 @@ async function makeImage(kind) {
   x.fillText(Q.langs ? ['EN', 'ES', '日本'].slice(0, +Q.langs).join(' · ') : `${t('m.nav1')}   ${t('m.nav2')}   ${t('m.nav3')}`, cx + cw, y); x.textAlign = 'left'; x.globalAlpha = 1;
   // hero glow
   y += S ? 70 : 40;
-  g = x.createRadialGradient(fx + fw / 2, y + 60, 10, fx + fw / 2, y + 60, 300);
-  g.addColorStop(0, rgba(pal.ac, .35)); g.addColorStop(1, rgba(pal.ac, 0)); x.fillStyle = g; x.fillRect(fx, y - 120, fw, 420);
   x.textAlign = 'center'; x.fillStyle = pal.fg;
   const hs = fitFont(x, nameTT, cw - 40, S ? 112 : 92, vibeFont);
   y += hs * .9; x.fillText(nameTT, fx + fw / 2, y);
@@ -299,9 +291,7 @@ async function makeImage(kind) {
   let py = fy + fh + (S ? 110 : 70);
   x.fillStyle = 'rgba(255,255,255,.55)'; x.font = `500 ${S ? 26 : 22}px ${SANS}`; x.fillText((LANG === 'ja' ? t('r.est') : `${t('r.est')} · ${t('r.from')}`).toUpperCase(), 72, py);
   py += S ? 120 : 96;
-  const pg = x.createLinearGradient(72, py - 100, 560, py);
-  pg.addColorStop(0, '#ffffff'); pg.addColorStop(1, mix(ac, '#ffffff', .35));
-  x.fillStyle = pg; x.font = `700 ${S ? 140 : 112}px ${SANS}`; x.fillText(usd(q.total), 68, py);
+  x.fillStyle = '#fff'; x.font = `700 ${S ? 140 : 112}px ${SANS}`; x.fillText(usd(q.total), 68, py);
   const pw = x.measureText(usd(q.total)).width;
   x.fillStyle = 'rgba(255,255,255,.5)'; x.font = `600 ${S ? 28 : 24}px ${SANS}`; x.fillText('USD', 80 + pw, py);
 

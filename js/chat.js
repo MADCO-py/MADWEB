@@ -1,5 +1,5 @@
 /* ============================================================
-   MAD ASSISTANT — breathing liquid orb (bottom-left) + FAQ chat.
+   MADCO ASSISTANT — breathing spiky orb (bottom-right) + FAQ chat.
    Questions are pre-written; the visitor picks one and gets the answer.
    To edit a question or answer, change it in all 3 languages below.
    {p.xxx} = project price, {s.xxx} = service price (from app.js)
@@ -52,10 +52,54 @@ const FAQ = {
   ],
 };
 const CHAT_UI = {
-  en: { title: 'MAD Assistant', status: 'Online · instant answers', hello: "Hi! I'm the MADCO assistant. Pick a question:", more: 'Other questions', open: 'Questions?', go: { build: 'Build yours →', work: 'See projects →', contact: 'Contact →' }, email: 'Email', close: 'Close' },
-  es: { title: 'Asistente MAD', status: 'En línea · respuestas al instante', hello: '¡Hola! Soy el asistente de MADCO. Elige una pregunta:', more: 'Otras preguntas', open: '¿Preguntas?', go: { build: 'Arma la tuya →', work: 'Ver proyectos →', contact: 'Contacto →' }, email: 'Correo', close: 'Cerrar' },
-  ja: { title: 'MAD アシスタント', status: 'オンライン · すぐに回答', hello: 'こんにちは！MADCOのアシスタントです。質問を選んでください：', more: 'ほかの質問', open: '質問は？', go: { build: 'つくってみる →', work: '実績を見る →', contact: 'お問い合わせ →' }, email: 'メール', close: '閉じる' },
+  en: { title: 'MADCO', status: 'Your assistant · online', hello: "Hi! I'm your assistant, MADCO. How can I help you?", pick: 'Pick a question', more: 'Other questions', open: 'How can I help?', go: { build: 'Build yours →', work: 'See projects →', contact: 'Contact →' }, email: 'Email', close: 'Close' },
+  es: { title: 'MADCO', status: 'Tu asistente · en línea', hello: '¡Hola! Soy tu asistente llamado MADCO. ¿Cómo te puedo ayudar?', pick: 'Elige una pregunta', more: 'Otras preguntas', open: '¿Cómo te ayudo?', go: { build: 'Arma la tuya →', work: 'Ver proyectos →', contact: 'Contacto →' }, email: 'Correo', close: 'Cerrar' },
+  ja: { title: 'MADCO', status: 'あなたのアシスタント · オンライン', hello: 'こんにちは！あなたのアシスタント、MADCOです。どのようにお手伝いできますか？', pick: '質問を選んでください', more: 'ほかの質問', open: 'お手伝いしましょうか？', go: { build: 'つくってみる →', work: '実績を見る →', contact: 'お問い合わせ →' }, email: 'メール', close: '閉じる' },
 };
+
+/* ---------- Breathing spiky orb (canvas, single color #3e6ae1) ----------
+   A circle that breathes; spikes of different lengths grow out of different
+   sides, retract, and the whole thing slowly turns.                        */
+const ORB_COLOR = '#3e6ae1';
+function startOrb(canvas, cssSize, radius) {
+  const dpr = Math.min(window.devicePixelRatio || 1, 3);
+  canvas.width = cssSize * dpr; canvas.height = cssSize * dpr;
+  canvas.style.width = canvas.style.height = cssSize + 'px';
+  const ctx = canvas.getContext('2d'); ctx.scale(dpr, dpr);
+  const c = cssSize / 2, TAU = Math.PI * 2;
+  // spikes: angle, max length (× radius), speed, phase — uneven on purpose
+  const spikes = [
+    [0.0, 0.62, 1.10, 0.0], [1.3, 0.34, 1.55, 2.1], [2.2, 0.50, 0.85, 4.0],
+    [3.4, 0.28, 1.35, 1.0], [4.3, 0.56, 1.00, 3.2], [5.3, 0.40, 1.25, 5.1],
+  ];
+  const still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let fast = 1, t0 = performance.now(), raf;
+  function frame(now) {
+    const t = (now - t0) / 1000 * fast;
+    ctx.clearRect(0, 0, cssSize, cssSize);
+    const breath = 1 + 0.06 * Math.sin(t * 1.6);
+    const rot = t * 0.45;
+    const act = spikes.map(([a, L, w, p]) => [a + rot, L * radius * Math.pow(Math.max(0, Math.sin(t * w + p)), 2.4)]);
+    ctx.beginPath();
+    const N = 220;
+    for (let i = 0; i <= N; i++) {
+      const th = (i / N) * TAU;
+      let r = radius * breath + radius * 0.025 * Math.sin(th * 3 + t * 2);
+      for (const [a, len] of act) {
+        let d = Math.abs(((th - a) % TAU + TAU + Math.PI) % TAU - Math.PI);
+        const w = 0.34;
+        if (d < w) r += len * Math.pow(1 - d / w, 2.2);
+      }
+      const x = c + r * Math.cos(th), y = c + r * Math.sin(th);
+      i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = ORB_COLOR; ctx.fill();
+    if (!still) raf = requestAnimationFrame(frame);
+  }
+  raf = requestAnimationFrame(frame);
+  return { speed: (k) => { const now = performance.now(); t0 = now - (now - t0) * fast / k; fast = k; } };
+}
 
 const CHAT = { open: false, asked: new Set(), log: [] };
 const cu = () => CHAT_UI[LANG] || CHAT_UI.en;
@@ -68,15 +112,14 @@ function chatInit() {
   const root = document.createElement('div');
   root.className = 'mad-chat';
   root.innerHTML = `
-    <button class="orb" id="orb" aria-expanded="false" aria-controls="chatPanel">
-      <span class="orb-liquid a"></span><span class="orb-liquid b"></span><span class="orb-liquid c"></span>
-      <span class="orb-gloss"></span>
-      <img class="orb-logo" src="assets/logo.png" alt="MAD">
+    <button class="orb" id="orb" aria-expanded="false" aria-controls="chatPanel" aria-label="MADCO">
+      <canvas class="orb-cv" id="orbCv"></canvas>
+      <img class="orb-logo" src="assets/logo.png" alt="">
     </button>
     <span class="orb-tip" id="orbTip"></span>
     <section class="chat" id="chatPanel" role="dialog" aria-label="Chat" hidden>
       <header class="chat-hd">
-        <span class="orb mini" aria-hidden="true"><span class="orb-liquid a"></span><span class="orb-liquid b"></span><span class="orb-gloss"></span><img class="orb-logo" src="assets/logo.png" alt=""></span>
+        <span class="orb mini" aria-hidden="true"><canvas class="orb-cv" id="orbCvMini"></canvas><img class="orb-logo" src="assets/logo.png" alt=""></span>
         <div><b id="chatTitle"></b><small id="chatStatus"></small></div>
         <button class="chat-x" id="chatX" aria-label="Close">&times;</button>
       </header>
@@ -84,6 +127,9 @@ function chatInit() {
       <div class="chat-qs" id="chatQs"></div>
     </section>`;
   document.body.appendChild(root);
+  const small = window.innerWidth < 700;
+  CHAT.orb = startOrb($('#orbCv'), small ? 104 : 120, small ? 24 : 28);
+  startOrb($('#orbCvMini'), 56, 14);
 
   $('#orb').addEventListener('click', () => toggleChat());
   $('#chatX').addEventListener('click', () => toggleChat(false));
@@ -100,6 +146,7 @@ function toggleChat(force) {
   $('#chatPanel').hidden = !CHAT.open;
   $('#orb').setAttribute('aria-expanded', CHAT.open);
   document.querySelector('.mad-chat').classList.toggle('is-open', CHAT.open);
+  CHAT.orb && CHAT.orb.speed(CHAT.open ? 1.8 : 1);
   $('#orbTip').classList.remove('show');
   if (CHAT.open && !CHAT.log.length) { CHAT.log.push({ who: 'bot', key: '_hello' }); renderChat(); }
 }
@@ -124,7 +171,7 @@ function renderChat() {
   $('#chatBody').innerHTML = CHAT.log.map(msgHTML).join('') + (CHAT.typing ? '<div class="msg bot typing"><i></i><i></i><i></i></div>' : '');
   const left = faq().filter((r) => !CHAT.asked.has(r[0]));
   const list = left.length ? left : faq();
-  $('#chatQs').innerHTML = (CHAT.asked.size ? `<p>${esc(cu().more)}</p>` : '') + list.map((r) => `<button data-faq="${r[0]}">${esc(r[1])}</button>`).join('');
+  $('#chatQs').innerHTML = `<p>${esc(CHAT.asked.size ? cu().more : cu().pick)}</p>` + list.map((r) => `<button data-faq="${r[0]}">${esc(r[1])}</button>`).join('');
   const body = $('#chatBody'); body.scrollTop = body.scrollHeight;
 }
 
