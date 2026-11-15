@@ -12,14 +12,14 @@ const I18N = {
     'btn.private': 'Private system', 'btn.pricing': 'See pricing',
     'from': 'From',
 
-    'spec.live': 'Projects live', 'spec.below': 'Below market average', 'spec.mo': 'mo', 'spec.maint': 'Maintenance included', 'spec.server': 'Server per month',
+    'spec.live': 'Projects live', 'spec.custom': 'Custom, no templates', 'spec.mo': 'mo', 'spec.maint': 'Maintenance included', 'spec.server': 'Server per month',
 
     'work.eyebrow': 'Delivered work', 'work.title': 'Real projects. Real clients.',
 
     'pricing.eyebrow': 'Pricing', 'pricing.title': 'Clear prices. In dollars.',
-    'pricing.sub': 'We compared what agencies in Guatemala charge. Every MADCO price sits Q1,000 (≈ $130) below the market average.',
-    'pricing.fine': 'Base prices. Market average based on public 2026 agency rates in Guatemala (1 USD ≈ Q7.64).',
-    'pt.type': 'Type', 'pt.example': 'Example', 'pt.market': 'Market avg.', 'pt.ours': 'MADCO',
+    'pricing.sub': 'Base prices for what we have already built. No surprises, no fine print.',
+    'pricing.fine': 'Base prices in USD. The final quote depends on what your project needs.',
+    'pt.type': 'Type', 'pt.example': 'Example', 'pt.ours': 'MADCO',
 
     'inc.title': 'Every project includes',
     'inc.server.t': 'Server / month', 'inc.server.d': 'Keeps your site online 24/7. Pay monthly or yearly.',
@@ -35,7 +35,8 @@ const I18N = {
     'sec.5': "No hidden trackers. Your visitors' data stays yours.",
     'sec.6': 'Forms protected against spam and fake submissions.',
 
-    'build.eyebrow': 'Build yours', 'build.title': '6 questions. A live preview. An instant price.',
+    'build.eyebrow': 'Build yours · 6 questions', 'build.title': 'Your website. In 60 seconds.',
+    'build.sub': 'Answer, watch it build itself live, get your price and download it as an image.',
 
     'proc.1.t': 'You tell me your idea', 'proc.1.d': 'What you need to solve. No tech knowledge needed.',
     'proc.2.t': 'You see a live draft', 'proc.2.d': 'Not a picture. A real site you open on your phone.',
@@ -45,7 +46,7 @@ const I18N = {
     'ftr.contact': 'Contact', 'sticky': 'Get your price in 1 minute',
 
     /* sheet */
-    'sh.inside': "What's inside", 'sh.market': 'Market average', 'sh.ours': 'MADCO base price', 'sh.save': 'You save ≈ $130 (Q1,000)',
+    'sh.inside': "What's inside", 'sh.ours': 'MADCO base price', 
     'sh.plus': '+ server $10–20 / month · 6 months of maintenance · user & technical manual',
 
     /* quiz */
@@ -80,7 +81,7 @@ const I18N = {
     'q6.3': '3 languages', 'q6.3.d': 'Go global',
 
     'r.name': 'Name your project', 'r.name.ph': 'Your brand', 'r.est': 'Estimated price', 'r.from': 'starting at',
-    'r.market': 'market average', 'r.base': 'Base', 'r.lang': 'Extra languages', 'r.size': 'Size',
+    'r.base': 'Base', 'r.lang': 'Extra languages', 'r.size': 'Size',
     'r.server': 'Server', 'r.server.v': '$10–20 / mo',
     'r.note': 'Includes 6 months of maintenance and bug fixes, user manual and technical manual. Final quote after a short call.',
     'r.send': 'Send me this', 'r.again': 'Start over',
@@ -92,6 +93,20 @@ const I18N = {
     'm.cta': 'Get started', 'm.work': 'Gallery', 'm.shop': 'Shop', 'm.add': 'Add', 'm.live': 'Saved live', 'm.records': 'records',
     'm.admin': 'Admin · This week', 'm.forms': 'Book a spot', 'm.send': 'Send', 'm.games': 'Top players',
     'm.nav1': 'Home', 'm.nav2': 'About', 'm.nav3': 'Contact',
+    'm.bot': 'Assistant', 'm.bot.q': 'Do you ship nationwide?', 'm.bot.a': 'Yes, to all of Guatemala!',
+    'm.auto': 'Automation', 'm.auto.1': 'New order', 'm.auto.2': 'WhatsApp sent', 'm.auto.3': 'Saved', 'm.nfc': 'Tap your phone here',
+
+    'nav.services': 'Services',
+    'svc.eyebrow': 'More than websites', 'svc.title': 'Automate. Talk. Tap.',
+    'svc.bot.t': 'Chatbots', 'svc.bot.d': 'Answers your customers 24/7, on your site or WhatsApp.', 'svc.bot.try': 'Try the one in the corner ↙',
+    'svc.auto.t': 'Automations', 'svc.auto.d': 'Repetitive tasks that do themselves: orders to WhatsApp, reports, reminders, spreadsheets.',
+    'svc.nfc.t': 'NFC chips', 'svc.nfc.d': 'Stickers and cards that open your site, menu or Instagram with one tap of the phone. Made to promote you.',
+    'q2.bot': 'Chatbot', 'q2.bot.d': 'Answers your customers 24/7',
+    'q2.auto': 'Automations', 'q2.auto.d': 'Tasks that do themselves',
+    'q2.nfc': 'NFC chips', 'q2.nfc.d': 'Tap the phone, open your site',
+    'q.keys': 'Tip: press 1–9 on your keyboard', 'q.live': 'Live preview — it changes with every answer',
+    'r.dl.post': 'Post image', 'r.dl.story': 'Story image', 'r.dl.busy': 'Creating…',
+    'img.inc': '6 months of maintenance · user & technical manual',
   },
 
   es: {
@@ -102,14 +117,14 @@ const I18N = {
     'btn.private': 'Sistema privado', 'btn.pricing': 'Ver precios',
     'from': 'Desde',
 
-    'spec.live': 'Proyectos en línea', 'spec.below': 'Debajo del promedio del mercado', 'spec.mo': 'meses', 'spec.maint': 'De mantenimiento incluido', 'spec.server': 'Servidor al mes',
+    'spec.live': 'Proyectos en línea', 'spec.custom': 'A la medida, sin plantillas', 'spec.mo': 'meses', 'spec.maint': 'De mantenimiento incluido', 'spec.server': 'Servidor al mes',
 
     'work.eyebrow': 'Proyectos entregados', 'work.title': 'Proyectos reales. Clientes reales.',
 
     'pricing.eyebrow': 'Precios', 'pricing.title': 'Precios claros. En dólares.',
-    'pricing.sub': 'Comparamos lo que cobran las agencias en Guatemala. Cada precio de MADCO está Q1,000 (≈ $130) por debajo del promedio del mercado.',
-    'pricing.fine': 'Precios base. Promedio del mercado según tarifas públicas de agencias en Guatemala, 2026 (1 USD ≈ Q7.64).',
-    'pt.type': 'Tipo', 'pt.example': 'Ejemplo', 'pt.market': 'Promedio', 'pt.ours': 'MADCO',
+    'pricing.sub': 'Precios base de lo que ya construimos. Sin sorpresas, sin letra pequeña.',
+    'pricing.fine': 'Precios base en USD. La cotización final depende de lo que necesite tu proyecto.',
+    'pt.type': 'Tipo', 'pt.example': 'Ejemplo', 'pt.ours': 'MADCO',
 
     'inc.title': 'Todo proyecto incluye',
     'inc.server.t': 'Servidor al mes', 'inc.server.d': 'Mantiene tu sitio en línea 24/7. Pagos mensuales o anuales.',
@@ -125,7 +140,8 @@ const I18N = {
     'sec.5': 'Sin rastreadores ocultos. Los datos de tus visitas son tuyos.',
     'sec.6': 'Formularios protegidos contra spam y envíos falsos.',
 
-    'build.eyebrow': 'Arma la tuya', 'build.title': '6 preguntas. Una vista previa en vivo. Un precio al instante.',
+    'build.eyebrow': 'Arma la tuya · 6 preguntas', 'build.title': 'Tu página. En 60 segundos.',
+    'build.sub': 'Responde, mírala armarse en vivo, conoce tu precio y descárgala como imagen.',
 
     'proc.1.t': 'Me cuentas tu idea', 'proc.1.d': 'Qué necesitas resolver. No necesitas saber de tecnología.',
     'proc.2.t': 'Ves un boceto en vivo', 'proc.2.d': 'No una imagen. Un sitio real que abres en tu celular.',
@@ -134,7 +150,7 @@ const I18N = {
     'contact.title': 'Todo lo que te imagines puede llegar a ser programado.', 'contact.sub': 'Cuéntame tu idea. Te respondo con una cotización.', 'contact.email': 'Escríbeme',
     'ftr.contact': 'Contacto', 'sticky': 'Conoce tu precio en 1 minuto',
 
-    'sh.inside': 'Qué incluye', 'sh.market': 'Promedio del mercado', 'sh.ours': 'Precio base MADCO', 'sh.save': 'Ahorras ≈ $130 (Q1,000)',
+    'sh.inside': 'Qué incluye', 'sh.ours': 'Precio base MADCO', 
     'sh.plus': '+ servidor $10–20 / mes · 6 meses de mantenimiento · manual de usuario y técnico',
 
     'q.of': 'Pregunta {n} de 6', 'q.next': 'Siguiente', 'q.back': 'Atrás', 'q.see': 'Ver mi proyecto', 'q.multi': 'Elige todas las que apliquen',
@@ -168,7 +184,7 @@ const I18N = {
     'q6.3': '3 idiomas', 'q6.3.d': 'Alcance global',
 
     'r.name': 'Ponle nombre a tu proyecto', 'r.name.ph': 'Tu marca', 'r.est': 'Precio estimado', 'r.from': 'desde',
-    'r.market': 'promedio del mercado', 'r.base': 'Base', 'r.lang': 'Idiomas extra', 'r.size': 'Tamaño',
+    'r.base': 'Base', 'r.lang': 'Idiomas extra', 'r.size': 'Tamaño',
     'r.server': 'Servidor', 'r.server.v': '$10–20 / mes',
     'r.note': 'Incluye 6 meses de mantenimiento y arreglo de bugs, manual de usuario y manual técnico. Cotización final después de una llamada corta.',
     'r.send': 'Enviarme esto', 'r.again': 'Empezar de nuevo',
@@ -179,6 +195,20 @@ const I18N = {
     'm.cta': 'Empezar', 'm.work': 'Galería', 'm.shop': 'Tienda', 'm.add': 'Agregar', 'm.live': 'Guardado en vivo', 'm.records': 'registros',
     'm.admin': 'Admin · Esta semana', 'm.forms': 'Reserva tu lugar', 'm.send': 'Enviar', 'm.games': 'Top jugadores',
     'm.nav1': 'Inicio', 'm.nav2': 'Nosotros', 'm.nav3': 'Contacto',
+    'm.bot': 'Asistente', 'm.bot.q': '¿Hacen envíos?', 'm.bot.a': '¡Sí, a toda Guatemala!',
+    'm.auto': 'Automatización', 'm.auto.1': 'Nuevo pedido', 'm.auto.2': 'WhatsApp enviado', 'm.auto.3': 'Guardado', 'm.nfc': 'Acerca tu celular aquí',
+
+    'nav.services': 'Servicios',
+    'svc.eyebrow': 'Más que páginas web', 'svc.title': 'Automatiza. Conversa. Acerca.',
+    'svc.bot.t': 'Chatbots', 'svc.bot.d': 'Responde a tus clientes 24/7, en tu página o en WhatsApp.', 'svc.bot.try': 'Prueba el de la esquina ↙',
+    'svc.auto.t': 'Automatizaciones', 'svc.auto.d': 'Tareas repetitivas que se hacen solas: pedidos a WhatsApp, reportes, recordatorios, hojas de cálculo.',
+    'svc.nfc.t': 'Chips NFC', 'svc.nfc.d': 'Stickers y tarjetas que abren tu página, menú o Instagram con solo acercar el celular. Hechos para promocionarte.',
+    'q2.bot': 'Chatbot', 'q2.bot.d': 'Responde a tus clientes 24/7',
+    'q2.auto': 'Automatizaciones', 'q2.auto.d': 'Tareas que se hacen solas',
+    'q2.nfc': 'Chips NFC', 'q2.nfc.d': 'Acercas el celular, abre tu página',
+    'q.keys': 'Tip: usa las teclas 1–9', 'q.live': 'Vista previa en vivo — cambia con cada respuesta',
+    'r.dl.post': 'Imagen para post', 'r.dl.story': 'Imagen para historia', 'r.dl.busy': 'Creando…',
+    'img.inc': '6 meses de mantenimiento · manual de usuario y técnico',
   },
 
   ja: {
@@ -189,14 +219,14 @@ const I18N = {
     'btn.private': '非公開システム', 'btn.pricing': '料金を見る',
     'from': '',
 
-    'spec.live': '公開中のプロジェクト', 'spec.below': '市場平均より安く', 'spec.mo': 'ヶ月', 'spec.maint': '保守サポート込み', 'spec.server': 'サーバー月額',
+    'spec.live': '公開中のプロジェクト', 'spec.custom': 'テンプレートなしの完全オーダーメイド', 'spec.mo': 'ヶ月', 'spec.maint': '保守サポート込み', 'spec.server': 'サーバー月額',
 
     'work.eyebrow': '納品実績', 'work.title': '本物のプロジェクト。本物のクライアント。',
 
     'pricing.eyebrow': '料金', 'pricing.title': 'わかりやすい料金。米ドル表示。',
-    'pricing.sub': 'グアテマラの制作会社の料金を比較しました。MADCOの価格は、どれも市場平均より Q1,000（約 $130）安く設定しています。',
-    'pricing.fine': '基本料金です。市場平均は2026年のグアテマラの制作会社の公開料金をもとにしています（1 USD ≈ Q7.64）。',
-    'pt.type': '種類', 'pt.example': '実例', 'pt.market': '市場平均', 'pt.ours': 'MADCO',
+    'pricing.sub': '実際に制作したプロジェクトの基本料金です。追加料金や細かい条件はありません。',
+    'pricing.fine': '基本料金（米ドル）です。最終的なお見積りはプロジェクトの内容によって決まります。',
+    'pt.type': '種類', 'pt.example': '実例', 'pt.ours': 'MADCO',
 
     'inc.title': 'すべてのプロジェクトに含まれるもの',
     'inc.server.t': 'サーバー（月額）', 'inc.server.d': 'サイトを24時間公開し続けます。月払い・年払いが選べます。',
@@ -212,7 +242,8 @@ const I18N = {
     'sec.5': '隠れたトラッカーなし。訪問者のデータはあなたのものです。',
     'sec.6': 'フォームをスパムや不正な送信から保護。',
 
-    'build.eyebrow': 'つくってみる', 'build.title': '6つの質問。ライブプレビュー。すぐにわかる料金。',
+    'build.eyebrow': 'つくってみる · 6つの質問', 'build.title': 'あなたのサイトを、60秒で。',
+    'build.sub': '答えるだけで、サイトがその場で組み上がり、料金がわかり、画像で保存できます。',
 
     'proc.1.t': 'アイデアを聞かせてください', 'proc.1.d': '解決したいことを教えてください。専門知識は不要です。',
     'proc.2.t': 'ライブ試作を確認', 'proc.2.d': '画像ではなく、スマホで開ける本物のサイトです。',
@@ -221,7 +252,7 @@ const I18N = {
     'contact.title': '想像できるものは、すべてプログラムできる。', 'contact.sub': 'アイデアを聞かせてください。お見積りをお送りします。', 'contact.email': 'メールする',
     'ftr.contact': 'お問い合わせ', 'sticky': '1分で料金がわかる',
 
-    'sh.inside': '主な機能', 'sh.market': '市場平均', 'sh.ours': 'MADCO 基本料金', 'sh.save': '約 $130（Q1,000）お得',
+    'sh.inside': '主な機能', 'sh.ours': 'MADCO 基本料金', 
     'sh.plus': '+ サーバー月額 $10–20 · 6ヶ月の保守 · ユーザー／技術マニュアル',
 
     'q.of': '質問 {n} / 6', 'q.next': '次へ', 'q.back': '戻る', 'q.see': 'プロジェクトを見る', 'q.multi': '当てはまるものをすべて選択',
@@ -255,7 +286,7 @@ const I18N = {
     'q6.3': '3言語', 'q6.3.d': '世界へ',
 
     'r.name': 'プロジェクト名', 'r.name.ph': 'あなたのブランド', 'r.est': '概算料金', 'r.from': '〜',
-    'r.market': '市場平均', 'r.base': '基本', 'r.lang': '追加言語', 'r.size': '規模',
+    'r.base': '基本', 'r.lang': '追加言語', 'r.size': '規模',
     'r.server': 'サーバー', 'r.server.v': '月額 $10–20',
     'r.note': '6ヶ月の保守・不具合修正、ユーザーマニュアル、技術マニュアルを含みます。最終見積りは短い打ち合わせの後にお出しします。',
     'r.send': 'この内容を送る', 'r.again': 'やり直す',
@@ -266,5 +297,19 @@ const I18N = {
     'm.cta': 'はじめる', 'm.work': 'ギャラリー', 'm.shop': 'ショップ', 'm.add': '追加', 'm.live': 'リアルタイム保存', 'm.records': '件',
     'm.admin': '管理 · 今週', 'm.forms': '予約する', 'm.send': '送信', 'm.games': 'ランキング',
     'm.nav1': 'ホーム', 'm.nav2': '紹介', 'm.nav3': '連絡',
+    'm.bot': 'アシスタント', 'm.bot.q': '全国に配送できますか？', 'm.bot.a': 'はい、グアテマラ全土へ！',
+    'm.auto': '自動化', 'm.auto.1': '新規注文', 'm.auto.2': 'WhatsApp送信', 'm.auto.3': '保存', 'm.nfc': 'ここにスマホをかざす',
+
+    'nav.services': 'サービス',
+    'svc.eyebrow': 'ウェブサイトだけじゃない', 'svc.title': '自動化。会話。タッチ。',
+    'svc.bot.t': 'チャットボット', 'svc.bot.d': 'サイトやWhatsAppで、24時間お客様に対応します。', 'svc.bot.try': '左下のボットを試す ↙',
+    'svc.auto.t': '自動化', 'svc.auto.d': '繰り返し作業を自動で：WhatsAppへの注文通知、レポート、リマインダー、スプレッドシート。',
+    'svc.nfc.t': 'NFCチップ', 'svc.nfc.d': 'スマホをかざすだけで、サイト・メニュー・Instagramが開くステッカーやカード。宣伝にぴったり。',
+    'q2.bot': 'チャットボット', 'q2.bot.d': '24時間お客様に対応',
+    'q2.auto': '自動化', 'q2.auto.d': '作業が自動で進む',
+    'q2.nfc': 'NFCチップ', 'q2.nfc.d': 'かざすとサイトが開く',
+    'q.keys': 'ヒント：キーボードの1〜9で選択', 'q.live': 'ライブプレビュー — 回答ごとに変わります',
+    'r.dl.post': '投稿用画像', 'r.dl.story': 'ストーリー用画像', 'r.dl.busy': '作成中…',
+    'img.inc': '6ヶ月の保守 · ユーザー／技術マニュアル',
   },
 };

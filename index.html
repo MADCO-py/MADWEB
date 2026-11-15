@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MADCO — Websites & Systems</title>
   <meta name="description" content="Websites, online stores and custom systems built from scratch. Clear prices in USD.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
+  <link rel="apple-touch-icon" href="assets/favicon-180.png">
+  <meta name="theme-color" content="#050507">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Anton&family=Playfair+Display:ital,wght@1,600&family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/extras.css">
   <script>
     (function () {
       var l = 'en';
@@ -24,6 +29,7 @@
     <a href="#top" class="logo" aria-label="MADCO">MADCO</a>
     <nav class="nav" aria-label="Main">
       <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
       <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
       <a href="#build" data-i18n="nav.build">Build yours</a>
       <a href="#security" data-i18n="nav.security">Security</a>
@@ -42,6 +48,7 @@
   <div class="mnav" id="mnav" hidden>
     <button class="mnav-close" id="mnavClose" aria-label="Close">&times;</button>
     <a href="#work" data-i18n="nav.work">Work</a>
+    <a href="#services" data-i18n="nav.services">Services</a>
     <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
     <a href="#build" data-i18n="nav.build">Build yours</a>
     <a href="#security" data-i18n="nav.security">Security</a>
@@ -61,7 +68,7 @@
     <!-- ============ SPEC STRIP ============ -->
     <section class="specs">
       <div class="spec"><b>5</b><span data-i18n="spec.live">Projects live</span></div>
-      <div class="spec"><b>−Q1,000</b><span data-i18n="spec.below">Below market average</span></div>
+      <div class="spec"><b>100%</b><span data-i18n="spec.custom">Custom, no templates</span></div>
       <div class="spec"><b>6 <small data-i18n="spec.mo">mo</small></b><span data-i18n="spec.maint">Maintenance included</span></div>
       <div class="spec"><b>$10–20</b><span data-i18n="spec.server">Server per month</span></div>
     </section>
@@ -76,15 +83,44 @@
       <div class="dots dark" id="cardDots"></div>
     </section>
 
+    <!-- ============ SERVICES ============ -->
+    <section class="services" id="services">
+      <div class="sec-head">
+        <p class="eyebrow" data-i18n="svc.eyebrow">More than websites</p>
+        <h2 data-i18n="svc.title">Automate. Talk. Tap.</h2>
+      </div>
+      <div class="svc-grid">
+        <article class="svc">
+          <div class="svc-ico svc-ico-bot"><i></i><i></i></div>
+          <h3 data-i18n="svc.bot.t">Chatbots</h3>
+          <p data-i18n="svc.bot.d">Answers your customers 24/7, on your site or WhatsApp.</p>
+          <b class="svc-price" data-svc="bot"></b>
+          <button class="svc-try" data-i18n="svc.bot.try" data-chat-open>Try the one in the corner</button>
+        </article>
+        <article class="svc">
+          <div class="svc-ico svc-ico-auto"><i></i><i></i><i></i></div>
+          <h3 data-i18n="svc.auto.t">Automations</h3>
+          <p data-i18n="svc.auto.d">Repetitive tasks that do themselves: orders to WhatsApp, reports, reminders, spreadsheets.</p>
+          <b class="svc-price" data-svc="auto"></b>
+        </article>
+        <article class="svc">
+          <div class="svc-ico svc-ico-nfc"><i></i><i></i><i></i></div>
+          <h3 data-i18n="svc.nfc.t">NFC chips</h3>
+          <p data-i18n="svc.nfc.d">Stickers and cards that open your site, menu or Instagram with one tap of the phone. Made to promote you.</p>
+          <b class="svc-price" data-svc="nfc"></b>
+        </article>
+      </div>
+    </section>
+
     <!-- ============ PRICING ============ -->
     <section class="pricing" id="pricing">
       <div class="sec-head">
         <p class="eyebrow" data-i18n="pricing.eyebrow">Pricing</p>
         <h2 data-i18n="pricing.title">Clear prices. In dollars.</h2>
-        <p class="lead" data-i18n="pricing.sub">We compared what agencies in Guatemala charge. Every MADCO price sits Q1,000 (≈ $130) below the market average.</p>
+        <p class="lead" data-i18n="pricing.sub">Base prices for what we have already built. No surprises, no fine print.</p>
       </div>
       <div class="ptable" id="ptable"></div>
-      <p class="fine" data-i18n="pricing.fine">Base prices. Market average based on public 2026 agency rates in Guatemala (1 USD ≈ Q7.64).</p>
+      <p class="fine" data-i18n="pricing.fine">Base prices in USD. The final quote depends on what your project needs.</p>
 
       <h3 class="inc-title" data-i18n="inc.title">Every project includes</h3>
       <div class="inc">
@@ -114,9 +150,10 @@
 
     <!-- ============ BUILD YOURS (QUIZ) ============ -->
     <section class="build" id="build">
-      <div class="sec-head">
-        <p class="eyebrow" data-i18n="build.eyebrow">Build yours</p>
-        <h2 data-i18n="build.title">6 questions. A live preview. An instant price.</h2>
+      <div class="sec-head light">
+        <p class="eyebrow" data-i18n="build.eyebrow">Build yours · 6 questions</p>
+        <h2 data-i18n="build.title">Your website. In 60 seconds.</h2>
+        <p class="lead" data-i18n="build.sub">Answer, watch it build itself live, get your price and download it as an image.</p>
       </div>
       <div class="quiz" id="quiz"></div>
     </section>
@@ -161,6 +198,9 @@
   </aside>
 
   <script src="js/i18n.js"></script>
+  <script src="js/logo-data.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/chat.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

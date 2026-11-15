@@ -4,11 +4,10 @@
    ============================================================ */
 
 /* ---------- PROJECTS ----------
-   price  = MADCO base price (USD)
-   market = market average (USD) = price + ~Q1,000                */
+   price = MADCO base price (USD)                                  */
 const PROJECTS = [
   {
-    id: 'skeepers', name: 'Los Skeepers', price: 2160, market: 2290,
+    id: 'skeepers', name: 'Los Skeepers', price: 2160,
     video: 'assets/work/skeepers.mp4', poster: 'assets/work/skeepers.jpg',
     url: 'https://www.losskeepers.com/',
     kind: { en: 'Full platform', es: 'Plataforma completa', ja: 'フルプラットフォーム' },
@@ -30,7 +29,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'fleetcontrol', name: 'FleetControl', price: 3800, market: 3930,
+    id: 'fleetcontrol', name: 'FleetControl', price: 3800,
     img: 'assets/work/fleetcontrol.png', url: '',
     kind: { en: 'Custom system', es: 'Sistema a la medida', ja: 'オーダーメイドシステム' },
     tagline: { en: 'Fleet management system · Running in production', es: 'Sistema de gestión de flota · En producción', ja: '車両管理システム · 本番稼働中' },
@@ -51,7 +50,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'march', name: 'March Jewelry', price: 1240, market: 1370,
+    id: 'march', name: 'March Jewelry', price: 1240,
     video: 'assets/work/march.mp4', poster: 'assets/work/march.jpg',
     url: 'https://madco-py.github.io/MARCH_JEWELRY/index.html',
     kind: { en: 'Online store', es: 'Tienda en línea', ja: 'オンラインストア' },
@@ -73,7 +72,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'sunset', name: 'The Sunset Sessions', price: 520, market: 650,
+    id: 'sunset', name: 'The Sunset Sessions', price: 520,
     img: 'assets/work/sunset.png', url: 'https://madco-py.github.io/The-Sunset-Sessions/',
     kind: { en: 'Event site', es: 'Sitio de evento', ja: 'イベントサイト' },
     tagline: { en: 'Music, art and coffee at Casa Tina', es: 'Música, arte y café en Casa Tina', ja: 'カサ・ティナで音楽、アート、コーヒー' },
@@ -94,7 +93,7 @@ const PROJECTS = [
     },
   },
   {
-    id: 'marce', name: 'Marce Juárez', price: 460, market: 590,
+    id: 'marce', name: 'Marce Juárez', price: 460,
     video: 'assets/work/marce.mp4', poster: 'assets/work/marce.jpg',
     url: 'https://madco-py.github.io/MARCE_JUAREZ/',
     kind: { en: 'Artist portfolio', es: 'Portafolio de artista', ja: 'アーティストのポートフォリオ' },
@@ -135,12 +134,14 @@ const TIERS = [
    project land near that project's price. */
 const QUIZ_PRICE = {
   base: { business: 460, artist: 460, event: 520, personal: 460, system: 3800 },
-  feat: { show: 0, sell: 650, data: 250, admin: 300, forms: 80, games: 180 },
+  feat: { show: 0, sell: 650, data: 250, admin: 300, forms: 80, games: 180, bot: 250, auto: 200, nfc: 60 },
   systemIncludes: ['data', 'admin', 'forms'],
   size: { one: 0, mid: 120, big: 260 },
   langs: { 1: 0, 2: 90, 3: 180 },
-  marketGap: 130, // ≈ Q1,000
 };
+
+/* Extra services (USD, starting price) */
+const SERVICES = { bot: 250, auto: 200, nfc: 60 };
 
 const PALETTES = {
   midnight: { bg: '#0b0b12', fg: '#f3f3f7', ac: '#7c5cff' },
@@ -180,6 +181,7 @@ const mediaHTML = (p, cls = 'media', eager = false) => p.video
 function applyStatic() {
   document.documentElement.lang = LANG;
   $$('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n); });
+  $$('[data-svc]').forEach((el) => { el.textContent = fromPrice(SERVICES[el.dataset.svc]); });
   $$('.lang button').forEach((b) => b.classList.toggle('on', b.dataset.lang === LANG));
 }
 
@@ -243,7 +245,7 @@ function renderCards() {
       <div class="card-copy">
         <h3>${esc(p.name)}</h3>
         <p>${esc(L(p.tagline))}</p>
-        <div class="card-price">${esc(fromPrice(p.price))}<s>${usd(p.market)}</s></div>
+        <div class="card-price">${esc(fromPrice(p.price))}</div>
         <div class="btns">
           <button class="btn primary" data-open="${p.id}">${esc(t('btn.details'))}</button>
           ${p.url ? `<a class="btn secondary" href="${p.url}" target="_blank" rel="noopener">${esc(t('btn.visit'))}</a>` : `<span class="btn disabled">${esc(t('btn.private'))}</span>`}
@@ -275,12 +277,11 @@ function watchCardVideos() {
 /* ---------- Pricing table ---------- */
 function renderPricing() {
   $('#ptable').innerHTML = `
-    <div class="prow head"><div>${esc(t('pt.type'))}</div><div class="h-ex">${esc(t('pt.example'))}</div><div class="h-mkt">${esc(t('pt.market'))}</div><div>${esc(t('pt.ours'))}</div></div>
+    <div class="prow head"><div>${esc(t('pt.type'))}</div><div class="h-ex">${esc(t('pt.example'))}</div><div>${esc(t('pt.ours'))}</div></div>
     ${TIERS.map((tr) => { const p = byId(tr.id); return `
       <div class="prow">
         <div><h4>${esc(L(tr.name))}</h4><p class="what">${esc(L(tr.what))}</p></div>
         <div class="ex">${esc(p.name)}</div>
-        <div class="mkt">${usd(p.market)}</div>
         <div class="ours">${usd(p.price)}<small>USD</small></div>
       </div>`; }).join('')}`;
 }
@@ -297,9 +298,7 @@ function openSheet(id) {
       <div class="sh-specs">${p.specs.map(([v, l]) => `<div><b>${esc(v)}</b><span>${esc(L(l))}</span></div>`).join('')}</div>
       <div class="sh-feat"><h4>${esc(t('sh.inside'))}</h4><ul>${L(p.features).map((f) => `<li>${esc(f)}</li>`).join('')}</ul></div>
       <div class="sh-price">
-        <div class="row"><span>${esc(t('sh.market'))}</span><s>${usd(p.market)}</s></div>
         <div class="row main"><span>${esc(t('sh.ours'))}</span><b>${usd(p.price)}</b></div>
-        <div class="save">${esc(t('sh.save'))}</div>
         <div class="row" style="margin-top:8px;font-size:12px">${esc(t('sh.plus'))}</div>
       </div>
       <div class="btns">
@@ -317,175 +316,12 @@ function closeSheet() {
   document.body.style.overflow = '';
 }
 
-/* ---------- Quiz ---------- */
-const Q = { step: 0, type: null, feats: new Set(), vibe: null, pal: null, size: null, langs: null, name: '' };
-const STEPS = [
-  { key: 'type', title: 'q1', opts: ['business', 'artist', 'event', 'personal', 'system'], desc: true },
-  { key: 'feats', title: 'q2', opts: ['show', 'sell', 'data', 'admin', 'forms', 'games'], desc: true, multi: true },
-  { key: 'vibe', title: 'q3', opts: ['minimal', 'bold', 'elegant', 'playful'], desc: true, vibe: true },
-  { key: 'pal', title: 'q4', opts: Object.keys(PALETTES), swatch: true },
-  { key: 'size', title: 'q5', opts: ['one', 'mid', 'big'], desc: true },
-  { key: 'langs', title: 'q6', opts: ['1', '2', '3'], desc: true },
-];
-const answered = (s) => s.multi ? Q.feats.size > 0 : Q[s.key] != null;
-
-function quote() {
-  const P = QUIZ_PRICE, type = Q.type || 'business';
-  const lines = [[t('r.base') + ' · ' + t('q1.' + type), P.base[type]]];
-  [...Q.feats].forEach((f) => {
-    if (type === 'system' && P.systemIncludes.includes(f)) return;
-    if (P.feat[f]) lines.push([t('q2.' + f), P.feat[f]]);
-  });
-  if (Q.size && P.size[Q.size]) lines.push([t('r.size') + ' · ' + t('q5.' + Q.size), P.size[Q.size]]);
-  if (Q.langs && P.langs[Q.langs]) lines.push([t('r.lang') + ' · ' + t('q6.' + Q.langs), P.langs[Q.langs]]);
-  const total = Math.round(lines.reduce((a, [, v]) => a + v, 0) / 10) * 10;
-  return { lines, total, market: total + P.marketGap };
-}
-
-function renderQuiz() {
-  const box = $('#quiz');
-  const done = Q.step >= STEPS.length;
-  box.innerHTML = `<div class="quiz-grid">
-    <div class="quiz-left">${done ? resultHTML() : stepHTML()}</div>
-    <div class="mock-wrap">
-      <div class="mock-bar"><i></i><i></i><i></i><div class="url" id="mockUrl"></div></div>
-      <div class="mock" id="mock"></div>
-    </div>
-  </div>`;
-  renderMock();
-  if (done) {
-    const inp = $('#rName');
-    inp.addEventListener('input', () => { Q.name = inp.value; renderMock(); updateMail(); });
-    updateMail();
-  }
-}
-
-function stepHTML() {
-  const s = STEPS[Q.step];
-  const isOn = (o) => s.multi ? Q.feats.has(o) : Q[s.key] === o;
-  const opt = (o) => {
-    let inner = '';
-    if (s.swatch) { const p = PALETTES[o]; inner = `<span class="sw"><i style="background:${p.bg}"></i><i style="background:${p.ac}"></i><i style="background:${p.fg}"></i></span><b>${esc(t('q4.' + o))}</b>`; }
-    else {
-      const v = s.vibe ? VIBES[o] : null;
-      inner = `${v ? `<span class="vibe-sample" style="font-family:'${v.font}';font-weight:${v.w};font-style:${v.fs};text-transform:${v.tt}">${v.sample}</span>` : ''}
-        <b>${esc(t(s.title + '.' + o))}</b>${s.desc ? `<span>${esc(t(s.title + '.' + o + '.d'))}</span>` : ''}`;
-    }
-    return `<button class="q-opt${isOn(o) ? ' on' : ''}" data-opt="${o}">${inner}</button>`;
-  };
-  return `
-    <div class="q-progress"><i style="width:${(Q.step / STEPS.length) * 100}%"></i></div>
-    <p class="q-count">${esc(t('q.of', { n: Q.step + 1 }))}</p>
-    <h3 class="q-title">${esc(t(s.title))}</h3>
-    <p class="q-hint">${s.multi ? esc(t('q.multi')) : '&nbsp;'}</p>
-    <div class="q-opts${s.swatch ? ' sw3' : ''}">${s.opts.map(opt).join('')}</div>
-    <div class="q-nav">
-      <button class="btn ghost" data-q="back" ${Q.step === 0 ? 'disabled' : ''}>${esc(t('q.back'))}</button>
-      <button class="btn primary" data-q="next" ${answered(s) ? '' : 'disabled'}>${esc(t(Q.step === STEPS.length - 1 ? 'q.see' : 'q.next'))}</button>
-    </div>`;
-}
-
-function resultHTML() {
-  const q = quote();
-  return `<div class="r-side">
-    <h3>${esc(t('r.name'))}</h3>
-    <input class="r-name" id="rName" maxlength="28" placeholder="${esc(t('r.name.ph'))}" value="${esc(Q.name)}">
-    <div class="r-price">
-      <p class="from">${esc(t('r.est'))} · ${esc(t('r.from'))}</p>
-      <div class="big">${usd(q.total)}</div>
-      <p class="mkt"><s>${usd(q.market)}</s>${esc(t('r.market'))}</p>
-    </div>
-    <ul class="r-list">
-      ${q.lines.map(([k, v]) => `<li><span>${esc(k)}</span><em>${v ? '+' + usd(v) : '—'}</em></li>`).join('')}
-      <li><span>${esc(t('r.server'))}</span><em>${esc(t('r.server.v'))}</em></li>
-    </ul>
-    <p class="r-note">${esc(t('r.note'))}</p>
-    <div class="btns">
-      <button class="btn ghost" data-q="restart">${esc(t('r.again'))}</button>
-      <a class="btn primary" id="rSend" href="#">${esc(t('r.send'))}</a>
-    </div>
-  </div>`;
-}
-
-function updateMail() {
-  const q = quote();
-  const name = Q.name.trim() || t('r.name.ph');
-  const body = [
-    `${t('r.name')}: ${name}`,
-    `${t('q1')} ${t('q1.' + Q.type)}`,
-    `${t('q2')} ${[...Q.feats].map((f) => t('q2.' + f)).join(', ')}`,
-    `${t('q3')} ${t('q3.' + Q.vibe)}`,
-    `${t('q4')} ${t('q4.' + Q.pal)}`,
-    `${t('q5')} ${t('q5.' + Q.size)}`,
-    `${t('q6')} ${t('q6.' + Q.langs)}`,
-    '',
-    `${t('r.est')}: ${usd(q.total)} USD + ${t('r.server.v')}`,
-  ].join('\n');
-  $('#rSend').href = `mailto:madcarranzaosorio@gmail.com?subject=${encodeURIComponent(t('r.mail.subject', { name }))}&body=${encodeURIComponent(body)}`;
-}
-
-function renderMock() {
-  const m = $('#mock'); if (!m) return;
-  const pal = PALETTES[Q.pal || 'midnight'];
-  const v = VIBES[Q.vibe || 'minimal'];
-  const type = Q.type || 'business';
-  const name = (Q.name || '').trim() || t('r.name.ph');
-  const slug = name.toLowerCase().normalize('NFD').replace(/[^\w]+/g, '') || 'yourbrand';
-  $('#mockUrl').textContent = `${slug}.com`;
-  Object.entries({ '--m-bg': pal.bg, '--m-fg': pal.fg, '--m-ac': pal.ac, '--m-font': `'${v.font}'`, '--m-w': v.w, '--m-tt': v.tt, '--m-fs': v.fs, '--m-r': v.r })
-    .forEach(([k, val]) => m.style.setProperty(k, val));
-
-  const f = Q.feats;
-  const blocks = [];
-  let d = 0;
-  const blk = (html, wide) => blocks.push(`<div class="m-block${wide ? ' wide' : ''}" style="animation-delay:${(d++) * 80}ms">${html}</div>`);
-  if (type === 'system' || f.has('admin')) {
-    const bars = [40, 65, 52, 80, 70, 95, 88].map((h, i) => `<i style="height:${h}%;animation-delay:${i * 70}ms"></i>`).join('');
-    blk(`<h6>${esc(t('m.admin'))}</h6><div class="m-bars">${bars}</div>`, true);
-  }
-  if (type === 'system' || f.has('data')) blk(`<h6>${esc(t('m.live'))}</h6><div class="m-live"><i></i>1,284 <small style="font-size:10px;font-weight:500;opacity:.6">${esc(t('m.records'))}</small></div>`);
-  if (f.has('sell')) blk(`<h6>${esc(t('m.shop'))}</h6>${['01', '02', '03'].map((n, i) => `<div class="m-prod"><span>Item ${n}</span><em>${esc(t('m.add'))}</em></div>`).join('')}`);
-  if (f.has('show') || !f.size) blk(`<h6>${esc(t('m.work'))}</h6><div class="m-tiles"><i></i><i></i><i></i></div>`);
-  if (f.has('forms')) blk(`<h6>${esc(t('m.forms'))}</h6><div class="m-field"></div><div class="m-field"></div><span class="m-btn">${esc(t('m.send'))}</span>`);
-  if (f.has('games')) blk(`<h6>${esc(t('m.games'))}</h6><div class="m-lb"><div><span>1. Ana</span><b>9,820</b></div><div><span>2. Luis</span><b>8,410</b></div><div><span>3. Sofi</span><b>7,005</b></div></div>`);
-  if (blocks.length % 2 === 1 && blocks.length > 1) {
-    blocks[blocks.length - 1] = blocks[blocks.length - 1].replace('class="m-block"', 'class="m-block wide"');
-  }
-
-  const langs = Q.langs ? ['EN', 'ES', '日本'].slice(0, +Q.langs).join(' · ') : '';
-  m.innerHTML = `
-    <div class="m-nav"><b>${esc(name)}</b><span>${langs ? `<em style="font-style:normal;opacity:.9">${langs}</em>` : `${esc(t('m.nav1'))} ${esc(t('m.nav2'))} ${esc(t('m.nav3'))}`}</span></div>
-    <div class="m-hero">
-      <h5>${esc(name)}</h5>
-      <p>${esc(t('m.tag.' + type))}</p>
-      <span class="m-cta">${esc(t('m.cta'))} →</span>
-    </div>
-    <div class="m-blocks">${blocks.join('')}</div>`;
-}
-
-function onQuizClick(e) {
-  const o = e.target.closest('[data-opt]');
-  const nav = e.target.closest('[data-q]');
-  if (o) {
-    const s = STEPS[Q.step], val = o.dataset.opt;
-    if (s.multi) { Q.feats.has(val) ? Q.feats.delete(val) : Q.feats.add(val); }
-    else Q[s.key] = val;
-    renderQuiz();
-    if (!s.multi) setTimeout(() => { if (STEPS[Q.step] === s) { Q.step++; renderQuiz(); } }, 260);
-  } else if (nav) {
-    const a = nav.dataset.q;
-    if (a === 'next' && answered(STEPS[Q.step])) Q.step++;
-    if (a === 'back' && Q.step > 0) Q.step--;
-    if (a === 'restart') Object.assign(Q, { step: 0, type: null, feats: new Set(), vibe: null, pal: null, size: null, langs: null });
-    renderQuiz();
-    if (window.innerWidth < 1000) $('#build').scrollIntoView({ behavior: 'smooth' });
-  }
-}
+/* Quiz lives in js/quiz.js · chatbot in js/chat.js */
 
 /* ---------- Reveal + sticky ---------- */
 function setupReveal() {
   const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
-  $$('.sec-head, .spec, .prow, .inc-item, .sec-grid > div, .step, .contact h2, .rv').forEach((el) => { el.classList.add('rv'); io.observe(el); });
+  $$('.sec-head, .spec, .prow, .inc-item, .sec-grid > div, .step, .contact h2, .svc, .rv').forEach((el) => { el.classList.add('rv'); io.observe(el); });
 }
 function setupSticky() {
   const hideOn = ['#build', '#contact'].map((s) => $(s));
@@ -502,7 +338,7 @@ function setLang(l) {
   if (!I18N[l]) return;
   LANG = l;
   try { localStorage.setItem('madco-lang', l); } catch (e) {}
-  applyStatic(); renderHero(); renderCards(); renderPricing(); renderQuiz();
+  applyStatic(); renderHero(); renderCards(); renderPricing(); renderQuiz(); renderChat();
   $$('.card, .prow').forEach((el) => el.classList.add('rv', 'in'));
   closeSheet();
 }
@@ -513,6 +349,7 @@ renderHero();
 renderCards();
 renderPricing();
 renderQuiz();
+chatInit();
 setupReveal();
 setupSticky();
 
@@ -532,6 +369,7 @@ $('#cardDots').addEventListener('click', (e) => {
 
 document.addEventListener('click', (e) => {
   const op = e.target.closest('[data-open]'); if (op) { openSheet(op.dataset.open); return; }
+  if (e.target.closest('[data-chat-open]')) { toggleChat(true); return; }
   if (e.target.closest('[data-close]')) closeSheet();
 });
 $('#sheetClose').addEventListener('click', closeSheet);
