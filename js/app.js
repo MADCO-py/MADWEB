@@ -360,26 +360,6 @@ function setupHeaderTheme() {
   check();
 }
 
-/* Admin panel showcase: count up numbers + draw the chart when it comes into view */
-function setupPanel() {
-  const sec = $('#panel'); if (!sec) return;
-  const io = new IntersectionObserver((es) => es.forEach((e) => {
-    if (!e.isIntersecting) return;
-    sec.classList.add('live');
-    $$('[data-count]', sec).forEach((el) => {
-      const to = +el.dataset.count, dec = +(el.dataset.dec || 0), pre = el.dataset.pre || '';
-      const t0 = performance.now();
-      const tick = (now) => {
-        const k = Math.min(1, (now - t0) / 1400), v = to * (1 - Math.pow(1 - k, 3));
-        el.textContent = pre + v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
-        if (k < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    });
-    io.disconnect();
-  }), { threshold: .35 });
-  io.observe(sec);
-}
 
 /* ---------- Language ---------- */
 function setLang(l) {
@@ -404,7 +384,6 @@ if (fromShare) setTimeout(() => $('#build').scrollIntoView(), 300);
 setupReveal();
 setupSticky();
 setupHeaderTheme();
-setupPanel();
 
 $('#heroPrev').addEventListener('click', () => goHero(heroIdx - 1));
 $('#heroNext').addEventListener('click', () => goHero(heroIdx + 1));
