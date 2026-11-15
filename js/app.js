@@ -188,6 +188,13 @@ function applyStatic() {
 /* ---------- Hero carousel ---------- */
 const HERO = ['brand', 'fleetcontrol', 'march', 'sunset', 'marce'];
 let heroIdx = 0, heroTimer;
+/* Cybertruck-style spec boxes: [value, label] or [value, unit, label] */
+function specBoxes(items) {
+  return `<div class="hspecs">${items.map((it) => {
+    const [v, u, l] = it.length === 3 ? it : [it[0], '', it[1]];
+    return `<div class="hspec"><b>${esc(v)}${u ? `<small>${esc(u)}</small>` : ''}</b><span>${esc(l)}</span></div>`;
+  }).join('')}</div>`;
+}
 function renderHero() {
   const track = $('#heroTrack');
   track.innerHTML = HERO.map((id) => {
@@ -199,6 +206,7 @@ function renderHero() {
           <p>${esc(t('hero.brand.sub'))}</p>
           <div class="btns"><a class="btn primary" href="#build">${esc(t('btn.build'))}</a><a class="btn secondary" href="#work">${esc(t('btn.work'))}</a></div>
         </div>
+        ${specBoxes([['5', t('spec.live')], ['100', '%', t('spec.custom')], ['3', t('hs.langs')]])}
       </div>`;
     }
     const p = byId(id);
@@ -215,6 +223,7 @@ function renderHero() {
         </div>
       </div>
       <div class="screen">${mediaHTML(p)}</div>
+      ${specBoxes(p.specs.map(([v, l]) => [v, L(l)]))}
     </div>`;
   }).join('');
   $('#heroDots').innerHTML = HERO.map((_, i) => `<button aria-label="Slide ${i + 1}" data-i="${i}"></button>`).join('');
@@ -227,6 +236,7 @@ function goHero(i, instant) {
   track.style.transform = `translateX(-${heroIdx * 100}%)`;
   if (instant) requestAnimationFrame(() => (track.style.transition = ''));
   $$('#heroDots button').forEach((b, j) => b.classList.toggle('on', j === heroIdx));
+  [...track.children].forEach((s, j) => s.classList.toggle('on', j === heroIdx));
   $$('.slide video', track).forEach((v, j) => {
     const slide = v.closest('.slide');
     const k = [...track.children].indexOf(slide);
@@ -333,6 +343,44 @@ function setupSticky() {
   hideOn.forEach((el) => io.observe(el));
 }
 
+/* Header turns dark over dark sections (Tesla-style): transparent over the hero, solid black elsewhere */
+function setupHeaderTheme() {
+  const hdr = $('#hdr');
+  const darks = $$('[data-dark]');
+  let ticking = false;
+  const check = () => {
+    ticking = false;
+    const y = hdr.offsetHeight + 2; let mode = '';
+    for (const s of darks) { const r = s.getBoundingClientRect(); if (r.top <= y && r.bottom > y) { mode = s.dataset.dark; break; } }
+    hdr.classList.toggle('dark', !!mode);
+    hdr.classList.toggle('clear', mode === 'clear');
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(check); } }, { passive: true });
+  addEventListener('resize', check);
+  check();
+}
+
+/* Admin panel showcase: count up numbers + draw the chart when it comes into view */
+function setupPanel() {
+  const sec = $('#panel'); if (!sec) return;
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return;
+    sec.classList.add('live');
+    $$('[data-count]', sec).forEach((el) => {
+      const to = +el.dataset.count, dec = +(el.dataset.dec || 0), pre = el.dataset.pre || '';
+      const t0 = performance.now();
+      const tick = (now) => {
+        const k = Math.min(1, (now - t0) / 1400), v = to * (1 - Math.pow(1 - k, 3));
+        el.textContent = pre + v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+        if (k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+    io.disconnect();
+  }), { threshold: .35 });
+  io.observe(sec);
+}
+
 /* ---------- Language ---------- */
 function setLang(l) {
   if (!I18N[l]) return;
@@ -355,6 +403,8 @@ startLiveQR();
 if (fromShare) setTimeout(() => $('#build').scrollIntoView(), 300);
 setupReveal();
 setupSticky();
+setupHeaderTheme();
+setupPanel();
 
 $('#heroPrev').addEventListener('click', () => goHero(heroIdx - 1));
 $('#heroNext').addEventListener('click', () => goHero(heroIdx + 1));
