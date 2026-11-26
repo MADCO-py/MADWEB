@@ -29,6 +29,28 @@ const PROJECTS = [
     },
   },
   {
+    id: 'astra', name: 'Astramedic', price: 780,
+    video: 'assets/work/astra.mp4', poster: 'assets/work/astra.jpg',
+    url: 'https://www.astra-medic.com/',
+    kind: { en: 'Website + AI chatbot', es: 'Sitio web + chatbot IA', ja: 'ウェブサイト＋AIチャットボット' },
+    tagline: { en: 'Home medical and veterinary care in Guatemala', es: 'Atención médica y veterinaria a domicilio en Guatemala', ja: 'グアテマラの訪問診療・訪問獣医サービス' },
+    desc: {
+      en: 'A clean, fast website for a home healthcare service for people and pets: services, annual plans and an AI assistant that answers frequently asked questions.',
+      es: 'Un sitio web limpio y rápido para un servicio de salud a domicilio para personas y mascotas: servicios, planes anuales y un asistente con IA que responde preguntas frecuentes.',
+      ja: '人とペットのための訪問医療サービスのシンプルで速いウェブサイト。サービス紹介、年間プラン、よくある質問に答えるAIアシスタント。',
+    },
+    specs: [
+      ['2', { en: 'Plans: people & pets', es: 'Planes: personas y mascotas', ja: 'プラン：人とペット' }],
+      ['AI', { en: 'Chat assistant', es: 'Asistente de chat', ja: 'チャットアシスタント' }],
+      ['Web', { en: 'Website only', es: 'Solo web', ja: 'ウェブのみ' }],
+    ],
+    features: {
+      en: ['Website only, no app needed', 'AI chatbot assistant that answers frequently asked questions', 'Services for people and for pets', 'Annual plans with prices and payment options', 'Contact via WhatsApp and email', 'Ready for Google and for sharing on WhatsApp and social media', 'Fits phones and computers', 'Built with React + Vite (JavaScript, HTML, CSS)'],
+      es: ['Solo apartado web, sin necesidad de app', 'Asistente chatbot con IA que responde preguntas frecuentes', 'Servicios para personas y para mascotas', 'Planes anuales con precios y formas de pago', 'Contacto por WhatsApp y correo', 'Listo para Google y para compartir en WhatsApp y redes', 'Se adapta a celular y computadora', 'Hecho con React + Vite (JavaScript, HTML, CSS)'],
+      ja: ['ウェブのみ（アプリ不要）', 'よくある質問に答えるAIチャットボット', '人向け・ペット向けのサービス', '料金と支払い方法つきの年間プラン', 'WhatsAppとメールで問い合わせ', 'Google検索とSNS共有に対応', 'スマホとパソコンに対応', 'React + Vite（JavaScript、HTML、CSS）で開発'],
+    },
+  },
+  {
     id: 'fleetcontrol', name: 'FleetControl', price: 3800,
     img: 'assets/work/fleetcontrol.png', url: '',
     kind: { en: 'Custom system', es: 'Sistema a la medida', ja: 'オーダーメイドシステム' },
@@ -206,7 +228,7 @@ function renderHero() {
           <p>${esc(t('hero.brand.sub'))}</p>
           <div class="btns"><a class="btn primary" href="#build">${esc(t('btn.build'))}</a><a class="btn secondary" href="#work">${esc(t('btn.work'))}</a></div>
         </div>
-        ${specBoxes([['5', t('spec.live')], ['100', '%', t('spec.custom')], ['3', t('hs.langs')]])}
+        ${specBoxes([['6', t('spec.live')], ['100', '%', t('spec.custom')], ['3', t('hs.langs')]])}
       </div>`;
     }
     const p = byId(id);
